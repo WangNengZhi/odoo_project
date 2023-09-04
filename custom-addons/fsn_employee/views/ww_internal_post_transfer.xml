@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- tree -->
+        <record id="view_tree_internal_post_transfer" model="ir.ui.view">
+            <field name="name">内部调岗表</field>
+            <field name="model">internal.post.transfer</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="员工姓名"/>
+                    <field name="entry_time" string="入职时间"/>
+                    <field name="application_time" string="申请时间"/>
+                    <field name="department_id" string="原部门"/>
+                    <field name="raw_job_id" string="原岗位"/>
+                    <field name="is_it_a_temporary_worker" string="原工种"/>
+                    <field name="before_pay" string="原薪资"/>
+                    <field name="before_post_commission" string="原绩效奖金"/>
+                    <field name="proposed_department" string="部门"/>
+                    <field name="job_id" string="部门岗位"/>
+                    <field name="is_temporary_worker" string="是否调整工种"/>
+                    <field name="after_temporary_worker" string="调整为(工种)"/>
+                    <field name="adjust_salary" string="是否调整薪资"/>
+                    <field name="the_salary_adjustment_scheme" string="调整薪资为"/>
+                    <field name="after_post_commission" string="之后绩效奖金"/>
+                    <field name="begin_start" string="开始执行日期"/>
+					<field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '确认'" widget="badge"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    form      -->
+        <record id="view_tree_form_internal_post_transfer" model="ir.ui.view">
+            <field name="name">内部调岗</field>
+            <field name="model">internal.post.transfer</field>
+            <field name="arch" type="xml">
+                <form>
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="草稿,确认"/>
+						<button name="action_affirm" string="确认" type="object"
+							class="oe_highlight o_expense_submit"
+							attrs="{'invisible': ['|', ('state', '=', '确认'), ('id', '=', False)]}"
+							confirm='确认吗？'
+							/>
+						<button name="rollback" string="回退" type="object"
+							class="oe_highlight o_expense_submit"
+							attrs="{'invisible': ['|', ('state', '=', '草稿'), ('id', '=', False)]}"
+							confirm='回退吗？'
+                            groups="fsn_base.fsn_super_user_group"
+							/>
+
+					</header>
+                    <sheet>
+                        <div><h1 style="text-align:center">内部调岗表</h1></div>
+                        <group col="4" string="原信息">
+                            <field name="name" string="员工姓名" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="entry_time" string="入职时间"/>
+                            <field name="application_time" string="申请时间"/>
+                            <field name="department_id" string="原部门" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="raw_job_id" string="原岗位" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="is_it_a_temporary_worker" string="原工种"/>
+                            <field name="before_pay" string="原薪资"/>
+                            <field name="before_post_commission" string="原绩效奖金"/>
+                        </group>
+                        <group col="4" string="调整后信息">
+                            <field name="proposed_department" string="部门" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="job_id" string="岗位" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="is_temporary_worker" string="是否调整工种"/>
+                            <field name="after_temporary_worker" string="调整为(工种)"/>
+                            <field name="adjust_salary" string="是否调整薪资"/>
+                            <field name="the_salary_adjustment_scheme" string="调整薪资为"/>
+                            <field name="after_post_commission" string="之后绩效奖金"/>
+                        </group>
+                        <group col="4">
+                            <field name="begin_start" string="开始执行日期"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- 动作 -->
+        <record id="internal_post_transfer_actions" model="ir.actions.act_window">
+            <field name="name">内部调岗表</field>
+            <field name="res_model">internal.post.transfer</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_internal_post_transfer"
+                        name="内部调岗"
+                        parent="hr.menu_hr_employee_payroll"
+                        action="internal_post_transfer_actions"
+                        sequence="15"/>
+    </data>
+</odoo>

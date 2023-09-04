@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+
+        <record id="res_hr_hiring_personnel" model="ir.ui.view">
+            <field name="name">招聘人员</field>
+            <field name="model">hiring.personnel</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date"/>
+                    <field name="week"/>
+                    <field name="recruiter"/>
+                </tree>
+            </field>
+        </record>
+
+
+		<record model="ir.actions.act_window" id="action_hr_hiring_personnel">
+			<field name="name">招聘人员</field>
+			<field name="res_model">hiring.personnel</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem name="招聘人员" sequence="0" id="menu_job_hr_hiring_personnel" parent="hr_recruitment.menu_hr_recruitment_root" action="action_hr_hiring_personnel"/>
+
+    </data>
+</odoo>

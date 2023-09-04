@@ -1,0 +1,35 @@
+<odoo>
+	<data>
+		<!-- tree视图 -->
+		<record id="monthly_report_of_labor_costs_tree" model="ir.ui.view">
+			<field name="name">人工成本月报</field>
+			<field name="model">monthly_report_of_labor_costs</field>
+			<field name="arch" type="xml">
+				<tree editable="top" create="0" edit="0" delete="1">
+					<field name="data" string="日期" />
+					<field name="department" string="部门" />
+					<field name="number_of_employees" string="部门人数" />
+					<field name="basic_salary" string="基本工资" />
+					<field name="overtime_pay" string="加班费" />
+					<field name="bonuse" string="奖金" />
+					<field name="welfare_expenses" string="福利支出" />
+					<field name="social_security_expenditure" string="社保支出" />
+					<field name="amount" string="合计" />
+					<field name="average_wage" string="平均工资" />
+					<field name="average_daily_wage" string="日均工资" />
+					<field name="average_salary_of_employees" string="在职人员平均工资" />
+					<field name="average_daily_salary_of_employees" string="在职人员日均工资" />
+					<field name="proportion_to_operating_costs" string="占营业成本比(%)" />
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record id="monthly_report_of_labor_costs_action" model="ir.actions.act_window">
+			<field name="name">人工成本月报</field>
+			<field name="res_model">monthly_report_of_labor_costs</field>
+			<field name="view_mode">tree,graph</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+
+    
+		<record id="jdy_subject_tree" model="ir.ui.view">
+			<field name="name">精斗云会计科目</field>
+			<field name="model">jdy_subject</field>
+			<field name="arch" type="xml">
+                <tree editable="bottom" create='0' edit='0' delete='1'>
+					<field name="classId" string="类别"/>
+					<field name="subject_id" string="科目ID"/>
+					<field name="number" string="科目代码"/>
+					<field name="name" string="科目名称"/>
+					<field name="fullName" string="科目全称"/>
+                    <field name="level" string="科目级次"/>
+                    <field name="parentId" string="父级科目ID"/>
+                    <field name="rootId" string="根科目ID"/>
+
+                    <field name="groupId" string="科目类别ID"/>
+                    <field name="groupName" string="科目类别名称"/>
+
+                    <field name="isDetail" string="是否明细科目"/>
+                    <field name="dc" string="余额方向"/>
+
+                    <field name="currency" string="货币代码"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="jdy_subject_action" model="ir.actions.act_window">
+            <field name="name">精斗云会计科目</field>
+            <field name="res_model">jdy_subject</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

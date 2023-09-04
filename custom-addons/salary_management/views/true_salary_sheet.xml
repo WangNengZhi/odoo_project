@@ -1,0 +1,82 @@
+<odoo>
+    <data>
+
+        <!-- 搜索视图 -->
+        <!-- <record id="fsn_salary_sheet_search" model="ir.ui.view">
+            <field name="name">工资表搜索视图</field>
+            <field name="model">fsn_salary_sheet</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="month" string="月份"/>
+                    <field name="employee_id" string="员工"/>
+                </search>
+            </field>
+        </record> -->
+        <!-- <record model="ir.actions.server" id="action_disable_totp">
+            <field name="name">Disable TOTP on users</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="binding_model_id" ref="base.model_res_users"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = records.totp_disable()
+            </field>
+            <field name="groups_id" eval="[(4, ref('base.group_erp_manager'), 0)]"/>
+        </record> -->
+
+        <record id="amend_is_grant_actions" model="ir.actions.server">
+                <field name="name">修改是否发放</field>
+                <field name="model_id" ref="model_fsn_true_salary_sheet"/>
+                <field name="binding_model_id" ref="model_fsn_true_salary_sheet"/>
+                <field name="binding_view_types">list</field>
+                <field name="state">code</field>
+                <field name="code">
+                    action = records.set_is_grant()
+                </field>
+        </record>
+
+
+        <!-- tree -->
+        <record id="fsn_true_salary_sheet_tree" model="ir.ui.view">
+            <field name="name">工资条</field>
+            <field name="model">fsn_true_salary_sheet</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" edit="0" create="0" decoration-bf="is_delete_date!=False">
+				<!-- <tree editable="bottom"> -->
+                    <header>
+                        <!-- <button name="set_basic_wage" type="object" string="测试按钮" class="btn-info"/> -->
+                    </header>
+
+                    <field name="month" string="月份"/>
+                    <field name="name" string="员工"/>
+                    <field name="practical_attendance_day" string="实出勤天数" optional="hide"/>
+                    <field name="first_level_department" string="部门" optional="hide"/>
+                    <field name="contract" string="工种" optional="hide"/>
+                    <field name="is_delete_date" string='离职日期' optional="hide"/>
+                    <field name="basic_wage" string="基本工资"/>
+                    <field name="overtime_wage" string="加班工资"/>
+                    <field name="subsidy" string="补贴"/>
+                    <field name="bonus" string="奖金"/>
+                    <field name="performance" string="业绩工资"/>
+                    <field name="deduct_money" string="扣款"/>
+                    <field name="advance" string="预支工资"/>
+                    <field name="should_wage1" string="应付工资1" decoration-danger="is_abnormal == True" widget="badge"/>
+                    <field name="dimission_subsidy" string="离职补贴" optional="hide"/>
+                    <field name="tax" string="税"/>
+                    <field name="should_wage2" string="应付工资2"/>
+                    <field name="is_abnormal" string="是否异常" optional="hide"/>
+                    <field name="is_grant" string="是否发放" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="fsn_true_salary_sheet_action">
+            <field name="name">工资条</field>
+            <field name="res_model">fsn_true_salary_sheet</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+    </data>
+</odoo>

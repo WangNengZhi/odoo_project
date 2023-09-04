@@ -1,0 +1,122 @@
+<odoo>
+    <data noupdate="1">
+        <record id="office_dir_kpi_line_template_01" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">协调工作</field>
+            <field name="assessment_standard">全权负责抓好办公室的全面工作，并协调其余部门的关系与其他部门质检的业务。</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">1</field>
+            <field name="fsn_kpi_job">办公室主任</field>
+        </record>
+        <record id="office_dir_kpi_line_template_02" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">文件保存</field>
+            <field name="assessment_standard">规划准确及安全地管理好公司的各项公文，包括拟稿，审核，签发，打印，复印，收发，催办各种数据及报表交到办公室时间并归档等。</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">2</field>
+            <field name="fsn_kpi_job">办公室主任</field>
+        </record>
+        <record id="office_dir_kpi_line_template_03" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">车辆管理</field>
+            <field name="assessment_standard">加强对公司车辆管理并做好司机行车的安全意识。</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">3</field>
+            <field name="fsn_kpi_job">办公室主任</field>
+        </record>
+        <record id="office_dir_kpi_line_template_04" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">定制考核标准</field>
+            <field name="assessment_standard">依据公司制定的各部门各岗位职责标准，做好绩效考核工作，执行惩罚决定。</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">4</field>
+            <field name="fsn_kpi_job">办公室主任</field>
+        </record>
+        <record id="office_dir_kpi_line_template_05" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">招聘</field>
+            <field name="assessment_standard">按照国家对劳动用工的相关政策，法令，结合公司的实际情况加强本公司的用人管理，负责人力资源的招聘工作。</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">5</field>
+            <field name="fsn_kpi_job">办公室主任</field>
+        </record>
+        <record id="office_dir_kpi_line_template_06" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">设备管理</field>
+            <field name="assessment_standard">管理好公司的电话，电脑，网络设备，加强对信息终端工作的管理。</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">6</field>
+            <field name="fsn_kpi_job">办公室主任</field>
+        </record>
+        <record id="office_dir_kpi_line_template_07" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">订跟进</field>
+            <field name="assessment_standard">与客户及时对好每款的走货量及金额，对大货生产中所缺失的面辅料，要及时对接客户，跟进进度，直到面辅料到厂。</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">7</field>
+            <field name="fsn_kpi_job">办公室主任</field>
+        </record>
+        <record id="office_dir_kpi_line_template_08" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">资料上传</field>
+            <field name="assessment_standard">每天所有生产，及管理资料要及时上传到系统里。</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">8</field>
+            <field name="fsn_kpi_job">办公室主任</field>
+        </record>
+        <record id="office_dir_kpi_line_template_13" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">产前准备</field>
+            <field name="assessment_standard">根据公司制定的产前准备（3p)，保证3p流程的计划，实施及完成。</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">9</field>
+            <field name="fsn_kpi_job">办公室主任</field>
+        </record>
+        <record id="office_dir_kpi_line_template_09" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">工作责任心</field>
+            <field name="assessment_standard">工作认真，严谨，能为正确的结果负责。</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">11</field>
+            <field name="fsn_kpi_job">办公室主任</field>
+        </record>
+        <record id="office_dir_kpi_line_template_10" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">团队配合</field>
+            <field name="assessment_standard">要懂团队的协作和配合。</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">11</field>
+            <field name="fsn_kpi_job">办公室主任</field>
+        </record>
+        <record id="office_dir_kpi_line_template_11" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">出勤率</field>
+            <field name="assessment_standard">缺卡，迟到，早退，等情况。</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">12</field>
+            <field name="fsn_kpi_job">办公室主任</field>
+        </record>
+        <record id="office_dir_kpi_line_template_12" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">言论</field>
+            <field name="assessment_standard">杜绝消极言论及负面情绪。</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">13</field>
+            <field name="fsn_kpi_job">办公室主任</field>
+        </record>
+
+    </data>
+</odoo>

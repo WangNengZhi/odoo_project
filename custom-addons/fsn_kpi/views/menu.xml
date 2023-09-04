@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <!-- Top menu item -->
+
+        <menuitem name="KPI"
+            web_icon="fsn_kpi,static/description/icon.png"
+            id="fsn_kpi_menu_root"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="KPI" id="fsn_kpi_menu" parent="fsn_kpi_menu_root" sequence="90"/>
+
+        <menuitem name="KPI模板设置"
+            id="kpi_setting_menu"
+            parent="fsn_kpi_menu_root"
+            sequence="100"/>
+        <menuitem name="KPI考核项目设置"
+            id="fsn_kpi_assess_project_setting_menu"
+            parent="fsn_kpi_menu_root"
+            action="fsn_kpi_assess_project"
+            sequence="110"/>
+    </data>
+</odoo>

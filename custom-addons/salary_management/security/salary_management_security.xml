@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="kehubutiefenlei" model="ir.module.category">
+            <field name="name">风丝袅薪酬专用</field>
+            <field name="sequence">5</field>
+        </record>
+
+            <record id="kehubutie" model="res.groups">
+                <field name="name">客户补贴</field>
+                <field name="category_id" ref="kehubutiefenlei"/>
+                <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            </record>
+
+            <record id="fsn_salary_sheet_group" model="res.groups">
+                <field name="name">生成工资条</field>
+                <field name="category_id" ref="kehubutiefenlei"/>
+                <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            </record>
+
+            <record id="fsn_salary_restrict_group" model="res.groups">
+                <field name="name">限制薪酬查看月份（管理专用）</field>
+                <field name="category_id" ref="kehubutiefenlei"/>
+            </record>
+
+    </data>
+
+    <data noupdate="1">
+
+        <record id="fsn_salary_restrict_group_rule01" model="ir.rule">
+            <field name="name">只能查看指定月份的薪酬明细（管理专用）</field>
+            <field name="model_id" ref="model_payroll1"/>
+            <field name="groups" eval="[(4,ref('salary_management.fsn_salary_restrict_group'))]"/>
+            <field name="domain_force" eval="[('date', '=', '2023-05')]"/>
+        </record>
+        <record id="fsn_salary_restrict_group_rule02" model="ir.rule">
+            <field name="name">只能查看指定月份的工资表（管理专用）</field>
+            <field name="model_id" ref="model_payroll2"/>
+            <field name="groups" eval="[(4,ref('salary_management.fsn_salary_restrict_group'))]"/>
+            <field name="domain_force" eval="[('month', '=', '2023-05')]"/>
+        </record>
+        <record id="fsn_salary_restrict_group_rule03" model="ir.rule">
+            <field name="name">只能查看指定月份的工资条（管理专用）</field>
+            <field name="model_id" ref="model_payroll3"/>
+            <field name="groups" eval="[(4,ref('salary_management.fsn_salary_restrict_group'))]"/>
+            <field name="domain_force" eval="[('month', '=', '2023-05')]"/>
+        </record>
+
+    </data>
+
+</odoo>

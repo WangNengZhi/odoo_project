@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+
+		<record model="ir.ui.view" id="dormitory_park_tree">
+			<field name="name">宿舍园区</field>
+			<field name="model">dormitory_park</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom">
+                    <header>
+                        <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+					<field name="name" string="园区名称"/>
+				</tree>
+			</field>
+		</record>
+        <!-- 动作 -->
+        <record id="dormitory_park_action" model="ir.actions.act_window">
+            <field name="name">宿舍园区</field>
+            <field name="res_model">dormitory_park</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+		<record model="ir.ui.view" id="dormitory_building_number_tree">
+			<field name="name">宿舍楼号</field>
+			<field name="model">dormitory_building_number</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom">
+                    <header>
+                        <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+					<field name="dormitory_park_id" string="园区" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="name" string="楼号"/>
+				</tree>
+			</field>
+		</record>
+        <!-- 动作 -->
+        <record id="dormitory_building_number_action" model="ir.actions.act_window">
+            <field name="name">宿舍楼号</field>
+            <field name="res_model">dormitory_building_number</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

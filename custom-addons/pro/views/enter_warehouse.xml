@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="enter_warehouse_tree">
+			<field name="name">入库产值tree</field>
+			<field name="model">enter_warehouse</field>
+			<field name="arch" type="xml">
+				<tree edit="0" create="0" delete="0">
+                    <header>
+                    </header>
+                    <field name="date" string="日期"/>
+                    <field name="order_number" string="订单"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="processing_type" string="加工类型"/>
+                    <field name="number" string="件数"/>
+                    <field name="enter_warehouse_value" string="入库产值"/>
+                    <field name="is_inferior" string="合格/次品"/>
+				</tree>
+			</field>
+		</record>
+
+        <!-- 动作 -->
+        <record id="enter_warehouse_actions" model="ir.actions.act_window">
+            <field name="name">入库产值</field>
+            <field name="res_model">enter_warehouse</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+        <!-- 按钮 -->
+        <!-- <menuitem id="menu_enter_warehouse"
+            name="入库产值"
+            parent="menu_total_totlepro1"
+            action="enter_warehouse_actions"
+            sequence="45"/> -->
+    </data>
+</odoo>

@@ -1,0 +1,14 @@
+<odoo>
+
+    <record id="back_channel_progress_job_setting_manual" model="back_channel_progress_job_setting">
+        <field name="key">手工</field>
+    </record>
+    <record id="back_channel_progress_job_setting_special" model="back_channel_progress_job_setting">
+        <field name="key">专机</field>
+    </record>
+    <record id="back_channel_progress_job_setting_big_iron" model="back_channel_progress_job_setting">
+        <field name="key">大烫</field>
+    </record>
+
+
+</odoo>

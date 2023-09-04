@@ -1,0 +1,78 @@
+<odoo>
+	<data>
+		<record id="suspension_system_index_client_action" model="ir.actions.client">
+				<field name="name">吊挂系统主页</field>
+				<field name="tag">suspension_system_index</field>
+			</record>
+
+       	<menuitem id="suspension_system_index_menu_root"
+			name="吊挂系统"
+			web_icon="suspension_system,static/description/icon.png"
+			sequence="2"/>
+
+
+			<menuitem 
+				id="suspension_system_output_menu"
+				name="吊挂产量"
+				parent="suspension_system_index_menu_root"
+				action="suspension_system_summary_action"
+				sequence="30"/>
+				<menuitem 
+					id="suspension_system_group_menu"
+					name="吊挂组产量"
+					parent="suspension_system_output_menu"
+					action="suspension_system_summary_action"
+					sequence="10"/>
+				<menuitem 
+					id="suspension_system_fp_menu"
+					name="吊挂后道产量"
+					parent="suspension_system_output_menu"
+					action="suspension_system_fp_action"
+					sequence="20"/>
+
+			<menuitem 
+				id="suspension_system_station_summary_menu"
+				name="吊挂站号产量汇总"
+				action="suspension_system_station_summary_action"
+				parent="suspension_system_index_menu_root"
+				sequence="40"/>
+
+			<menuitem 
+				id="suspension_system_rework_menu_root"
+				name="吊挂返修数据"
+				parent="suspension_system_index_menu_root"
+				sequence="50"/>
+				<menuitem 
+					id="suspension_system_rework_menu"
+					name="吊挂返修数据"
+					action="suspension_system_rework_action"
+					parent="suspension_system_rework_menu_root"
+					sequence="10"/>
+				<menuitem 
+					id="suspension_system_repair_menu"
+					name="吊挂修复数据"
+					action="suspension_system_repair_action"
+					parent="suspension_system_rework_menu_root"
+					sequence="20"/>
+
+			<menuitem 
+				id="suspension_system_settings_menu"
+				name="设置"
+				parent="suspension_system_index_menu_root"
+				sequence="60"/>
+				<menuitem 
+					id="check_position_settings_menu"
+					name="组别设置"
+					action="check_position_settings_action"
+					parent="suspension_system_settings_menu"
+					sequence="10"/>
+				<menuitem 
+					id="suspension_system_line_menu"
+					name="流水线设置"
+					action="suspension_system_line_action"
+					parent="suspension_system_settings_menu"
+					sequence="20"/>
+
+
+	</data>
+</odoo>

@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+        <template id="fsn_base_assets_backend" name="fsn_base_assets_backend" inherit_id="web.assets_backend">
+            <xpath expr="//script[last()]" position="after">
+                <script type="text/javascript" src="/fsn_base/static/js/data_export.js"></script>
+                <script type="text/javascript" src="/fsn_base/static/js/file_upload.js"></script>
+                <script type="text/javascript" src="/fsn_base/static/js/fsn_month.js"></script>
+                <script type="text/javascript" src="/fsn_base/static/js/tree_title.js"></script>
+            </xpath>
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/fsn_base/static/css/tree_sticky_header.css"/>
+                <link rel="stylesheet" href="/fsn_base/static/css/form_sticky_header.css"/>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

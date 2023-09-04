@@ -1,0 +1,96 @@
+<odoo>
+  	<data>
+        <record id="quality_control_output_value_tree" model="ir.ui.view">
+            <field name="name">品控产值（品控主管）</field>
+            <field name="model">quality_control_output_value</field>
+            <field name="arch" type="xml">
+				<tree create="0" delete="1">
+                    <header>
+						<!-- <button name="set_fsn_month_plan_info" string="刷新大单小单中单" type="object" class="btn btn-danger"/> -->
+					</header>
+                    <field name="year_month" string="月份" readonly="1"/>
+                    <field name="employee_id" string="负责人"/>
+                    <field name="entry_time" string="入职日期" readonly="1"/>
+                    <field name="is_delete_date" string="离职日期" readonly="1"/>
+                    <field name="department_id" string="部门" readonly="1"/>
+                    <field name="job_id" string="岗位" readonly="1"/>
+                    <field name="number" string="人数" readonly="1"/>
+                    <field name="plann_output_value" string="计划产值"/>
+                    <field name="actual_finished_output_value" string="实际完成产值" readonly="1"/>
+                    <field name="progress" string="进度" widget="progressbar"/>
+                    <field name="actual_finished_number" string="实际完成件数" readonly="1"/>
+                    <field name="group_repair_number" string="组返修件数" readonly="1"/>
+                    <field name="group_repair_number_ratio" string="组返修率" widget="percentage"/>
+
+                    <field name="following_repair_number" string="后道退回件数" readonly="1"/>
+                    <field name="following_repair_number_ratio" string="后道退回率" widget="percentage"/>
+
+                    <field name="client_warehouse_repair_number" string="客仓返修件数" readonly="1"/>
+                    <field name="client_warehouse_repair_number_ratio" string="客仓返修率" widget="percentage"/>
+
+                    <field name="delay_time_days" string="误期天数" readonly="1"/>
+                    <field name="delay_time_quantity" string="误期件数" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+		<!-- form -->
+		<record id="quality_control_output_value_form" model="ir.ui.view">
+			<field name="name">品控产值（品控主管）</field>
+			<field name="model">quality_control_output_value</field>
+			<field name="arch" type="xml">
+				<form create="0" edit="1" delete="1">
+					<sheet>
+						<group col="4">
+                            <field name="year_month" string="月份" readonly="1"/>
+                            <field name="employee_id" string="负责人" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="entry_time" string="入职日期" readonly="1"/>
+                            <field name="is_delete_date" string="离职日期" readonly="1"/>
+                            <field name="department_id" string="部门" readonly="1" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="job_id" string="岗位" readonly="1" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="number" string="人数" readonly="1"/>
+                            <field name="plann_output_value" string="计划产值"/>
+                            <field name="actual_finished_output_value" string="实际完成产值" readonly="1"/>
+                            <field name="progress" string="进度" widget="progressbar"/>
+                            <field name="actual_finished_number" string="实际完成件数" readonly="1"/>
+                            <field name="group_repair_number" string="组返修件数" readonly="1"/>
+                            <field name="group_repair_number_ratio" string="组返修率" widget="percentage"/>
+
+                            <field name="following_repair_number" string="后道退回件数" readonly="1"/>
+                            <field name="following_repair_number_ratio" string="后道退回率" widget="percentage"/>
+
+                            <field name="client_warehouse_repair_number" string="客仓返修件数" readonly="1"/>
+                            <field name="client_warehouse_repair_number_ratio" string="客仓返修率" widget="percentage"/>
+
+                            <field name="delay_time_days" string="逾期天数" readonly="1"/>
+                            <field name="delay_time_quantity" string="逾期件数" readonly="1"/>
+						</group>
+
+                        <notebook>
+                            <page string="逾期明细">
+                                <field name="quality_control_output_value_overdue_line_ids" string="逾期明细">
+                                    <tree editable="bottom" create="0" edit="0" delete="0">
+                                        <field name="date" string="日期"/>
+                                        <field name="delay_time_days" string="逾期天数"/>
+                                        <field name="order_quantity" string="订单数"/>
+                                        <field name="stock" string="存量"/>
+                                    </tree>
+                                    <form>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <!-- 动作 -->
+        <record id="quality_control_output_value_actions" model="ir.actions.act_window">
+            <field name="name">品控产值（品控主管）</field>
+            <field name="res_model">quality_control_output_value</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('employee_id', '!=', False)]</field>
+        </record>
+  	</data>
+</odoo>

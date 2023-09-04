@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+
+        <template id="assets_backend" name="custom page assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/hr_pay/static/src/js/duihao.js"></script>
+                <script type="text/javascript" src="/hr_pay/static/src/js/shuaxin.js"></script>
+                <script type="text/javascript" src="/hr_pay/static/src/js/sync_punch_card_record.js"></script>
+                <script type="text/javascript" src="/hr_pay/static/src/js/update_punch_record_stats.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

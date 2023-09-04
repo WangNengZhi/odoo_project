@@ -1,0 +1,52 @@
+
+
+<odoo>
+    <data>
+
+        <record id="goods_info_search" model="ir.ui.view">
+            <field name="name">产品信息搜索视图</field>
+            <field name="model">goods_info</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="name"/>
+					<field name="style_number"/>
+					<field name="product_barcode"/>
+					<field name="size"/>
+					<filter name="is_active" string="启用" domain="[('is_active', '=', True)]"/>
+                </search>
+            </field>
+        </record>
+
+
+		<record model="ir.ui.view" id="goods_info_tree">
+			<field name="name">产品信息</field>
+			<field name="model">goods_info</field>
+			<field name="arch" type="xml">
+				<tree editable="top" delete="0">
+					<field name="name" string="商品名称"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+					<field name="product_barcode" string="产品编号"/>
+                    <field name="sample_image" string="图片" widget='image' width='120px'/>
+                    <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="size" string="尺码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="unit_price" string="单价"/>
+					<field name="is_active" string="启用" widget="boolean_toggle"/>
+                    <!-- <button string="test"
+                            name="test"
+                            type="object"
+                            class="btn-secondary"/> -->
+				</tree>
+			</field>
+		</record>
+
+
+        <!-- form -->
+        <record model="ir.actions.act_window" id="goods_info_action">
+            <field name="name">产品信息</field>
+            <field name="res_model">goods_info</field>
+            <field name="view_mode">tree</field>
+            <!-- <field name="context">{'search_default_is_active': True}</field> -->
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,149 @@
+<odoo>
+	<data noupdate="1">
+        <!-- 运输费 -->
+        <record id="expense_type_shuttle_fare" model="expense_type">
+            <field name="name">班车费</field>
+            <field name="cost_type_id" ref="cost_type_freight"/>
+        </record>
+        <record id="expense_type_take_a_taxi" model="expense_type">
+            <field name="name">打车费</field>
+            <field name="cost_type_id" ref="cost_type_freight"/>
+        </record>
+        <record id="expense_type_freight" model="expense_type">
+            <field name="name">运费</field>
+            <field name="cost_type_id" ref="cost_type_freight"/>
+        </record>
+        <record id="expense_type_delivery_freight" model="expense_type">
+            <field name="name">送货运费</field>
+            <field name="cost_type_id" ref="cost_type_freight"/>
+        </record>
+        <record id="expense_type_parking_rate" model="expense_type">
+            <field name="name">停车费</field>
+            <field name="cost_type_id" ref="cost_type_freight"/>
+        </record>
+        <!-- 办公费 -->
+        <record id="expense_type_office" model="expense_type">
+            <field name="name">办公费</field>
+            <field name="cost_type_id" ref="cost_type_office"/>
+        </record>
+        <record id="expense_type_hotel_expense" model="expense_type">
+            <field name="name">住宿费（春晓）</field>
+            <field name="cost_type_id" ref="cost_type_office"/>
+        </record>
+        <record id="expense_type_service_charge" model="expense_type">
+            <field name="name">手续费</field>
+            <field name="cost_type_id" ref="cost_type_office"/>
+        </record>
+        <record id="expense_type_dormitory_utilities" model="expense_type">
+            <field name="name">宿舍水电费</field>
+            <field name="cost_type_id" ref="cost_type_office"/>
+        </record>
+        <record id="expense_type_dormitory_rent" model="expense_type">
+            <field name="name">宿舍租金</field>
+            <field name="cost_type_id" ref="cost_type_office"/>
+        </record>
+        <record id="expense_type_recruitment_fee" model="expense_type">
+            <field name="name">招聘费</field>
+            <field name="cost_type_id" ref="cost_type_office"/>
+        </record>
+        <!-- 生产成本 -->
+        <record id="expense_type_raw_material" model="expense_type">
+            <field name="name">原材料</field>
+            <field name="cost_type_id" ref="cost_type_production_costs"/>
+        </record>
+        <record id="expense_type_consumables" model="expense_type">
+            <field name="name">低值易耗品</field>
+            <field name="cost_type_id" ref="cost_type_production_costs"/>
+        </record>
+        <record id="expense_type_gas_fee" model="expense_type">
+            <field name="name">燃气费</field>
+            <field name="cost_type_id" ref="cost_type_production_costs"/>
+        </record>
+        <record id="expense_type_manufacturing_expenses" model="expense_type">
+            <field name="name">制造费用</field>
+            <field name="cost_type_id" ref="cost_type_production_costs"/>
+        </record>
+        <record id="expense_type_zhiyinshuizujin" model="expense_type">
+            <field name="name">直饮水租金</field>
+            <field name="cost_type_id" ref="cost_type_production_costs"/>
+        </record>
+        <!-- 工资 -->
+        <record id="expense_type_security_service_fee" model="expense_type">
+            <field name="name">保安服务费</field>
+            <field name="cost_type_id" ref="cost_type_wages"/>
+        </record>
+        <record id="expense_type_wages" model="expense_type">
+            <field name="name">工资</field>
+            <field name="cost_type_id" ref="cost_type_wages"/>
+        </record>
+        <record id="expense_type_welfare" model="expense_type">
+            <field name="name">福利费</field>
+            <field name="cost_type_id" ref="cost_type_wages"/>
+        </record>
+        <!-- 公积金及社保 -->
+        <record id="expense_type_accumulation_fund" model="expense_type">
+            <field name="name">公积金</field>
+            <field name="cost_type_id" ref="cost_type_social_security"/>
+        </record>
+        <record id="expense_type_accident_insurance" model="expense_type">
+            <field name="name">员工意外险</field>
+            <field name="cost_type_id" ref="cost_type_social_security"/>
+        </record>
+        <record id="expense_type_social_security_fee" model="expense_type">
+            <field name="name">社保费</field>
+            <field name="cost_type_id" ref="cost_type_social_security"/>
+        </record>
+        <!-- 税费 -->
+        <record id="expense_type_taxation" model="expense_type">
+            <field name="name">税费</field>
+            <field name="cost_type_id" ref="cost_type_taxation"/>
+        </record>
+        <!-- 加油费 -->
+        <record id="expense_type_delivery_refueling" model="expense_type">
+            <field name="name">送货加油费</field>
+            <field name="cost_type_id" ref="cost_type_refueling_fee"/>
+        </record>
+        <record id="expense_type_recruit_refueling" model="expense_type">
+            <field name="name">招聘加油费</field>
+            <field name="cost_type_id" ref="cost_type_refueling_fee"/>
+        </record>
+        <record id="expense_type_refueling_recharge_card" model="expense_type">
+            <field name="name">加油充值卡</field>
+            <field name="cost_type_id" ref="cost_type_refueling_fee"/>
+        </record>
+        <!-- 员工餐费 -->
+        <record id="expense_type_canteen_meals" model="expense_type">
+            <field name="name">食堂餐费</field>
+            <field name="cost_type_id" ref="cost_type_meals"/>
+        </record>
+        <!-- 厂房租金 -->
+        <record id="expense_type_plant_rent" model="expense_type">
+            <field name="name">厂房租金</field>
+            <field name="cost_type_id" ref="cost_type_plant_rent"/>
+        </record>
+        <!-- 固定资产 -->
+        <record id="expense_type_air_conditioning_and_water_heater" model="expense_type">
+            <field name="name">采购空调和热水器</field>
+            <field name="cost_type_id" ref="cost_type_fixed_assets"/>
+        </record>
+        <record id="expense_type_fixed_assets" model="expense_type">
+            <field name="name">固定资产</field>
+            <field name="cost_type_id" ref="cost_type_fixed_assets"/>
+        </record>
+        <record id="expense_type_advance_charge" model="expense_type">
+            <field name="name">预付款（佳田设备）</field>
+            <field name="cost_type_id" ref="cost_type_fixed_assets"/>
+        </record>
+        <!-- 其他费用 -->
+        <record id="expense_type_advance_charge" model="expense_type">
+            <field name="name">其他费用</field>
+            <field name="cost_type_id" ref="cost_type_other_expenses"/>
+        </record>
+        <!-- 无形资产 -->
+        <record id="expense_type_intangible" model="expense_type">
+            <field name="name">无形资产</field>
+            <field name="cost_type_id" ref="cost_type_intangible"/>
+        </record>
+
+	</data>
+</odoo>

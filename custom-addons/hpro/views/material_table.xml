@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="material_table_tree">
+			<field name="name">material_table_tree</field>
+			<field name="model">material_table</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" string="名称"/>
+					<field name="specificationss" string="规格"/>
+					<field name="quantity" string="数量"/>
+					<field name="measure_of_area" string="米/面积"/>
+					<field name="purchase_date" string="采购日期"/>
+					<field name="item_number" string="款号"/>
+					<field name="order_number" string="订单号"/>
+					<field name="consumption" string="用量"/>
+					<field name="position" string="部位"/>
+					<field name="materials_date" string="用料日期"/>
+				</tree>
+			</field>
+		</record>
+		<!-- form -->
+		<record id="material_table_form" model="ir.ui.view">
+			<field name="name">material_table_form</field>
+			<field name="model">material_table</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<div style="text-align: center"><h1>模板用料表</h1></div>
+						<group col="4">
+							<field name="name" string="名称"/>
+							<field name="specificationss" string="规格"/>
+							<field name="quantity" string="数量"/>
+							<field name="measure_of_area" string="米/面积"/>
+							<field name="purchase_date" string="采购日期"/>
+							<field name="consumption" string="用量"/>
+							<field name="item_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+							<field name="order_number" string="订单号" options="{'no_create': True, 'no_open': True}"/>
+							<field name="position" string="部位"/>
+							<field name="materials_date" string="用料日期"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+        <record id="material_table_actions" model="ir.actions.act_window">
+            <field name="name">用料表</field>
+            <field name="res_model">material_table</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

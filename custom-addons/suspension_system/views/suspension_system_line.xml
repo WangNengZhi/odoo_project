@@ -1,0 +1,25 @@
+
+<odoo>
+    <data>
+        <!-- tree -->
+        <record model="ir.ui.view" id="suspension_system_line_tree">
+            <field name="name">吊挂系统流水线</field>
+            <field name="model">suspension_system_line</field>
+                <field name="arch" type="xml">
+				<tree editable="top">
+                        <field name="sequence" widget="handle"/>
+                        <field name="line_number" string="线号"/>
+                        <field name="line_guid" string="流水线唯一标识"/>
+                    </tree>
+                </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="suspension_system_line_action">
+            <field name="name">吊挂系统流水线</field>
+            <field name="res_model">suspension_system_line</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

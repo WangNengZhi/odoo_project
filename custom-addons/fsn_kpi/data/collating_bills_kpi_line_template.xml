@@ -1,0 +1,112 @@
+<odoo>
+    <data noupdate="1">
+        <record id="collating_bills_kpi_line_template_01" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作计划</field>
+            <field name="assessment_standard">包含个人工作计划和订单计划，日计划、周计划和月计划</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率=100%，每降低于1%扣1分</field>
+            <field name="sequence">1</field>
+            <field name="fsn_kpi_job">理单员</field>
+        </record>
+
+        <record id="collating_bills_kpi_line_template_02" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作完成率</field>
+            <field name="assessment_standard">客户下单到产前准备、裁剪、车间生产、后道包装、出货、对数、追帐等所有与理单相关的工作</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率=100%，每降低于1%扣1分</field>
+            <field name="sequence">2</field>
+            <field name="fsn_kpi_job">理单员</field>
+        </record>
+
+        <record id="collating_bills_kpi_line_template_03" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作合格率</field>
+            <field name="assessment_standard">确保从下单、产前准务、裁剪、生产、包装、出货、对数、追帐等工作100%正确</field>
+            <field name="score">10</field>
+            <field name="calculation">合格率100%每降低1%扣2分</field>
+            <field name="sequence">3</field>
+            <field name="fsn_kpi_job">理单员</field>
+        </record>
+
+        <record id="collating_bills_kpi_line_template_04" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作配合度</field>
+            <field name="assessment_standard">根据公司总计划，听从厂长工作安排、调度，无条件配合每个相关联部门</field>
+            <field name="score">10</field>
+            <field name="calculation">配合度100%，每降低1%扣2分</field>
+            <field name="sequence">4</field>
+            <field name="fsn_kpi_job">理单员</field>
+        </record>
+
+        <record id="collating_bills_kpi_line_template_05" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">大货停产杜绝率</field>
+            <field name="assessment_standard">杜绝因产前准备不足导至大货停产</field>
+            <field name="score">10</field>
+            <field name="calculation">杜绝率100%，降低1%扣4分</field>
+            <field name="sequence">5</field>
+            <field name="fsn_kpi_job">理单员</field>
+        </record>
+
+        <record id="collating_bills_kpi_line_template_06" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">系统输入及时率</field>
+            <field name="assessment_standard">当日数据务必当日下班前输入风丝袅系统</field>
+            <field name="score">10</field>
+            <field name="calculation">及日率100%，降低1%扣1分</field>
+            <field name="sequence">6</field>
+            <field name="fsn_kpi_job">理单员</field>
+        </record>
+        <record id="collating_bills_kpi_line_template_07" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">投诉率</field>
+            <field name="assessment_standard">因工作未完成或失误被相关部门投诉</field>
+            <field name="score">10</field>
+            <field name="calculation">被投诉一次扣2分</field>
+            <field name="sequence">7</field>
+            <field name="fsn_kpi_job">理单员</field>
+        </record>
+
+        <record id="collating_bills_kpi_line_template_08" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">工作责任心</field>
+            <field name="assessment_standard">工作认真，严谨，能为正确的结果引导。</field>
+            <field name="score">5</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">8</field>
+            <field name="fsn_kpi_job">理单员</field>
+        </record>
+
+        <record id="collating_bills_kpi_line_template_09" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">团队配合</field>
+            <field name="assessment_standard">要懂团队的协作和配合。</field>
+            <field name="score">5</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">9</field>
+            <field name="fsn_kpi_job">理单员</field>
+        </record>
+        <record id="collating_bills_kpi_line_template_10" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">出勤率</field>
+            <field name="assessment_standard">缺卡，迟到，早退，等情况。</field>
+            <field name="score">5</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">10</field>
+            <field name="fsn_kpi_job">理单员</field>
+        </record>
+
+        <record id="collating_bills_kpi_line_template_11" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">言论</field>
+            <field name="assessment_standard">杜绝消极言论及负面情绪，对抗公司制度、诋毁公司处罚100元/次</field>
+            <field name="score">5</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">11</field>
+            <field name="fsn_kpi_job">理单员</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_tree_dormitory_property_fee" model="ir.ui.view">
+            <field name="name">宿舍物业费</field>
+            <field name="model">dormitory.property</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="floor"/>
+                    <field name="floor_number"/>
+                    <field name="name"/>
+                    <field name="month"/>
+                    <field name="water_and_electricity_property_fee_deduction"/>
+                    <field name="rent_deduction"/>
+                    <field name="subsidies_for_going_out"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="view_from_dormitory_property_fee" model="ir.ui.view">
+            <field name="name">宿舍物业费</field>
+            <field name="model">dormitory.property</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <h1 style="text-align:center">宿舍物业费</h1>
+                        <group col="4">
+                            <field name="floor"/>
+                            <field name="floor_number"/>
+                            <field name="name" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="month"/>
+                            <field name="water_and_electricity_property_fee_deduction"/>
+                            <field name="rent_deduction"/>
+                            <field name="subsidies_for_going_out"/>
+                        </group>
+                    </sheet>
+                </form>
+
+            </field>
+        </record>
+
+
+
+        <act_window id="action_dormitory_property_fee"
+                    name="宿舍物业费"
+                    res_model="dormitory.property"
+                    view_mode="tree,form" />
+
+
+    </data>
+</odoo>

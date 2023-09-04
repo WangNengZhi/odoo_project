@@ -1,0 +1,40 @@
+
+<odoo>
+  	<data>
+        <!-- tree -->
+		<record model="ir.ui.view" id="quality_control_performance_tree">
+			<field name="name">品控绩效</field>
+			<field name="model">quality_control_performance</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0">
+                    <header>
+                        <button name="set_assess_index" type="object" string="考核刷新" class="btn-primary"/>
+                    </header>
+					<field name="month" string="月份" readonly="1"/>
+					<field name="group" string="组别" readonly="1"/>
+					<field name="repair_amount" string="客户返修件数" readonly="1"/>
+					<field name="workshop_amount" string="车间件数" readonly="1"/>
+
+                    <field name="repair_proportion" string="返修率" widget="progressbar" readonly="1"/>
+					<field name="assess_index" string="考核" readonly="1"/>
+					<field name="principal" string="负责人"/>
+					<!-- <field name="state" string="状态" decoration-info="state == '未提现'" decoration-success="state == '已提现'" widget="badge"/> -->
+				</tree>
+			</field>
+		</record>
+		<!-- 动作 -->
+
+		<record model="ir.actions.act_window" id="quality_control_performance_actions">
+			<field name="name">品控绩效</field>
+			<field name="res_model">quality_control_performance</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+		<!-- menu categories -->
+
+		<menuitem name="品控绩效" id="quality_control_performance_menu" parent="achievement_menu_root" sequence="30"/>
+
+			<menuitem name="品控主管" id="quality_control_director_menu" parent="quality_control_performance_menu" action="quality_control_performance_actions" sequence="10"/>
+
+  	</data>
+</odoo>

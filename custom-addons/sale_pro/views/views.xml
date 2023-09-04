@@ -1,0 +1,460 @@
+<odoo>
+  <data>
+        <record id="view_sale_pro_tree" model="ir.ui.view">
+            <field name="name">销售订单</field>
+            <field name="model">sale_pro.sale_pro</field>
+            <field name="arch" type="xml">
+                <tree>
+					<header>
+						<!-- <button name="set_wdc" string="测试按钮" type="object" class="btn btn-primary"/> -->
+					</header>
+                    <field name="date"/>
+                    <field name="name" string="客户(旧)"/>
+                    <field name="customer_id" string="客户"/>
+                    <field name="external_order_number" string="外部订单号"/>
+                    <field name="order_number" decoration-danger="detection_price == True" decoration-info="detection_price == False" widget="badge"/>
+                    <field name="order_price" string="接单价"/>
+                    <field name="processing_type" string="加工类型"/>
+                    <field name="contract_price" string="合同价格"/>
+                    <field name="IE_working_hours"/>
+                    <field name="workshop_unit_price"/>
+                    <field name="product_name" string="品名"/>
+                    <field name="attribute" string="属性"/>
+                    <field name="order_category"/>
+                    <field name="production_group" string="生产组别（旧）"/>
+                    <field name="production_group_ids" string="生产组别" widget="many2many_tags"/>
+                    <field name="special_craft"/>
+                    <field name="sum_voucher_count" string="总制单数"/>
+                    <field name="is_finish" string="状态" decoration-info="is_finish == '未完成'" decoration-success="is_finish == '已完成'" decoration-danger="is_finish == '退单'" decoration-warning="is_finish == '未上线'" widget="badge"/>
+                    <field name="planned_completion_date" string="计划完成日期"/>
+                    <field name="customer_delivery_time" string="客户货期"/>
+                    <field name="actual_finish_date" string="实际完成日期"/>
+                    <field name="actual_delivered_quantity" string="实际交货数"/>
+                    <field name="total_price" string="总价格"/>
+                    <field name="is_payment" string="是否已付款"/>
+                    <field name="customer_payment_amount" string="客户付款金额"/>
+                    <field name="deduct_money" string="扣款"/>
+                    <field name="remarks" string="备注"/>
+                    <field name="detection_price" string="检测款号价格" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+      <record id="view_sale_pro_form2" model="ir.ui.view">
+          <field name="name">销售订单</field>
+          <field name="model">sale_pro.sale_pro</field>
+          <field name="arch" type="xml">
+              <form string="销售订单">
+					<header>
+						<button name="action_advance" string="开始" type="object"
+                            class="btn btn-primary"
+							attrs="{'invisible': ['|', ('is_finish', '!=', '未上线'), ('id', '=', False)]}"
+							confirm='确认要开始吗？（请仔细检查订单信息是否填写完毕！）'
+							/>
+						<button name="action_advance" string="完成" type="object"
+                            class="btn btn-primary"
+							attrs="{'invisible': ['|', ('is_finish', '!=', '未完成'), ('id', '=', False)]}"
+							confirm='确认完成了吗？（请仔细检查订单信息是否填写完毕！）'
+							/>
+						<button name="action_chargeback" string="退单" type="object" class="btn btn-primary" attrs="{'invisible': ['|', ('is_finish', '!=', '未上线'), ('id', '=', False)]}" confirm='确认要退单吗？'/>
+                        <button name="state_back" type="object" string="回退" class="btn-danger" attrs="{'invisible':[('is_finish','!=', '已完成')]}" groups="fsn_base.fsn_super_user_group"/>
+                        <field name="is_finish" widget="statusbar" statusbar_visible="未上线,未完成,已完成,退单"/>
+					</header>
+
+
+                    <group col="4">
+                        <field name="date"/>
+                        <field name="style_picture" widget='image' width='256px' height='256px'/>
+                        <field name="name" string="客户(旧)"/>
+                        <field name="customer_id" string="客户"/>
+                        <field name="external_order_number" string="外部订单号"/>
+                        <field name="order_number" attrs="{'readonly':[('id','!=', False)]}"/>
+                        <field name="order_price" string="接单价"/>
+                        <field name="processing_type" string="加工类型"/>
+                        <field name="contract_price" string="合同价格"/>
+                        <field name="IE_working_hours"/>
+                        <field name="workshop_unit_price"/>
+                        <field name="product_name" string="品名"/>
+                        <field name="attribute" string="属性" options="{'no_create': True, 'no_open': True}"/>
+
+                        <field name="customer_delivery_time"/>
+                        <field name="face_to_face_time"/>
+                        <field name="order_category"/>
+                        <field name="production_group"/>
+                        <field name="special_craft"/>
+                        <field name="sum_voucher_count" string="总制单数"/>
+                        <field name="actual_delivered_quantity" string="实际交货数" readonly="1"/>
+                        <field name="total_price" string="总价格"/>
+                    </group>
+                    <group col="4">
+                        <field name="is_payment" string="是否已付款"/>
+                        <field name="customer_payment_amount" string="客户付款金额"/>
+                        <field name="deduct_money" string="扣款"/>
+                        <field name="remarks" string="备注"/>
+                    </group>
+                    <group col="4" string="计划相关">
+                        <field name="production_group_ids" string="生产组别" widget="many2many_tags"/>
+                        <!-- <field name="anticipate_face_to_face_time" string="预计面辅料齐备日期"/>
+                        <field name="plan_tailor_date" string="计划开裁日期"/>
+                        <field name="plan_online_date" string="计划上线日期"/> -->
+                        <field name="planned_completion_date" string="计划完成日期" required="1"/>
+                    </group>
+                    <group col="4" string="实际日期">
+                        <field name="face_to_face_time" string="面辅料齐备日期"/>
+                        <field name="actual_finish_date" string="实际完成日期"/>
+                    </group>
+                    <notebook>
+                        <page name="sale_pro_line_ids_page" string="订单明细">
+                            <field name="sale_pro_line_ids">
+                                <!-- <tree editable="bottom"> -->
+                                <tree>
+                                    <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                    <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                    <field name="unit_price" string="单价"/>
+                                    <field name="voucher_count" string="制单合计"/>
+                                    <field name="plan_actual_cutting_count" string="计划实裁合计"/>
+                                    <field name="actual_cutting_count" string="实裁合计"/>
+                                    <field name="actual_cutting_price" string="总价"/>
+                                    <field name="state" string="状态" decoration-info="state == '未完成'" decoration-success="state == '已完成'" decoration-danger="state == '退单'" decoration-warning="state == '未上线'" widget="badge"/>
+                                    <button name="action_chargeback" string="退单" type="object" class="btn btn-primary" attrs="{'invisible': ['|', ('state', 'in', ['退单', '已完成']), ('id', '=', False)]}"/>
+                                    <button name="action_cancel_chargeback" string="取消退单" type="object" class="btn btn-primary" attrs="{'invisible': ['|', ('state', '!=', '退单'), ('id', '=', False)]}"/>
+                                </tree>
+                                <form>
+                                    <group col="4">
+                                        <field name="style_number" string="款号" attrs="{'readonly':[('id','!=', False)]}" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="unit_price" string="单价"/>
+                                    </group>
+                                    <group col="4">
+                                        <field name="voucher_count" string="制单合计"/>
+                                        <field name="actual_cutting_count" string="实裁合计"/>
+                                        <field name="actual_cutting_price" string="总价"/>
+                                    </group>
+                                    <notebook>
+                                        <page string="制单详情">
+                                            <field name="voucher_details">
+                                                <tree editable="bottom">
+                                                    <field name="size" string="尺码" attrs="{'readonly':[('id','!=', False)]}" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                                    <field name="number" string="件数"/>
+                                                </tree>
+                                            </field>
+                                        </page>
+                                        <page string="计划裁剪详情">
+                                            <field name="plan_actual_cutting_details">
+                                                <tree editable="bottom">
+                                                    <field name="size" string="尺码" attrs="{'readonly':[('id','!=', False)]}" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                                    <field name="number" string="件数"/>
+                                                </tree>
+                                            </field>
+                                        </page>
+                                        <page string="实裁详情">
+                                            <field name="actual_cutting_details">
+                                                <tree editable="bottom">
+                                                    <field name="size" string="尺码" attrs="{'readonly':[('id','!=', False)]}" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                                    <field name="number" string="件数"/>
+                                                </tree>
+                                            </field>
+                                        </page>
+                                    </notebook>
+                                </form>
+                            </field>
+                        </page>
+                        <page name="ib_detail_ids_page" string="订单明细(旧)">
+                            <field name="ib_detail_ids">
+                                <tree create="0">
+
+
+                                    <field name="style_number"/>
+                                    <field name="color"/>
+                                    <field name="z_xs"/>
+                                    <field name="z_s"/>
+                                    <field name="z_m"/>
+                                    <field name="z_l"/>
+                                    <field name="z_xl"/>
+                                    <field name="z_two_xl"/>
+                                    <field name="z_three_xl"/>
+                                    <field name="z_four_xl"/>
+                                    <field name="z_five_xl"/>
+                                    <field name="z_totle" sum="总和"/>
+                                    <field name="s_xs"/>
+                                    <field name="s_s"/>
+                                    <field name="s_m"/>
+                                    <field name="s_l"/>
+                                    <field name="s_xl"/>
+                                    <field name="s_two_xl"/>
+                                    <field name="s_three_xl"/>
+                                    <field name="s_four_xl"/>
+                                    <field name="s_five_xl"/>
+                                    <field name="s_totle" sum="总和"/>
+                                    <field name="price" string="单价"/>
+                                    <field name="detail_total_price" string="总价格"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+              </form>
+          </field>
+      </record>
+
+
+
+
+
+        <record id="view_ib_detail_tree" model="ir.ui.view">
+          <field name="name">制单明细与实裁</field>
+          <field name="model">ib.detail</field>
+          <field name="arch" type="xml">
+              <tree>
+					<header>
+                        <!-- <button name="set_style_number_base_id" string="生成base" type="object" class="btn btn-primary"/> -->
+                    </header>
+                    <field name="date" string="日期"/>
+                    <field name="external_style_number" string="外部款号"/>
+                    <field name="style_number" string="内部款号"/>
+                    <field name="style_number_base" string="款号前缀"/>
+                    <field name="style_number_base_id" string="款号前缀"/>
+                    <field name="fsn_color" string="颜色"/>
+                    <field name="color" string="颜色（旧）"/>
+              </tree>
+          </field>
+        </record>
+
+
+      <record id="view_ib_detail_form" model="ir.ui.view">
+          <field name="name">制单与实裁明细</field>
+          <field name="model">ib.detail</field>
+          <field name="arch" type="xml">
+
+                <form>
+                    <header>
+
+                    </header>
+                    <sheet>
+                        <group col="4">
+                            <field name="date" string="日期"/>
+                            <field name="external_style_number" string="外部款号"/>
+                            <field name="style_number" string="内部款号"/>
+                            <field name="fsn_color" string="颜色"  options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="color" string="颜色（旧）" readonly="1"/>
+                            <field name="style_picture" widget='image' class="oe_avatar" string="样衣"/>
+                            <field name="salesman" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}" string="业务员"/>
+                        </group>
+                    </sheet>
+                </form>
+          </field>
+      </record>
+
+      <record id="view_sch_sch" model="ir.ui.view">
+          <field name="name">订单进度表</field>
+          <field name="model">sch.sch</field>
+          <field name="arch" type="xml">
+              <tree>
+<!--                  <field name="style_number"/>-->
+                  <field name="order_number"/>
+                  <field name="production_order"/>
+                  <field name="picking_date"/>
+                  <field name="cut_date"/>
+                  <field name="special_craft"/>
+                  <field name="actually_line"/>
+                  <field name="sample_sealing_is_complete"/>
+                  <field name="the_eight_pieces_completed"/>
+                  <field name="start_delivery"/>
+                  <field name="over_delivery"/>
+                  <field name="futures_achievement_rate"/>
+              </tree>
+          </field>
+      </record>
+      <record id="view_from_sch_sch" model="ir.ui.view">
+          <field name="name">订单进度表</field>
+          <field name="model">sch.sch</field>
+          <field name="arch" type="xml">
+              <form>
+                  <sheet>
+                      <group>
+<!--                          <field name="style_number"  options="{'no_create_edit': True, 'no_open': True}" />-->
+                          <field name="order_number"  options="{'no_create_edit': True, 'no_open': True}" />
+                          <field name="production_order"/>
+                          <field name="picking_date"/>
+                          <field name="cut_date"/>
+                          <field name="special_craft"/>
+                          <field name="actually_line"/>
+                          <field name="sample_sealing_is_complete"/>
+                          <field name="the_eight_pieces_completed"/>
+                          <field name="start_delivery"/>
+                          <field name="over_delivery"/>
+                          <field name="futures_achievement_rate"/>
+                          <field name="style_number">
+                              <tree>
+                                  <field name="style_number"/>
+                                  <field name="workshop_delivery_date"/>
+                                  <field name="workshop_return_date"/>
+                                  <field name="number_of_deliveries"/>
+                                  <field name="number_of_returns"/>
+                                  <field name="customer_date"/>
+                                  <field name="return_customer_date"/>
+                                  <field name="number_of_customers"/>
+                                  <field name="customer_refund"/>
+                                  <field name="remark"/>
+                              </tree>
+                          </field>
+                      </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+      <record id="view_sum_sum" model="ir.ui.view">
+          <field name="name">汇总表</field>
+          <field name="model">sum.sum</field>
+          <field name="arch" type="xml">
+              <tree>
+<!--                  <field name="style_number"/>-->
+                  <field name="order_number"/>
+                  <field name="workshop_delivery_date"/>
+                  <field name="workshop_return_date"/>
+                  <field name="number_of_deliveries"/>
+                  <field name="number_of_returns"/>
+                  <field name="customer_date"/>
+                  <field name="return_customer_date"/>
+                  <field name="number_of_customers"/>
+                  <field name="customer_refund"/>
+                  <field name="remark"/>
+                  <field name="return_rate"/>
+<!--                  <field name="sch"/>-->
+              </tree>
+          </field>
+      </record>
+
+      <record id="form_sum_sum1" model="ir.ui.view">
+          <field name="name">汇总表</field>
+          <field name="model">sum.sum</field>
+          <field name="arch" type="xml">
+              <form>
+                  <sheet>
+                      <group>
+<!--                          <field name="style_number" options="{'no_create_edit': True, 'no_open': True}"/>-->
+                          <field name="order_number" options="{'no_create_edit': True, 'no_open': True}"/>
+                          <field name="workshop_delivery_date"/>
+                          <field name="workshop_return_date"/>
+                          <field name="number_of_deliveries"/>
+                          <field name="number_of_returns"/>
+                          <field name="customer_date"/>
+                          <field name="return_customer_date"/>
+                          <field name="number_of_customers"/>
+                          <field name="customer_refund"/>
+                          <field name="remark"/>
+                          <field name="return_rate" readonly="1" force_save="1"/>
+                          <field name="sch"/>
+                      </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+
+
+      <record id="view_tree_style_num_sch" model="ir.ui.view">
+          <field name="name">单款进度表</field>
+          <field name="model">style.num.sch</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="style_number"/>
+                  <field name="order_number"/>
+                  <field name="workshop_delivery_date"/>
+                  <field name="workshop_return_date"/>
+                  <field name="number_of_deliveries"/>
+                  <field name="number_of_returns"/>
+                  <field name="customer_date"/>
+                  <field name="return_customer_date"/>
+                  <field name="number_of_customers"/>
+                  <field name="customer_refund"/>
+                  <field name="remark"/>
+              </tree>
+          </field>
+      </record>
+
+      <record id="view_form_style_num_sch" model="ir.ui.view">
+          <field name="name">单款进度表</field>
+          <field name="model">style.num.sch</field>
+          <field name="arch" type="xml">
+              <form>
+                  <sheet>
+                      <group>
+                          <field name="style_number" options="{'no_create_edit': True, 'no_open': True}"/>
+                          <field name="order_number" options="{'no_create_edit': True, 'no_open': True}"/>
+                          <field name="workshop_delivery_date"/>
+                          <field name="workshop_return_date"/>
+                          <field name="number_of_deliveries"/>
+                          <field name="number_of_returns"/>
+                          <field name="customer_date"/>
+                          <field name="return_customer_date"/>
+                          <field name="number_of_customers"/>
+                          <field name="customer_refund"/>
+                          <field name="remark"/>
+                      </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+
+
+
+
+
+
+
+
+
+
+
+        <record model="ir.actions.act_window" id="action_sale_pro">
+            <field name="name">销售订单</field>
+            <field name="res_model">sale_pro.sale_pro</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('is_conceal', '=', False)]</field>
+        </record>
+
+        <!-- 指定tree -->
+        <record model="ir.actions.act_window.view" id="action_sale_pro_tree">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_sale_pro_tree"/>
+            <field name="act_window_id" ref="action_sale_pro"/>
+        </record>
+        <!-- 指定form -->
+        <record model="ir.actions.act_window.view" id="action_sale_pro_form">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_sale_pro_form2"/>
+            <field name="act_window_id" ref="action_sale_pro"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_ib_detail">
+            <field name="name">制单与实裁明细</field>
+            <field name="res_model">ib.detail</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('is_conceal', '=', False)]</field>
+        </record>
+        <act_window id="action_sch_sch"
+                    name="订单进度表"
+                    res_model="sch.sch"
+                    view_mode="tree,form" />
+        <act_window id="action_sum_sum"
+                    name="汇总表"
+                    res_model="sum.sum"
+                    view_mode="tree,form" />
+        <act_window id="action_style_num_sch"
+                    name="单款进度表"
+                    res_model="style.num.sch"
+                    view_mode="tree,form" />
+
+
+
+
+
+
+  </data>
+</odoo>
+
+

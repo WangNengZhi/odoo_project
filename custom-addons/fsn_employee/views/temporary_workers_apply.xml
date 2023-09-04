@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="temporary_workers_apply_tree">
+            <field name="name">临时工申请</field>
+            <field name="model">temporary_workers_apply</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <header>
+
+                    </header>
+                    <field name="date" string="日期"/>
+                    <field name="order_id" string="订单号" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="style" string="款式"/>
+                    <field name="number" string="件数"/>
+                    <field name="process_no" string="工序号" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="process_no_name" string="工序号名称" invisible="1"/>
+                    <field name="process_abbreviation" string="工序描述" attrs="{'readonly':[('process_no_name', '!=', '9999')]}" force_save="1"/>
+                    <field name="standard_time" string="标准工时" attrs="{'readonly':[('process_no_name', '!=', '9999')]}" force_save="1"/>
+                    <field name="standard_price" string="标准工价" attrs="{'readonly':[('process_no_name', '!=', '9999')]}" force_save="1"/>
+                    <field name="apply_price" string="申请价格"/>
+                    <field name="price_per_person" string="总价格"/>
+                    <field name="applications" string="申请临时工人数"/>
+                    <field name="total_price" string="单人价格"/>
+					<field name="state" string="状态" decoration-success="state == '审批通过'" decoration-primary="state == '等待厂长审批'" decoration-warning="state == '等待总经理审批'" widget="badge"/>
+                    <button name="confirmation_button" type="object" string="通过" class="btn-primary" attrs="{'invisible':[('state','!=', '等待厂长审批')]}" context="{'type': 'through'}" groups="fsn_base.fsn_insiders_group"/>
+                    <button name="confirmation_button" type="object" string="通过" class="btn-primary" attrs="{'invisible':[('state','!=', '等待总经理审批')]}" context="{'type': 'through'}" groups="fsn_base.fsn_super_user_group"/>
+					<button name="confirmation_button" type="object" string="回退" class="btn-danger" attrs="{'invisible':[('state','!=', '等待总经理审批')]}" context="{'type': 'fallback'}" groups="fsn_base.fsn_insiders_group"/>
+					<button name="confirmation_button" type="object" string="回退" class="btn-danger" attrs="{'invisible':[('state','!=', '审批通过')]}" context="{'type': 'fallback'}" groups="fsn_base.fsn_super_user_group"/>
+                </tree>
+            </field>
+        </record>
+
+
+		<!-- form -->
+		<record id="temporary_workers_apply_examine_form" model="ir.ui.view">
+			<field name="name">临时工申请审批</field>
+			<field name="model">temporary_workers_apply</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+						<field name="state" string="状态" invisible="1"/>
+						<div invisible="context.get('type') != 'fallback'">确认回退吗？</div>
+                        <div invisible="context.get('type') != 'through'">确认审批通过吗？</div>
+                    </sheet>
+                    <footer>
+                        <button name="action_state_changes" invisible="context.get('type') != 'fallback'" context="{'type': 'fallback'}" type="object" string="回退" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != 'through'" context="{'type': 'through'}" type="object" string="通过" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+        
+        <!-- 动作 -->
+        <record id="temporary_workers_apply_action" model="ir.actions.act_window">
+            <field name="name">临时工申请</field>
+            <field name="res_model">temporary_workers_apply</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem id="menu_temporary_workers_apply"
+            name="临时工申请"
+            parent="hr.menu_hr_employee_payroll"
+            action="temporary_workers_apply_action"
+            sequence="50"/>
+
+    </data>
+</odoo>

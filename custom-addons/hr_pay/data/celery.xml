@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_scheduler_qingjia" model="ir.cron">
+            <field name="name">请假定时任务</field>
+            <field name="model_id" ref="model_every_detail"/>
+            <field name="state">code</field>
+            <field name="code">model.refresh_emp_status()</field>
+            <field name="active" eval="False"/>
+            <field name="interval_number">12</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+
+
+
+
+        <record id="ir_cron_scheduler_kaoqin" model="ir.cron">
+            <field name="name">考勤定时任务</field>
+            <field name="model_id" ref="model_online_attendance"/>
+            <field name="state">code</field>
+            <field name="code">model.kaoqin()</field>
+            <field name="active" eval="False"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+
+
+        <record id="ir_cron_scheduler_every_totle" model="ir.cron">
+            <field name="name">每日出勤统计任务</field>
+            <field name="model_id" ref="model_every_totle"/>
+            <field name="state">code</field>
+            <field name="code">model.refresh_every_totle()</field>
+            <field name="active" eval="False"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+
+
+
+        <record id="ir_cron_scheduler_gongzhong" model="ir.cron">
+            <field name="name">工种统计定时任务</field>
+            <field name="model_id" ref="hpro.model_every_tongji"/>
+            <field name="state">code</field>
+            <field name="code">model.statistics()</field>
+            <field name="active" eval="False"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+
+
+
+        <record id="ir_cron_scheduler_attendance_days" model="ir.cron">
+            <field name="name">出勤天数统计表(精确到天)</field>
+            <field name="model_id" ref="model_attendance_days_statistics_day"/>
+            <field name="state">code</field>
+            <field name="code">model.attendance_days()</field>
+            <field name="active" eval="False"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+
+
+        <record id="ir_cron_scheduler_attendance_table" model="ir.cron">
+            <field name="name">出勤天数统计表(精确到周)</field>
+            <field name="model_id" ref="model_attendance_days_statistics_table"/>
+            <field name="state">code</field>
+            <field name="code">model.test1()</field>
+            <field name="active" eval="False"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+
+
+
+         <record id="ir_cron_come_to_work" model="ir.cron">
+            <field name="name">迟到早退定时任务</field>
+            <field name="model_id" ref="model_come_to_work"/>
+            <field name="state">code</field>
+            <field name="code">model.come_to()</field>
+            <field name="active" eval="False"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

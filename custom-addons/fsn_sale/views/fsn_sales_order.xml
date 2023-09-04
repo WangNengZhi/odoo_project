@@ -1,0 +1,178 @@
+<odoo>
+    <data>
+        <record id="fsn_sales_order_code_sequence" model="ir.sequence">
+            <field name="name">FSN销售订单自动编码</field>
+            <field name="code">fsn_sales_order</field>
+            <field name="prefix">XS</field>
+            <field name="padding">5</field>
+            <field name="use_date_range" eval="True"/>
+        </record>
+
+
+		<!-- tree -->
+		<record id="fsn_sales_order_tree" model="ir.ui.view">
+			<field name="name">FSN销售订单</field>
+			<field name="model">fsn_sales_order</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="sale_order_id" string="对应旧销售订单" optional="hide"/>
+					<field name="date" string="下单日期"/>
+					<field name="name" string="订单编号"/>
+					<field name="fsn_customer_id" string="客户"/>
+					<field name="employee_name" string="销售姓名"/>
+					<field name="fsn_order_category" string="订单类别"/>
+
+					<field name="design_number" string="设计编号"/>
+					<field name="order_type" string="订单类型"/>
+					<field name="product_name" string="品名"/>
+					<field name="attribute" string="属性"/>
+<!--					<field name="liquidated_damage" string="误期罚款"/>-->
+
+
+					<field name="fsn_purchase_order_number" string="合同单号"/>
+					<field name="fsn_delivery_date" string="合同截止日期"/>
+					<field name="sale_pro_ids" string="生产订单" widget="many2many_tags"/>
+					<field name="total_order" string="订单总数"/>
+                    <field name="delivery_number" string="出库件数"/>
+
+					<field name="number_of_returned_items" string="退货件数"/>
+
+					<field name="after_tax_total" string="应收账款" sum="合计"/>
+
+					<field name="return_amount" string="退货金额" sum="合计"/>
+					<field name="fine" string="误期罚款" sum="合计"/>
+
+					<field name="actual_collection" string="实际收款" sum="实收合计"/>
+					<field name="state" string="订单状态" decoration-info="state == '确认'" decoration-success="state == '已完成'" widget="badge"/>
+					<field name="fsn_payment_state" decoration-success="fsn_payment_state == '已付款'" decoration-info="fsn_payment_state == '未付款'" widget="badge"/>
+					<field name="description" string="备注"/>
+                    <field name="fsn_approval_status" decoration-success="fsn_approval_status == '已审批'" decoration-info="fsn_approval_status == '未审批'" widget="badge"/>
+                    <button name="set_fsn_approval_status" type="object" string="审批通过" class="btn-primary"
+                        context="{'fsn_approval_status': '已审批'}"
+                        groups="fsn_base.fsn_super_user_group"
+                        attrs="{'invisible':[('fsn_approval_status', '!=', '未审批')]}"
+                    />
+                    <button name="set_fsn_approval_status" type="object" string="审批回退" class="btn-danger"
+                        context="{'fsn_approval_status': '未审批'}"
+                        groups="fsn_base.fsn_super_user_group"
+                        attrs="{'invisible':[('fsn_approval_status', '!=', '已审批')]}"
+                    />
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="fsn_sales_order_form" model="ir.ui.view">
+			<field name="name">FSN销售订单</field>
+			<field name="model">fsn_sales_order</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+                        <field name="state" widget="statusbar" statusbar_visible="草稿,确认,已完成"/>
+						<button name="set_state"
+							type="object"
+							string="确认"
+							context="{'type': '确认'}"
+							class="btn-primary"
+							attrs="{'invisible': ['|', ('state', '!=', '草稿'), ('id', '=', False)]}"/>
+
+						<button name="set_state"
+							type="object"
+							string="完成"
+							context="{'type': '已完成'}"
+							class="btn-primary"
+							attrs="{'invisible': ['|', ('state', '!=', '确认'), ('id', '=', False)]}"/>
+
+						<button name="set_state"
+							type="object"
+							string="回退"
+							context="{'type': '回退'}"
+							attrs="{'invisible': ['|', ('state', '=', '草稿'), ('id', '=', False)]}"/>
+
+						<button name="set_fsn_payment_state"
+							type="object"
+							string="设为已付款"
+							context="{'type': '已付款'}"
+							class="btn-primary"
+							attrs="{'invisible': ['|', '|', ('fsn_payment_state', '=', '已付款'), ('id', '=', False), ('state', '=', '草稿')]}"/>
+						<button name="set_fsn_payment_state"
+							type="object"
+							string="设为未付款"
+							context="{'type': '未付款'}"
+							class="btn-warning"
+							attrs="{'invisible': ['|', '|', ('fsn_payment_state', '=', '未付款'), ('id', '=', False), ('state', '=', '草稿')]}"/>
+					</header>
+					<sheet>
+						<div style="text-align: center"><h1>销售订单</h1></div>
+
+						<group col="4">
+                            <field name="date" string="下单日期"/>
+                            <field name="fsn_order_category" string="订单类别"/>
+							<field name="design_number" string="设计编号"/>
+							<field name="order_type" string="订单类型"/>
+							<field name="processing_type" string="加工类型"/>
+							<field name="product_name" string="品名"/>
+							<field name="attribute" string="属性"/>
+                            <field name="fsn_purchase_order_number" string="采购单号"/>
+                            <field name="fsn_customer_id" string="客户" options="{'no_create': True, 'no_open': True}"/>
+							<field name="employee_name" string="销售姓名"/>
+                            <field name="fsn_delivery_date" string="合同日期"/>
+							<field name="number_of_returned_items" string="退货件数"/>
+							<field name="return_amount" string="退货金额"/>
+							<field name="fine" string="误期罚款"/>
+							<field name="sale_pro_ids" string="生产订单" widget="many2many_tags" options="{'no_create': True, 'no_open': True}"/>
+						</group>
+						<group col="4">
+							<field name="fsn_payment_state" decoration-success="fsn_payment_state == '已付款'" decoration-info="fsn_payment_state == '未付款'" widget="badge"/>
+							<field name="actual_collection" string="实际收款"/>
+						</group>
+						<notebook>
+							<page string="销售订单明细">
+								<field name="fsn_sales_order_line_ids" string="销售订单明细">
+									<tree editable="bottom">
+										<field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+										<!-- <field name="style_number_base" string="产品" options="{'no_create': True, 'no_open': True}"/> -->
+										<field name="fsn_color_id" string="颜色" options="{'no_create': True, 'no_open': True}"/>
+										<field name="product_size" string="尺码" options="{'no_create': True, 'no_open': True}"/>
+										<field name="quantity" string="购买量"/>
+										<field name="quantity_returned" string="退货数量"/>
+                                        <field name="unit_price" string="单价"/>
+										<field name="pre_tax_amount" string="税前小计" optional="hide"/>
+                                        <field name="account_tax_ids" string="税金设置" widget="many2many_tags" options="{'no_create': True, 'no_open': True}"/>
+                                        <field name="tax_amount" string="税费金额" optional="hide"/>
+										<field name="amount" string="小计"/>
+										<field name="completion_date" string="完成日期" required="True"/>
+									</tree>
+								</field>
+
+                                <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                    <group colspan="4">
+                                        <field name="description" nolabel="1" placeholder="可填写备注信息..."/>
+                                    </group>
+                                    <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                                        <field name="pre_tax_amount" string="税前合计"/>
+                                        <field name="tax_amount" string="税费金额"/>
+                                        <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                            <label for="after_tax_total" />
+                                        </div>
+                                        <field name="after_tax_total" nolabel="1" class="oe_subtotal_footer_separator"/>
+                                    </group>
+                                    <div class="oe_clear"/>
+                                </group>
+							</page>
+						</notebook>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!-- 动作 -->
+        <record id="fsn_sales_order_actions" model="ir.actions.act_window">
+            <field name="name">FSN销售订单</field>
+            <field name="res_model">fsn_sales_order</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+        <!-- <record model="ir.ui.view" id="suspension_system_details_tree">
+            <field name="name">吊挂产量明细</field>
+            <field name="model">suspension_system_details</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" edit="0" create="0">
+                    <field name="Nid" string="唯一标识"/>
+
+                    <field name="dDate" string="日期"/>
+                    <field name="WorkLine" string="组别"/>
+                    <field name="Qty" string="数量"/>
+                    <field name="StationID" string="站号"/>
+                    <field name="EmpID" string="员工编号"/>
+
+                    <field name="BeginTime" string="开始时间"/>
+                    <field name="EndTime" string="结束时间"/>
+                    <field name="TimeCount" string="生产用时(分钟)"/>
+                    <field name="SAM" string="标准生产用时"/>
+                    <field name="MONo" string="制单编号"/>
+                    <field name="StandFlag" string="非本位标记"/>
+                    <field name="ColorNo" string="颜色编号"/>
+                    <field name="SizeName" string="尺码"/>
+                    <field name="SeqNo" string="工序编号"/>
+                    <field name="SeqCode" string="工序代码"/>
+
+                    <field name="Price" string="价格"/>
+
+
+                    <field name="ShtCode" string="班次代码"/>
+                    <field name="ShtType" string="班次类型"/>
+                    <field name="IsOT" string="是否加班"/>
+                    <field name="RackCard" string="衣架号"/>
+                    <field name="WorkShop" string="车间"/>
+                    <field name="SeqVersion" string="工序版本"/>
+                    <field name="InsOrder" string="是否返工"/>
+                    <field name="IsMerge" string="是否合并"/>
+                    <field name="IsCalced" string="是否被计算"/>
+                    <field name="IsFirstSeq" string="是否是受到供需"/>
+                    <field name="COLORNAME" string="颜色名称"/>
+                    <field name="BarCode" string="条码"/>
+                    <field name="CardNo" string="卡号"/>
+                    <field name="BedNo" string="车位号"/>
+
+                    <field name="WorkShop" string="组号"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="suspension_system_details_action">
+            <field name="name">吊挂产量明细</field>
+            <field name="res_model">suspension_system_details</field>
+            <field name="view_mode">tree</field>
+        </record> -->
+    </data>
+</odoo>

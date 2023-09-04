@@ -1,0 +1,81 @@
+<odoo>
+    <data>
+        <record id="counter_sales_order_sequence" model="ir.sequence">
+            <field name="name">柜台销售订单编号</field>
+            <field name="code">counter_sales_order</field>
+            <field name="prefix">%(year)s%(month)s%(day)s</field>
+            <field name="padding">5</field>
+            <field name="use_date_range" eval="True"/>
+            <field name="company_id" eval="False"/>
+        </record>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="counter_sales_order_tree">
+			<field name="name">销售订单</field>
+			<field name="model">counter_sales_order</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <field name="date" string="日期"/>
+                    <field name="order_number" string="订单编号"/>
+                    <field name="order_amount" string="订单金额"/>
+                    <field name="salesman" string="售货员"/>
+                    <field name="customer_name" string="客户姓名"/>
+                    <field name="customer_phone" string="客户电话"/>
+                    <field name="state" string="状态" decoration-info="state == '已取消'" decoration-success="state == '已完成'" widget="badge"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="counter_sales_order_form" model="ir.ui.view">
+			<field name="name">销售订单</field>
+			<field name="model">counter_sales_order</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="已完成,已取消"/>
+					</header>
+					<sheet>
+						<group col="4">
+							<field name="date" string="日期"/>
+                            <field name="order_number" string="订单编号"/>
+							<field name="order_amount" string="订单金额"/>
+							<field name="salesman" string="售货员" options="{'no_create': True, 'no_open': True}"/>
+							<field name="customer_name" string="客户姓名"/>
+							<field name="customer_phone" string="客户电话"/>
+							<field name="customer_address" string="客户地址"/>
+						</group>
+
+						<notebook>
+							<page string="柜台销售订单明细">
+								<field name="counter_sales_order_line_ids" string="柜台销售订单明细">
+									<tree editable="bottom">
+										<field name="create_date" string="创建日期"/>
+										<field name="good_id" string="产品名称" options="{'no_create': True, 'no_open': True}"/>
+										<field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+										<field name="product_barcode" string="产品编码"/>
+										<field name="fsn_color" string="颜色"/>
+										<field name="size" string="尺码"/>
+										<field name="number" string="件数"/>
+										<field name="unit_price" string="单价"/>
+										<field name="total_price" string="总价"/>
+										<field name="state" string="状态" decoration-primary="state == '正常'" decoration-warning="state == '退货'" decoration-info="state == '换货'" decoration-success="state == '新增'" widget="badge"/>
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <!-- form -->
+        <record model="ir.actions.act_window" id="counter_sales_order_action">
+            <field name="name">销售订单</field>
+            <field name="res_model">counter_sales_order</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+    </data>
+</odoo>

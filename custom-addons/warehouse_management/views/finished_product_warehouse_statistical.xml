@@ -1,0 +1,34 @@
+<odoo>
+    <data>
+		<record id="view_finished_product_warehouse_statistical_tree" model="ir.ui.view">
+			<field name="name">成品仓统计</field>
+			<field name="model">finished_inventory</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0" delete="0">
+					<header>
+                        <button name="set_statistics_info" string="Test" type="object" class="btn-primary"/>
+					</header>
+					<field name="write_date" string="更新时间"/>
+                    <field name="order_number" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="size" string="尺码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="put_storage_qualified" string="入库（合格）"/>
+					<field name="normal_inventory_number" string="库存（合格）"/>
+					<field name="outbound_storage_qualified" string="出库（合格）"/>
+					<field name="put_storage_not_qualified" string="入库（不合格）"/>
+					<field name="abnormal_inventory_number" string="库存（不合格）"/>
+					<field name="outbound_storage_not_qualified" string="出库（不合格）"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record id="finished_product_warehouse_statistical_action" model="ir.actions.act_window">
+			<field name="name">成品仓统计</field>
+			<field name="res_model">finished_inventory</field>
+			<field name="view_mode">tree</field>
+            <field name="view_id" ref="view_finished_product_warehouse_statistical_tree"/>
+			<!-- <field name="view_ids" eval="[(5,0,0), (0,0,{'view_mode': 'tree','view_id': ref('view_finished_product_warehouse_statistical_tree')})"/> -->
+		</record>
+    </data>
+</odoo>

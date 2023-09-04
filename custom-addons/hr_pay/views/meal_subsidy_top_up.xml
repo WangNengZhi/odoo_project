@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <record id="meal_subsidy_top_up_tree" model="ir.ui.view">
+            <field name="name">餐补充值</field>
+            <field name="model">meal_subsidy_top_up</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="date" string="充值日期"/>
+                    <field name="name" string="员工" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="department_id" string="部门" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="job_id" string="岗位" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="entry_time" string="入职时间"/>
+                    <field name="identity_card" string="身份证号"/>
+                    <field name="attendance_day" string="出勤"/>
+                    <field name="unit_price" string="餐补"/>
+                    <field name="amount" string="金额"/>
+                    <field name="remarks" string="备注"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="meal_subsidy_top_up_actions" model="ir.actions.act_window">
+            <field name="name">餐补充值</field>
+            <field name="res_model">meal_subsidy_top_up</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem name="餐补充值" action="meal_subsidy_top_up_actions" id="meal_subsidy_top_up_menu" parent="menu_attend_attend1"/>
+    </data>
+</odoo>

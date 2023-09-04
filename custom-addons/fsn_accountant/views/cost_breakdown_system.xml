@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+		<record id="cost_breakdown_system_tree" model="ir.ui.view">
+			<field name="name">费用明细(系统)</field>
+			<field name="model">cost_breakdown_system</field>
+			<field name="arch" type="xml">
+                <tree editable="bottom" create='0' edit='0' delete='1'>
+					<field name="date" string="日期"/>
+					<field name="parent_account" string="父级科目"/>
+					<field name="account" string="所属科目"/>
+					<field name="cost" string="费用"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="cost_breakdown_system_action" model="ir.actions.act_window">
+            <field name="name">费用明细(系统)</field>
+            <field name="res_model">cost_breakdown_system</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

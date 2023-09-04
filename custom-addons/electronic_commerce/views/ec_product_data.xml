@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+		<record model="ir.ui.view" id="ec_product_data_tree">
+			<field name="name">电商货品数据tree</field>
+			<field name="model">ec_product_data</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="date" string="日期"/>
+					<field name="platform_account_id" string="账号"/>
+					<field name="item_style_number" string="款号"/>
+					<field name="style_picture" string="款式图片" widget='image' width='256px' height='256px'/>
+					<field name="live_type" string="直播类型"/>
+					<field name="type" string="类型"/>
+					<field name="cost" string="成本"/>
+					<field name="price" string="价格"/>
+					<field name="difference" string="差价"/>
+					<field name="price_addition_cost" string="价格/成本"/>
+					<field name="exposure_click_rate" string="曝光点击率"/>
+					<field name="click_conversion_rate" string="点击转化率"/>
+					<field name="click_rate" string="点击率"/>
+					<field name="order_quantity" string="订单数"/>
+					<field name="refund_quantity" string="退款数"/>
+					<field name="return_goods_quantity" string="退货数"/>
+					<field name="GMV" string="GMV"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="ec_product_data_form" model="ir.ui.view">
+			<field name="name">电商货品数据form</field>
+			<field name="model">ec_product_data</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<!-- <div style="text-align: center"><h1>FSN数据导出权限设置</h1></div> -->
+
+						<group col="4">
+							<field name="date" string="日期"/>
+							<field name="platform_account_id" string="账号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="item_style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="style_picture" string="款式图片" widget='image' width='256px' height='256px'/>
+							<field name="live_type" string="直播类型"/>
+							<field name="type" string="类型"/>
+							<field name="cost" string="成本"/>
+							<field name="price" string="价格"/>
+							<field name="difference" string="差价"/>
+							<field name="price_addition_cost" string="价格/成本"/>
+							<field name="exposure_click_rate" string="曝光点击率"/>
+							<field name="click_conversion_rate" string="点击转化率"/>
+							<field name="click_rate" string="点击率"/>
+							<field name="order_quantity" string="订单数"/>
+							<field name="refund_quantity" string="退款数"/>
+							<field name="return_goods_quantity" string="退货数"/>
+							<field name="GMV" string="GMV"/>
+
+						</group>
+
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <!-- 动作 -->
+        <record id="ec_product_data_action" model="ir.actions.act_window">
+            <field name="name">电商货品数据</field>
+            <field name="res_model">ec_product_data</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

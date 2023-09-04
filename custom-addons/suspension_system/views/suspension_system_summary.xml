@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <!-- tree -->
+        <record model="ir.ui.view" id="suspension_system_summary_tree">
+            <field name="name">吊挂组产量汇总</field>
+            <field name="model">suspension_system_summary</field>
+                <field name="arch" type="xml">
+                    <tree edit="0" create="0">
+                        <header>
+                            <!-- <button name="set_on_the_day_difference" type="object" string="测试按钮" class="btn-primary"/> -->
+                        </header>
+                        <field name="dDate" string="日期"/>
+                        <field name="date_host" string="时间"/>
+                        <field name="group" string="组别"/>
+                        <field name="people_number" string="人数" optional="hide"/>
+                        <field name="order_number_show" string="订单号"/>
+                        <field name="order_number" string="订单号（对象）" optional="hide"/>
+                        <field name="MONo" string="款号"/>
+                        <field name="style_number" string="款号（对象）" optional="hide"/>
+                        <field name="product_size" string="尺码"/>
+                        <field name="total_quantity" string="总件数"/>
+                        <field name="on_the_day_difference" string="件数差值"/>
+                        <field name="production_value" string="产值"/>
+                        <field name="production_value_difference" string="产值差值"/>
+                    </tree>
+                </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="suspension_system_summary_action">
+            <field name="name">吊挂组产量汇总</field>
+            <field name="res_model">suspension_system_summary</field>
+            <field name="view_mode">tree,graph</field>
+            <field name="domain">[('group','!=', '后整')]</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="suspension_system_fp_action">
+            <field name="name">吊挂后道产量汇总</field>
+            <field name="res_model">suspension_system_summary</field>
+            <field name="view_mode">tree,graph</field>
+            <field name="domain">[('group','=', '后整')]</field>
+        </record>
+    </data>
+</odoo>

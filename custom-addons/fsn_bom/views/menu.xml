@@ -1,0 +1,82 @@
+<odoo>
+    <data>
+
+
+        <menuitem name="BOM"
+            web_icon="fsn_bom,static/description/icon.png"
+            id="fsn_bom_menu_root"/>
+
+            <menuitem name="单件用量" id="fsn_materials_table_menu" parent="fsn_bom_menu_root" sequence="10"/>
+
+                <menuitem name="单件用料表"
+                    id="fsn_sheet_materials_menu"
+                    parent="fsn_materials_table_menu"
+                    action="sheet_materials_actions"
+                    sequence="10" groups="fsn_bom.fsn_bom_write"/>
+                <menuitem name="实际用料表"
+                    id="practical_material_menu"
+                    parent="fsn_materials_table_menu"
+                    action="practical_material_action"
+                    sequence="20"/>
+
+
+            <menuitem name="总成本"
+                id="fsn_total_cost_menu"
+                action="total_cost_action"
+                parent="fsn_bom_menu_root"
+                sequence="20"/>
+
+            <menuitem name="汇总" id="fsn_bom_summary_menu" parent="fsn_bom_menu_root" sequence="90"/>
+
+                <menuitem name="用量汇总"
+                    id="material_summary_sheet_menu"
+                    parent="fsn_bom_summary_menu"
+                    action="material_summary_sheet_actions"
+                    sequence="10"/>
+
+                <menuitem name="面辅料损耗"
+                    id="surface_accessories_loss_menu"
+                    parent="fsn_bom_summary_menu"
+                    action="surface_accessories_loss_action"
+                    sequence="20"/>
+
+
+            <menuitem name="设置" id="fsn_bom_setting_menu" parent="fsn_bom_menu_root" sequence="100"/>
+
+                <menuitem name="款号"
+                    id="fsn_bom_style_number_menu"
+                    parent="fsn_bom_setting_menu"
+                    action="sale_pro.action_ib_detail"
+                    sequence="20"/>
+                <menuitem name="物料预设"
+                    id="material_preset_menu"
+                    parent="fsn_bom_setting_menu"
+                    action="material_preset_actions"
+                    sequence="30"/>
+                <menuitem name="物料名称列表"
+                    id="material_name_list_menu"
+                    parent="fsn_bom_setting_menu"
+                    action="material_name_list_actions"
+                    sequence="40"/>
+                <menuitem name="物料品类设置"
+                    id="material_name_type_menu"
+                    parent="fsn_bom_setting_menu"
+                    action="material_name_type_actions"
+                    sequence="50"/>
+
+            <menuitem name="用料表" id="fsn_materials_table_template_house_menu" parent="template_house.menu_template_house_root" sequence="10"/>
+                <menuitem name="单件用料表"
+                    id="fsn_sheet_materials_template_house_menu"
+                    parent="fsn_materials_table_template_house_menu"
+                    action="sheet_materials_operational_actions"
+                    groups="fsn_bom.fsn_bom_write"
+                    sequence="10"/>
+
+
+            <menuitem name="单件用料表"
+                id="fsn_sheet_materials_fsn_production_preparation_menu"
+                parent="fsn_production_preparation.raw_materials_order_menu"
+                action="sheet_materials_actions"
+                sequence="5"/>
+    </data>
+</odoo>

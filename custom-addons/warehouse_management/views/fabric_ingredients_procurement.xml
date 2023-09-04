@@ -1,0 +1,56 @@
+<odoo>
+	<data>
+        <record id="inheritance_warehouse_bom_tree" model="ir.ui.view">
+            <field name="name">面料入库tree继承</field>
+            <field name="model">warehouse_bom</field>
+            <field name="inherit_id" ref="warehouse_bom_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="choose_material_code" type="object" string="确认" class="btn-primary"
+                    invisible="context.get('show_button') != True"
+                    />
+                </xpath>
+            </field>
+        </record>
+
+
+
+        <record id="inheritance_plus_material_enter_tree" model="ir.ui.view">
+            <field name="name">辅料入库tree继承</field>
+            <field name="model">plus_material_enter</field>
+            <field name="inherit_id" ref="plus_material_enter_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="choose_material_code" type="object" string="确认" class="btn-primary"
+                    invisible="context.get('show_button') != True"
+                    />
+                </xpath>
+            </field>
+        </record>
+
+
+
+        <record id="inheritance_fsn_fabric_ingredients_procurement_form" model="ir.ui.view">
+            <field name="name">面辅料采购继承</field>
+            <field name="model">fabric_ingredients_procurement</field>
+            <field name="inherit_id" ref="procurement.fsn_fabric_ingredients_procurement_form"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+                <xpath expr="//header" position="inside">
+                    <button name="search_put_storage"
+                        type="object"
+                        string="选择物料编码"
+                        class="btn-primary"
+                        attrs="{'invisible': ['|', ('material_code', '!=', False), ('id', '=', False)]}"/>
+                    <button name="generate_material_code"
+                        type="object"
+                        string="生成物料编码"
+                        class="btn-primary"
+                        confirm='确认生成物料编码吗？（此操作不可逆！）'
+                        attrs="{'invisible': ['|', ('material_code', '!=', False), ('id', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+	</data>
+</odoo>

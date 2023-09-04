@@ -1,0 +1,53 @@
+
+
+<odoo>
+  	<data>
+        <record id="prenatal_preparation_progress_search" model="ir.ui.view">
+            <field name="name">产前准备进度表</field>
+            <field name="model">prenatal_preparation_progress</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="order_number" string="订单号"/>
+					<field name="style_number" string="款号"/>
+                </search>
+            </field>
+        </record>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="prenatal_preparation_progress_tree">
+			<field name="name">产前准备进度表</field>
+			<field name="model">prenatal_preparation_progress</field>
+			<field name="arch" type="xml">
+				<tree editable="top" create="0" delete="0">
+					<header>
+					</header>
+					<field name="order_date" string="下单日期"/>
+					<field name="contract_date" string="合同日期"/>
+					<field name="order_number" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="client_id" string="客户" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="is_sample_dress" string="样衣"/>
+					<field name="is_platemaking" string="样板"/>
+					<field name="is_process" string="工时工序"/>
+					<field name="is_template" string="模板"/>
+					<field name="is_process_sheet" string="工艺单"/>
+					<field name="is_unit_consumption" string="单件用量"/>
+					<field name="is_surface_material" string="面料采购"/>
+					<field name="is_auxiliary_material" string="辅料采购"/>
+					<field name="is_cutting_bed" string="裁床"/>
+					<field name="is_all_complete" string="是否全部完成" optional="hide"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="prenatal_preparation_progress_action">
+			<field name="name">产前准备进度表</field>
+			<field name="res_model">prenatal_preparation_progress</field>
+			<field name="view_mode">tree</field>
+            <field name="context">{'show_refresh_button': True}</field>
+		</record>
+
+  	</data>
+</odoo>

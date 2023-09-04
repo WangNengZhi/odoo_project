@@ -1,0 +1,34 @@
+<odoo>
+    <data>
+        <record id="fsn_hr_employee_epiboly_contract_line" model="ir.ui.view">
+            <field name="name">员工外包计件明细扩展</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@name='hr_settings']" position="after">
+                    <page name="epiboly_contract_line" string="外包(计件)明细" attrs="{'invisible': [('is_it_a_temporary_worker', '!=', '外包(计件)')]}">
+                        <field name="epiboly_contract_line_ids" string="外包(计件)明细">
+                            <tree editable="bottom">
+                                <!-- <field name="outsourcing_type" string="外包类型" invisible="0"/> -->
+                                <field name="order_id" string="订单号" options="{'no_create': True, 'no_open': True}"/>
+                                <field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+                                <field name="process_number" string="工序号"/>
+                                <field name="process_name" string="工序名称"/>
+                                <field name="color" string="颜色"/>
+                                <field name="size" string="尺码"/>
+                                <field name="number" string="件数"/>
+                                <field name="processing_cost" string="加工费" readonly="1" force_save="1"/>
+                                <field name="delivery_date" string="交货日期"/>
+                                <field name="remark" string="备注"/>
+                            </tree>
+                            <form>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

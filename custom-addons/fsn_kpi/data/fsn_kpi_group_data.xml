@@ -1,0 +1,146 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="fsn_kpi_category" model="ir.module.category">
+            <field name="name">风丝袅KPI专用</field>
+            <field name="sequence">5</field>
+        </record>
+            <record id="fsn_kpi_group_00" model="res.groups">
+                <field name="name">KPI基础</field>
+                <field name="category_id" ref="fsn_kpi_category"/>
+            </record>
+                <record id="fsn_kpi_group_00_model_03" model="ir.model.access">
+                    <field name="name">KPI模板</field>
+                    <field name="model_id" ref="fsn_kpi.model_fsn_kpi_template"/>
+                    <field name="group_id" ref="fsn_kpi.fsn_kpi_group_00"/>
+                    <field name="perm_read">1</field>
+                    <field name="perm_write">1</field>
+                    <field name="perm_create">1</field>
+                    <field name="perm_unlink">1</field>
+                </record>
+                <record id="fsn_kpi_group_00_model_04" model="ir.model.access">
+                    <field name="name">KPI模板明细</field>
+                    <field name="model_id" ref="fsn_kpi.model_fsn_kpi_template_line"/>
+                    <field name="group_id" ref="fsn_kpi.fsn_kpi_group_00"/>
+                    <field name="perm_read">1</field>
+                    <field name="perm_write">1</field>
+                    <field name="perm_create">1</field>
+                    <field name="perm_unlink">1</field>
+                </record>
+                <record id="fsn_kpi_group_00_model_05" model="ir.model.access">
+                    <field name="name">KPI</field>
+                    <field name="model_id" ref="fsn_kpi.model_fsn_kpi"/>
+                    <field name="group_id" ref="fsn_kpi.fsn_kpi_group_00"/>
+                    <field name="perm_read">1</field>
+                    <field name="perm_write">1</field>
+                    <field name="perm_create">1</field>
+                    <field name="perm_unlink">1</field>
+                </record>
+                <record id="fsn_kpi_group_00_model_06" model="ir.model.access">
+                    <field name="name">KPI明细</field>
+                    <field name="model_id" ref="fsn_kpi.model_fsn_kpi_line"/>
+                    <field name="group_id" ref="fsn_kpi.fsn_kpi_group_00"/>
+                    <field name="perm_read">1</field>
+                    <field name="perm_write">1</field>
+                    <field name="perm_create">1</field>
+                    <field name="perm_unlink">1</field>
+                </record>
+                <record id="fsn_kpi_group_00_model_07" model="ir.model.access">
+                    <field name="name">部门</field>
+                    <field name="model_id" ref="hr.model_hr_department"/>
+                    <field name="group_id" ref="fsn_kpi.fsn_kpi_group_00"/>
+                    <field name="perm_read">1</field>
+                    <field name="perm_write">0</field>
+                    <field name="perm_create">0</field>
+                    <field name="perm_unlink">0</field>
+                </record>
+                <record id="fsn_kpi_group_00_model_08" model="ir.model.access">
+                    <field name="name">岗位</field>
+                    <field name="model_id" ref="hr.model_hr_job"/>
+                    <field name="group_id" ref="fsn_kpi.fsn_kpi_group_00"/>
+                    <field name="perm_read">1</field>
+                    <field name="perm_write">0</field>
+                    <field name="perm_create">0</field>
+                    <field name="perm_unlink">0</field>
+                </record>
+                
+            <!-- <record id="fsn_kpi_group_setting" model="res.groups">
+                <field name="name">设置</field>
+                <field name="category_id" ref="fsn_kpi_category"/>
+                <field name="implied_ids" eval="[(4, ref('fsn_kpi.fsn_kpi_group_00'))]"/>
+            </record>
+
+            <record id="fsn_kpi_group_01" model="res.groups">
+                <field name="name">技术部</field>
+                <field name="category_id" ref="fsn_kpi_category"/>
+                <field name="implied_ids" eval="[(4, ref('fsn_kpi.fsn_kpi_group_00'))]"/>
+            </record>
+                <record id="fsn_kpi_group_01_rule_01" model="ir.rule">
+                    <field name="name">技术部记录规则</field>
+                    <field name="model_id" ref="model_fsn_kpi_template"/>
+                    <field name="groups" eval="[(4,ref('fsn_kpi.fsn_kpi_group_01'))]"/>
+                    <field name="domain_force" eval="[('fsn_kpi_department', '=', ref('fsn_kpi.fsn_kpi_department_01'))]"/>
+                </record>
+                <record id="fsn_kpi_group_01_rule_02" model="ir.rule">
+                    <field name="name">技术部记录规则</field>
+                    <field name="model_id" ref="model_fsn_kpi"/>
+                    <field name="groups" eval="[(4,ref('fsn_kpi.fsn_kpi_group_01'))]"/>
+                    <field name="domain_force" eval="[('fsn_kpi_department', '=', ref('fsn_kpi.fsn_kpi_department_01'))]"/>
+                </record>
+
+            <record id="fsn_kpi_group_02" model="res.groups">
+                <field name="name">后整部</field>
+                <field name="category_id" ref="fsn_kpi_category"/>
+                <field name="implied_ids" eval="[(4, ref('fsn_kpi.fsn_kpi_group_00'))]"/>
+            </record>
+                <record id="fsn_kpi_group_02_rule_01" model="ir.rule">
+                    <field name="name">后整部记录规则</field>
+                    <field name="model_id" ref="model_fsn_kpi_template"/>
+                    <field name="groups" eval="[(4,ref('fsn_kpi.fsn_kpi_group_02'))]"/>
+                    <field name="domain_force" eval="[('fsn_kpi_department', '=', ref('fsn_kpi.fsn_kpi_department_02'))]"/>
+                </record>
+                <record id="fsn_kpi_group_02_rule_02" model="ir.rule">
+                    <field name="name">技术部记录规则</field>
+                    <field name="model_id" ref="model_fsn_kpi"/>
+                    <field name="groups" eval="[(4,ref('fsn_kpi.fsn_kpi_group_02'))]"/>
+                    <field name="domain_force" eval="[('fsn_kpi_department', '=', ref('fsn_kpi.fsn_kpi_department_02'))]"/>
+                </record>
+
+            <record id="fsn_kpi_group_03" model="res.groups">
+                <field name="name">办公室</field>
+                <field name="category_id" ref="fsn_kpi_category"/>
+                <field name="implied_ids" eval="[(4, ref('fsn_kpi.fsn_kpi_group_00'))]"/>
+            </record>
+                <record id="fsn_kpi_group_03_rule_01" model="ir.rule">
+                    <field name="name">办公室记录规则</field>
+                    <field name="model_id" ref="model_fsn_kpi_template"/>
+                    <field name="groups" eval="[(4,ref('fsn_kpi.fsn_kpi_group_03'))]"/>
+                    <field name="domain_force" eval="[('fsn_kpi_department', '=', ref('fsn_kpi.fsn_kpi_department_03'))]"/>
+                </record>
+                <record id="fsn_kpi_group_03_rule_02" model="ir.rule">
+                    <field name="name">技术部记录规则</field>
+                    <field name="model_id" ref="model_fsn_kpi"/>
+                    <field name="groups" eval="[(4,ref('fsn_kpi.fsn_kpi_group_03'))]"/>
+                    <field name="domain_force" eval="[('fsn_kpi_department', '=', ref('fsn_kpi.fsn_kpi_department_03'))]"/>
+                </record>
+
+            <record id="fsn_kpi_group_04" model="res.groups">
+                <field name="name">生产部</field>
+                <field name="category_id" ref="fsn_kpi_category"/>
+                <field name="implied_ids" eval="[(4, ref('fsn_kpi.fsn_kpi_group_00'))]"/>
+            </record>
+                <record id="fsn_kpi_group_04_rule_01" model="ir.rule">
+                    <field name="name">生产部记录规则</field>
+                    <field name="model_id" ref="model_fsn_kpi_template"/>
+                    <field name="groups" eval="[(4,ref('fsn_kpi.fsn_kpi_group_04'))]"/>
+                    <field name="domain_force" eval="[('fsn_kpi_department', '=', ref('fsn_kpi.fsn_kpi_department_04'))]"/>
+                </record>
+                <record id="fsn_kpi_group_04_rule_02" model="ir.rule">
+                    <field name="name">技术部记录规则</field>
+                    <field name="model_id" ref="model_fsn_kpi"/>
+                    <field name="groups" eval="[(4,ref('fsn_kpi.fsn_kpi_group_04'))]"/>
+                    <field name="domain_force" eval="[('fsn_kpi_department', '=', ref('fsn_kpi.fsn_kpi_department_04'))]"/>
+                </record> -->
+
+    </data>
+</odoo>

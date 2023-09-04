@@ -1,0 +1,98 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="office_procurement_inventory_tree">
+			<field name="name">办公室采购库存</field>
+			<field name="model">office_procurement_inventory</field>
+			<field name="arch" type="xml">
+				<tree edit="0" create="0">
+                    <field name="write_date" string="更新日期"/>
+                    <field name="material_code" string="物品编码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="material_name" string="物品名称"/>
+					<field name="supplier_supplier_id" string="供应商" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="specification" string="规格"/>
+                    <field name="amount" string="库存数量"/>
+                    <field name="unit" string="单位"/>
+				</tree>
+			</field>
+		</record>
+		<!-- form -->
+		<record id="office_procurement_inventory_form" model="ir.ui.view">
+			<field name="name">办公室采购库存</field>
+			<field name="model">office_procurement_inventory</field>
+			<field name="arch" type="xml">
+				<form edit="0" create="0">
+					<sheet>
+						<group col="4">
+							<field name="write_date" string="更新日期"/>
+							<field name="material_name" string="物品名称"/>
+							<field name="material_code" string="物品编码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<!-- <field name="material_coding" string="物品编码" options="{'no_create': True, 'no_open': True}"/> -->
+							<field name="supplier_supplier_id" string="供应商" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="specification" string="规格"/>
+							<!-- <field name="color" string="颜色"/> -->
+							<field name="amount" string="库存数量"/>
+							<field name="unit" string="单位"/>
+						</group>
+						<notebook>
+							<page string="入库明细">
+								<field name="procurement_put_line_ids" string="入库明细">
+									<tree editable="bottom">
+										<field name="date" string="入库日期"/>
+
+										<!-- <field name="material_coding" string="物品编码"/> -->
+										<field name="material_name" string="物品名称"/>
+										<field name="supplier_supplier_id" string="供应商" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										<field name="specification" string="规格"/>
+										<!-- <field name="color" string="颜色"/> -->
+
+										<field name="amount" string="采购数量"/>
+										<field name="unit" string="单位"/>
+										<!-- <field name="unit_price" string="单价"/> -->
+										<!-- <field name="money_sum" string="金额"/> -->
+
+										<field name="admin_department" string="采购部门"/>
+										<field name="manager" string="采购人"/>
+										<field name="remark" string="备注"/>
+										<field name="state" string="状态" decoration-info="state == '待采购'" decoration-success="state == '已采购'" widget="badge"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+						</notebook>
+						<notebook>
+							<page string="领用明细">
+								<field name="procurement_outbound_line_ids" string="领用明细">
+									<tree editable="bottom">
+										<field name="date" string="领用日期"/>
+										<!-- <field name="material_coding" string="物品编号"/> -->
+										<field name="material_name" string="物品名称"/>
+										<field name="supplier_supplier_id" string="供应商" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										<field name="specification" string="规格"/>
+										<!-- <field name="color" string="颜色"/> -->
+										<field name="amount" string="领用数量"/>
+										<field name="unit" string="单位"/>
+										<field name="recipient_department" string="领用部门"/>
+										<field name="recipient" string="领用人"/>
+										<field name="remark" string="备注"/>
+										<field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '已领用'" widget="badge"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+						</notebook>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="office_procurement_inventory_action">
+			<field name="name">办公室采购库存</field>
+			<field name="res_model">office_procurement_inventory</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+    </data>
+</odoo>

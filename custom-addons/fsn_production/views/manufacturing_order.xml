@@ -1,0 +1,113 @@
+<odoo>
+	<data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="manufacturing_order_tree">
+			<field name="name">FSN生产工单tree</field>
+			<field name="model">manufacturing_order</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+                    <field name="create_date" string="创建日期"/>
+                    <field name="order_serial_number" string="销售订单"/>
+                    <field name="client" string="客户（旧）"/>
+                    <field name="client_id" string="客户"/>
+                    <field name="price" string="价格"/>
+                    <!-- <field name="principal" string="生产负责人"/> -->
+                    <!-- <field name="state" string="状态" decoration-info="state == '确认'" decoration-warning="state == '进行中'" decoration-success="state == '完成'" decoration-danger="state == '报废'" widget="badge"/> -->
+				</tree>
+			</field>
+		</record>
+        <!-- form -->
+        <record id="manufacturing_order_form" model="ir.ui.view">
+            <field name="name">FSN生产工单form</field>
+            <field name="model">manufacturing_order</field>
+            <field name="arch" type="xml">
+                <form create="0" edit="0">
+					<header>
+						<!-- <field name="state" widget="statusbar" statusbar_visible="草稿,确认,进行中,完成,报废"/> -->
+						<!-- <button name="action_forward" string="确认" type="object"
+							class="oe_highlight o_expense_submit"
+							attrs="{'invisible': ['|', ('state', '!=', '草稿'), ('id', '=', False)]}"
+							confirm='确定要确认吗？'
+							/> -->
+					</header>
+                    <sheet>
+                        <group col="4">
+                            <field name="create_date" string="创建日期"/>
+                            <field name="order_serial_number" string="销售订单" readonly="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="client" string="客户（旧）"/>
+                            <field name="client_id" string="客户" readonly="1"/>
+                            <field name="price" string="价格" readonly="1"/>
+                            <!-- <field name="principal" string="生产负责人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/> -->
+                        </group>
+                        <notebook>
+                            <page string="生产工单明细">
+                                <field name="manufacturing_order_line_ids" string="生产工单明细">
+                                    <tree create="0" delete="0" editable="bottom">
+                                        <field name="style_number" string="款号" readonly="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="size" string="尺码" readonly="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="number" string="件数" readonly="1"/>
+                                        <field name="price" string="价格" readonly="1"/>
+                                        <field name="state" string="状态" decoration-info="state == '确认'" decoration-danger="state == '作废'" widget="badge"/>
+                                        <button name="action_open_form" type="object" icon="fa-list"/>
+                                    </tree>
+                                    <form>
+                                        <header>
+                                            <field name="state" widget="statusbar" statusbar_visible="草稿,确认,作废"/>
+                                        </header>
+                                        <sheet>
+                                            <group col="4">
+                                                <field name="style_number" string="款号" readonly="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                                <field name="size" string="尺码" readonly="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                                <field name="number" string="件数" readonly="1"/>
+                                                <field name="price" string="价格" readonly="1"/>
+
+                                            </group>
+                                            <notebook>
+                                                <page string="物料清单">
+                                                    <field name="manufacturing_bom_ids" string="物料清单">
+                                                        <tree editable="bottom">
+                                                            <field name="name" string="物料名称"/>
+                                                            <field name="type" string="物料类型"/>
+                                                            <field name="quantity_demanded" string="需求量"/>
+                                                            <field name="unit_price" string="单价"/>
+                                                            <field name="price" string="价格"/>
+                                                            <field name="reserved_amount" string="已备好"/>
+                                                        </tree>
+                                                        <form>
+                                                        </form>
+                                                    </field>
+                                                </page>
+                                                <page string="特殊工艺">
+                                                    <field name="manufacturing_special_process_ids" string="特殊工艺">
+                                                        <tree editable="bottom">
+                                                            <field name="name" string="工艺名称"/>
+                                                            <!-- <field name="type" string="物料类型"/> -->
+                                                            <field name="quantity_demanded" string="需求量"/>
+                                                            <field name="unit_price" string="单价"/>
+                                                            <field name="price" string="价格"/>
+                                                            <field name="reserved_amount" string="已备好"/>
+                                                        </tree>
+                                                        <form>
+                                                        </form>
+                                                    </field>
+                                                </page>
+                                            </notebook>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- 动作 -->
+        <record model="ir.actions.act_window" id="manufacturing_order_action">
+			<field name="name">生产工单</field>
+			<field name="res_model">manufacturing_order</field>
+			<field name="view_mode">tree,form</field>
+            <!-- <field name="domain">[('fsn_kpi_job', '=', 'fsn_kpi_department_01')]</field> -->
+            <!-- <field name="context">{'default_fsn_kpi_job': '组长'}</field> -->
+        </record>
+	</data>
+</odoo>

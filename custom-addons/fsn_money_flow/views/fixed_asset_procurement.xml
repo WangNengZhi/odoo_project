@@ -1,0 +1,32 @@
+<odoo>
+	<data>
+		<!-- tree视图 -->
+		<record model="ir.ui.view" id="fixed_asset_procurement_tree">
+			<field name="name">固定资产采购台账</field>
+			<field name="model">fixed_asset_procurement</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="date" string="采购日期"/>
+					<field name="property_name" string="资产名称"/>
+                    <field name="type" string="规格型号"/>
+					<field name="contract_number" string="合同编码"/>
+					<field name="procurement_price" string="采购金额"/>
+					<field name="supplier_name" string="供应商名称"/>
+					<field name="invoice_number" string="发票号码"/>
+					<field name="warranty_period_date" string="保修期限"/>
+					<field name="expected_service_date" string="预计使用年限"/>
+					<field name="department_name" string="采购部门"/>
+					<field name="procurement_personnel_name" string="采购人员"/>
+                    <field name="notes" string="备注"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="fixed_asset_procurement_action">
+			<field name="name">固定资产采购台账</field>
+			<field name="res_model">fixed_asset_procurement</field>
+			<field name="view_mode">tree,graph</field>
+		</record>
+	</data>
+</odoo>

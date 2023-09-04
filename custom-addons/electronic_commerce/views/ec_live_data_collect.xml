@@ -1,0 +1,159 @@
+<odoo>
+    <data>
+        <!-- tree -->
+		<record model="ir.ui.view" id="ec_live_data_collect_tree">
+			<field name="name">直播数据汇总tree</field>
+			<field name="model">ec_live_data_collect</field>
+			<field name="arch" type="xml">
+				<tree>
+
+					<field name="date" string="日期"/>
+					<field name="platform_account_id" string="账号"/>
+					<field name="start_time" string="直播开始时间"/>
+					<field name="end_time" string="直播结束时间"/>
+					<field name="live_time" string="直播时长（分钟）"/>
+
+					<field name="GMV" string="GMV"/>
+					<field name="volume_transaction_order" string="成交订单量"/>
+					<field name="GPM" string="千次成交金额GPM"/>
+					<field name="KDJ" string="客单价"/>
+					<field name="ZHL" string="转化率"/>
+					<field name="UVJZ" string="uv价值"/>
+
+					<field name="pay_roi" string="付费roi"/>
+					<field name="all_those_roi" string="全场roi"/>
+
+					<field name="watch_number" string="观看人次"/>
+					<field name="number_peaks" string="人数峰值"/>
+					<field name="avg_number" string="平均在线人数"/>
+					<field name="exposure_number" string="直播间曝光次数"/>
+					<field name="exposure_people" string="直播间曝光人数"/>
+
+					<field name="BGJRL" string="曝光进入率"/>
+					<field name="JRSPBGL" string="进入商品曝光率"/>
+					<field name="SPBGDJL" string="商品曝光点击率"/>
+					<field name="BGCJZHL" string="曝光成交转化率"/>
+
+
+					<field name="recommend_feed" string="推荐feed"/>
+					<field name="live_plaza" string="直播广场"/>
+					<field name="personal_homepage" string="个人主页"/>
+					<field name="short_video_flow" string="短视频流量"/>
+					<field name="search_data" string="搜索"/>
+					<field name="other_scenarios" string="其他场景"/>
+
+
+					<field name="percentage_paid_traffic" string="付费流量占比" widget="progressbar"/>
+					<field name="qian_chuan" string="千川" widget="percentage"/>
+					<field name="qian_chuan_cost" string="千川费用"/>
+					<field name="shop_will_push_ratio" string="小店随心推" widget="percentage"/>
+					<field name="shop_will_push" string="小店随心推费用"/>
+					<field name="shake_plus_ratio" string="抖+" widget="percentage"/>
+					<field name="shake_plus" string="抖+费用"/>
+
+
+
+
+					<field name="XZFSS" string="新增粉丝数"/>
+					<field name="ZFL" string="转粉率"/>
+					<field name="XRFSTS" string="新人粉丝团人数"/>
+					<field name="ZTL" string="转团率"/>
+					<field name="PJTLSC" string="平均停留时长（秒）"/>
+					<field name="PLCS" string="评论次数"/>
+					<field name="DZL" string="点赞量（万）"/>
+					<field name="FXCS" string="分享次数"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- form -->
+		<record id="ec_live_data_collect_form" model="ir.ui.view">
+			<field name="name">直播数据汇总form</field>
+			<field name="model">ec_live_data_collect</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<!-- <div style="text-align: center"><h1>FSN数据导出权限设置</h1></div> -->
+
+						<group col="4">
+							<field name="date" string="日期"/>
+							<field name="platform_account_id" string="账号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="start_time" string="直播开始时间"/>
+							<field name="end_time" string="直播结束时间"/>
+                            <field name="live_time" string="直播时长（分钟）"/>
+						</group>
+						<group col="4" string="成交数据">
+							<field name="GMV" string="GMV"/>
+							<field name="volume_transaction_order" string="成交订单量"/>
+							<field name="GPM" string="千次成交金额GPM"/>
+							<field name="KDJ" string="客单价"/>
+							<field name="ZHL" string="转化率"/>
+							<field name="UVJZ" string="uv价值"/>
+							<field name="pay_roi" string="付费roi"/>
+							<field name="all_those_roi" string="全场roi"/>
+						</group>
+
+						<group col="4" string="流量情况">
+							<field name="watch_number" string="观看人次"/>
+							<field name="number_peaks" string="人数峰值"/>
+							<field name="avg_number" string="平均在线人数"/>
+							<field name="exposure_number" string="直播间曝光次数"/>
+							<field name="exposure_people" string="直播间曝光人数"/>
+						</group>
+
+						<group col="4" string="转化数据">
+							<field name="BGJRL" string="曝光进入率"/>
+							<field name="JRSPBGL" string="进入商品曝光率"/>
+							<field name="SPBGDJL" string="商品曝光点击率"/>
+							<field name="BGCJZHL" string="曝光成交转化率"/>
+
+						</group>
+
+						<group col="4" string="自然流量来源">
+							<field name="recommend_feed" string="推荐feed"/>
+							<field name="live_plaza" string="直播广场"/>
+							<field name="personal_homepage" string="个人主页"/>
+							<field name="short_video_flow" string="短视频流量"/>
+							<field name="search_data" string="搜索"/>
+							<field name="other_scenarios" string="其他场景"/>
+						</group>
+
+						<group col="4" string="付费流量">
+							<field name="qian_chuan" string="千川" widget="percentage"/>
+							<field name="qian_chuan_cost" string="千川费用"/>
+							<field name="shop_will_push_ratio" string="小店随心推" widget="percentage"/>
+							<field name="shop_will_push" string="小店随心推费用"/>
+							<field name="shake_plus_ratio" string="抖+" widget="percentage"/>
+							<field name="shake_plus" string="抖+费用"/>
+						</group>
+
+						<group col="4">
+						<field name="percentage_paid_traffic" string="付费流量占比"/>
+						</group>
+
+						<group col="4" string="互动情况">
+							<field name="XZFSS" string="新增粉丝数"/>
+							<field name="ZFL" string="转粉率"/>
+							<field name="XRFSTS" string="新人粉丝团人数"/>
+							<field name="ZTL" string="转团率"/>
+							<field name="PJTLSC" string="平均停留时长（秒）"/>
+							<field name="PLCS" string="评论次数"/>
+							<field name="DZL" string="点赞量（万）"/>
+							<field name="FXCS" string="分享次数"/>
+						</group>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <!-- 动作 -->
+        <record id="ec_live_data_collect_action" model="ir.actions.act_window">
+            <field name="name">直播数据汇总</field>
+            <field name="res_model">ec_live_data_collect</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+    </data>
+</odoo>

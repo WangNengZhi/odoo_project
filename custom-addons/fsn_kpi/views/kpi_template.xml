@@ -1,0 +1,299 @@
+<odoo>
+    <data>
+
+		<record model="ir.ui.view" id="special_kpi_line_template_tree">
+			<field name="name">后整_专机_KPI_模板</field>
+			<field name="model">special_kpi_line_template</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom">
+					<field name="fsn_kpi_job" string="岗位" readonly="1" force_save="1"/>
+					<field name="sequence" string="序号"/>
+					<field name="assessment_project" string="考核项目"/>
+					<field name="assessment_content" string="考核内容"/>
+					<field name="assessment_standard" string="考核标准"/>
+					<field name="score" string="分值"/>
+
+					<field name="calculation" string="计算方式"/>
+					<!-- <field name="inspection_people" string="考核人" options="{'no_create': True, 'no_open': True}"/> -->
+					<!-- <field name="evaluation_score" string="考核评分"/> -->
+				</tree>
+			</field>
+		</record>
+
+		<!-- 后整_专机_KPI_模板============================================================================= -->
+		
+        <record model="ir.actions.act_window" id="special_kpi_line_template_action">
+			<field name="name">后整_专机_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '专机')]</field>
+            <field name="context">{'default_fsn_kpi_job': '专机'}</field>
+        </record>
+
+        <menuitem name="后整_专机_KPI_模板"
+            id="special_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="special_kpi_line_template_action"
+            sequence="10"
+            />
+
+		<!-- 技术部_样衣员_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="sample_emp_kpi_line_template_action">
+			<field name="name">技术部_样衣员_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '样衣员')]</field>
+            <field name="context">{'default_fsn_kpi_job': '样衣员'}</field>
+        </record>
+
+        <menuitem name="技术部_样衣员_KPI_模板"
+            id="sample_emp_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="sample_emp_kpi_line_template_action"
+            sequence="20"
+            />
+
+		<!-- 技术部_技术主管_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="technical_director_kpi_line_template_action">
+			<field name="name">技术部_技术主管_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '技术主管')]</field>
+            <field name="context">{'default_fsn_kpi_job': '技术主管'}</field>
+        </record>
+
+        <menuitem name="技术部_技术主管_KPI_模板"
+            id="technical_director_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="technical_director_kpi_line_template_action"
+            sequence="30"
+            />
+
+		<!-- 技术部_IE_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="ie_kpi_line_template_action">
+			<field name="name">技术部_IE_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', 'IE')]</field>
+            <field name="context">{'default_fsn_kpi_job': 'IE'}</field>
+        </record>
+
+        <menuitem name="技术部_IE_KPI_模板"
+            id="ie_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="ie_kpi_line_template_action"
+            sequence="35"
+            />
+
+		<!-- 技术部_模板师_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="template_molecule_kpi_line_template_action">
+			<field name="name">技术部_模板师_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '模板师')]</field>
+            <field name="context">{'default_fsn_kpi_job': '模板师'}</field>
+        </record>
+
+        <menuitem name="技术部_模板师_KPI_模板"
+            id="template_molecule_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="template_molecule_kpi_line_template_action"
+            sequence="35"
+            />
+
+
+		<!-- 技术部_机修_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="machine_fix_kpi_line_template_action">
+			<field name="name">技术部_机修_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '机修')]</field>
+            <field name="context">{'default_fsn_kpi_job': '机修'}</field>
+        </record>
+
+        <menuitem name="技术部_机修_KPI_模板"
+            id="machine_fix_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="machine_fix_kpi_line_template_action"
+            sequence="36"
+            />
+
+		<!-- 办公室_办公室主任_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="office_dir_kpi_line_template_action">
+			<field name="name">办公室_办公室主任_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '办公室主任')]</field>
+            <field name="context">{'default_fsn_kpi_job': '办公室主任'}</field>
+        </record>
+
+        <menuitem name="办公室_办公室主任_KPI_模板"
+            id="office_dir_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="office_dir_kpi_line_template_action"
+            sequence="40"
+            />
+
+		<!-- 办公室_理单员_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="collating_bills_kpi_line_template_action">
+			<field name="name">办公室_理单员_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '理单员')]</field>
+            <field name="context">{'default_fsn_kpi_job': '理单员'}</field>
+        </record>
+
+        <menuitem name="办公室_理单员_KPI_模板"
+            id="collating_bills_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="collating_bills_kpi_line_template_action"
+            sequence="45"
+            />
+
+		<!-- 办公室_人事专员_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="office_hr_kpi_line_template_action">
+			<field name="name">办公室_人事专员_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '人事专员')]</field>
+            <field name="context">{'default_fsn_kpi_job': '人事专员'}</field>
+        </record>
+
+        <menuitem name="办公室_人事专员_KPI_模板"
+            id="office_hr_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="office_hr_kpi_line_template_action"
+            sequence="50"
+            />
+
+
+		<!-- 办公室_人事主管_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="office_hh_kpi_line_template_action">
+			<field name="name">办公室_人事主管_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '人事主管')]</field>
+            <field name="context">{'default_fsn_kpi_job': '人事主管'}</field>
+        </record>
+
+        <menuitem name="办公室_人事主管_KPI_模板"
+            id="office_hh_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="office_hh_kpi_line_template_action"
+            sequence="60"
+            />
+
+
+		<!-- 生产部_车间主任_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="workshop_dir_kpi_line_template_action">
+			<field name="name">生产部_车间主任_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '车间主任')]</field>
+            <field name="context">{'default_fsn_kpi_job': '车间主任'}</field>
+        </record>
+
+        <menuitem name="生产部_车间主任_KPI_模板"
+            id="workshop_dir_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="workshop_dir_kpi_line_template_action"
+            sequence="70"
+            />
+
+		<!-- 生产部_包装_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="packaging_kpi_line_template_action">
+			<field name="name">生产部_包装_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '包装')]</field>
+            <field name="context">{'default_fsn_kpi_job': '包装'}</field>
+        </record>
+
+        <menuitem name="生产部_包装_KPI_模板"
+            id="packaging_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="packaging_kpi_line_template_action"
+            sequence="80"
+            />
+
+		<!-- 生产部_大烫_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="big_iron_kpi_line_template_action">
+			<field name="name">生产部_大烫_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '大烫')]</field>
+            <field name="context">{'default_fsn_kpi_job': '大烫'}</field>
+        </record>
+
+        <menuitem name="生产部_大烫_KPI_模板"
+            id="big_iron_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="big_iron_kpi_line_template_action"
+            sequence="90"
+            />
+
+		<!-- 生产部_小烫_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="small_iron_kpi_line_template_action">
+			<field name="name">生产部_小烫_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '小烫')]</field>
+            <field name="context">{'default_fsn_kpi_job': '小烫'}</field>
+        </record>
+
+        <menuitem name="生产部_小烫_KPI_模板"
+            id="small_iron_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="small_iron_kpi_line_template_action"
+            sequence="100"
+            />
+
+		<!-- 生产部_车工_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="lathe_worker_kpi_line_template_action">
+			<field name="name">生产部_车工_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '车工')]</field>
+            <field name="context">{'default_fsn_kpi_job': '车工'}</field>
+        </record>
+
+        <menuitem name="生产部_车工_KPI_模板"
+            id="lathe_worker_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="lathe_worker_kpi_line_template_action"
+            sequence="110"
+            />
+
+		<!-- 生产部_组长_KPI_模板============================================================================= -->
+
+        <record model="ir.actions.act_window" id="group_leader_kpi_line_template_action">
+			<field name="name">生产部_组长_KPI_模板</field>
+			<field name="res_model">special_kpi_line_template</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('fsn_kpi_job', '=', '组长')]</field>
+            <field name="context">{'default_fsn_kpi_job': '组长'}</field>
+        </record>
+
+        <menuitem name="生产部_组长_KPI_模板"
+            id="group_leader_kpi_line_template_menu"
+            parent="kpi_template_menu"
+            action="group_leader_kpi_line_template_action"
+            sequence="120"
+            />
+		
+    </data>
+</odoo>

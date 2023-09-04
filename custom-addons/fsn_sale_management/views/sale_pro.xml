@@ -1,0 +1,34 @@
+
+<odoo>
+    <data>
+
+        <!-- <record id="building_view_sale_pro_form2" model="ir.ui.view">
+            <field name="name">销售订单继承</field>
+            <field name="model">sale_pro.sale_pro</field>
+            <field name="inherit_id" ref="sale_pro.view_sale_pro_form2"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@name='sale_pro_line_ids_page']" position="after">
+                    <page string="销售单据">
+                        <field name="sale_order_ids">
+                            <tree create="0" edit="0" delete="0">
+                                <field name="name" string="销售单据编号"/>
+                                <field name="date_order" string="单据日期"/>
+                                <field name="partner_id" string="客户"/>
+                                <field name="user_id" string="销售员"/>
+                                <field name="fsn_purchase_order_number" string="采购单号"/>
+                                <field name="fsn_customer_order_date" string="下单日期"/>
+                                <field name="fsn_delivery_date" string="合同日期"/>
+                                <field name="fsn_order_category" string="订单类别" decoration-success="fsn_order_category == '成衣采购'" decoration-info="fsn_order_category == '承揽加工'"/>
+                            </tree>
+                            <form>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
+
+            </field>
+        </record> -->
+
+    </data>
+</odoo>

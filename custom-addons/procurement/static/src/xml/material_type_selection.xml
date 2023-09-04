@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="procurement_material_type_selection" xml:space="preserve">
+    <div t-name="procurement_material_type_selection">
+        <select id="material_type_selection" >
+            <option >面料</option>
+            <option >物料 </option>
+            <option >特殊工艺 </option>
+        </select>
+    </div>
+</templates>

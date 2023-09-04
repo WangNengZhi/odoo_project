@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="repair_stranded_tree">
+			<field name="name">返修滞留</field>
+			<field name="model">repair_stranded</field>
+			<field name="arch" type="xml">
+				<tree editable="top" create="0" edit="0" delete="0">
+                    <header>
+                        <!-- <button name="test" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+					<field name="date" string="日期"/>
+					<field name="order_number" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="type" string="加工类别"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="order_quantity" string="订单数量"/>
+					<field name="cut_quantity" string="裁剪数量"/>
+					<field name="outsource_delivery_number" string="外发交货数"/>
+					<field name="workshop_hand_number" string="车间上交件数"/>
+					<field name="dg_number" string="吊挂件数（车间）"/>
+					<field name="put_number" string="入库件数"/>
+					<field name="workshop_stranded_number" string="车间滞留数（吊挂件数-车间上交数+当日吊挂返修件数-当日吊挂修复件数）"/>
+					<field name="after_road_stranded_number" string="后道滞留数（总滞留数-车间滞留数）"/>
+					<field name="stranded" string="总滞留件数（车间吊挂-入库+外发交货数）"/>
+					<field name="dg_behind_number" string="吊挂件数（后道）"/>
+					<field name="intraday_dg_behind_number" string="当日吊挂件数（后道）"/>
+					<field name="intraday_dg_rework_number" string="当日吊挂返修件数"/>
+					<field name="intraday_dg_repair_number" string="当日吊挂修复件数"/>
+					<field name="no_examine_number" string="未查件数（车间吊挂-后道吊挂）"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="repair_stranded_actions" model="ir.actions.act_window">
+            <field name="name">返修滞留</field>
+            <field name="res_model">repair_stranded</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

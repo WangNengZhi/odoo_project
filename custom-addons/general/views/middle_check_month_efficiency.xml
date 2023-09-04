@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+		<record id="middle_check_month_efficiency_tree" model="ir.ui.view">
+			<field name="name">中查月效率</field>
+			<field name="model">middle_check_month_efficiency</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+                    <header>
+                        <button name="update_middle_check_month_efficiency" type="object" string="刷新" class="btn-primary"/>
+                    </header>
+					<field name="month" string="月份"/>
+                    <field name="group" string="组别"/>
+                    <field name="invest" string="中查"/>
+                    <field name="style_number" string="款号"/>
+                    <!-- <field name="general_number" string="总检查货数量"/> -->
+                    <!-- <field name="quadratic_repair_number" string="总检二次返修数量"/> -->
+                    <!-- <field name="quadratic_general_number" string="总检二次查货数量"/> -->
+                    <field name="middle_repairs_number" string="中查返修数"/>
+                    <field name="middle_check_number" string="中查查货数"/>
+                    <field name="manual_omission_ratio" string="手动返修率" widget="percentage"/>
+                    <field name="repair_number" string="总检返修数量"/>
+                    <field name="manual_repair_ratio" string="手动漏查率" widget="percentage"/>
+
+                    <field name="deliveries_number" string="组上交货件数"/>
+                    <field name="dg_group_number" string="吊挂生产件数"/>
+                    <field name="auto_repair_number" string="返修件数（吊挂生产-组上交货）"/>
+                    <field name="auto_repair_ratio" string="自动返修率" widget="percentage"/>
+
+                    <field name="dg_repair_number" string="吊挂漏查数"/>
+                    <field name="dg_rate_repair" string="吊挂漏查率" widget="percentage"/>
+                    <field name="punishment" string="扣款"/>
+				</tree>
+			</field>
+		</record>
+        <record id="middle_check_month_efficiency_actions" model="ir.actions.act_window">
+            <field name="name">中查月效率</field>
+            <field name="res_model">middle_check_month_efficiency</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+
+    </data>
+</odoo>

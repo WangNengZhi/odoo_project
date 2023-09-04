@@ -1,0 +1,34 @@
+<odoo>
+    <data>
+
+		<record model="ir.ui.view" id="room_allocation_tree">
+			<field name="name">宿舍楼号</field>
+			<field name="model">room_allocation</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+                    <header>
+                        <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+
+					<field name="dormitory_park_id" string="园区" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="dormitory_building_number_id" string="楼号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="room_config_id" string="房间号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="bed_no" string="床号"/>
+					<field name="employee_id" string="员工" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="work_type" string="工种/合同"/>
+					<field name="job_id" string="岗位" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="stay_datetime" string="入住时间"/>
+					<field name="check_out_datetime" string="退宿时间"/>
+					<field name="is_the_key" string="是否有钥匙"/>
+				</tree>
+			</field>
+		</record>
+        <!-- 动作 -->
+        <record id="room_allocation_action" model="ir.actions.act_window">
+            <field name="name">住宿分配</field>
+            <field name="res_model">room_allocation</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

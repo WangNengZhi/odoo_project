@@ -1,0 +1,108 @@
+<odoo>
+    <data>
+
+        <!-- tree -->
+		<record model="ir.ui.view" id="outsource_fabirc_production_tree">
+			<field name="name">面辅料生产任务tree</field>
+			<field name="model">outsource_fabirc_production</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <header>
+                    </header>
+					<field name="date" string="日期"/>
+					<field name="responsible_person" string="负责人"/>
+                    <field name="voucher_number" string="制单编号"/>
+					<field name="style_number" string="款号"/>
+                    <field name="style_name" string="款式名称"/>
+                    <field name="place_order_date" string="下单日期"/>
+                    <field name="manufacturer" string="生产厂家"/>
+                    <field name="total_number" string="总件数"/>
+                    <field name="verifier" string="审核"/>
+                    <field name="store_issue" string="发料"/>
+                    <field name="picking" string="领料"/>
+                    <field name="note" string="备注"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- form -->
+		<record id="outsource_fabirc_production_form" model="ir.ui.view">
+			<field name="name">面辅料生产任务form</field>
+			<field name="model">outsource_fabirc_production</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+
+					</header>
+                    <sheet>
+						<div style="text-align: center"><h1>面辅料生产任务</h1></div>
+                        <group col="4">
+                            <field name="date" string="日期"/>
+                            <field name="voucher_number" string="制单编号"/>
+                            <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="style_name" string="款式名称"/>
+                            <field name="place_order_date" string="下单日期"/>
+                            <field name="manufacturer" string="生产厂家"/>
+                            <field name="total_number" string="总件数"/>
+							<field name="verifier" string="审核"/>
+							<field name="store_issue" string="发料"/>
+							<field name="picking" string="领料"/>
+                        </group>
+                        <group col="4">
+                            <field name="responsible_person" string="负责人" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="note" string="备注"/>
+                        </group>
+						<notebook>
+							<page string="尺码明细">
+								<field name="ofp_size_line_ids" string="尺码明细">
+									<tree editable="bottom">
+										<field name="size" string="尺码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="number" string="件数"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+							<page string="物料明细">
+								<field name="ofp_material_line_ids" string="物料明细">
+									<tree editable="bottom">
+										<field name="material_properties" string="物料属性"/>
+                                        <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="material_number" string="物料编号"/>
+                                        <field name="material_name" string="物料名称"/>
+                                        <field name="material_color" string="物料颜色" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="specifications" string="门幅/规格"/>
+                                        <field name="single_dosage" string="单件用量"/>
+                                        <field name="unit" string="单位"/>
+                                        <field name="loss" string="损耗（%）"/>
+                                        <field name="accelerated" string="放量"/>
+                                        <field name="plan_number" string="计划数量"/>
+                                        <field name="actual_release_number" string="实发数量"/>
+                                        <field name="note" string="备注"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+						</notebook>
+                        <group col="6">
+							<field name="verifier" string="审核"/>
+							<field name="store_issue" string="发料"/>
+							<field name="picking" string="领料"/>
+                        </group>
+                    </sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="outsource_fabirc_production_actions">
+            <field name="name">外发面辅料生产任务</field>
+            <field name="res_model">outsource_fabirc_production</field>
+            <field name="view_mode">tree,form</field>
+		</record>
+
+    </data>
+</odoo>

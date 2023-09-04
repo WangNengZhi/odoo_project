@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="fsn_sales_return_tree">
+			<field name="name">销售退货</field>
+			<field name="model">fsn_sales_return</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+                    <field name="date" string="日期"/>
+                    <field name="customer_id" string="客户" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="employee_id" string="经手人" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="order_id" string="订单号" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="number" string="件数"/>
+                    <field name="quality" string="产品质量"/>
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.actions.act_window" id="fsn_sales_return_action">
+            <field name="name">销售退货</field>
+            <field name="res_model">fsn_sales_return</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

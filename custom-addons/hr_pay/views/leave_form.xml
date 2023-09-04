@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+        <record id="leave_form_tree" model="ir.ui.view">
+            <field name="name">外出申请单</field>
+            <field name="model">leave.form</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="员工"/>
+                    <field name="department_id" string="部门"/>
+                    <field name="application_time" string="申请日期"/>
+                    <field name="time_out" string="开始时间"/>
+                    <field name="time_end" string="结束时间"/>
+                    <field name="send_car" string="是否派车"/>
+                    <field name="person_charge" string="负责人"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="leave_form_form" model="ir.ui.view">
+            <field name="name">外出申请单</field>
+            <field name="model">leave.form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+						<div style="text-align: center"><h1>外出申请单</h1></div>
+                        <group col="4">
+                            <field name="name" string="员工" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="department_id" string="部门"/>
+                            <field name="application_time" string="申请日期"/>
+                            <field name="send_car" string="是否派车"/>
+                            <field name="person_charge" string="负责人" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <group col="4" string="工作内容">
+                            <field name="time_out" string="开始时间"/>
+                            <field name="time_end" string="结束时间"/>
+                            <field name="customer" string="客户"/>
+                            <field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="number" string="数量"/>
+                            <field name="job_content" string="工作内容描述"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="leave_form_action">
+            <field name="name">外出申请单</field>
+            <field name="res_model">leave.form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="leave_form_menu"
+            name="外出申请单"
+            parent="menu_attend_attend1"
+            action="leave_form_action"
+            sequence="50"/>
+    </data>
+</odoo>

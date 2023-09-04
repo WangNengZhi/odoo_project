@@ -1,0 +1,95 @@
+<odoo>
+    <data>
+        <record id="fsn_hr_employee_barcode" model="ir.ui.view">
+            <field name="name">FSN员工模块扩展</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='barcode']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+
+                <xpath expr="//group[@name='identification_group']" position="after">
+                    <group string='企业微信扩展' name="wx_extension">
+                        <field name="enterprise_wechat_account" string="企业微信账号"/>
+                    </group>
+                </xpath>
+
+
+				<xpath expr="//field[@name='coach_id']" position="after">
+					<field name="staff_level" string="员工等级"/>
+                </xpath>
+
+
+				<xpath expr="//field[@name='month_provident_fund_start']" position="after">
+                    <hr/>
+                        <field name="attendance_bonus_type" string="全勤类型"/>
+                        <field name="attendance_bonus_limit" string="全勤奖额度"/>
+
+                        <field name="meal_allowance_type" string="饭补类型"/>
+                        <field name="meal_allowance_limit" string="饭补额度"/>
+
+                        <field name="housing_subsidy_type" string="房补类型"/>
+                        <field name="housing_subsidy_limit" string="房补额度"/>
+                        <field name="start_paying_social_security_month" string="开始缴纳社保月份" readonly="1" force_save="1"/>
+                        <field name="is_social_security" string="社保"/>
+                        <field name="is_inductrial_injury_insurance" string="工伤险"/>
+                    <hr/>
+                </xpath>
+
+
+				<xpath expr="//field[@name='fixed_salary']" position="after">
+					<field name="performance_money" string="绩效奖金"/>
+                </xpath>
+
+				<xpath expr="//field[@name='job_title']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='job_id']" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
+                </xpath>
+				<xpath expr="//field[@name='company_id']" position="after">
+                    <field name="job_id" string="岗位" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="inherit_hr_work_from_view" model="ir.ui.view">
+            <field name="name">FSN员工模块扩展</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hpro.hr_work_from_view"/>
+            <field name="arch" type="xml">
+
+				<xpath expr="//field[@name='introducer']" position="after">
+					<field name="employee_handbook" string="员工手册"/>
+					<field name="performance_appraisal" string="绩效考核"/>
+					<field name="compensation_system" string="薪酬制度"/>
+					<field name="job_responsibility" string="岗位职责"/>
+
+					<field name="attendance_system" string="考勤制度"/>
+					<field name="dormitory_management" string="宿舍管理制度"/>
+					<field name="confidentiality_agreement" string="保密协议"/>
+					<field name="other_agreement" string="其他"/>
+                </xpath>
+
+				<xpath expr="//field[@name='is_delete_date']" position="after">
+					<field name="dimission_nature" string="离职性质" attrs="{'required': [('is_delete', '=', True)]}"/>
+                </xpath>
+
+				<xpath expr="//field[@name='full_time']" position="after">
+					<field name="academic_certificate" string="学历证明" widget="many2many_binary"/>
+                </xpath>
+
+				<xpath expr="//group[@name='work_permit']" position="after">
+                    <group string="特殊">
+                        <field name="disability_certificate" string="残疾证明" widget="many2many_binary"/>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+        
+    </data>
+</odoo>

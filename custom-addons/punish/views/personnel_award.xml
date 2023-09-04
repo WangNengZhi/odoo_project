@@ -1,0 +1,78 @@
+
+<odoo>
+  	<data>
+
+        <!-- tree -->
+		<record model="ir.ui.view" id="personnel_award_tree">
+			<field name="name">人事奖励</field>
+			<field name="model">personnel_award</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+                    <header>
+                         <button name="set_lock_state" type="object" string="审批通过" class="btn-primary"
+							context="{'lock_state': '已审批'}"
+                           
+                        />
+                        <button name="set_lock_state" type="object" string="审批回退" class="btn-danger"
+							context="{'lock_state': '未审批'}"
+                            
+                        />
+                        <!-- <button name="set_entry_date" type="object" string="测试按钮" class="btn-primary"/> -->
+                    </header>
+					<field name="emp_id" string="员工"/>
+					<field name="job_id" string="岗位"/>
+                    <field name="entry_date" string="入职日期"/>
+                    <field name="resignation_date" string="离职日期"/>
+                    <field name="working_time" string="在职时长(天)"/>
+                    <field name="satisfy_date" string="满30天日期"/>
+                    <field name="introducer" string="介绍人"/>
+                    <field name="lock_state" string="审批状态" decoration-info="lock_state == '未审批'" decoration-success="lock_state == '已审批'" widget="badge"/>
+					<!-- <field name="state" string="状态" decoration-info="state == '已离职'" decoration-success="state == '在职'" widget="badge"/> -->
+                    <!-- <field name="during_month_award_money" string="当月奖励金额"/> -->
+                    <!-- <field name="during_month_count_month" string="当前月份" optional="hide"/> -->
+                    <!-- <field name="last_month_award_money" string="上月奖励金额"/> -->
+                    <!-- <field name="award_end_month" string="奖励截至月份"/> -->
+                    <!-- <field name="is_award" string="奖励已截至"/> -->
+				</tree>
+			</field>
+		</record>
+
+        <record id="personnel_award_form" model="ir.ui.view">
+            <field name="name">人事奖励</field>
+            <field name="model">personnel_award</field>
+            <field name="arch" type="xml">
+                <form create="0" delete="0" edit="0">
+                    <sheet>
+						<group col="4">
+                            <field name="emp_id" string="员工" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="introducer" string="介绍人" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="lock_state" string="审批状态" decoration-info="lock_state == '未审批'" decoration-success="lock_state == '已审批'" widget="badge"/>
+						</group>
+						<notebook>
+							<page string="奖励明细">
+                                <field name="personnel_award_line_ids" string="奖励明细">
+                                    <tree editable="bottom" create="0" delete="0">
+                                        <field name="award_month" string="奖励月份"/>
+                                        <field name="award_money" string="奖励金额"/>
+                                    </tree>
+                                </field>
+							</page>
+						</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+		<!-- 动作 -->
+
+		<record model="ir.actions.act_window" id="personnel_award_actions">
+		<field name="name">人事奖励</field>
+		<field name="res_model">personnel_award</field>
+		<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- menu categories -->
+
+		<menuitem name="人事奖励" id="personnel_award_menu" parent="achievement_menu_root" action="personnel_award_actions" sequence="20"/>
+
+  	</data>
+</odoo>

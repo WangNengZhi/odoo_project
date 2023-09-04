@@ -1,0 +1,8 @@
+<odoo>
+    <data>
+        <record id="workshop_pie_chart_client_action" model="ir.actions.client">
+            <field name="name">车间效率饼图</field>
+            <field name="tag">workshop_pie_chart</field>
+        </record>
+    </data>
+</odoo>

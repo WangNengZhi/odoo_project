@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="outsourcing_wages_wizard_form" model="ir.ui.view">
+            <field name="name">外包计件工资计算</field>
+            <field name="model">outsourcing_wages_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4">
+                        <field name="contract" string="外包类型" readonly="1" force_save="1"/>
+                    </group>
+                    <group col="4">
+                        <!-- <field name="year_month" widget="fsn_month" string="月份"/> -->
+                        <field name="start_date" string="开始日期"/>
+                        <field name="end_date" string="结束日期"/>
+                    </group>
+                    <group col="4">
+                        <field name="employee_id" string="员工" attrs="{'required': [('contract', '=', '外包(计件)')], 'invisible': [('contract', '!=', '外包(计件)')]}" options="{'no_open': True, 'no_create': True}"/>
+                    </group>
+                    <footer>
+                        <button name="calculation_outsourcing_wages" type="object" string="确认" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

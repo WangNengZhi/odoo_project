@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <template id="assets_backend_gantetu" name="custom page assets" inherit_id="web.assets_backend">
+            <xpath expr="//script[last()]" position="after">
+
+                <script type="text/javascript" src="/gantetu/static/src/js/test.js"></script>
+                <!-- <script type="text/javascript" src="/suspension_system/static/src/js/fp_position_setting.js"></script> -->
+                <!-- <link rel="stylesheet" href="/odoo_model/static/src/lib/layui/css/layui.css"></link> -->
+                <!-- <script type="text/javascript" src="/suspension_system/static/src/js/get_details_data.js"></script> -->
+
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="cutting_bed_production_tree">
+            <field name="name">裁床产量</field>
+            <field name="model">cutting_bed_production</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <header>
+                        <button name="set_lock_state" type="object" string="审批通过" class="btn-primary"
+							context="{'lock_state': '已审批'}"
+                            groups="fsn_base.fsn_super_user_group"
+                        />
+                        <button name="set_lock_state" type="object" string="审批回退" class="btn-danger"
+							context="{'lock_state': '未审批'}"
+                            groups="fsn_base.fsn_super_user_group"
+                        />
+					</header>
+                    <field name="planning_slot_id" string="每日计划" invisible="1"/>
+                    <field name="date" string="日期" required="1" attrs="{'readonly':[('planning_slot_id', '!=', False)]}"/>
+                    <field name="order_number" string="订单号" required="1" attrs="{'readonly':[('planning_slot_id', '!=', False)]}" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="style_number" string="款号" required="1" attrs="{'readonly':[('planning_slot_id', '!=', False)]}" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="product_size" string="尺码" required="1" attrs="{'readonly':[('planning_slot_id', '!=', False)]}" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="plan_productionp" string="计划产量" attrs="{'readonly':[('planning_slot_id', '!=', False)]}"/>
+                    <field name="plan_output_value" string="计划产值"/>
+                    <field name="complete_productionp" string="完成产量"/>
+                    <field name="plan_complete_productionp" string="完成产值"/>
+                    <field name="lock_state" string="审批状态" decoration-info="lock_state == '未审批'" decoration-success="lock_state == '已审批'" widget="badge"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="cutting_bed_production_action">
+            <field name="name">裁床产量</field>
+            <field name="res_model">cutting_bed_production</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

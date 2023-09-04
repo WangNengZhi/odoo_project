@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="no_attendance_record_tree">
+			<field name="name">每日缺勤统计表</field>
+			<field name="model">no_attendance_record</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <field name="date" string="日期"/>
+                    <field name="employee" string="员工"/>
+                    <field name="department_id" string="部门"/>
+                    <field name="check_sign_time" string="打卡记录"/>
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.actions.act_window" id="action_no_attendance">
+            <field name="name">每日缺勤统计表</field>
+            <field name="res_model">no_attendance_record</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+    </data>
+</odoo>

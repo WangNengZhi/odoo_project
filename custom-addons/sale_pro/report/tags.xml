@@ -1,0 +1,92 @@
+<odoo>
+	<data>
+        <!-- 纸张 -->
+        <!-- <record id="fsn_kpi_paper" model="report.paperformat">
+            <field name="name">FSN_KPI</field>
+            <field name="default" eval="True"/>
+            <field name="format">Ledger</field>
+            <field name="page_height">210</field>
+            <field name="page_width">297</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">80</field>
+        </record> -->
+
+        <record id="action_report_fsn_tags" model="ir.actions.report">
+            <field name="name">吊牌打印</field>
+            <field name="model">ib.detail</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">sale_pro.fsn_tags</field>
+            <field name="report_file">sale_pro.fsn_tags</field>
+            <!-- <field name="paperformat_id" ref="fsn_kpi.paperformat_batch_deposit"/> -->
+            <field name="binding_model_id" ref="model_ib_detail"/>
+        </record>
+
+
+        <template id="fsn_tags">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="o">
+
+
+                    <div style="text-align: center;">
+                        <table class="table table-condensed" style="border-bottom: 0px solid white !important; margin: auto;">
+                            <tr>
+                            <th style="text-align: center;">
+                                <span class="text-center o_mrp_report_info" style="font-size:5.5em;">合格证</span>
+                            </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="font-size:3.5em;">
+                                        <span class="text-center o_mrp_report_info">商品名称：连衣裙</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="font-size:3.5em;">
+                                        <span class="text-center o_mrp_report_info">款    号：M534468135</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="font-size:3.5em;">
+                                        <span class="text-center o_mrp_report_info">颜    色：黑色</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="font-size:3.5em;">
+                                        <span class="text-center o_mrp_report_info">零 售 价：1100.00元</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="font-size:3.5em;">
+                                        <span class="text-center o_mrp_report_info">产    地：杭州</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; vertical-align: middle;" class="col-5">
+                                    <img t-if="o.barcode_data" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.barcode_data, 600, 150)" style="width:100%;height:20%;"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </t>
+            </t>
+
+        </template>
+
+    </data>
+</odoo>

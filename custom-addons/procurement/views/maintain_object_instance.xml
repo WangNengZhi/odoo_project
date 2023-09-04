@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        <record id="maintain_object_instance_sequence" model="ir.sequence">
+            <field name="name">机修采购物品编码</field>
+            <field name="code">maintain_object_instance</field>
+            <field name="prefix">SHB%(year)s%(month)s%(day)s</field>
+            <field name="padding">5</field>
+            <field name="use_date_range" eval="True"/>
+            <field name="company_id" eval="False"/>
+        </record>
+
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="maintain_object_instance_tree">
+			<field name="name">机修采购物品编码</field>
+			<field name="model">maintain_object_instance</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+                    <field name="material_code" string="物品编码" readonly="1"/>
+                    <field name="material_name" string="物品名称"/>
+                    <field name="supplier_supplier_id" string="供应商" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="specification" string="规格"/>
+                    <field name="unit" string="单位"/>
+                    <field name="is_consumables" string="是否消耗品"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="maintain_object_instance_action">
+			<field name="name">机修采购物品编码</field>
+			<field name="res_model">maintain_object_instance</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+    </data>
+</odoo>

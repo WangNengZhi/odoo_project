@@ -1,0 +1,306 @@
+<odoo>
+    <data>
+
+        <record id="time_horizon_wizard_form" model="ir.ui.view">
+            <field name="name">正常薪资设置</field>
+            <field name="model">time_horizon_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4" string="时间范围设置（无特殊要求，不必设置时间范围！）">
+                        <field name="start_time" string="开始时间"/>
+                        <field name="end_time" string="结束时间"/>
+                    </group>
+                    <group col="4" string="正常薪资计算方式">
+                        <field name="calculation" string="计算方式" required="1"/>
+                    </group>
+
+                    <footer>
+                        <button name="action_time_horizon" type="object" string="确认" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="time_horizon_wizard_action" model="ir.actions.act_window">
+            <field name="name">正常薪资设置</field>
+            <field name="res_model">time_horizon_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <!-- <field name="binding_model_id" ref="model_salary"/>
+            <field name="binding_view_types">list</field> -->
+        </record>
+
+        <record id="view_tree_salary_view" model="ir.ui.view">
+            <field name="name">薪酬管理</field>
+            <field name="model">salary</field>
+            <field name="arch" type="xml">
+                <tree decoration-bf="is_delete_date!=False">
+                    <header>
+                        <!-- <button name="set_compensation_statistics_id" type="object" string="测试按钮" class="btn-info" confirm='测试按钮'/> -->
+                        <button name="attendance_days_refresh" type="object" string="应出勤天数刷新" class="btn-primary"/>
+                        <button name="punch_in_machine_refresh" type="object" string="实出勤刷新" class="btn-info"/>
+                        <!-- <button name="current_salary_refresh" type="object" string="正常薪资刷新" class="btn-primary"/> -->
+                        <button name="%(salary_management.time_horizon_wizard_action)d" string="正常薪资刷新" type="action" class="btn-primary"/>
+                        <button name="allowance_refresh" type="object" string="津贴补助刷新" class="btn-info"/>
+                        <button name="set_deduct_money" type="object" string="各项扣款刷新" class="btn-primary"/>
+                        <button name="set_performance_pay" type="object" string="绩效工资刷新" class="btn-info"/>
+                        <button name="dormitory_salary_refresh" type="object" string="宿舍费用刷新" class="btn-primary"/>
+                        <button name="set_advanced" type="object" string="预支工资刷新" class="btn-info"/>
+                        <button name="social_security_refresh" type="object" string="社保刷新" class="btn-primary"/>
+                        <button name="set_month_workpiece_ratio" type="object" string="月平均效率计算" class="btn-info"/>
+                        <button name="set_confirm" type="object" string="确认" class="btn-primary"  groups='salary_management.fsn_salary_sheet_group'/>
+                        <button name="generate_salary_sheet" type="object" string="生成工资表" class="btn-info" groups='salary_management.fsn_salary_sheet_group'/>
+
+
+                    </header>
+                    <field name="date" string='月份' width="120px"/>
+
+                    <field name="name" string="员工"/>
+                    <field name="id_card" string="身份证号" optional="hide"/>
+                    <field name="first_level_department" string="部门"/>
+                    <field name="secondary_department" string='二级部门' optional="hide"/>
+                    <field name="job_id" string='岗位' optional="hide"/>
+                    <field name="contract" string="合同/工种"/>
+                    <field name="time_plan" string="出勤类型"/>
+                    <field name="entry_time" string='入职日期' optional="hide"/>
+                    <field name="whether_to_turn_positive" optional="hide" string='是否转正'/>
+                    <field name="turn_positive_time" string='转正时间' optional="hide"/>
+                    <field name="is_delete_date" string='离职日期' optional="hide"/>
+                    <field name="pay_now" optional="hide" string="正常薪资"/>
+
+                    <field name="should_attend" string='应出勤(天)'/>
+                    <field name="clock_in_time" string='实出勤(天)'/>
+                    <field name="should_attend_hours" string="应出勤(时)"/>
+
+                    <field name="leave_days" optional="hide" string='事假(时)'/>
+                    <field name="sick_leave_days" optional="hide" string='病假(时)'/>
+                    <field name="absenteeism_time" optional="hide" string='旷工时间（时)'/>
+                    <field name="matter_days" optional="hide" string='事假(天)'/>
+                    <field name="disease_days" optional="hide" string='病假(天)'/>
+                    <field name="absenteeism_days" optional="hide" string='旷工(天)'/>
+                    <field name="rest_time" optional="hide" string='休息时间(天)'/>
+
+                    <field name="work_time" string='在职天数(天)'/>
+                    <field name="actual_attendance" string='实出勤(时)'/>
+
+                    <field name="performance_pay" string="绩效工资" optional="hide"/>
+                    <field name="recruitment_reward" string="招聘奖金" optional="hide"/>
+                    <field name="job_allowance" string="春节补贴" optional="hide"/>
+                    <field name="overtime_pay" string="加班工资" optional="hide"/>
+                    <field name="overtime_allowance" string="加班补贴" optional="hide"/>
+                    <field name="social_security_allowance" string="社保津贴" optional="hide"/>
+                    <field name="rental_allowance" string="租房津贴" optional="hide"/>
+                    <field name="performance_ratio" string="绩效比例" optional="hide"/>
+                    <field name="performance_worker" string="应发绩效工资" optional="hide"/>
+                    <field name="perfect_attendance_award" string="全勤奖" optional="hide"/>
+                    <field name="meal_allowance" string="饭补" optional="hide"/>
+                    <field name="high_temperature_subsidy_or_other" string="高温补贴或其他" optional="hide"/>
+
+                    <field name="rice_tonic" string="饭补扣款" optional="hide"/>
+                    <field name="leave_deduction" string="事假扣款" optional="hide"/>
+                    <field name="sick_leave_deduction" string="病假扣款" optional="hide"/>
+                    <field name="absenteeism_deduction" string="旷工扣款" optional="hide"/>
+                    <field name="late_arrival_and_early_refund_deduction" string="迟到早退扣款" optional="hide"/>
+                    <field name="dormitory_water_and_electricity_deduction" string="宿舍水电扣款" optional="hide"/>
+                    <field name="other_deductions" string="其他扣款" optional="hide"/>
+                    <field name="blue_collar_apartment_dormitory_deposit_deduction" string="宿舍押金扣款" optional="hide"/>
+                    <field name="rent_deduction" string="房租扣款" optional="hide"/>
+
+                    <field name="pension_individual" string="养老(个人)" optional="hide"/>
+                    <field name="medical_personal" string="医疗（个人）" optional="hide"/>
+                    <field name="unemployed_individual" string="失业（个人）" optional="hide"/>
+                    <field name="provident_fund_deduction" string="公积金扣款" optional="hide"/>
+
+                    <field name="advanced" string="已预支" optional="hide"/>
+                    <field name="salary_payable1" string="应发工资1"/>
+
+                    <field name="dimission_subsidy" string="离职补贴" optional="hide"/>
+                    <field name="month_workpiece_ratio" string='自动月平均效率(%)' optional="hide"/>
+                    <field name="manual_month_workpiece_ratio" string='手工月平均效率(%)' optional="hide"/>
+                    <field name="customer_subsidy" string="客户补贴" optional="hide"/>
+                    <field name="salary_payable2" string="应发工资2"/>
+                    <field name="day_average_salary" string="日均工资" optional="hide"/>
+                    <field name="social_security_deductions" string="社保扣款" optional="hide"/>
+                    <field name="tax" string="个税" optional="hide"/>
+                    <field name="paid_wages" string="实发工资"/>
+                    <field name="state" string="状态" decoration-info="state == '未确认'" decoration-success="state == '已确认'" decoration-danger="state == '有更改'" widget="badge"/>
+                    <field name="confirm_date" string="确认时间"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_from_salary_view" model="ir.ui.view">
+            <field name="name">薪酬管理</field>
+            <field name="model">salary</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header id="actual_attendance">
+    <!--                        <button name="actual_attendance_refreshed" type="object" string="实出勤刷新" class="btn-primary" onclick="refreshed()"/>-->
+                            <!-- <button name="punch_in_machine_refresh" type="object" string="打卡机刷新" class="btn-primary" onclick="machine_refresh()"/> -->
+                    </header>
+                    <!-- <script>
+                        function machine_refresh(){
+                            alert('打卡刷新成功')
+                        }
+                    </script> -->
+                    <sheet>
+                        <h1 style="text-align:center">工资明细表</h1>
+                        <group col="4" string="基本信息">
+                            <field name="date" string="月份"/>
+                            <field name="name" options="{'no_create_edit': True, 'no_open': False, 'no_create': True}" string="员工"/>
+                            <field name="id_card" string="身份证号" optional="hide"/>
+                            <field name="first_level_department" readonly="1" force_save="1" string="一级部门"/>
+                            <field name="secondary_department" string="二级部门"/>
+                            <field name="job_id" string="岗位" options="{'no_create_edit': True, 'no_open': True, 'no_create': True}"/>
+                            <field name="contract" string="合同/工种"/>
+                            <field name="time_plan" string="出勤类型"/>
+                            <field name="entry_time" string='入职日期'/>
+                            <field name="whether_to_turn_positive" string="是否转正"/>
+                            <field name="turn_positive_time" string='转正时间'/>
+                            <field name="is_delete_date" string='离职日期'/>
+                            <field name="pay_now" string="正常薪资"/>
+                        </group>
+                        <group col="4" string="应出勤">
+                            <field name="should_attend" decoration-danger="should_attend == 0"/>
+                            <field name="should_attend_hours" string="应出勤(时)"/>
+                        </group>
+                        <group col="4" string="请假">
+
+                            <field name="leave_days" readonly="1" force_save='1'/>
+                            <field name="matter_days" optional="hide" string='事假(天)' readonly="1" force_save='1'/>
+                            <field name="sick_leave_days" readonly="1" force_save='1'/>
+                            <field name="disease_days" optional="hide" string='病假(天)' readonly="1" force_save='1'/>
+                            <field name="absenteeism_time"/>
+                            <field name="absenteeism_days" optional="hide" string='旷工(天)' readonly="1" force_save='1'/>
+
+                            <field name="rest_time"/>
+                        </group>
+                        <group col="4" string="实出勤">
+                            <field name="work_time" string='在职天数(天)'/>
+                            <field name="clock_in_time" readonly="1" force_save="1" string="实出勤(天)"/>
+                            <field name="actual_attendance" string="实出勤(时)"/>
+                        </group>
+                        <group col="4" string="补贴">
+                            <field name="performance_pay" string="绩效工资"/>
+                            <field name="recruitment_reward" string="招聘奖励"/>
+                            <field name="job_allowance"/>
+                            <field name="overtime_pay"/>
+                            <field name="overtime_allowance"/>
+                            <field name="social_security_allowance"/>
+                            <field name="rental_allowance"/>
+                            <field name="seniority_award"/>
+                            <field name="performance_ratio"/>
+                            <field name="performance_worker"/>
+                            <field name="perfect_attendance_award"/>
+                            <field name="high_temperature_subsidy_or_other"/>
+                        </group>
+                        <group col="4" string="扣款">
+                            <field name="rice_tonic" string="饭补扣款"/>
+                            <field name="leave_deduction"/>
+                            <field name="sick_leave_deduction"/>
+                            <field name="late_arrival_and_early_refund_deduction"/>
+                            <field name="dormitory_water_and_electricity_deduction"/>
+                            <field name="other_deductions"/>
+                            <field name="blue_collar_apartment_dormitory_deposit_deduction" readonly="1" force_save='1'/>
+                            <field name="rent_deduction" readonly="1" force_save='1'/>
+                        </group>
+                        <group col="4" string="应发工资1">
+                            <field name="advanced" string="已预支"/>
+                            <field name="salary_payable1" string="应发工资1"/>
+                            <field name="day_average_salary" string="日均工资"/>
+                            <field name="month_workpiece_ratio" string='自动月平均效率(%)' optional="hide"/>
+                            <field name="manual_month_workpiece_ratio" string='手工月平均效率(%)' optional="hide"/>
+                        </group>
+
+                        <group col="4" string="应发工资2">
+                            <field name="customer_subsidy" string="客户补贴"/>
+                            <field name="salary_payable2" string="应发工资2"/>
+                        </group>
+
+                        <group col="4" string="社保/税款">
+                            <field name="pension_individual" readonly="1" force_save='1'/>
+                            <field name="medical_personal" readonly="1" force_save='1'/>
+                            <field name="unemployed_individual" readonly="1" force_save='1'/>
+                            <field name="social_security_deductions" readonly="1" force_save='1'/>
+                            <field name="provident_fund_deduction" readonly="1" force_save='1'/>
+                            <field name="tax" string="个税"/>
+                        </group>
+                        <group col="4" string="实发工资">
+                            <field name="paid_wages" string="实发工资"/>
+                        </group>
+
+                    </sheet>
+                    <div class="oe_chatter">
+                        <!-- <field name="message_follower_ids"
+                            widget="mail_followers"/> -->
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+        <record id="view_tree_socail_base" model="ir.ui.view">
+            <field name="name">社会保障</field>
+            <field name="model">socail.base</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="base"/>
+                    <field name="pension"/>
+                    <field name="medical_treatment"/>
+                    <field name="unemployment"/>
+                    <field name="Provident_Fund_Base"/>
+                    <field name="provident_fund_ratio"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_form_socail_base" model="ir.ui.view">
+            <field name="name">社会保障</field>
+            <field name="model">socail.base</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <h1 style="text-align:center">社会保障</h1>
+                        <group col="4">
+                            <field name="base"/>
+                            <field name="Provident_Fund_Base"/>
+                            <field name="medical_treatment"/>
+                            <field name="unemployment"/>
+                            <field name="pension"/>
+                            <field name="provident_fund_ratio"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+        <act_window id="action_socail_base"
+                        name="社会保障"
+                        res_model="socail.base"
+                        view_mode="tree,form" />
+
+
+
+
+
+
+        <act_window id="action_salary"
+                        name="薪酬管理"
+                        res_model="salary"
+                        view_mode="tree,form" />
+
+
+    </data>
+</odoo>
+
+

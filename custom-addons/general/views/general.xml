@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_tree_two_general" model="ir.ui.view">
+        <field name="name">总检返修汇总表</field>
+        <field name="model">two.general</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="item_no"/>
+                <field name="general1"/>
+
+                <field name="order_number"/>
+                <field name="invest"/>
+                <field name="repair_total"/>
+                <field name="repair_rate"/>
+            </tree>
+        </field>
+    </record>
+    <!-- 指定graph视图 -->
+        <record id="two_general_graph" model="ir.ui.view">
+            <field name="name">总检返修汇总透视图</field>
+            <field name="model">two.general</field>
+            <field name="arch" type="xml">
+                <graph string="总检返修汇总">
+                    <field name="date" type="row" interval="day"/>
+                    <field name="invest" type="row"/>
+                    <field name="repair_rate" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+    <record id="view_tree_detail_detail" model="ir.ui.view">
+        <field name="name">中查返修汇总表</field>
+        <field name="model">detail.detail</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="invest"/>
+                <field name="item_no"/>
+                <field name="delivery_number"/>
+                <field name="check_number"/>
+                <field name="totle_repairs"/>
+                <field name="repair_rate"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_from_detail_detail" model="ir.ui.view">
+        <field name="name">中查返修汇总表</field>
+        <field name="model">detail.detail</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1 style="text-align:center">中查返修汇总表</h1>
+                    <group col="4">
+                        <field name="date"/>
+                        <field name="invest" options="{'no_create_edit': True, 'no_open': True}"/>
+                        <field name="item_no" options="{'no_create_edit': True, 'no_open': True}"/>
+                        <field name="delivery_number" readonly="1" force_save="1"/>
+                        <field name="check_number" readonly="1" force_save="1"/>
+                        <field name="totle_repairs" readonly="1" force_save="1"/>
+                        <field name="repair_rate" readonly="1" force_save="1"/>
+                    </group>
+                    <field name="invest_totle"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+      <!-- 指定graph视图 -->
+        <record id="general_genera_graph" model="ir.ui.view">
+            <field name="name">中查返修汇总透视图</field>
+            <field name="model">detail.detail</field>
+            <field name="arch" type="xml">
+                <graph string="中查返修汇总">
+                    <field name="date" type="row" interval="day"/>
+                    <field name="invest" type="row"/>
+                    <field name="repair_rate" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+
+
+    <record id="view_tree_statistics_table" model="ir.ui.view">
+        <field name="name">品控统计表（月）</field>
+        <field name="model">quality.control.statistics.table</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="group"/>
+                <field name="style_number"/>
+                <field name="intermediate_inspection_and_repair_rate"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_from_statistics_table" model="ir.ui.view">
+        <field name="name">品控统计表（月）</field>
+        <field name="model">quality.control.statistics.table</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="date"/>
+                        <field name="group"/>
+                        <field name="style_number"/>
+                        <field name="intermediate_inspection_and_repair_rate"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+     <act_window id="action_total_general"
+                name="总检"
+                res_model="general.general"
+                view_mode="tree" />
+
+    <act_window id="action_detail"
+                name="中查返修汇总表"
+                res_model="detail.detail"
+                view_mode="tree,form,graph"/>
+    <act_window id="action_two_gen"
+                name="总检返修汇总表"
+                res_model="two.general"
+                view_mode="tree,form,graph" />
+
+
+
+
+    <act_window id="action_statistics_table"
+                name="品控统计表（月）"
+                res_model="quality.control.statistics.table"
+                view_mode="tree,form" />
+
+
+
+</odoo>

@@ -1,0 +1,105 @@
+<odoo>
+    <data>
+        <!-- 搜索视图 -->
+        <record id="payroll2_search" model="ir.ui.view">
+            <field name="name">工资表搜索视图</field>
+            <field name="model">payroll2</field>
+            <field name="arch" type="xml">
+                <search>
+                    <!-- <field name="month" string="月份"/> -->
+                    <field name="employee_id" string="员工"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- tree -->
+        <record id="payroll2_tree" model="ir.ui.view">
+            <field name="name">工资表</field>
+            <field name="model">payroll2</field>
+            <field name="arch" type="xml">
+                <tree edit="0" create="0" decoration-bf="is_delete_date!=False">
+                    <header>
+
+                        <!-- <button name="test" type="object" string="测试按钮" class="btn-info"/> -->
+                        <!-- <button name="generate_true_salary_sheet" type="object" string="生成工资条" class="btn-info" groups='salary_management.fsn_salary_sheet_group'/> -->
+                        <button name="new_generate_true_salary_sheet" type="object" string="生成工资条" class="btn-info"/>
+                    </header>
+
+                    <field name="month" string="月份"/>
+                    <field name="employee_id" string="员工"/>
+                    <field name="first_level_department" string="部门"/>
+                    <field name="contract" string="工种"/>
+                    <field name="is_delete_date" string='离职日期' optional="hide"/>
+
+                    <field name="normal_working_days" string="正常工作天数"/>
+                    <field name="clock_in_time" string="实出勤（天)"/>
+                    <field name="work_time" string="在职时长(天)"/>
+                    <field name="regular_payroll" string="正常薪资"/>
+                    <field name="performance_pay" string="绩效工资"/>
+                    <field name="recruitment_reward" string="招聘奖金"/>
+
+                    <field name="rent_allowance" string="租房津贴"/>
+                    <field name="attendance_bonus" string="全勤奖"/>
+                    <field name="job_allowance" string="春节补贴"/>
+
+                    <field name="rice_tonic" string="饭补扣款"/>
+
+                    <field name="leave_days" string="事假时间(时)"/>
+                    <field name="leave_deduction" string="事假扣款"/>
+
+                    <field name="sick_leave_days" string="病假时间(时)"/>
+                    <field name="sick_leave_deduction" string="病假扣款"/>
+
+                    <field name="absenteeism_time" string="旷工时间（时)"/>
+                    <field name="absenteeism_deduction" string="旷工扣款"/>
+
+                    <field name="be_late_time" string="迟到早退时间(分)"/>
+                    <field name="late_arrival_and_early_refund_deduction" string="迟到早退扣款"/>
+
+                    <field name="dormitory_water_and_electricity_deduction" string="宿舍水电扣款"/>
+                    <field name="other_deductions" string="绩效扣除"/>
+                    <field name="rent_deduction" string="房租扣款"/>
+
+                    <field name="social_security_allowance" string="社保津贴"/>
+                    <field name="salary_payable" string="应发工资1"/>
+
+                    <field name="customer_subsidy" string="客户补贴"/>
+                    <field name="compensation" string="赔偿"/>
+
+                    <field name="performance_bonus" string="绩效奖金"/>
+                    <field name="commission_bonus" string="提成"/>
+
+                    <field name="salary_payable2" string="应发工资2"/>
+
+                    <field name="rent_deduction" string="房租扣款"/>
+                    <field name="rice_tonic" string="饭补扣款"/>
+                    <field name="dormitory_water_and_electricity_deduction" string="宿舍水电扣款"/>
+                    <field name="advance_salary" string="预支工资"/>
+
+                    <field name="salary_payable3" string="实发"/>
+
+                    <!-- <field name="social_security_deductions" string="社保扣款"/> -->
+                    <!-- <field name="tax" string="个税"/> -->
+
+                    <!-- <field name="paid_wages" string="实发工资"/> -->
+                    <field name="pension_individual" string="养老(个人)"/>
+                    <field name="medical_personal" string="医疗（个人）"/>
+                    <field name="unemployed_individual" string="失业（个人）"/>
+                    <field name="provident_fund_deduction" string="公积金扣款"/>
+                    <field name="social_security_deductions" string="社保扣款"/>
+                    <field name="tax" string="个税"/>
+                    <field name="paid_wages" string="实发2"/>
+                    <field name="is_grant" string="是否发放"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="payroll2_action">
+            <field name="name">工资表</field>
+            <field name="res_model">payroll2</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

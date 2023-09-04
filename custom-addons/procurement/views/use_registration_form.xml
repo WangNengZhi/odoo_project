@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="use_registration_form_tree">
+			<field name="name">固定资产使用登记表</field>
+			<field name="model">use_registration_form</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+                    <field name="date" string="日期"/>
+                    <field name="assert_code" string="资产选择（资产编码）" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="assert_name" string="资产名称"/>
+                    <field name="asset_type" string="资产类型"/>
+
+                    <field name="use_department" string="使用部门"/>
+                    <field name="recipients_people" string="使用人"/>
+                    <field name="acquisition_date" string="开始使用使用时间"/>
+                    <field name="expected_service_life" string="预计使用年限"/>
+                    <field name="on_state" string="使用状态"/>
+					<field name="mobile_registration" string="移动登记"/>
+					<field name="return_registration_date" string="归还登记日期"/>
+                </tree>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="use_registration_form_action">
+			<field name="name">固定资产使用登记表</field>
+			<field name="res_model">use_registration_form</field>
+			<field name="view_mode">tree</field>
+		</record>
+    </data>
+</odoo>

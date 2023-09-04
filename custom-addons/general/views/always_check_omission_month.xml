@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+
+		<record model="ir.ui.view" id="always_check_omission_details_month_tree">
+			<field name="name">总检漏查表(月:按款号)</field>
+			<field name="model">always_check_omission_details_month</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+                    <header>
+                        <!-- <button name="set_general_ids" type="object" string="刷新数据" class="btn-primary"/> -->
+                    </header>
+					<field name="month" string="月份"/>
+                    <field name="style_number_id" string="款号"/>
+                    <field name="always_check_principal" string="总检"/>
+                    <field name="repair_quantity" string="客仓返修数量"/>
+                    <field name="check_quantity" string="查货数量"/>
+                    <field name="repair_ratio" string="返修率" widget="progressbar"/>
+                    <field name="assess_index" string="考核"/>
+
+				</tree>
+			</field>
+		</record>
+
+        <record id="always_check_omission_details_month_actions" model="ir.actions.act_window">
+            <field name="name">总检漏查表(月:按款号)</field>
+            <field name="res_model">always_check_omission_details_month</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+
+    </data>
+</odoo>

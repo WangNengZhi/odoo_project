@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <menuitem name="设计部" id="fsn_design_department_menu_root"/>
+
+            <menuitem name="产品设计"
+                id="product_design_menu"
+                parent="fsn_design_department_menu_root"
+                action="product_design_action"
+                sequence="10"/>
+
+            <menuitem name="设计部绩效"
+                id="design_department_performance_menu"
+                parent="fsn_design_department_menu_root"
+                action="design_department_performance_action"
+                sequence="11"/>
+
+    </data>
+</odoo>

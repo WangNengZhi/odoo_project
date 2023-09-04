@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="deduct_money_setting_tree" model="ir.ui.view">
+            <field name="name">扣款设置</field>
+            <field name="model">deduct_money_setting</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="month" string="日期"/>
+                    <field name="absenteeism_deduct_money" string="旷工扣款设置"/>
+                    <field name="absenteeism_deduct_money_ratio" string="旷工扣款比例"/>
+
+                    <field name="matter_vacation_deduct_money" string="事假扣款设置"/>
+                    <field name="matter_vacation_deduct_money_ratio" string="事假扣款比例"/>
+
+                    <field name="sick_leave_deduct_money" string="病假扣款设置"/>
+                    <field name="sick_leave_deduct_money_ratio" string="病假扣款比例"/>
+
+                    <field name="be_late_deduct_money" string="迟到早退扣款设置"/>
+                    <field name="be_late_deduct_money_ratio" string="旷工迟到早退扣款比例扣款比例"/>
+
+                    <field name="is_dimission_subsidy" string="是否有离职补贴"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="deduct_money_setting_form" model="ir.ui.view">
+            <field name="name">扣款设置</field>
+            <field name="model">deduct_money_setting</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <h1 style="text-align:center">扣款设置</h1>
+                        <group col="4">
+                            <field name="month" string="日期"/>
+                        </group>
+                        <group col="4">
+                            <field name="absenteeism_deduct_money" string="旷工扣款设置"/>
+                            <field name="absenteeism_deduct_money_ratio" string="旷工扣款比例"/>
+
+                            <field name="matter_vacation_deduct_money" string="事假扣款设置"/>
+                            <field name="matter_vacation_deduct_money_ratio" string="事假扣款比例"/>
+
+                            <field name="sick_leave_deduct_money" string="病假扣款设置"/>
+                            <field name="sick_leave_deduct_money_ratio" string="病假扣款比例"/>
+
+                            <field name="be_late_deduct_money" string="迟到早退扣款设置"/>
+                            <field name="be_late_deduct_money_ratio" string="早退扣款比例扣款比例"/>
+
+                            <field name="is_dimission_subsidy" string="是否有离职补贴"/>
+                        </group>
+                    </sheet>
+                </form>
+
+            </field>
+        </record>
+
+        <record id="deduct_money_setting_action" model="ir.actions.act_window">
+            <field name="name">扣款设置</field>
+            <field name="res_model">deduct_money_setting</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

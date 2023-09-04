@@ -1,0 +1,241 @@
+<odoo>
+    <data>
+
+
+        <menuitem id="menu_todo_general"
+            web_icon="general,static/description/icon.png"
+            name="品控"/>
+            <menuitem id="menu_first_eight_pieces"
+                name="首八件"
+                parent="menu_todo_general"
+				action="first_eight_pieces_actions"
+                sequence="1"/>
+
+            <menuitem id="menu_patrol"
+                name="巡查"
+                parent="menu_todo_general"
+                sequence="5"/>
+
+                <menuitem id="menu_quality_records"
+                        name="品质记录表"
+                        parent="menu_patrol"
+                        action="quality_records_actions"
+                        sequence="10"/>
+                <menuitem id="menu_sealed_samples_first"
+                        name="首件封样报告"
+                        parent="menu_patrol"
+                        action="sealed_samples_first_actions"
+                        sequence="20"/>
+
+
+            <menuitem id="menu_todo_general1"
+                name="返修"
+                parent="menu_todo_general"
+                sequence="10"/>
+
+                <menuitem id="menu_todo_invest"
+                        name="中查"
+                        parent="menu_todo_general1"
+                        action="action_invest"
+                        sequence="2"/>
+                <menuitem id="menu_todo_general2"
+                        name="总检"
+                        parent="menu_todo_general1"
+                        action="action_total_general"
+                        sequence="3"/>
+                <menuitem id="menu_client_ware"
+                        name="客仓"
+                        parent="menu_todo_general1"
+                        action="client_ware_actions"
+                        sequence="10"/>
+                <menuitem id="menu_station_twice_send_back"
+                        name="车位二次退回"
+                        parent="menu_todo_general1"
+                        action="station_twice_send_back_actions"
+                        sequence="20"/>
+            <menuitem id="menu_spot_check"
+                name="抽查"
+                parent="menu_todo_general"
+                sequence="15"/>
+                <menuitem id="menu_inspection_warehouse"
+					name="库查"
+					parent="menu_spot_check"
+					action="inspection_warehouse_actions"
+					sequence="10"/>
+            <menuitem id="menu_todo_detail"
+                    name="车间产量明细表"
+                    parent="menu_todo_general"
+                    sequence="20"/>
+
+            <menuitem id="menu_todo_detail2"
+                    name="中查返修汇总表"
+                    parent="menu_todo_detail"
+                    action="action_detail"
+                    sequence="2"/>
+
+            <menuitem id="menu_two_gen_detail2"
+                    name="总检返修汇总表"
+                    parent="menu_todo_detail"
+                    action="action_two_gen"
+                    sequence="2"/>
+
+        <menuitem id="menu_statistics_table"
+                    name="品控统计表"
+                    parent="menu_todo_general"
+                    sequence="30"/>
+
+            <menuitem id="menu_statistics_table_month"
+                        name="品控统计表（月)"
+                        parent="menu_statistics_table"
+                        action="action_statistics_table"
+                        sequence="2"/>
+
+            <!-- 按钮 -->
+            <menuitem id="menu_day_style_repair_statistics"
+                    name="日款返修统计(品控主管)"
+                    parent="menu_statistics_table"
+                    action="day_style_repair_statistics_action"
+                    sequence="10"/>
+
+            <!-- 按钮 -->
+            <menuitem id="menu_client_warehouse_repair"
+                    name="客户仓库返修(品控主管)"
+                    parent="menu_statistics_table"
+                    action="client_warehouse_repair_actions"
+                    sequence="20"/>
+
+
+
+
+
+
+            <menuitem id="menu_efficiency"
+                    name="效率"
+                    parent="menu_todo_general"
+                    sequence="40"/>
+                <!-- 按钮 -->
+                <menuitem id="menu_middle_check_efficiency"
+                        name="中查效率表(月)"
+                        parent="menu_efficiency"
+                        action="middle_check_efficiency_actions"
+                        sequence="30"/>
+                <!-- 按钮 -->
+                <menuitem id="menu_middle_check_omission_factor"
+                        name="中查漏查表(月)"
+                        parent="menu_efficiency"
+                        action="middle_check_omission_factor_actions"
+                        sequence="50"/>
+                <!-- 按钮 -->
+                <menuitem id="menu_middle_check_day_leak"
+                        name="中查漏查表(日:按中查)"
+                        parent="menu_efficiency"
+                        action="middle_check_day_leak_actions"
+                        sequence="60"/>
+
+                <!-- 按钮 -->
+                <menuitem id="menu_middle_check_missed_details"
+                        name="中查漏查表(日:按款号)"
+                        parent="menu_efficiency"
+                        action="middle_check_missed_details_actions"
+                        sequence="70"/>
+
+
+
+
+                <!-- 按钮 -->
+                <menuitem id="menu_always_check_eff_day"
+                    name="总检效率表(日)"
+                    parent="menu_efficiency"
+                    action="always_check_eff_day_actions"
+                    sequence="80"/>
+                <!-- 按钮 -->
+                <menuitem id="menu_always_check_omission"
+                    name="总检漏查表(日)"
+                    parent="menu_efficiency"
+                    action="always_check_omission_actions"
+                    sequence="90"/>
+                <!-- 按钮 -->
+                <menuitem id="menu_always_check_omission_details"
+                    name="总检漏查表(日:按款号)"
+                    parent="menu_efficiency"
+                    action="always_check_omission_details_actions"
+                    sequence="100"/>
+                <!-- 按钮 -->
+                <menuitem id="menu_always_check_omission_details_month"
+                    name="总检漏查表(月:按款号)"
+                    parent="menu_efficiency"
+                    action="always_check_omission_details_month_actions"
+                    sequence="110"/>
+
+            <menuitem id="menu_month_efficiency"
+                    name="月效率"
+                    parent="menu_todo_general"
+                    sequence="45"/>
+                <menuitem id="menu_middle_check_month_efficiency"
+					name="中查月效率表"
+					parent="menu_month_efficiency"
+					action="middle_check_month_efficiency_actions"
+					sequence="10"/>
+                <menuitem id="menu_general_inspection_month_efficiency"
+                    name="总检月效率表"
+                    parent="menu_month_efficiency"
+                    action="general_inspection_month_efficiency_actions"
+                    sequence="20"/>
+                <menuitem id="menu_tail_check_month_efficiency"
+					name="尾查月效率表"
+					parent="menu_month_efficiency"
+					action="tail_check_month_efficiency_action"
+					sequence="30"/>
+
+            <!-- 按钮 -->
+            <menuitem id="menu_statistical"
+                    name="返修率统计"
+                    parent="menu_todo_general"
+                    sequence="50"/>
+                <menuitem id="menu_group_statistical"
+                        name="组修率统计"
+                        parent="menu_statistical"
+                        action="group_statistical_actions"
+                        sequence="10"/>
+                <menuitem id="menu_employees_statistical"
+                        name="员工返修统计"
+                        parent="menu_statistical"
+                        action="employees_statistical_actions"
+                        sequence="15"/>
+                <menuitem id="menu_posterior_passage_statistical"
+                        name="总检返修统计"
+                        parent="menu_statistical"
+                        action="posterior_passage_statistical_actions"
+                        sequence="20"/>
+                <menuitem id="menu_weicha_fanxiu_tongji"
+                        name="尾查返修统计"
+                        parent="menu_statistical"
+                        action="weicha_fanxiu_tongji_action"
+                        sequence="30"/>
+                <menuitem id="menu_kehu_fanxiu_tongji"
+                        name="客户返修统计"
+                        parent="menu_statistical"
+                        action="kehu_fanxiu_tongji_action"
+                        sequence="40"/>
+
+
+
+            <!-- 按钮 -->
+            <menuitem id="menu_control_collect"
+                    name="汇总"
+                    parent="menu_todo_general"
+                    sequence="50"/>
+                <menuitem id="menu_quality_control_collect"
+                        name="品控汇总"
+                        parent="menu_control_collect"
+                        action="quality_control_collect_actions"
+                        sequence="10"/>
+
+        <menuitem id="menu_repair_stranded"
+                name="返修滞留"
+                parent="pro.menu_summary_main"
+                action="repair_stranded_actions"
+                sequence="50"/>
+
+    </data>
+</odoo>

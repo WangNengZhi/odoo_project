@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="fsn_kpi_department_tree">
+			<field name="name">部门设置tree</field>
+			<field name="model">fsn_kpi_department</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" string="部门名称"/>
+                    <field name="fsn_kpi_job_line_ids" string="岗位明细"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="fsn_kpi_department_form" model="ir.ui.view">
+			<field name="name">部门设置form</field>
+			<field name="model">fsn_kpi_department</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+
+					</header>
+                    <sheet>
+					<!-- <sheet> -->
+						<!-- <div style="text-align: center"><h1>KPI</h1></div> -->
+                        <group col="4">
+                            <field name="name" string="部门名称"/>
+                        </group>
+
+						<notebook>
+							<page string="岗位明细">
+								<field name="fsn_kpi_job_line_ids" string="岗位明细">
+									<tree editable="bottom">
+										<field name="name" string="岗位名称"/>
+	
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+						</notebook>
+                    </sheet>
+				</form>
+			</field>
+		</record>
+        <!-- 动作 -->
+        <record model="ir.actions.act_window" id="fsn_kpi_department_action">
+			<field name="name">部门设置</field>
+			<field name="res_model">fsn_kpi_department</field>
+			<field name="view_mode">tree,form</field>
+            <!-- <field name="domain">[('fsn_kpi_job', '=', 'fsn_kpi_department_01')]</field> -->
+            <!-- <field name="context">{'default_fsn_kpi_job': '组长'}</field> -->
+        </record>
+        <!-- 按钮 -->
+        <menuitem name="部门设置"
+            id="fsn_kpi_department_menu"
+            parent="kpi_setting_menu"
+            action="fsn_kpi_department_action"
+            sequence="10"
+			groups="fsn_kpi.fsn_kpi_group_setting"
+            />
+		
+    </data>
+</odoo>

@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+
+        <menuitem id="menu_fsn_accountant_root"
+                name="会计"
+                sequence="10"/>
+
+
+                <menuitem id="menu_statement"
+                        name="报表"
+                        parent="menu_fsn_accountant_root"
+                        sequence="90"/>
+                    <menuitem id="menu_jdy_expenses_details"
+                            name="费用明细"
+                            parent="menu_statement"
+                            action="jdy_expenses_details_action"
+                            sequence="10"/>
+                    <menuitem id="menu_fsn_accounting_detail"
+                            name="会计明细"
+                            parent="menu_statement"
+                            action="fsn_accounting_detail_action"
+                            sequence="20"/>
+                    <menuitem id="menu_fsn_billing_detail"
+                            name="开票明细"
+                            parent="menu_statement"
+                            action="fsn_billing_detail_action"
+                            sequence="30"/>
+                    <menuitem id="menu_fsn_breakdown_detail"
+                            name="费用明细(系统)"
+                            parent="menu_statement"
+                            action="cost_breakdown_system_action"
+                            sequence="40"/>
+
+
+                <menuitem id="menu_setting"
+                        name="配置"
+                        parent="menu_fsn_accountant_root"
+                        sequence="100"/>
+                    <menuitem id="menu_jdy_subject"
+                            name="精斗云会计科目"
+                            parent="menu_setting"
+                            action="jdy_subject_action"
+                            sequence="10"/>
+                    <menuitem id="menu_jdy_setting"
+                            name="精斗云API配置"
+                            parent="menu_setting"
+                            action="jdy_setting_action"
+                            sequence="20"/>
+
+
+
+    </data>
+</odoo>

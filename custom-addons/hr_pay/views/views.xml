@@ -1,0 +1,153 @@
+<odoo>
+    <data>
+        <record id="view_tree_attendance_view" model="ir.ui.view">
+            <field name="name">员工请假表</field>
+            <field name="model">every.detail</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date"/>
+                    <field name="end_date"/>
+                    <field name="department_id"/>
+                    <field name="leave_officer"/>
+                    <field name="reason_for_leave2"/>
+                    <field name="days"/>
+                    <field name="are_there_any_leave_slips"/>
+                    <field name="comment"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_form_attendance_view" model="ir.ui.view">
+            <field name="name">员工请假表</field>
+            <field name="model">every.detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <h1 style="text-align:center">请假表</h1>
+                        <group col="4">
+                            <field name="date"  attrs="{ 'readonly' : [('id', '>', 0)]}"/>
+                            <field name="end_date"/>
+                            <field name="leave_officer" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"  attrs="{ 'readonly' : [('id', '>', 0)]}"/>
+                            <field name="department_id" readonly="1" force_save="1"/>
+                            <field name="reason_for_leave2"/>
+                            <field name="days"/>
+                            <field name="are_there_any_leave_slips"/>
+                            <field name="comment"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <act_window id="action_attendance_attendance"
+                    name="请假表"
+                    res_model="every.detail"
+                    view_mode="tree,form" />
+
+         <record id="view_tree_attendance_totle_view" model="ir.ui.view">
+            <field name="name">员工每日出勤统计表</field>
+            <field name="model">every.totle</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date" string="日期"/>
+                    <field name="number_of_attendees" string="应出勤人数"/>
+                    <field name="actual_attendance" string="实出勤人数"/>
+                    <field name="number_of_workers" string="旷工人数"/>
+                    <field name="number_of_leave" string="请假人数"/>
+                    <field name="number_of_resignations" string="辞职人数"/>
+                </tree>
+            </field>
+        </record>
+
+        <act_window id="action_attendance_totle_attendance"
+                    name="每日出勤统计表"
+                    res_model="every.totle"
+                    view_mode="tree" />
+
+
+        <record id="view_tree_online" model="ir.ui.view">
+            <field name="name">工时考勤</field>
+            <field name="model">online.attendance</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="date"/>
+                    <field name="name" options="{'no_create_edit': True, 'no_open': True}"/>
+                    <field name="whether_to_be_absent"/>
+                </tree>
+            </field>
+        </record>
+
+        <act_window id="action_online"
+                        name="工时考勤"
+                        res_model="online.attendance"
+                        view_mode="tree" />
+
+        <record id="view_tree_group_attendance" model="ir.ui.view">
+            <field name="name">组上考勤</field>
+            <field name="model">group.attendance</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="date"/>
+                    <field name="group"/>
+                    <field name="staff"/>
+                    <field name="group_leader"/>
+                </tree>
+            </field>
+        </record>
+
+        <act_window id="action_group_attendance"
+                        name="组上考勤"
+                        res_model="group.attendance"
+                        view_mode="tree"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <menuitem id="menu_attend_attend13"
+                name="考勤管理"
+                web_icon="hr_pay,static/description/icon.png"
+                sequence="2"/>
+
+            <menuitem id="menu_attend_attend1"
+                    name="考勤管理"
+                    parent="menu_attend_attend13"
+                    sequence="2"/>
+
+                <menuitem id="menu_attend_attend"
+                    name="请假表"
+                    action="action_attendance_attendance"
+                    parent="menu_attend_attend1"
+                    sequence="2"/>
+
+                <menuitem id="menu_online"
+                        name="工时考勤"
+                        parent="menu_attend_attend1"
+                        action="action_online"
+                        sequence="2"/>
+
+                <menuitem id="menu_group_attendance"
+                        name="组上考勤"
+                        parent="menu_attend_attend1"
+                        action="action_group_attendance"
+                        sequence="2"/>
+
+
+
+
+
+
+
+    </data>
+</odoo>

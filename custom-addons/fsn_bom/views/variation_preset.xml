@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+
+        <record id="variation_preset_key_tree" model="ir.ui.view">
+            <field name="name">变体预设属性</field>
+            <field name="model">variation_preset_key</field>
+            <field name="arch" type="xml">
+				<tree editable="top">
+                    <field name="name" string="属性"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="variation_preset_key_actions" model="ir.actions.act_window">
+            <field name="name">变体预设属性</field>
+            <field name="res_model">variation_preset_key</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+        <record id="variation_preset_value_tree" model="ir.ui.view">
+            <field name="name">变体预设值</field>
+            <field name="model">variation_preset_value</field>
+            <field name="arch" type="xml">
+				<tree editable="top">
+                    <field name="variation_preset_key_ids" string="属性" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="name" string="值"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="variation_preset_value_actions" model="ir.actions.act_window">
+            <field name="name">变体预设值</field>
+            <field name="res_model">variation_preset_value</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

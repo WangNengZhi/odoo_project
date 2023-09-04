@@ -1,0 +1,24 @@
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_inspection_task" model="ir.cron">
+            <field name="name">3P流程检测</field>
+            <field name="model_id" ref="fsn_production_preparation.model_production_preparation"/>
+            <field name="state">code</field>
+            <field name="code">model._inspection_task()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+        </record>
+
+
+        <!-- <record id="ir_cron_suspension_system_summary" model="ir.cron">
+            <field name="name">同步吊挂产量明细</field>
+            <field name="model_id" ref="suspension_system.suspension_system_summary"/>
+            <field name="state">code</field>
+            <field name="code">model._sync_data()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+        </record> -->
+    </data>
+</odoo>

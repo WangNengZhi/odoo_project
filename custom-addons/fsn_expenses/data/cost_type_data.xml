@@ -1,0 +1,40 @@
+<odoo>
+	<data noupdate="1">
+        <record id="cost_type_freight" model="cost_type">
+            <field name="name">运输费</field>
+        </record>
+        <record id="cost_type_office" model="cost_type">
+            <field name="name">办公费</field>
+        </record>
+        <record id="cost_type_production_costs" model="cost_type">
+            <field name="name">生产成本</field>
+        </record>
+        <record id="cost_type_wages" model="cost_type">
+            <field name="name">工资</field>
+        </record>
+        <record id="cost_type_social_security" model="cost_type">
+            <field name="name">公积金及社保</field>
+        </record>
+        <record id="cost_type_taxation" model="cost_type">
+            <field name="name">税费</field>
+        </record>
+        <record id="cost_type_refueling_fee" model="cost_type">
+            <field name="name">加油费</field>
+        </record>
+        <record id="cost_type_meals" model="cost_type">
+            <field name="name">员工餐费</field>
+        </record>
+        <record id="cost_type_plant_rent" model="cost_type">
+            <field name="name">厂房租金</field>
+        </record>
+        <record id="cost_type_fixed_assets" model="cost_type">
+            <field name="name">固定资产</field>
+        </record>
+        <record id="cost_type_other_expenses" model="cost_type">
+            <field name="name">其他费用</field>
+        </record>
+        <record id="cost_type_intangible" model="cost_type">
+            <field name="name">无形资产</field>
+        </record>
+	</data>
+</odoo>

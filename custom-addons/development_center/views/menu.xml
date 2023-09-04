@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+
+
+        <menuitem name="研发中心"
+            web_icon="development_center,static/description/icon.png"
+            id="development_center_menu_root"/>
+        <!-- 菜单按钮 -->
+        <menuitem id="development_tasks_menu"
+            name="开发任务"
+            parent="development_center_menu_root"
+            action="development_tasks_actions"
+            sequence="10"/>
+    </data>
+</odoo>

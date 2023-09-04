@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+		<record model="ir.ui.view" id="ec_flow_channel_tree">
+			<field name="name">电商流量渠道</field>
+			<field name="model">ec_flow_channel</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="date" string="日期"/>
+					<field name="platform_account_id" string="账号" width='100px'/>
+                    
+					<field name="qianchuan_pc_traffic" string="千川流量占比"/>
+					<field name="qianchuan_pc_amount" string="千川成交金额占比"/>
+
+					<field name="small_shop_traffic" string="小店随心推流量占比"/>
+					<field name="small_shop_amount" string="小店随心推成交金额占比"/>
+				
+					<field name="other_advertising_traffic" string="其他广告流量占比"/>
+					<field name="other_advertising_amount" string="其他广告成交金额占比"/>
+
+					<field name="qianchuan_brand_advertising_traffic" string="千川品牌广告流量占比"/>
+					<field name="qianchuan_brand_advertising_amount" string="千川品牌广告成交金额占比"/>
+
+					<field name="brand_advertising_traffic" string="品牌广告流量占比"/>
+					<field name="brand_advertising_amount" string="品牌广告成交金额占比"/>
+
+					<field name="recommended_feed_traffic" string="推荐feed流量占比"/>
+					<field name="recommended_feed_amount" string="推荐feed成交金额占比"/>
+
+					<field name="other_recommended_scenarios_traffic" string="其他推荐场景流量占比"/>
+					<field name="other_recommended_scenarios_amount" string="其他推荐场景成交金额占比"/>
+
+					<field name="live_square_traffic" string="直播广场流量占比"/>
+					<field name="live_square_amount" string="直播广场成交金额占比"/>
+
+					<field name="same_city_traffic" string="同城流量占比"/>
+					<field name="same_city_amount" string="同城成交金额占比"/>
+
+					<field name="big_watermelon_traffic" string="头条西瓜流量占比"/>
+					<field name="big_watermelon_amount" string="头条西瓜成交金额占比"/>
+
+					<field name="home_page_store_window_traffic" string="个人主页_店铺_橱窗流量占比"/>
+					<field name="home_page_store_window_amount" string="个人主页_店铺_橱窗成交金额占比"/>
+
+					<field name="focus_traffic" string="关注流量占比"/>
+					<field name="focus_amount" string="关注成交金额占比"/>
+
+					<field name="short_video_diversion_traffic" string="短视频引流流量占比"/>
+					<field name="short_video_diversion_amount" string="短视频引流成交金额占比"/>
+
+					<field name="search_traffic" string="搜索流量占比"/>
+					<field name="search_amount" string="搜索成交金额占比"/>
+
+					<field name="active_page_traffic" string="活动页流量占比"/>
+					<field name="sactive_page_amount" string="活动页成交金额占比"/>
+
+					<field name="other_traffic" string="其他流量占比"/>
+					<field name="other_amount" string="其他成交金额占比"/>
+
+					<field name="mall_recommend_traffic" string="抖音商城推荐流量占比"/>
+					<field name="mall_recommend_amount" string="抖音商城推荐成交金额占比"/>
+				</tree>
+			</field>
+		</record>
+
+        <!-- 动作 -->
+        <record id="ec_flow_channel_action" model="ir.actions.act_window">
+            <field name="name">电商流量渠道</field>
+            <field name="res_model">ec_flow_channel</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+    </data>
+</odoo>

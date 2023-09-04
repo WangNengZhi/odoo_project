@@ -1,0 +1,121 @@
+<odoo>
+    <data>
+        <record id="finished_inventory_search" model="ir.ui.view">
+            <field name="name">成品仓库存</field>
+            <field name="model">finished_inventory</field>
+            <field name="arch" type="xml">
+                <search string="Search ir.model.constraint">
+                    <field name="order_number" string="订单号"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="fsn_color" string="颜色"/>
+                    <field name="size" string="尺码"/>
+                </search>
+            </field>
+        </record>
+		<record model="ir.ui.view" id="finished_inventory_tree">
+			<field name="name">成品仓库存</field>
+			<field name="model">finished_inventory</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0" delete="0">
+					<header>
+                        <!-- <button name="set_number" string="计算库总存件数" type="object" class="btn-primary"/> -->
+                        <!-- <button name="set_normal_number" string="计算库正常存件数" type="object" class="btn-primary"/> -->
+                        <!-- <button name="set_outsource_order" string="设置外发订单存量" type="object" class="btn-primary"/> -->
+					</header>
+					<field name="write_date" string="更新时间"/>
+                    <field name="order_number" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="size" string="尺码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+
+					<field name="number" string="总库存件数"/>
+					<field name="put_number" string="总入库件数" optional="hide"/>
+					<field name="out_number" string="总出库件数" optional="hide"/>
+
+					<field name="normal_number" string="正常库存件数"/>
+					<field name="normal_put_number" string="正常入库件数" optional="hide"/>
+					<field name="normal_out_number" string="正常出库件数" optional="hide"/>
+
+					<field name="defective_number" string="报次库存件数"/>
+					<field name="defective_put_number" string="报次入库件数" optional="hide"/>
+					<field name="defective_out_number" string="报次出库件数" optional="hide"/>
+
+					<field name="no_accomplish_number" string="半成品库存件数"/>
+					<field name="no_accomplish_put_number" string="半成品入库件数" optional="hide"/>
+					<field name="no_accomplish_out_number" string="半成品出库件数" optional="hide"/>
+
+					<field name="cutting_number" string="裁片库存件数"/>
+					<field name="cutting_put_number" string="裁片入库件数" optional="hide"/>
+					<field name="cutting_out_number" string="裁片出库件数" optional="hide"/>
+
+					<field name="no_normal_number" string="非正常库存件数"/>
+					<field name="no_normal_put_number" string="非正常入库件数" optional="hide"/>
+					<field name="no_normal_out_number" string="非正常出库件数" optional="hide"/>
+
+					<field name="customer_enter" string="客户入库数" optional="hide"/>
+					<field name="customer_out" string="客户出库数" optional="hide"/>
+					
+					<field name="stock" string="存量" optional="hide"/>
+					<field name="delivery_quantity" string="客户交付数量" optional="hide"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- form -->
+		<record id="finished_inventory_form" model="ir.ui.view">
+			<field name="name">成品仓库存</field>
+			<field name="model">finished_inventory</field>
+			<field name="arch" type="xml">
+				<form create="0" edit="0" delete="0">
+					<sheet>
+						<div style="text-align: center"><h1>成品仓库存</h1></div>
+						<group col="4">
+                            <field name="write_date" string="更新时间"/>
+                            <field name="order_number" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="size" string="尺码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<!-- <field name="quality" string="质量" decoration-danger="quality == '疵品/返修件'" decoration-success="quality == '合格'" widget="badge"/> -->
+                            <field name="number" string="件数"/>
+                            <field name="normal_number" string="正常件数"/>
+						</group>
+						<notebook>
+							<page string="单据明细">
+								<field name="finished_product_ware_line_ids" string="单据明细">
+									<tree editable="bottom">
+										<field name="date" string="日期"/>
+                                        <field name="type" string="类型" decoration-primary="type == '出库'" decoration-success="type == '入库'" widget="badge"/>
+                                        <field name="order_number" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="size" string="尺码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    					<field name="quality" string="质量" decoration-danger="quality == '次品'" decoration-success="quality == '合格'" widget="badge"/>
+										<field name="character" string="性质" decoration-primary="character == '正常'" decoration-warning="character == '返修'" decoration-info="character == '退货'" widget="badge"/>
+                                        <field name="number" string="件数"/>
+										<field name="source_destination" string="来源/去向"/>
+                                        <field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '确认'" widget="badge"/>
+                                    </tree>
+                                    <form>
+                                    </form>
+                                </field>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="finished_inventory_action">
+			<field name="name">成品仓库存</field>
+			<field name="res_model">finished_inventory</field>
+			<field name="view_mode">tree,form,graph</field>
+			<field name="view_ids" eval="[(5,0,0),
+										(0,0,{'view_mode': 'tree','view_id': ref('finished_inventory_tree')}),
+										(0,0,{'view_mode': 'form','view_id': ref('finished_inventory_form')})]"/>
+		</record>
+    </data>
+</odoo>

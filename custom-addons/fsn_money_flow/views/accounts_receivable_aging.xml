@@ -1,0 +1,26 @@
+<odoo>
+	<data>
+		<!-- tree视图 -->
+		<record id="accounts_receivable_aging_tree" model="ir.ui.view">
+			<field name="name">应收账款账龄分析表</field>
+			<field name="model">accounts_receivable_aging</field>
+			<field name="arch" type="xml">
+				<tree editable="top" create="0" edit="0" delete="1">
+					<field name="date" string="日期" />
+                    <field name="aging_1_30_days" string="账龄0-30天" />
+					<field name="aging_31_60_days" string="帐龄31-60天" />
+                    <field name="aging_61_90_days" string="帐龄61-90天" />
+                    <field name="aging_91_180_days" string="帐龄91-180天" />
+                    <field name="over_180_days" string="帐龄180天以上" />
+				</tree>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record id="accounts_receivable_aging_action" model="ir.actions.act_window">
+			<field name="name">应收账款账龄分析表</field>
+			<field name="res_model">accounts_receivable_aging</field>
+			<field name="view_mode">tree,graph</field>
+		</record>
+	</data>
+</odoo>

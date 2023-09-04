@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <!-- tree -->
+        <record model="ir.ui.view" id="suspension_system_get_seqno_tree">
+            <field name="name">吊挂站号实时工序TREE</field>
+            <field name="model">suspension_system_get_seqno</field>
+                <field name="arch" type="xml">
+                    <tree edit="0" create="0">
+                        <field name="dDate" string="日期"/>
+                        <field name="group" string="组别"/>
+
+                        <field name="MONo" string="款号"/>
+                        <field name="employee_id" string="员工"/>
+                        <field name="station_number" string="站号"/>
+                        <field name="line_lds" string="工序号" widget="many2many_tags"/>
+                        <!-- <field name="history_seqno_ids" string="历史工序号" widget="many2many_tags"/> -->
+                    </tree>
+                </field>
+        </record>
+
+		<!-- form -->
+		<record id="suspension_system_get_seqno_form" model="ir.ui.view">
+			<field name="name">吊挂站号实时工序FORM</field>
+			<field name="model">suspension_system_get_seqno</field>
+			<field name="arch" type="xml">
+				<form edit="0" create="0">
+					<header>
+                        <!-- <button name="set_history_seqno_ids" type="object" string="test" class="btn-primary"/> -->
+					</header>
+					<sheet>
+                        <group col="4">
+                            <field name="dDate" string="日期"/>
+                            <field name="group" string="组别"/>
+
+                            <field name="MONo" string="款号"/>
+                            <field name="employee_id" string="员工"/>
+                            <field name="station_number" string="站号"/>
+                            <field name="line_lds" string="工序号" widget="many2many_tags"/>
+                            <!-- <field name="history_seqno_ids" string="历史工序号" widget="many2many_tags"/> -->
+                        </group>
+						<!-- <notebook>
+							<page string="工序历史记录">
+								<field name="history_seqno_ids" string="工序历史记录">
+									<tree editable="bottom">
+										<field name="history_seqno_line_ids" string="历史工序记录明细" widget="many2many_tags"/>
+									</tree>
+								</field>
+							</page>
+						</notebook> -->
+                    </sheet>
+				</form>
+			</field>
+		</record>
+
+        <record model="ir.actions.act_window" id="suspension_system_get_seqno_action">
+            <field name="name">吊挂站号实时工序</field>
+            <field name="res_model">suspension_system_get_seqno</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

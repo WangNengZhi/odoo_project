@@ -1,0 +1,24 @@
+<odoo>
+    <data noupdate="1">
+
+			<record id="dg_db_host" model="fsn_dg_setting">
+				<field name="key">吊挂数据库ip</field>
+			</record>
+			<record id="dg_db_user" model="fsn_dg_setting">
+				<field name="key">吊挂数据库用户名</field>
+			</record>
+			<record id="dg_db_password" model="fsn_dg_setting">
+				<field name="key">吊挂数据库密码</field>
+			</record>
+			<record id="dg_db_database" model="fsn_dg_setting">
+				<field name="key">吊挂数据库名</field>
+			</record>
+			<record id="dg_os_url" model="fsn_dg_setting">
+				<field name="key">吊挂系统接口URL</field>
+			</record>
+			<record id="dg_os_port" model="fsn_dg_setting">
+				<field name="key">吊挂系统接口PORT</field>
+			</record>
+
+    </data>
+</odoo>

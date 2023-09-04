@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <template id="inherit_mail_assets_backend" name="inherit_mail_assets_backend" inherit_id="web.assets_backend">
+            <xpath expr="//script[last()]" position="after">
+                <script type="text/javascript" src="/inherit_mail/static/src/js/send_daily.js"></script>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

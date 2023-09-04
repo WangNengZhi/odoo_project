@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+
+
+		<record id="first_eight_pieces_tree" model="ir.ui.view">
+			<field name="name">首八件</field>
+			<field name="model">first_eight_pieces</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+                    <header>
+                        <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+					<field name="date" string="日期"/>
+					<field name="order_number" string="订单号" options="{'no_create': True, 'no_open': True}"/>
+					<field name="fsn_customer_id" string="客户" options="{'no_create': True, 'no_open': True}"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="picture" string="图片" widget='image' width='120px'/>
+					<field name="report" string="报告" widget='image' width='120px'/>
+					<field name="is_workshop" string="车间"/>
+					<field name="is_posterior_channel" string="后道"/>
+					<field name="is_quality_control_approval" string="品控主管审批"/>
+					<field name="hand_in_quantity" string="上交件数"/>
+                    <field name="qualified_quantity" string="合格件数"/>
+                    <field name="pass_rate" string="合格率" widget="percentage"/>
+                    <field name="is_customer_approval" string="客户审批"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="first_eight_pieces_actions" model="ir.actions.act_window">
+            <field name="name">首八件</field>
+            <field name="res_model">first_eight_pieces</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

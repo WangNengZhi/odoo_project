@@ -1,0 +1,265 @@
+<odoo>
+    <data>
+      <record id="view_tree_on_work_view" model="ir.ui.view">
+        <field name="name">现场工序</field>
+        <field name="model">on.work</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="non_conformance" decoration-info="non_price">
+                 <header>
+                     <button name="approved_for_confirmation" type="object" string="批量确认" class="btn-primary"/>
+                 </header>
+                <header>
+                    <button name="batch_unconfirmed" type="object" string="批量未确认" class="btn-primary"/>
+                </header>
+                <header>
+                    <button name="self_test" type="object" string="自检(数量)" class="btn-primary" groups="base.group_user,group_self_test"/>
+                </header>
+                <header>
+                    <button name="self_price" type="object" string="自检(价格)" class="btn-primary" groups="base.group_user,group_self_test"/>
+                </header>
+
+                <field name="date1" string="日期"/>
+                <field name="week" string="周"/>
+                <field name="order_no" string="订单号"/>
+                <field name="order_number" string="款号" options="{'no_open':True, 'no_create': True}"/>
+                <field name="employee_id" string="工序号"/>
+                <field name="part_name" string="部件名称"/>
+                <field name="process_abbreviation" string="工序描述"/>
+                <field name="mechanical_type"/>
+                <field name="process_level"/>
+                <field name="standard_time"/>
+                <field name="standard_price"/>
+                <field name="label"/>
+                <field name="employee" options="{'no_open':True, 'no_create': True}"/>
+                <field name="contract_type"/>
+                <field name="group"/>
+                <field name="over_number"/>
+                <field name="non_conformance" invisible="1"/>
+                <field name="non_price" invisible="1"/>
+                <field name="state" decoration-info="state == '未确认'" decoration-success="state == '已确认'" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+      <record id="view_form_on_work_view2" model="ir.ui.view">
+        <field name="name">现场工序</field>
+        <field name="model">on.work</field>
+        <field name="arch" type="xml">
+            <form edit="1">
+                <sheet>
+                    <group>
+                        <field name="date1" string="日期"/>
+                        <field name="week" string="周"/>
+                        <field name="order_no" string="订单号"/>
+                        <field name="order_number" string="款号" options="{'no_open':True, 'no_create': True}"/>
+                        <field name="employee_id" string="工序号"/>
+                        <field name="part_name" string="部件名称"/>
+                        <field name="process_abbreviation" string="工序描述"/>
+                        <field name="mechanical_type"/>
+                        <field name="process_level"/>
+                        <field name="standard_time"/>
+                        <field name="standard_price"/>
+                        <field name="label"/>
+                        <field name="employee" options="{'no_open':True, 'no_create': True}"/>
+                        <field name="contract_type"/>
+                        <field name="group"/>
+                        <field name="over_number"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+      <record id="eff_eff_tree_from" model="ir.ui.view">
+        <field name="name">每人每天效率表</field>
+        <field name="model">eff.eff</field>
+        <field name="arch" type="xml">
+            <tree edit="0" create="0">
+                <field name="date" string="日期"/>
+                <field name="employee" string="员工"/>
+                <field name="jobs" string="岗位"/>
+                <field name="work_type" string="工种"/>
+                <field name="departure_date" string="离职日期"/>
+                <field name="group" string="组别"/>
+                <field name="totle_eff" string="总效率(%)"/>
+            </tree>
+        </field>
+    </record>
+    <!-- 透视表视图 -->
+    <record id="eff_eff_graph" model="ir.ui.view">
+        <field name="name">每人每天效率表</field>
+        <field name="model">eff.eff</field>
+        <field name="arch" type="xml">
+            <graph string="每人每天效率表">
+                <field name="date" type="row" interval="day"/>
+                <field name="employee" type="row"/>
+                <field name="totle_eff" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="group_eff_eff_tree" model="ir.ui.view">
+        <field name="name">每组每天效率表</field>
+        <field name="model">group.efficiency</field>
+        <field name="arch" type="xml">
+            <tree edit="0" create="0">
+                <field name="date"/>
+                <field name="group" string="组"/>
+                <field name="totle_eff" string="总效率(%)"/>
+            </tree>
+        </field>
+    </record>
+    <!-- 透视表视图 -->
+    <record id="group_efficiency_graph" model="ir.ui.view">
+        <field name="name">每组每天效率表</field>
+        <field name="model">group.efficiency</field>
+        <field name="arch" type="xml">
+            <graph string="每人每天效率表">
+                <field name="date" type="row" interval="day"/>
+                <field name="group" type="row"/>
+                <field name="totle_eff" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+      <record id="eff_eff_tree_from_week" model="ir.ui.view">
+        <field name="name">每人每周效率表</field>
+        <field name="model">eff.eff.week</field>
+        <field name="arch" type="xml">
+            <tree edit="0" create="0">
+                <field name="week"/>
+                <field name="employee"/>
+                <field name="group" string="组别"/>
+                <field name="work_days" string="工作天数"/>
+                <field name="avg_totle_eff"/>
+                <field name="totle_eff"/>
+            </tree>
+        </field>
+    </record>
+    <!-- 透视表视图 -->
+    <record id="eff_eff_week_graph" model="ir.ui.view">
+        <field name="name">每人每周效率表</field>
+        <field name="model">eff.eff.week</field>
+        <field name="arch" type="xml">
+            <graph string="每人每周效率表">
+                <field name="week" type="row"/>
+                <field name="employee" type="row"/>
+                <field name="avg_totle_eff" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="group_eff_eff_tree_week" model="ir.ui.view">
+        <field name="name">每组每周效率表</field>
+        <field name="model">group.efficiency.week</field>
+        <field name="arch" type="xml">
+            <tree edit="0" create="0">
+                <field name="week"/>
+                <field name="group" string="组别"/>
+                <field name="work_days" string="工作天数"/>
+                <field name="avg_totle_eff"/>
+                <field name="totle_eff" string="总效率(%)"/>
+            </tree>
+        </field>
+    </record>
+    <!-- 透视表视图 -->
+    <record id="group_efficiency_week_graph" model="ir.ui.view">
+        <field name="name">每组每周效率表</field>
+        <field name="model">group.efficiency.week</field>
+        <field name="arch" type="xml">
+            <graph string="每组每周效率表">
+                <field name="week" type="row"/>
+                <field name="group" type="row"/>
+                <field name="avg_totle_eff" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+
+
+
+
+
+        <act_window id="action_on_work"
+                name="现场工序"
+                res_model="on.work"
+                view_mode="tree,form" />
+
+
+        <!-- 动作 -->
+        <record id="eff_eff_actions" model="ir.actions.act_window">
+            <field name="name">个人效率表</field>
+            <field name="res_model">eff.eff</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+        <!-- 指定tree视图 -->
+        <record model="ir.actions.act_window.view" id="eff_eff_actions_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="eff_eff_tree_from"/>
+            <field name="act_window_id" ref="eff_eff_actions"/>
+        </record>
+        <!-- 指定graph视图 -->
+        <record model="ir.actions.act_window.view" id="eff_eff_actions_graph">
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="eff_eff_graph"/>
+            <field name="act_window_id" ref="eff_eff_actions"/>
+        </record>
+
+        <record id="group_efficiency_actions" model="ir.actions.act_window">
+            <field name="name">组效率表</field>
+            <field name="res_model">group.efficiency</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+        <!-- 指定tree视图 -->
+        <record model="ir.actions.act_window.view" id="group_efficiency_actions_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="group_eff_eff_tree"/>
+            <field name="act_window_id" ref="group_efficiency_actions"/>
+        </record>
+        <!-- 指定graph视图 -->
+        <record model="ir.actions.act_window.view" id="group_efficiency_actions_graph">
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="group_efficiency_graph"/>
+            <field name="act_window_id" ref="group_efficiency_actions"/>
+        </record>
+
+
+        <record id="eff_eff_week_actions" model="ir.actions.act_window">
+            <field name="name">个人效率表(周)</field>
+            <field name="res_model">eff.eff.week</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+        <!-- 指定tree视图 -->
+        <record model="ir.actions.act_window.view" id="eff_eff_week_actions_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="eff_eff_tree_from_week"/>
+            <field name="act_window_id" ref="eff_eff_week_actions"/>
+        </record>
+        <!-- 指定graph视图 -->
+        <record model="ir.actions.act_window.view" id="eff_eff_week_actions_graph">
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="eff_eff_week_graph"/>
+            <field name="act_window_id" ref="eff_eff_week_actions"/>
+        </record>
+
+
+        <record id="group_efficiency_week_actions" model="ir.actions.act_window">
+            <field name="name">组效率表(周)</field>
+            <field name="res_model">group.efficiency.week</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+        <!-- 指定tree视图 -->
+        <record model="ir.actions.act_window.view" id="group_efficiency_week_actions_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="group_eff_eff_tree_week"/>
+            <field name="act_window_id" ref="group_efficiency_week_actions"/>
+        </record>
+        <!-- 指定graph视图 -->
+        <record model="ir.actions.act_window.view" id="group_efficiency_week_actions_graph">
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="group_efficiency_week_graph"/>
+            <field name="act_window_id" ref="group_efficiency_week_actions"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,34 @@
+<odoo>
+    <data>
+
+		<record model="ir.ui.view" id="flow_conversion_efficiency_tree">
+			<field name="name">流量转换效率</field>
+			<field name="model">flow_conversion_efficiency</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+                    <header>
+                        <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+					<field name="date" string="日期"/>
+					<field name="platform_account_id" string="账号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="exposure_number" string="直播间曝光人数"/>
+					<field name="exposure_conversion_efficiency" string="直播间曝光转化率"/>
+					<field name="enter_number" string="直播间进入人数"/>
+					<field name="enter_efficiency" string="直播间进入转化率"/>
+					<field name="goods_exposure_number" string="商品曝光人数"/>
+					<field name="goods_exposure_efficiency" string="商品曝光转化率"/>
+					<field name="goods_click_number" string="商品点击人数"/>
+					<field name="goods_click_efficiency" string="商品点击转化率"/>
+					<field name="clinch_deal_number" string="成交人数"/>
+				</tree>
+			</field>
+		</record>
+        <!-- 动作 -->
+        <record id="flow_conversion_efficiency_action" model="ir.actions.act_window">
+            <field name="name">流量转换效率</field>
+            <field name="res_model">flow_conversion_efficiency</field>
+            <field name="view_mode">tree</field>
+            
+        </record>
+    </data>
+</odoo>

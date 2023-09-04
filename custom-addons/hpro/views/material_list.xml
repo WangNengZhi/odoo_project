@@ -1,0 +1,199 @@
+<odoo>
+    <record id="view_tree_mater_view2" model="ir.ui.view">
+        <field name="name">单件用料表</field>
+        <field name="model">mater.maters</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="order_number"/>
+                <field name="style_number"/>
+                <field name="size"/>
+            </tree>
+        </field>
+    </record>
+
+  <record id="view_form_mater_view2" model="ir.ui.view">
+    <field name="name">单件用料表</field>
+    <field name="model">mater.maters</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="order_number" options="{'no_create_edit': True, 'no_open': True}"/>
+                    <field name="name" options="{'no_create_edit': True, 'no_open': True}"/>
+                    <field name="style_number" options="{'no_create_edit': True, 'no_open': True}"/>
+                    <field name="size"/>
+                </group>
+                <notebook>
+                    <page string="面料">
+                        <group col="2">
+                            <field name="picture" widget="image"/>
+                            <!-- <field name="door_width"/> -->
+                            <!-- <field name="number_of_pieces"/> -->
+                            <!-- <field name="single_piece"/> -->
+
+                            <field name="float_door_width"/>
+                            <field name="float_number_of_pieces"/>
+                            <field name="float_single_piece"/>
+                            <field name="comment"/>
+                        </group>
+                    </page>
+
+                    <page string="里料">
+                        <group col="2">
+                            <field name="picture1" widget="image"/>
+                            <!-- <field name="door_width1"/> -->
+                            <!-- <field name="number_of_pieces1"/> -->
+                            <!-- <field name="single_piece1"/> -->
+
+                            <field name="float_door_width1"/>
+                            <field name="float_number_of_pieces1"/>
+                            <field name="float_single_piece1"/>
+                            <field name="comment1"/>
+                        </group>
+                    </page>
+
+                    <page string="胆布">
+                        <group col="2">
+                            <field name="picture2" widget="image"/>
+                            <!-- <field name="door_width2"/> -->
+                            <!-- <field name="number_of_pieces2"/> -->
+                            <!-- <field name="single_piece2"/> -->
+
+                            <field name="float_door_width2"/>
+                            <field name="float_number_of_pieces2"/>
+                            <field name="float_single_piece2"/>
+                            <field name="comment2"/>
+                        </group>
+                    </page>
+
+                    <page string="棉">
+                        <group col="2">
+                            <field name="picture3" widget="image"/>
+                            <!-- <field name="door_width3"/> -->
+                            <!-- <field name="number_of_pieces3"/> -->
+                            <!-- <field name="single_piece3"/> -->
+
+                            <field name="float_door_width3"/>
+                            <field name="float_number_of_pieces3"/>
+                            <field name="float_single_piece3"/>
+                            <field name="comment3"/>
+                        </group>
+                    </page>
+
+                    <page string="粘衬">
+                        <group col="2">
+                            <field name="picture4" widget="image"/>
+                            <!-- <field name="door_width4"/> -->
+                            <!-- <field name="number_of_pieces4"/> -->
+                            <!-- <field name="single_piece4"/> -->
+
+                            <field name="float_door_width4"/>
+                            <field name="float_number_of_pieces4"/>
+                            <field name="float_single_piece4"/>
+                            <field name="comment4"/>
+                        </group>
+                    </page>
+
+                    <page string="配料1">
+                        <group col="2">
+                            <field name="picture5" widget="image"/>
+                            <!-- <field name="door_width5"/> -->
+                            <!-- <field name="number_of_pieces5"/> -->
+                            <!-- <field name="single_piece5"/> -->
+
+                            <field name="float_door_width5"/>
+                            <field name="float_number_of_pieces5"/>
+                            <field name="float_single_piece5"/>
+                            <field name="comment5"/>
+                        </group>
+                    </page>
+
+                    <page string="配料2">
+                        <group col="2">
+                            <field name="picture6" widget="image"/>
+                            <!-- <field name="door_width6"/> -->
+                            <!-- <field name="number_of_pieces6"/> -->
+                            <!-- <field name="single_piece6"/> -->
+
+                            <field name="float_door_width6"/>
+                            <field name="float_number_of_pieces6"/>
+                            <field name="float_single_piece6"/>
+                            <field name="comment6"/>
+                        </group>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+
+    <record id="view_tree_process_optimization" model="ir.ui.view">
+        <field name="name">工艺优化方案</field>
+        <field name="model">process.optimization</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="group"/>
+                <field name="number_no"/>
+                <field name="optimize_process_and_process"/>
+                <field name="tools_and_equipment"/>
+                <field name="is_it_optimized"/>
+                <field name="working_hours_before"/>
+                <field name="working_hours_after"/>
+                <field name="efficiency_improvement"/>
+                <field name="person_in_charge"/>
+                <field name="comment"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_form_process_optimization" model="ir.ui.view">
+        <field name="name">工艺优化方案</field>
+        <field name="model">process.optimization</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div>
+                        <h1 style="text-align:center">工艺优化方案</h1>
+                    </div>
+                    <group col="4">
+                        <field name="date"/>
+                        <field name="group"/>
+                        <field name="number_no"/>
+                        <field name="optimize_process_and_process"/>
+                        <field name="tools_and_equipment"/>
+                        <field name="is_it_optimized"/>
+                        <field name="working_hours_before"/>
+                        <field name="working_hours_after"/>
+                        <field name="efficiency_improvement"/>
+                        <field name="person_in_charge"/>
+                        <field name="comment"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="action_mater_mater1" model="ir.actions.act_window">
+        <field name="name">单件用料表</field>
+        <field name="res_model">mater.maters</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record id="action_process_optimization" model="ir.actions.act_window">
+        <field name="name">工艺优化方案</field>
+        <field name="res_model">process.optimization</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+</odoo>

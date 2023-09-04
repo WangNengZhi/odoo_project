@@ -1,0 +1,45 @@
+<odoo>
+	<data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="sent_messages_tree">
+			<field name="name">已发送消息的记录</field>
+			<field name="model">sent_messages</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="msg_type" string="消息类型"/>
+					<field name="msg_category" string="消息类目"/>
+					<field name="msg_summary" string="消息摘要"/>
+					<field name="send_time" string="发送时间"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="sent_messages_form" model="ir.ui.view">
+			<field name="name">已发送消息的记录</field>
+			<field name="model">sent_messages</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<div style="text-align: center"><h1>已发送消息</h1></div>
+
+						<group col="4">
+							<field name="msg_type" string="消息类型"/>
+							<field name="msg_category" string="消息类目"/>
+							<field name="msg_summary" string="消息摘要"/>
+							<field name="send_time" string="发送时间"/>
+						</group>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!-- 动作 -->
+        <record id="sent_messages_actions" model="ir.actions.act_window">
+            <field name="name">已发送消息的记录</field>
+            <field name="res_model">sent_messages</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+	</data>
+</odoo>

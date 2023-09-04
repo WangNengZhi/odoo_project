@@ -1,0 +1,114 @@
+<odoo>
+    <data noupdate="1">
+        <record id="technical_directo_01" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作计划</field>
+            <field name="assessment_standard">根据公司开发计划，制定每日、每周、每月工作计划</field>
+            <field name="score">10</field>
+            <field name="calculation">计划完成率>95%，每低于1%的2分</field>
+            <field name="sequence">1</field>
+            <field name="fsn_kpi_job">技术主管</field>
+        </record>
+        <record id="technical_directo_02" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">样板审核</field>
+            <field name="assessment_standard">负责审核样板、样衣的工作，以确保样板、样衣、工艺到位准确</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率>95%，每低于1%的1分</field>
+            <field name="sequence">2</field>
+            <field name="fsn_kpi_job">技术主管</field>
+        </record>
+        <record id="technical_directo_03" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">样板完成率</field>
+            <field name="assessment_standard">根据已制定的计划，按时完成计划样板数</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率>95%，每低于1%的1分</field>
+            <field name="sequence">3</field>
+            <field name="fsn_kpi_job">技术主管</field>
+        </record>
+        <record id="technical_directo_04" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工艺确认与合理性</field>
+            <field name="assessment_standard">保证每款工艺的合理性、大货量产的顺畅性</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率100%，每降低1%扣1分</field>
+            <field name="sequence">4</field>
+            <field name="fsn_kpi_job">技术主管</field>
+        </record>
+        <record id="technical_directo_05" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">沟通衔接</field>
+            <field name="assessment_standard">负责与各部门之间工作衔接、确保信息畅通、交接顺利，产前准备充分</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率>95%，每降低1%扣1分</field>
+            <field name="sequence">5</field>
+            <field name="fsn_kpi_job">技术主管</field>
+        </record>
+        <record id="technical_directo_06" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">模板完成率</field>
+            <field name="assessment_standard">按计划在大货生产前完成每款模板</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率100%，每降低1%扣1分</field>
+            <field name="sequence">6</field>
+            <field name="fsn_kpi_job">技术主管</field>
+        </record>
+        <record id="technical_directo_07" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">小工具的开发</field>
+            <field name="assessment_standard">根据每款工艺，开发实用又能提高效率的小工具、模板等</field>
+            <field name="score">10</field>
+            <field name="calculation">工作完成率>95%，每降低1%扣1分</field>
+            <field name="sequence">7</field>
+            <field name="fsn_kpi_job">技术主管</field>
+        </record>
+        <record id="technical_directo_08" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">用量计算</field>
+            <field name="assessment_standard">负责对公司产品的面料精确计算，减少成本浪费</field>
+            <field name="score">10</field>
+            <field name="calculation">工作完成率100%，每降低1%扣1分</field>
+            <field name="sequence">8</field>
+            <field name="fsn_kpi_job">技术主管</field>
+        </record>
+        <record id="technical_directo_09" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">技术支持</field>
+            <field name="assessment_standard">配合生产车间解决生产过程中遇到的技术问题，满足大货生产需要</field>
+            <field name="score">5</field>
+            <field name="calculation">工作完成率100%，每降低1%扣1分</field>
+            <field name="sequence">9</field>
+            <field name="fsn_kpi_job">技术主管</field>
+        </record>
+        <record id="technical_directo_10" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">工作责任心</field>
+            <field name="assessment_standard">工作严谨认真，有强烈的责任意识</field>
+            <field name="score">5</field>
+            <field name="calculation">工作完成率100%，每降低1%扣1分</field>
+            <field name="sequence">10</field>
+            <field name="fsn_kpi_job">技术主管</field>
+        </record>
+        <record id="technical_directo_11" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">团队建设</field>
+            <field name="assessment_standard">1.部门员工绩效考核与提升。
+2.团队目标的建立。
+3.团队精神的维护与提升。</field>
+            <field name="score">5</field>
+            <field name="calculation">工作完成率100%，每降低1%扣1分</field>
+            <field name="sequence">11</field>
+            <field name="fsn_kpi_job">技术主管</field>
+        </record>
+        <record id="technical_directo_12" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">出勤率</field>
+            <field name="assessment_standard">缺卡、迟到、早退、等情况</field>
+            <field name="score">5</field>
+            <field name="calculation">出勤率100%，每降低1%扣1分</field>
+            <field name="sequence">12</field>
+            <field name="fsn_kpi_job">技术主管</field>
+        </record>
+    </data>
+</odoo>

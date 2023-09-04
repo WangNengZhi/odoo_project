@@ -1,0 +1,19 @@
+
+<odoo>
+    <data>
+        <record id="fsn_hr_search" model="ir.ui.view">
+            <field name="name">搜索视图</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='inactive']" position="after">
+                    <filter name="is_delete" string="在职" domain="[('is_delete', '=', False)]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
+            <field name="context">{'search_default_is_delete': True}</field>
+        </record>
+    </data>
+</odoo>

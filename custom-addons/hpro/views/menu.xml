@@ -1,0 +1,83 @@
+
+<odoo>
+    <data>
+
+        <menuitem id="menu_mhp_mhp_root"
+            web_icon="hpro,static/description/icon.png"
+            name="工时工序"
+            sequence="1"
+            />
+            <menuitem id="menu_mhp_mhp1"
+                    name="工时单"
+                    parent="menu_mhp_mhp_root"
+                    action="action_mhp_mhp"
+                    sequence="10"/>
+            <menuitem id="menu_work_work"
+                    name="工序单"
+                    parent="menu_mhp_mhp_root"
+                    action="action_work_work"
+                    sequence="20"/>
+
+            <menuitem id="menu_on_work"
+                    name="现场工序"
+                    parent="menu_mhp_mhp_root"
+                    action="action_on_work"
+                    sequence="25"/>
+
+            <menuitem id="menu_eff_eff"
+                    name="效率表"
+                    parent="menu_mhp_mhp_root"
+                    sequence="30"/>
+                <menuitem id="menu_eff_eff_personal"
+                        name="个人效率表"
+                        parent="menu_eff_eff"
+                        action="eff_eff_actions"
+                        sequence="20"/>
+                <menuitem id="menu_eff_eff_group"
+                        name="组效率表"
+                        parent="menu_eff_eff"
+                        action="group_efficiency_actions"
+                        sequence="30"/>
+
+            <menuitem id="menu_mater_mater"
+                name="单件用料表"
+                parent="menu_mhp_mhp_root"
+                sequence="40"/>
+                <menuitem id="single_materials_table_menu"
+                        name="单件用料表"
+                        parent="menu_mater_mater"
+                        action="action_mater_mater1"
+                        sequence="10"/>
+
+            <menuitem id="material_table_menu"
+                name="用料表"
+                parent="menu_mhp_mhp_root"
+                action="material_table_actions"
+                sequence="50"/>
+
+            <menuitem id="menu_process_optimization"
+                name="工艺优化方案"
+                parent="menu_mhp_mhp_root"
+                action="action_process_optimization"
+                sequence="60"/>
+
+            <menuitem id="automatic_scene_process_menu_root"
+                name="自动现场工序"
+                parent="menu_mhp_mhp_root"
+                sequence="100"/>
+                <menuitem id="automatic_scene_process_menu"
+                    name="现场工序"
+                    parent="automatic_scene_process_menu_root"
+                    action="automatic_scene_process_actions"
+                    sequence="10"/>
+            <menuitem id="hpro_setting_menu"
+                name="设置"
+                parent="menu_mhp_mhp_root"
+                sequence="110"/>
+                <menuitem id="long_term_temp_rate_menu"
+                    name="长期外包工价设置"
+                    parent="hpro_setting_menu"
+                    action="long_term_temp_rate_actions"
+                    sequence="10"/>
+    </data>
+</odoo>

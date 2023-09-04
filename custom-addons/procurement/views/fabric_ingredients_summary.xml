@@ -1,0 +1,165 @@
+
+
+<odoo>
+    <data>
+        <!-- 搜索视图 -->
+        <record id="fabric_ingredients_summary_search" model="ir.ui.view">
+            <field name="name">面辅料采购汇总</field>
+            <field name="model">fabric_ingredients_summary</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="date" string="日期"/>
+					<field name="type" string="物料类型"/>
+                    <field name="order_id" string="订单号"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="material_code" string="物品编码"/>
+                    <field name="material_name" string="物品名称"/>
+					<field name="supplier_supplier_id" string="供应商"/>
+                </search>
+            </field>
+        </record>
+
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="fabric_ingredients_summary_tree">
+			<field name="name">面辅料采购汇总</field>
+			<field name="model">fabric_ingredients_summary</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0" delete="0">
+					<header>
+					    <!-- <button name="set_payment_state" type="object" string="测试按钮" class="btn-danger"/> -->
+					</header>
+                    <field name="date" string="日期"/>
+                    <field name="event_type" string="事件类型"/>
+                    <field name="type" string="物料类型"/>
+                    <field name="order_id" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="material_code" string="物品编码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="material_name" string="物品名称"/>
+					<field name="supplier_supplier_id" string="供应商" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="specification" string="规格"/>
+					<field name="department_name" string="采购部门"/>
+                    <field name="amount" string="数量"/>
+                    <field name="unit" string="单位"/>
+                    <field name="unit_price" string="单价"/>
+					<field name="fine" string="罚款" />
+					<button name="modify_penalty"
+						type="object"
+						string="设置罚款金额"
+						class="btn-primary"
+						context="{'type': '设置罚款金额'}"
+						attrs="{'invisible':[('payment_state', '=', '已付款')]}"
+						groups="fsn_base.fsn_super_user_group"/>
+                    <field name="money_sum" string="金额"/>
+                    <field name="is_invoice" string="是否开票"/>
+                    <field name="tax" string="税点"/>
+                    <field name="after_tax_amount" string="税后金额"/>
+                    <field name="payment_state" string="付款状态" decoration-info="payment_state in ['未付款', '未退款']" decoration-success="payment_state in ['已付款', '已退款']" widget="badge"/>
+					<button name="confirmation_button"
+						type="object"
+						string="修改付款状态"
+						class="btn-primary"
+						context="{'type': '修改付款状态'}"
+						attrs="{'invisible':[('event_type', '=', '退还')]}"
+						groups="fsn_base.fsn_super_user_group"/>
+					<!-- <button name="confirmation_button"
+						type="object"
+						string="设为已付款"
+						class="btn-primary"
+						attrs="{'invisible':['|', ('event_type', '=', '退还'), '|', ('state','=', '待审批'), ('payment_state', '=', '已付款')]}"
+						context="{'type': '设为已付款'}"
+						groups="fsn_base.fsn_super_user_group"/>
+					<button name="confirmation_button"
+						type="object"
+						string="设为未付款"
+						class="btn-danger"
+						attrs="{'invisible':['|', ('event_type', '=', '退还'), '|', ('state','=', '待审批'), ('payment_state', '=', '未付款')]}"
+						context="{'type': '设为未付款'}"
+						groups="fsn_base.fsn_super_user_group"/> -->
+					<button name="confirmation_button"
+						type="object"
+						string="设为已退款"
+						class="btn-primary"
+						attrs="{'invisible':['|', ('event_type', '=', '采购'), '|', ('state','=', '待审批'), ('payment_state', '=', '已退款')]}"
+						context="{'type': '设为已退款'}"
+						groups="fsn_base.fsn_super_user_group"/>
+					<button name="confirmation_button"
+						type="object"
+						string="设为未退款"
+						class="btn-danger"
+						attrs="{'invisible':['|', ('event_type', '=', '采购'), '|', ('state','=', '待审批'), ('payment_state', '=', '未退款')]}"
+						context="{'type': '设为未退款'}"
+						groups="fsn_base.fsn_super_user_group"/>
+					<field name="payment_state_date" string="付款状态改变日期"/>
+					<field name="manager" string="负责人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+
+                    <field name="remark" string="备注"/>
+					<field name="state" string="状态" decoration-info="state == '待审批'" decoration-primary="state == ['待退还', '待采购']" decoration-success="state in ['已退还', '已采购']" widget="badge"/>
+
+
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- form -->
+		<record id="fabric_ingredients_summary_form" model="ir.ui.view">
+			<field name="name">面辅料汇总</field>
+			<field name="model">fabric_ingredients_summary</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+						<field name="payment_state" string="付款状态" invisible="1"/>
+						<div invisible="context.get('type') != '设为已付款'">确认设为已付款吗？</div>
+                        <div invisible="context.get('type') != '设为未付款'">确认设为未付款吗？</div>
+						<div invisible="context.get('type') != '设为已退款'">确认设为已退款吗？</div>
+                        <div invisible="context.get('type') != '设为未退款'">确认设为未退款吗？</div>
+						<div invisible="context.get('type') != '修改付款状态'">请选择要设置为的状态！</div>
+                    </sheet>
+                    <footer>
+						<button name="action_state_changes" invisible="context.get('type') != '修改付款状态'" context="{'type': '设为未付款'}" type="object" string="设为未付款" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '修改付款状态'" context="{'type': '设为部分付款'}" type="object" string="设为部分付款" class="oe_highlight"/>
+                        <button name="action_state_changes" invisible="context.get('type') != '修改付款状态'" context="{'type': '设为已付款'}" type="object" string="设为已付款" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '设为已付款'" context="{'type': '设为已付款'}" type="object" string="设为已付款" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '设为未付款'" context="{'type': '设为未付款'}" type="object" string="设为未付款" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '设为已退款'" context="{'type': '设为已退款'}" type="object" string="设为已退款" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '设为未退款'" context="{'type': '设为未退款'}" type="object" string="设为未退款" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="fabric_ingredients_summary_edit_form" model="ir.ui.view">
+			<field name="name">面辅料汇总</field>
+			<field name="model">fabric_ingredients_summary</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+						<field name="payment_state" string="付款状态" invisible="1"/>
+						<div>请设置罚款金额！</div>
+						<field name="fine" string="罚款金额"/>
+                    </sheet>
+					<footer>
+						<button name="action_state_confirm"  type="object" string="确认" class="oe_highlight"/>
+						<button string="取消" class="oe_link" special="cancel"/>
+					</footer>
+
+				</form>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="fabric_ingredients_summary_action">
+            <field name="name">面辅料采购汇总</field>
+            <field name="res_model">fabric_ingredients_summary</field>
+            <field name="view_mode">tree</field>
+		</record>
+
+    </data>
+</odoo>

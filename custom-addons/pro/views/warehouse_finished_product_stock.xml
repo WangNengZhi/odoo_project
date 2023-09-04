@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record id="warehouse_finished_product_stock_tree" model="ir.ui.view">
+			<field name="name">仓库成品存量统计</field>
+			<field name="model">warehouse_finished_product_stock</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0" delete="1">
+                    <header>
+
+                    </header>
+					<field name="date" string="日期"/>
+					<field name="order_number" string="订单号"/>
+					<field name="processing_type" string="加工类型"/>
+					<field name="style_number" string="款号"/>
+                    <field name="size" string="尺码"/>
+
+					<field name="before_inventory_number" string="之前库存" optional="hide"/>
+					<field name="change_inventory_number" string="库存变化" optional="hide"/>
+					<field name="intraday_inventory_number" string="当天库存数量" optional="hide"/>
+
+					<field name="before_customer_enter_number" string="之前客户入库数" optional="hide"/>
+					<field name="change_customer_enter_number" string="客户入库数变化" optional="hide"/>
+					<field name="intraday_customer_enter_number" string="当天客户入库数" optional="hide"/>
+
+					<field name="before_customer_out_number" string="之前客户出库数" optional="hide"/>
+					<field name="change_customer_out_number" string="客户出库数变化" optional="hide"/>
+					<field name="intraday_customer_out_number" string="当天客户出库数" optional="hide"/>
+
+					<field name="before_stock" string="之前存量" optional="hide"/>
+					<field name="intraday_stock" string="当天存量" optional="hide"/>
+
+                    <field name="change_stock" string="存量变化"/>
+                    <field name="change_stock_production_value" string="存量变化产值"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="warehouse_finished_product_stock_action" model="ir.actions.act_window">
+            <field name="name">仓库成品存量统计</field>
+            <field name="res_model">warehouse_finished_product_stock</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem id="menu_warehouse_finished_product_stock"
+            name="存量产值"
+            parent="menu_total_totlepro1"
+            action="warehouse_finished_product_stock_action"
+            sequence="46"/>
+
+    </data>
+</odoo>

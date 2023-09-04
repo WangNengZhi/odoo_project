@@ -1,0 +1,29 @@
+
+<odoo>
+    <data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="attendance_record_tree">
+			<field name="name">考勤打卡</field>
+			<field name="model">attendance_record</field>
+			<field name="arch" type="xml">
+				<tree create="0" delete="0" edit="0">
+                    <header>
+                        <button name="standardization_check_sign" type="object" string="测试按钮01" class="btn-primary"/>
+                    </header>
+					<field name="date" string="日期"/>
+					<field name="employee" string="员工"/>
+					<field name="show_time" string="出勤时间"/>
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.actions.act_window" id="attendance_record_action">
+            <field name="name">考勤打卡</field>
+            <field name="res_model">attendance_record</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+    </data>
+</odoo>

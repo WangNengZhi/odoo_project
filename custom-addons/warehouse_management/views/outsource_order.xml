@@ -1,0 +1,82 @@
+<odoo>
+    <data>
+
+		<!-- form -->
+		<record id="outsource_order_stock_setting_wizard_form" model="ir.ui.view">
+			<field name="name">外发订单存量设置向导form</field>
+			<field name="model">outsource_order_stock_setting_wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+                        <group col="4">
+                            <field name="stock" string="存量"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="set_stock" type="object" string="确认" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+
+
+
+        <record id="warehouse_management_inherit_outsource_order_tree" model="ir.ui.view">
+            <field name="name">外发订单tree继承扩展</field>
+            <field name="model">outsource_order</field>
+            <field name="inherit_id" ref="fsn_outsource.outsource_order_tree"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+				<xpath expr="//field[@name='actual_delivered_quantity']" position="after">
+                    <field name="stock" string="存量"/>
+                </xpath>
+
+				<xpath expr="//field[@name='sales_return_number']" position="before">
+                    <field name="incomplete_quantity" string="未完成件数"/>
+                    <field name="incomplete_deduction" string="未完成扣款"/>
+                    <field name="defective_number" string="报次件数"/>
+                    <field name="defective_deduction" string="报次扣款"/>
+                </xpath>
+
+				<xpath expr="//field[@name='other_deductions']" position="after">
+                    <field name="is_compensation" string="是否赔偿"/>
+                    <field name="compensation" string="赔偿"/>
+                    <field name="total_deduction" string="总扣款"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="warehouse_management_inherit_outsource_order_form" model="ir.ui.view">
+            <field name="name">外发订单form继承扩展</field>
+            <field name="model">outsource_order</field>
+            <field name="inherit_id" ref="fsn_outsource.outsource_order_form"/>
+            <field name="arch" type="xml">
+				<xpath expr="//button[@name='set_ie_info']" position="after">
+                    <button name="refresh_stock" type="object" string="刷新存量" class="btn btn-warning"/>
+                    <button name="mod_stock" type="object" string="修改存量" class="btn btn-warning" groups="fsn_base.fsn_super_user_group"/>
+                </xpath>
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+				<xpath expr="//field[@name='actual_delivered_quantity']" position="after">
+                    <field name="stock" string="存量"/>
+                </xpath>
+
+				<xpath expr="//field[@name='sales_return_number']" position="before">
+                    <field name="incomplete_quantity" string="未完成件数"/>
+                    <field name="incomplete_deduction" string="未完成扣款"/>
+                    <field name="defective_number" string="报次件数"/>
+                    <field name="defective_deduction" string="报次扣款"/>
+                </xpath>
+
+				<xpath expr="//field[@name='other_deductions']" position="after">
+                    <field name="is_compensation" string="是否赔偿"/>
+                    <field name="compensation" string="赔偿"/>
+                    <field name="total_deduction" string="总扣款"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

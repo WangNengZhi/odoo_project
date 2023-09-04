@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="fsn_home_page_roll" t-inherit="web_enterprise.HomeMenu" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o_apps')]" position="before">
+            <div style="font-size: 25px; color: red;">
+                <marquee behavior="scroll" direction="left" width='1000px'>
+                    <p t-esc="scroll_bar_data.text"></p>
+                </marquee>
+            </div>
+        </xpath>
+    </t>
+
+
+
+</templates>

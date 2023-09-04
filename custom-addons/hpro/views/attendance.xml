@@ -1,0 +1,46 @@
+<!--<?xml version="1.0" encoding="UTF-8" ?>-->
+<odoo>
+    <data>
+
+<!--    每一天   每一个工种  在职数量     -->
+
+        <record id="view_tree_attendance_everyday" model="ir.ui.view">
+            <field name="name">工种在职统计</field>
+            <field name="model">every.tongji</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date"/>
+                    <field name="is_it_a_temporary_worker"/>
+                    <field name="number"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- 透视表视图 -->
+    <record id="attendance_everyday_graph" model="ir.ui.view">
+        <field name="name">工种在职统计</field>
+        <field name="model">every.tongji</field>
+        <field name="arch" type="xml">
+            <graph string="工种在职统计">
+                <field name="date" type="row" interval="day"/>
+                <field name="is_it_a_temporary_worker" type="row"/>
+                <field name="number" type="measure"/>
+            </graph>
+        </field>
+    </record>
+        <!-- 动作 -->
+        <record id="attendance_actions" model="ir.actions.act_window">
+            <field name="name">工种在职统计</field>
+            <field name="res_model">every.tongji</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+
+
+        <menuitem id="menu_attendance"
+                        name="工种在职统计"
+                        parent="hr.menu_hr_employee_payroll"
+                        action="attendance_actions"
+                        sequence="30"/>
+    </data>
+</odoo>

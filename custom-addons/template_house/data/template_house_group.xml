@@ -1,0 +1,15 @@
+<odoo>
+
+    <record id="fsn_technical_department_category" model="ir.module.category">
+        <field name="name">FSN技术科</field>
+        <field name="sequence">5</field>
+    </record>
+        <record id="fsn_technical_department_supervisor_group" model="res.groups">
+            <field name="name">技术科主管</field>
+            <field name="category_id" ref="fsn_technical_department_category"/>
+        </record>
+        <record id="fsn_technical_department_quality_control_group" model="res.groups">
+            <field name="name">品控主管</field>
+            <field name="category_id" ref="fsn_technical_department_category"/>
+        </record>
+</odoo>

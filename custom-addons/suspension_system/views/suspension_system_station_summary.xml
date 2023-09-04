@@ -1,0 +1,99 @@
+
+<odoo>
+    <data>
+        <!-- tree -->
+        <record model="ir.ui.view" id="suspension_system_station_summary_tree">
+            <field name="name">吊挂站号产量汇总</field>
+            <field name="model">suspension_system_station_summary</field>
+                <field name="arch" type="xml">
+                    <tree edit="0" create="0">
+                        <header>
+                            <!-- <button name="set_total_quantity" type="object" string="价格" class="btn-primary"/> -->
+                            <!-- <button name="set_workpiece_ratio" type="object" string="效率" class="btn-primary"/> -->
+                            <button name="refresh_standard_time" type="object" string="刷新工序明细标准时间" class="btn-primary"/>
+                            
+                        </header>
+                        <field name="dDate" string="日期"/>
+                        <field name="group" string="组别"/>
+                        <field name="station_number" string="站号"/>
+                        <field name="rack_cnt" string="衣架数量"/>
+                        <field name="rack_cap" string="衣架容量"/>
+                        <field name="employee_id" string="员工"/>
+                        <field name="job_id" string="岗位" optional="hide"/>
+                        <field name="employee_level" string="员工等级" optional="hide"/>
+                        <field name="order_number_show" string="订单号"/>
+                        <field name="order_number" string="订单号（对象）" optional="hide"/>
+                        <field name="MONo" string="款号"/>
+                        <field name="style_number" string="款号（对象）" optional="hide"/>
+                        <field name="last_number" string="上次件数"/>
+                        <field name="total_quantity" string="总件数"/>
+                        <!-- 进度条 -->
+                        <field name="workpiece_ratio" string="效率" widget="progressbar"/>
+                        <!-- 百分比 -->
+                        <!-- <field name="workpiece_ratio" string="效率" widget="percentage"/> -->
+                        <!-- <field name="workpiece_ratio" string="效率" widget="percentpie"/> -->
+                        <!-- <field name="workpiece_ratio" string="效率"/> -->
+                        <field name="production_value" string="产值"/>
+                        <!-- <field name="last_record" string="上一个记录" optional="hide"/> -->
+                    </tree>
+                </field>
+        </record>
+
+        <!-- form -->
+        <record model="ir.ui.view" id="suspension_system_station_summary_form">
+            <field name="name">吊挂站号产量汇总</field>
+            <field name="model">suspension_system_station_summary</field>
+                <field name="arch" type="xml">
+                    <form edit="0" create="0">
+                        <sheet>
+                            <group col="4">
+                                <field name="dDate" string="日期"/>
+                                <field name="group" string="组别"/>
+                                <field name="station_number" string="站号"/>
+                                <field name="employee_id" string="员工"/>
+                                <field name="employee_level" string="员工等级"/>
+                            </group>
+                            <group col="4">
+                                <field name="order_number_show" string="订单号"/>
+                                <field name="order_number" string="订单号（对象）" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                <field name="MONo" string="款号"/>
+                                <field name="style_number" string="款号（对象）" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            </group>
+                            <group col="4">
+                                <field name="total_quantity" string="总件数"/>
+                                <!-- 进度条 -->
+                                <field name="workpiece_ratio" string="效率" widget="progressbar"/>
+                                <!-- 百分比 -->
+                                <field name="production_value" string="产值"/>
+                            </group>
+                            <notebook>
+                                <page string="工序明细">
+                                    <field name="line_lds" string="工序明细">
+                                        <tree editable="bottom" create="0" delete="0">
+                                            <field name="SeqNo" string="工序号"/>
+                                            <field name="standard_time" string="标准用时"/>
+                                            <field name="number" string="件数"/>
+                                            <field name="update_number" string="更新次数"/>
+                                            <field name="is_update" string="是否活跃"/>
+                                            <field name="first_time" string="第一件时间"/>
+                                            <field name="last_time" string="最后一件时间"/>
+                                            <button name="set_standard_time" type="object" string="刷新工序标准时间" class="btn-primary"/>
+                                        </tree>
+                                        <form>
+                                        </form>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </sheet>
+                    </form>
+                </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="suspension_system_station_summary_action">
+            <field name="name">吊挂站号产量汇总</field>
+            <field name="res_model">suspension_system_station_summary</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+    </data>
+</odoo>

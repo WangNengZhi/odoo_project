@@ -1,0 +1,33 @@
+<odoo>
+	<data>
+		<!-- tree视图 -->
+		<record id="fsn_income_detail_tree" model="ir.ui.view">
+			<field name="name">收入明细</field>
+			<field name="model">fsn_income_detail</field>
+			<field name="arch" type="xml">
+				<tree editable="top" create="0" edit="0">
+                    <header>
+						<!-- <button name="set_stock_info" string="物料成本刷新" type="object"/> -->
+                    </header>
+					<field name="month" string="月份"/>
+					<field name="sell_income" string="销售收入"/>
+                    <field name="processing_income" string="加工收入"/>
+                    <field name="government_subsidy" string="政府补助"/>
+                    <field name="other_income" string="其他收入"/>
+                    <field name="total" string="合计"/>
+	                <field name="bank_income" string="银行收入"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- 动作 -->
+		<record id="fsn_income_detail_action" model="ir.actions.act_window">
+			<field name="name">收入明细</field>
+			<field name="res_model">fsn_income_detail</field>
+			<field name="view_mode">tree,graph</field>
+		</record>
+
+	</data>
+</odoo>

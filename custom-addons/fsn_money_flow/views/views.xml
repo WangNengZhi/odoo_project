@@ -1,0 +1,83 @@
+<odoo>
+	<data>
+
+		<!-- tree视图 -->
+		<record model="ir.ui.view" id="money_flow_tree">
+			<field name="name">盘点tree视图</field>
+			<field name="model">money_flow</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom" create="0" edit="0">
+					<field name="month" string="月份"/>
+					<field name="transport_cost" string="运输费"/>
+					<field name="office_cost" string="办公费"/>
+					<field name="production_cost" string="生产成本"/>
+					<field name="wages_cost" string="工资"/>
+					<field name="social_security_cost" string="公积金及社保"/>
+					<field name="taxation_cost" string="税费"/>
+					<field name="refuelingr_cost" string="加油费"/>
+					<field name="staff_meals_cost" string="员工餐费"/>
+					<field name="plant_rent_cost" string="厂房租金"/>
+					<field name="fixed_assets_cost" string="固定资产"/>
+					<field name="intangible_assets" string="无形资产"/>
+					<field name="other_cost" string="其他费用"/>
+					<field name="total_cost" string="合计"/>
+					<field name="bank_income" string="银行收入"/>
+					<field name="bank_disbursement" string="银行支出"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- 透视表视图 -->
+		<record id="money_flow_graph" model="ir.ui.view">
+			<field name="name">盘点透视图</field>
+			<field name="model">money_flow</field>
+			<field name="arch" type="xml">
+				<graph string="盘点透视图">
+					<field name="month" string="月份" type="row"/>
+					<field name="total_cost" string="合计" type="measure"/>
+				</graph>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="money_flow_action">
+			<field name="name">盘点</field>
+			<field name="res_model">money_flow</field>
+			<field name="view_mode">tree,graph</field>
+		</record>
+
+		<!-- 菜单按钮 -->
+		<menuitem name="盘点"
+			id="money_flow_menu_root"
+            web_icon="fsn_money_flow,static/description/icon.png"
+			/>
+		<menuitem name="成本" id="menu_cost" parent="money_flow_menu_root" sequence="10"/>
+			<menuitem name="成本明细" id="menu_money_flow" parent="menu_cost" action="money_flow_action" sequence="10"/>
+			<menuitem name="成本详情" id="menu_expenses_detail_statistics" parent="menu_cost" action="expenses_detail_statistics_action" sequence="11"/>
+			<menuitem name="成本详情" id="menu_expenses_detail_details" parent="menu_cost" action="expenses_detail_details_action" sequence="12"/>
+			<menuitem name="运营成本" id="menu_operating_cost" parent="menu_cost" action="operating_cost_action" sequence="15"/>
+			<menuitem name="单件成本" id="menu_order_cost" parent="menu_cost" action="order_cost_action" sequence="20"/>
+		<menuitem name="收入" id="menu_income" parent="money_flow_menu_root" sequence="15"/>
+			<menuitem name="销售收入" id="menu_cost_sales" parent="menu_income" action="cost_sales_action" sequence="10"/>
+			<menuitem name="收入明细" id="menu_fsn_income_detail" parent="menu_income" action="fsn_income_detail_action" sequence="20"/>
+		<menuitem name="运营" id="menu_fsn_operate" parent="money_flow_menu_root" action="fsn_operate_action" sequence="20"/>
+		<menuitem name="记账" id="menu_bank_account_root" parent="money_flow_menu_root" sequence="30"/>
+			<menuitem name="记账" id="menu_bank_account" parent="menu_bank_account_root" action="fsn_charge_up_action" sequence="10"/>
+			<menuitem name="明细" id="menu_bank_account_line" parent="menu_bank_account_root" action="bank_account_action" sequence="10"/>
+		<menuitem name="成本核算" id="menu_fabric_ingredients_account_month" parent="money_flow_menu_root" sequence="30"/>
+		    <menuitem name="原材料采购成本月报" id="fabric_ingredients_account_month" parent="menu_fabric_ingredients_account_month" action="fabric_ingredients_account_month_action" sequence="10"/>
+			<menuitem name="人工成本月报" id="monthly_report_of_labor_costs" parent="menu_fabric_ingredients_account_month" action="monthly_report_of_labor_costs_action" sequence="20"/>
+		    <menuitem name="制造费用成本月报" id="manu_facturing_cost_month" parent="menu_fabric_ingredients_account_month" action="facturing_cost_month_action" sequence="30"/>
+		<menuitem name="固定资产管理" id="menu_fixed_asset" parent="money_flow_menu_root" sequence="40"/>
+		    <menuitem name="固定资产采购台账" id="manu_fixed_asset_procurement" parent="menu_fixed_asset" action="fixed_asset_procurement_action" sequence="10"/>
+			<menuitem name="固定资产分类登记表" id="manu_classification_of_fixed_assets_form" parent="menu_fixed_asset" action="action_classification_of_fixed_assets" sequence="10"/>
+		<menuitem name="应收应付" id="menu_receivable" parent="money_flow_menu_root" sequence="50"/>
+			<menuitem name="应收账款账龄分析表" id="manu_accounts_receivable_aging" parent="menu_receivable" action="accounts_receivable_aging_action" sequence="10"/>
+		<menuitem name="现金管理" id="menu_cash_management" parent="money_flow_menu_root" sequence="50"/>
+		    <menuitem name="现金收支登记表" id="manu_cash_income_and_expenditure_registration" parent="menu_cash_management" action="cash_income_and_expenditure_registration_action" sequence="10"/>
+		<menuitem name="设置" id="menu_setting_root" parent="money_flow_menu_root" sequence="60"/>
+			<menuitem name="银行过滤配置" id="menubank_filter_config" parent="menu_setting_root" action="bank_filter_config_action" sequence="10"/>
+<!--			<menuitem name="收入明细类别设置" id="fsn_income_detail_type" parent="menu_setting_root" action="fsn_income_detail_type_action" sequence="20"/>-->
+	</data>
+</odoo>

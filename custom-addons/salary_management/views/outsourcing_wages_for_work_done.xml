@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="outsourcing_wages_for_work_done_tree" model="ir.ui.view">
+        <field name="name">外包计件薪酬</field>
+        <field name="model">outsourcing_wages</field>
+        <field name="arch" type="xml">
+            <tree default_order="year desc, month desc" create="false" edit="false">
+                <field name="year_month" string="月份"/>
+                <field name="start_date" string="开始日期"/>
+                <field name="end_date" string="结束日期"/>
+                <field name="employee" string="外包计件员工"/>
+                <field name="id_card" string="身份证"/>
+                <field name="contract" string="工种"/>
+                <field name="outsourcing_type" string="外包类型"/>
+                <field name="work_done" string="总件数"/>
+                <field name="deduct_money" string="扣款"/>
+                <field name="month_workpiece_ratio" string="效率（%）"/>
+                <field name="total_wages" string="应付工资"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="outsourcing_wages_for_work_done_form">
+        <field name="name">外包计件薪酬</field>
+        <field name="model">outsourcing_wages</field>
+        <field name="arch" type="xml">
+            <!-- <tree editable="bottom"> -->
+            <form create="false" edit="false">
+                <sheet>
+                    <group col="4">
+                        <field name="year_month" string="月份"/>
+                        <field name="employee" string="外包计件员工"/>
+                        <field name="start_date" string="开始日期"/>
+                        <field name="end_date" string="结束日期"/>
+                        <field name="id_card" string="身份证"/>
+                        <field name="work_done" string="总件数"/>
+                        <field name="deduct_money" string="扣款"/>
+                        <field name="month_workpiece_ratio" string="效率（%）"/>
+                        <field name="total_wages" string="应付工资"/>
+                    </group>
+                    <notebook>
+                        <page string="计件明细">
+                            <field name="work_done_details" string="计件明细">
+                                <tree editable="bottom" create="0" delete="0">
+                                    <field name="style_number" string="款号"/>
+                                    <field name="process_number" string="工序号"/>
+                                    <field name="process_name" string="工序描述"/>
+                                    <field name="unit_price" string="工价"/>
+                                    <field name="number" string="件数"/>
+                                    <field name="salary" string="工资"/>
+                                    <field name="application_price" string="申请价格"/>
+                                    <field name="application_number" string="申请件数"/>
+                                </tree>
+                                <form>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_outsourcing_wages_for_work_done">
+        <field name="name">外包计件薪酬</field>
+        <field name="res_model">outsourcing_wages</field>
+        <field name="view_mode">tree,form,search</field>
+        <field name="view_id" ref="outsourcing_wages_for_work_done_tree"/>
+        <field name="domain">[('contract', '=', '外包(计件)')]</field>
+    </record>
+
+</odoo>

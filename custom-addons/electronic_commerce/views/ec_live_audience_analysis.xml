@@ -1,0 +1,79 @@
+<odoo>
+    <data>
+		<record model="ir.ui.view" id="ec_live_audience_analysis_tree">
+			<field name="name">直播观客群tree</field>
+			<field name="model">ec_live_audience_analysis</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="date" string="日期"/>
+					<field name="platform_account_id" string="账号"/>
+					<field name="start_time" string="直播开始时间"/>
+					<field name="end_time" string="直播结束时间"/>
+					<field name="fans_ratio" string="粉丝占比（%）"/>
+					<field name="not_fans_ratio" string="非粉丝占比（%）"/>
+					<field name="man_ratio" string="男性占比（%）"/>
+					<field name="woman_tatio" string="女性占比（%）"/>
+
+					<field name="under_18_age_tatio" string="18岁以下占比（%）"/>
+					<field name="age_18_23" string="18岁-23岁占比（%）"/>
+					<field name="age_24_30" string="24岁-30岁占比（%）"/>
+					<field name="age_31_40" string="31岁-40岁占比（%）"/>
+					<field name="age_41_50" string="41岁-50岁占比（%）"/>
+					<field name="age_50_above" string="50岁以上占比（%）"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="ec_live_audience_analysis_form" model="ir.ui.view">
+			<field name="name">直播观客群form</field>
+			<field name="model">ec_live_audience_analysis</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<!-- <div style="text-align: center"><h1>FSN数据导出权限设置</h1></div> -->
+
+						<group col="4">
+							<field name="date" string="日期"/>
+							<field name="platform_account_id" string="账号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="start_time" string="直播开始时间"/>
+							<field name="end_time" string="直播结束时间"/>
+						</group>
+						<group col="4">
+							<field name="fans_ratio" string="粉丝占比（%）"/>
+							<field name="not_fans_ratio" string="非粉丝占比（%）"/>
+							<field name="man_ratio" string="男性占比（%）"/>
+							<field name="woman_tatio" string="女性占比（%）"/>
+
+							<field name="under_18_age_tatio" string="18岁以下占比（%）"/>
+							<field name="age_18_23" string="18岁-23岁占比（%）"/>
+							<field name="age_24_30" string="24岁-30岁占比（%）"/>
+							<field name="age_31_40" string="31岁-40岁占比（%）"/>
+							<field name="age_41_50" string="41岁-50岁占比（%）"/>
+							<field name="age_50_above" string="50岁以上占比（%）"/>
+						</group>
+                        <notebook>
+                            <page string="地区明细">
+								<field name="ec_laa_area_line_ids" string="地区明细">
+									<tree editable="bottom">
+										<field name="country_id" string="国家" readonly="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										<field name="state_id" string="省份" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										<field name="ratio" string="占比（%）"/>
+									</tree>
+								</field>
+                            </page>
+                        </notebook>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <!-- 动作 -->
+        <record id="ec_live_audience_analysis_action" model="ir.actions.act_window">
+            <field name="name">直播观客群</field>
+            <field name="res_model">ec_live_audience_analysis</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+    </data>
+</odoo>

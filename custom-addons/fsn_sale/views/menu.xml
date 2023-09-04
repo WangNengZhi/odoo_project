@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <menuitem name="销售管理"
+            id="menu_fsn_sales_order_root"
+            sequence="1"/>
+
+            <menuitem name="销售订单"
+                id="menu_fsn_sales"
+                parent="menu_fsn_sales_order_root"
+                sequence="10"
+                />
+                
+                <menuitem name="销售订单"
+                    id="menu_fsn_sales_order"
+                    action="fsn_sales_order_actions"
+                    parent="menu_fsn_sales"
+                    sequence="10"
+                    />
+            <menuitem name="商机"
+                id="menu_fsn_business_opportunity_root"
+                parent="menu_fsn_sales_order_root"
+                sequence="20"
+                />
+                
+                <menuitem name="商机"
+                    id="menu_fsn_business_opportunity"
+                    action="fsn_business_opportunity_actions"
+                    parent="menu_fsn_business_opportunity_root"
+                    sequence="10"
+                    />
+    </data>
+</odoo>

@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+        <template id="assets_backend" name="assets_backend" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+
+                <script type="text/javascript" src="/pro/static/src/js/following_process_detail.js"></script>
+                <script type="text/javascript" src="/pro/static/src/js/day_qing_day_bi.js"></script>
+
+
+            </xpath>
+
+            <xpath expr="." position="inside">
+                <!-- <link rel="stylesheet" href="/pro/static/src/css/tree_title.css"/> -->
+            </xpath>
+        </template>
+    </data>
+</odoo>

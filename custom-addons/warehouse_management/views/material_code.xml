@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <record id="material_code_sequence" model="ir.sequence">
+            <field name="name">物料编码自动编号</field>
+            <field name="code">material_code</field>
+            <field name="prefix">%(year)s%(month)s%(day)s</field>
+            <field name="padding">5</field>
+            <field name="use_date_range" eval="True"/>
+            <field name="company_id" eval="False"/>
+        </record>
+
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="material_code_tree">
+			<field name="name">物品编码</field>
+			<field name="model">material_code</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <field name="procurement_date" string="采购日期"/>
+                    <field name="name" string="物品编码"/>
+                    <field name="material_name" string="物品名称"/>
+				</tree>
+			</field>
+		</record>
+    </data>
+</odoo>

@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+		<record model="ir.ui.view" id="middle_check_omission_factor_tree">
+			<field name="name">中查漏查表(月)</field>
+			<field name="model">middle_check_omission_factor</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+                    <header>
+                        <button name="set_date" type="object" string="刷新查货数" class="btn-primary"/>
+                        <button name="set_repair_quantity" type="object" string="刷新返修数" class="btn-primary"/>
+                    </header>
+					<field name="month" string="月份"/>
+                    <field name="group_line_ids" string="组别" widget="many2many_tags"/>
+                    <field name="middle_check_principal" string="中查"/>
+                    <field name="repair_quantity" string="总检返修数量"/>
+                    <field name="check_quantity" string="查货数量"/>
+                    <field name="repair_ratio" string="返修率" widget="progressbar"/>
+                    <field name="assess_index" string="考核"/>
+				</tree>
+			</field>
+		</record>
+        <record id="middle_check_omission_factor_actions" model="ir.actions.act_window">
+            <field name="name">中查漏查表(月)</field>
+            <field name="res_model">middle_check_omission_factor</field>
+            <field name="view_mode">tree,graph</field>
+            <!-- <field name="view_id" ref="client_warehouse_repair_tree"/> -->
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        <!-- tree视图 -->
+        <record id="totlepro_totlepro_week_tree" model="ir.ui.view">
+            <field name="name">车间产值(周)</field>
+            <field name="model">toproduct.week</field>
+            <field name="arch" type="xml">
+                <tree create="0">
+                    <field name="week"/>
+                    <field name="number"/>
+                    <field name="num_people"/>
+                    <field name="avg_pro"/>
+                    <field name="pro_value"/>
+                </tree>
+            </field>
+        </record>
+        <!-- 透视表视图 -->
+        <record id="totlepro_totlepro_week_graph" model="ir.ui.view">
+            <field name="name">车间产值透视表(周)</field>
+            <field name="model">toproduct.week</field>
+            <field name="arch" type="xml">
+                <graph string="产值表">
+                    <field name="week" type="row"/>
+                    <field name="pro_value" type="measure"/>
+                </graph>
+            </field>
+        </record>
+        <!-- 动作 -->
+        <record id="totlepro_totlepro_week_actions" model="ir.actions.act_window">
+            <field name="name">车间产值(周)</field>
+            <field name="res_model">toproduct.week</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+        <!-- 指定tree视图 -->
+        <record model="ir.actions.act_window.view" id="totlepro_totlepro_week_actions_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="totlepro_totlepro_week_tree"/>
+            <field name="act_window_id" ref="totlepro_totlepro_week_actions"/>
+        </record>
+        <!-- 指定graph视图 -->
+        <record model="ir.actions.act_window.view" id="totlepro_totlepro_week_actions_graph">
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="totlepro_totlepro_week_graph"/>
+            <field name="act_window_id" ref="totlepro_totlepro_week_actions"/>
+        </record>
+        <!-- 菜单按钮 -->
+        <menuitem id="menu_totlepro_totlepro_week"
+            name="车间产值(周)"
+            parent="menu_total_totlepro1_week"
+            action="totlepro_totlepro_week_actions"
+            sequence="21"/>
+    </data>
+</odoo>

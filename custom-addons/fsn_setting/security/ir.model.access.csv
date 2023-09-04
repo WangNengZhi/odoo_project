@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fsn_setting_fsn_setting,fsn_setting.fsn_setting,model_fsn_setting_fsn_setting,base.group_user,1,1,1,1

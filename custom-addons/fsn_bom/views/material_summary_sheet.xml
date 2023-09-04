@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+
+        <record id="material_summary_sheet_tree" model="ir.ui.view">
+            <field name="name">物料汇总</field>
+            <field name="model">material_summary_sheet</field>
+            <field name="arch" type="xml">
+                <tree create="0" edit="0" delete="1">
+                    <header>
+                    </header>
+                    <header>
+                        <button name="confirm" type="object" string="批量确认" class="btn-primary" groups="base.group_user,group_self_test"/>
+                    </header>
+                    <header>
+                        <button name="back" type="object" string="批量回退" class="btn-primary" groups="base.group_user,group_self_test"/>
+                    </header>
+                    <field name="order_id" string="订单号"/>
+                    <field name="date_order" string="下单日期"/>
+                    <field name="date_contract" string="合同日期"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="order_quantity" string="订单数量"/>
+                    <field name="material_name" string="物料名称"/>
+                    <field name="material_type" string="物料类型"/>
+
+                    <field name="plan_dosage" string="计划用量"/>
+                    <field name="actual_dosage" string="采购用量"/>
+                    <field name="actual_usage" string="实际用量"/>
+                    <field name="dosage_difference" string="用量差异" widget="percentage"/>
+                    <field name="enter_dosage" string="入库量"/>
+                    <field name="inventory_dosage" string="库存量"/>
+                    <field name="outbound_dosage" string="出库量"/>
+                    <field name="return_goods_dosage" string="退货量"/>
+                    <field name="unit" string="单位"/>
+                    <field name="unit_price" string="单价"/>
+
+                    <field name="plan_money_sum" string="计划金额"/>
+                    <field name="actual_money_sum" string="实际金额"/>
+
+
+                    <field name="tax" string="税点"/>
+                    <field name="plan_after_tax_amount" string="计划税后金额"/>
+                    <field name="actual_after_tax_amount" string="实际税后金额"/>
+                    <field name="state" decoration-info="state == '未确认'" decoration-success="state == '已确认'" widget="badge"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="material_summary_sheet_actions" model="ir.actions.act_window">
+            <field name="name">物料汇总</field>
+            <field name="res_model">material_summary_sheet</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

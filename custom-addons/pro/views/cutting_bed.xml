@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="cutting_bed_tree">
+			<field name="name">裁床产值_tree</field>
+			<field name="model">cutting_bed</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0" delete="0">
+                    <header>
+                        <!-- <button name="set_date" type="object" string="刷新数据" class="btn-primary"/> -->
+                        <!-- <button name="set_pro_value" type="object" string="刷新产值" class="btn-primary"/> -->
+                    </header>
+					<field name="date" string="日期"/>
+					<field name="order_number" string="订单号"/>
+					<field name="style_number" string="款号"/>
+					<field name="product_size" string="尺码"/>
+                    <field name="number" string="件数"/>
+                    <field name="num_people" string="人数"/>
+                    <field name="pro_value" string="产值"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="cutting_bed_week_tree">
+			<field name="name">裁床产值(周)_tree</field>
+			<field name="model">cutting_bed_week</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+					<field name="week" string="周"/>
+					<field name="style_number" string="款号"/>
+                    <field name="number" string="件数"/>
+                    <field name="num_people" string="人数"/>
+                    <field name="pro_value" string="产值"/>
+				</tree>
+			</field>
+		</record>
+		<!-- 透视表视图 -->
+		<record id="cutting_bed_week_graph" model="ir.ui.view">
+			<field name="name">裁床产值(周)透视图</field>
+			<field name="model">cutting_bed_week</field>
+			<field name="arch" type="xml">
+				<graph>
+					<field name="week" string="周" type="row"/>
+				</graph>
+			</field>
+		</record>
+        <!-- 动作 -->
+        <record id="cutting_bed_actions" model="ir.actions.act_window">
+            <field name="name">裁床产值</field>
+            <field name="res_model">cutting_bed</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+        <record id="cutting_bed_week_actions" model="ir.actions.act_window">
+            <field name="name">裁床产值(周)</field>
+            <field name="res_model">cutting_bed_week</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+
+        <menuitem id="menu_cutting_bed"
+            name="裁床产值"
+            parent="menu_total_totlepro1"
+            action="cutting_bed_actions"
+            sequence="45"/>
+        <menuitem id="menu_cutting_bed_week"
+            name="裁床产值(周)"
+            parent="menu_total_totlepro1_week"
+            action="cutting_bed_week_actions"
+            sequence="45"/>
+    </data>
+</odoo>

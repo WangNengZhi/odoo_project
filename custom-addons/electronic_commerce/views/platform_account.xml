@@ -1,0 +1,26 @@
+
+<odoo>
+    <data>
+
+		<record model="ir.ui.view" id="platform_account_tree">
+			<field name="name">平台账号</field>
+			<field name="model">platform_account</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom">
+                    <header>
+                        <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+					<field name="platform_type_id" string="平台"/>
+					<field name="name" string="昵称"/>
+                    <field name="account" string="账号"/>
+				</tree>
+			</field>
+		</record>
+        <!-- 动作 -->
+        <record id="platform_account_action" model="ir.actions.act_window">
+            <field name="name">平台账号</field>
+            <field name="res_model">platform_account</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

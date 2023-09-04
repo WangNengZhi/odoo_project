@@ -1,0 +1,22 @@
+<odoo>
+    <template id="brand_promotion" inherit_id="web.brand_promotion">
+        <xpath expr="//div[@class='o_brand_promotion']" position="replace">
+            <!-- <t t-call="web.brand_promotion_message">
+                <t t-set="_message">
+                    The #1 <a target="_blank" href="http://www.odoo.com/page/e-commerce?utm_source=db&amp;utm_medium=website">Open Source eCommerce</a>
+                </t>
+                <t t-set="_utm_medium" t-valuef="website"/>
+            </t> -->
+        </xpath>
+    </template>
+    <template id="template_header_vertical" inherit_id="website.template_header_vertical">
+        <xpath expr="//div[@id='oe_structure_header_vertical_1']" position="replace">
+            <!-- <t t-call="web.brand_promotion_message">
+                <t t-set="_message">
+                    The #1 <a target="_blank" href="http://www.odoo.com/page/e-commerce?utm_source=db&amp;utm_medium=website">Open Source eCommerce</a>
+                </t>
+                <t t-set="_utm_medium" t-valuef="website"/>
+            </t> -->
+        </xpath>
+    </template>
+</odoo>

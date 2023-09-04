@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="punch_record_stats_tree" model="ir.ui.view">
+        <field name="name">缺打卡统计</field>
+        <field name="model">punch_record_with_missing_time</field>
+        <field name="arch" type="xml">
+            <tree default_order="year desc, month desc" create="false" edit="false">
+                <field name="year_month"/>
+                <!-- <field name="year"/>
+                <field name="month"/> -->
+                <field name="employee"/>
+                <field name="is_it_a_temporary_worker"/>
+                <field name="missing_times"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="punch_record_stats_report_action">
+        <field name="name">缺打卡统计</field>
+        <field name="res_model">punch_record_with_missing_time</field>
+        <field name="view_mode">tree,search</field>
+    </record>
+
+    <menuitem
+        id="punch_record_stats_menu"
+        name="缺打卡统计"
+        parent="statistics_of_late_and_early_leave_menu"
+        action="punch_record_stats_report_action"/>
+
+</odoo>

@@ -1,0 +1,87 @@
+<odoo>
+	<data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="fleet_management_tree">
+			<field name="name">车队管理</field>
+			<field name="model">fleet_management</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="numerical_order" string="序号"/>
+					<field name="date" string="日期"/>
+					<field name="cause" string="出车事由"/>
+					<field name="destination" string="目的地"/>
+					<field name="user_people_id" string="使用人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="out_of_time" string="出车时间"/>
+					<field name="return_time" string="归还时间"/>
+					<field name="departure_photos" string="启程照片" widget='image' width='120px'/>
+					<field name="arrival_photo" string="到达照片" widget='image' width='120px'/>
+					<field name="before_refueling" string="加油前照片" widget='image' width='120px'/>
+					<field name="after_refueling" string="加油后照片" widget='image' width='120px'/>
+					<field name="return_people_id" string="归还人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="plan_mileage" string="计划里程"/>
+					<field name="the_actual_mileage" string="实际里程"/>
+					<field name="fuel_consumption" string="百公里油耗(升)"/>
+					<field name="practical_gasoline" string="实际油耗(升)"/>
+					<field name="today_oil_price" string="今日油价(金额/升)"/>
+					<field name="actual_costs" string="计算费用"/>
+					<field name="practical_costs" string="实际费用"/>
+					<field name="remark" string="备注"/>
+					<button name="create_team_cost" string="生成/刷新费用" type="object" class="btn-primary"/>
+				</tree>
+			</field>
+		</record>
+		<!-- form -->
+		<record id="fleet_management_form" model="ir.ui.view">
+			<field name="name">车队管理</field>
+			<field name="model">fleet_management</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<div style="text-align: center"><h1>车队管理</h1></div>
+
+						<group col="4">
+							<field name="numerical_order" string="序号"/>
+							<field name="date" string="日期"/>
+						</group>
+						<group col="4">
+							<field name="order_number" string="订单编号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="number" string="数量"/>
+							<field name="type" string="类型"/>
+						</group>
+						<group col="4">
+							<field name="cause" string="出车事由" placeholder="详细一点~！"/>
+							<field name="destination" string="目的地"/>
+							<field name="user_people_id" string="使用人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="out_of_time" string="出车时间"/>
+							<field name="return_time" string="归还时间"/>
+							<field name="departure_photos" string="启程照片" widget='image' width='120px'/>
+							<field name="before_refueling" string="加油前照片" widget='image' width='120px'/>
+							<field name="arrival_photo" string="到达照片" widget='image' width='120px'/>
+							<field name="after_refueling" string="加油后照片" widget='image' width='120px'/>
+							<field name="return_people_id" string="归还人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+						</group>
+						<group col="4">
+							<field name="plan_mileage" string="计划里程"/>
+							<field name="the_actual_mileage" string="实际里程"/>
+							<field name="fuel_consumption" string="百公里油耗(升)"/>
+							<field name="practical_gasoline" string="实际油耗(升)"/>
+							<field name="today_oil_price" string="今日油价(金额/升)"/>
+							<field name="actual_costs" string="计算费用"/>
+							<field name="practical_costs" string="实际费用"/>
+							<field name="remark" string="备注"/>
+						</group>
+
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- 动作 -->
+        <record id="fleet_management_actions" model="ir.actions.act_window">
+            <field name="name">车队管理</field>
+            <field name="res_model">fleet_management</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+	</data>
+</odoo>

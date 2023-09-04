@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="total_cost_tree">
+			<field name="name">总成本</field>
+			<field name="model">total_cost</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0" delete="1">
+					<header>
+                        <!-- <button name="set_unit_cost" type="object" string="测试按钮01" class="btn-primary"/> -->
+					</header>
+                    <field name="order_number" string="订单号"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="practical_material_cost" string="实际用量成本"/>
+                    <field name="number" string="件数"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="total_cost_action">
+            <field name="name">总成本</field>
+            <field name="res_model">total_cost</field>
+            <field name="view_mode">tree</field>
+		</record>
+    </data>
+</odoo>

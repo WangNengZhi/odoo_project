@@ -1,0 +1,54 @@
+<odoo>
+	<data>
+		<record id="fsn_expense_form_inherit" model="ir.ui.view">
+			<field name="name">费用扩展</field>
+			<field name="model">hr.expense</field>
+			<field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+			<field name="arch" type="xml">
+				<!-- 增加部门字段 -->
+				<xpath expr="//field[@name='product_id']" position="before">
+					<field name="cost_type_id" string="成本类别" required="1" options="{'no_create': True, 'no_open': True}"/>
+					<field name="fsn_department" string="部门" required="1" options="{'no_create': True, 'no_open': True}"/>
+					<!-- <field name="category" string="类别" required="1"/> -->
+				</xpath>
+				<!-- 增加类别字段 -->
+				<xpath expr="//field[@name='reference']" position="before">
+					<field name="expense_type_id" string="费用类别" required="1" options="{'no_create': True, 'no_open': True}"/>
+					<!-- <field name="category" string="类别(旧)" required="1"/> -->
+				</xpath>
+				<!-- 替换产品字段 -->
+				<xpath expr="//field[@name='product_id']" position="replace">
+					<field name="fsn_product" string="产品" required="1"/>
+				</xpath>
+
+			</field>
+		</record>
+
+		<record id="fsn_expense_form_extend_inherit" model="ir.ui.view">
+			<field name="name">费用扩展</field>
+			<field name="model">hr.expense</field>
+			<field name="inherit_id" ref="hr_expense_extract.hr_expense_extract_view_form"/>
+			<field name="arch" type="xml">
+				<!-- 去掉IAP-OCR请求的ID字段 -->
+				<xpath expr="//field[@name='extract_remote_id']" position="replace">
+				</xpath>
+			</field>
+		</record>
+
+		<!-- 扩展tree视图 -->
+        <record id="fsn_expense_tree_extend_inherit" model="ir.ui.view">
+            <field name="name">费用扩展</field>
+            <field name="model">hr.expense</field>
+            <field name="inherit_id" ref="hr_expense.view_my_expenses_tree"/>
+            <field name="arch" type="xml">
+				<!-- 增加类别字段 -->
+				<xpath expr="//field[@name='employee_id']" position="after">
+					<!-- <field name="category" string="类别(旧)"/> -->
+					<field name="cost_type_id" string="成本类别"/>
+					<field name="expense_type_id" string="费用类别"/>
+				</xpath>
+            </field>
+        </record>
+
+	</data>
+</odoo>

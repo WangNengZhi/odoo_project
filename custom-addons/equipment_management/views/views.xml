@@ -1,0 +1,55 @@
+<odoo>
+	<data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="equipment_management_tree">
+			<field name="name">设备管理</field>
+			<field name="model">equipment_management</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="date" string="日期"/>
+					<field name="asset_number" string="资产编号"/>
+					<field name="asset_name" string="资产名称"/>
+					<field name="equipment_type" string="型号"/>
+					<field name="amount" string="数量"/>
+					<field name="unit" string="单位"/>
+					<field name="warehouse_amount" string="仓库数量"/>
+					<field name="workshop_amount" string="车间数量"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="equipment_management_form" model="ir.ui.view">
+			<field name="name">设备管理</field>
+			<field name="model">equipment_management</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<div style="text-align: center"><h1>设备管理</h1></div>
+
+						<group col="4">
+							<field name="date" string="日期"/>
+							<field name="asset_number" string="资产编号"/>
+							<field name="asset_name" string="资产名称"/>
+							<field name="equipment_type" string="型号"/>
+						</group>
+
+						<group col="4">
+							<field name="amount" string="数量"/>
+							<field name="unit" string="单位"/>
+							<field name="warehouse_amount" string="仓库数量"/>
+							<field name="workshop_amount" string="车间数量"/>
+						</group>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- 动作 -->
+        <record id="equipment_management_actions" model="ir.actions.act_window">
+            <field name="name">设备管理</field>
+            <field name="res_model">equipment_management</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+	</data>
+</odoo>

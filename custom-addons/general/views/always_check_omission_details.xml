@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+		<record model="ir.ui.view" id="always_check_omission_details_tree">
+			<field name="name">总检漏查表(日:按款号)</field>
+			<field name="model">always_check_omission_details</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+                    <header>
+                        <!-- <button name="set_date" type="object" string="刷新数据" class="btn-primary"/> -->
+                    </header>
+					<field name="dDate" string="日期"/>
+                    <field name="group" string="组别"/>
+                    <field name="style_number_id" string="款号"/>
+                    <field name="always_check_principal" string="总检"/>
+
+                    <field name="repair_quantity" string="客仓当日返修数量"/>
+                    <!-- <field name="day_check_quantity" string="总检当日查货数量"/> -->
+
+                    <field name="repair_value_sum" string="客仓总返修数量"/>
+                    <field name="check_quantity" string="总检总查货数量"/>
+
+                    <field name="repair_ratio" string="返修率" widget="progressbar"/>
+                    <field name="assess_index" string="考核"/>
+                    <!-- <field name="general_general_line_ids"/> -->
+                    <!-- <field name="client_ware_line_ids"/> -->
+				</tree>
+			</field>
+		</record>
+        <record id="always_check_omission_details_actions" model="ir.actions.act_window">
+            <field name="name">总检漏查表(日:按款号)</field>
+            <field name="res_model">always_check_omission_details</field>
+            <field name="view_mode">tree,graph</field>
+            <!-- <field name="view_id" ref="client_warehouse_repair_tree"/> -->
+        </record>
+
+    </data>
+</odoo>

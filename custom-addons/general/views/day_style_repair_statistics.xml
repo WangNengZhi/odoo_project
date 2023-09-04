@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <!-- tree -->
+        <record model="ir.ui.view" id="day_style_repair_statistics_tree">
+            <field name="name">日款返修统计</field>
+            <field name="model">day_style_repair_statistics</field>
+                <field name="arch" type="xml">
+                    <tree edit="0" create="0">
+                        <header>
+                            <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                            <button name="set_data" type="object" string="数据刷新" class="btn-primary"/>
+                        </header>
+                        <field name="dDate" string="日期"/>
+                        <field name="group" string="组别"/>
+                        <field name="style_number" string="款号"/>
+                        <field name="sum_examine_quantity" string="总检数"/>
+                        <field name="repair_quantity" string="返修数"/>
+                        <field name="repair_proportion" string="返修率" widget="progressbar"/>
+                        <field name="assess_index" string="考核"/>
+                    </tree>
+                </field>
+        </record>
+        <!-- 动作 -->
+        <record model="ir.actions.act_window" id="day_style_repair_statistics_action">
+            <field name="name">日款返修统计(品控主管)</field>
+            <field name="res_model">day_style_repair_statistics</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

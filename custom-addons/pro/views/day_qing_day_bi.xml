@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+        <record id="day_qing_day_bi_search" model="ir.ui.view">
+            <field name="name">日清日毕</field>
+            <field name="model">day_qing_day_bi</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="date" string="日期"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="product_size" string="尺码"/>
+                    <field name="group" string="组别"/>
+                    <group>
+                        <filter string="日期" name="filter_date" context="{'group_by': 'date'}"/>
+                        <filter string="组别" name="filter_group" context="{'group_by': 'group'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+		<!-- tree -->
+		<record model="ir.ui.view" id="day_qing_day_bi_tree">
+			<field name="name">日清日毕</field>
+			<field name="model">day_qing_day_bi</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0">
+                    <header>
+                    </header>
+                    <field name="date" string="日期"/>
+					<field name="style_number" string="款号"/>
+					<field name="product_size" string="尺码"/>
+					<field name="group" string="组别"/>
+					<field name="num_people" string="人数"/>
+					<field name="avg_value" string="人均产值"/>
+					<field name="number" string="件数"/>
+					<field name="pro_value" string="产值"/>
+
+					<field name="dg_number" string="吊挂件数"/>
+					<field name="dg_avg_value" string="吊挂人均产值"/>
+					<field name="dg_value" string="吊挂产值"/>
+
+					<field name="stranded_number" string="滞留件数"/>
+					<field name="retention_value" string="滞留产值"/>
+
+					<field name="deductions" string="滞留扣款"/>
+					<field name="plan_number" string="计划件数"/>
+					<field name="plan_value" string="计划产值"/>
+					<field name="plan_avg_value" string="计划人均产值"/>
+					<field name="plan_difference" string="计划差值（交货）"/>
+					<field name="unfinished_value" string="计划未完成百分比" widget="percentage"/>
+					<field name="plan_punishment" string="计划处罚（交货）"/>
+					<field name="plan_stranded" string="计划滞留（吊挂）"/>
+					<field name="dg_plan_award" string="计划奖励（吊挂）"/>
+					<field name="plan_stage" string="计划阶段"/>
+
+
+					<field name="number_repair" string="返修件数"/>
+
+				</tree>
+			</field>
+		</record>
+        <record id="day_qing_day_bi_act_window" model="ir.actions.act_window">
+            <field name="name">日清日毕</field>
+            <field name="res_model">day_qing_day_bi</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+        <menuitem id="menu_day_qing_day_bi"
+            name="日清日毕"
+            parent="menu_total_totlepro"
+            action="day_qing_day_bi_act_window"
+            sequence="25"/>
+    </data>
+</odoo>

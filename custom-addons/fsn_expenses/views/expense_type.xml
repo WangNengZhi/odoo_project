@@ -1,0 +1,39 @@
+<odoo>
+	<data>
+
+		<record id="expense_type_tree" model="ir.ui.view">
+			<field name="name">费用类型</field>
+			<field name="model">expense_type</field>
+			<field name="arch" type="xml">
+				<tree editable="top" delete="1">
+					<header>
+                        <button name="set_lock_state" type="object" string="审批通过" class="btn-primary"
+							context="{'lock_state': '已审批'}"
+                            groups="fsn_base.fsn_super_user_group"
+                        />
+                        <button name="set_lock_state" type="object" string="审批回退" class="btn-danger"
+							context="{'lock_state': '未审批'}"
+                            groups="fsn_base.fsn_super_user_group"
+                        />
+					</header>
+					<field name="name" string="费用类型名称"/>
+<!--					<field name="cost_type_id" string="成本类别" options="{'no_create': True, 'no_open': True}"/>-->
+					<field name="cost_type_id" string="成本类别"/>
+                    <field name="lock_state" string="审批状态" decoration-info="lock_state == '未审批'" decoration-success="lock_state == '已审批'" widget="badge"/>
+				</tree>
+			</field>
+		</record>
+
+
+        <!-- form -->
+        <record id="expense_type_action" model="ir.actions.act_window">
+            <field name="name">费用类型</field>
+            <field name="res_model">expense_type</field>
+            <field name="view_mode">tree</field>
+        </record>
+    
+
+        <menuitem id="expense_type_menu" name="费用类型" sequence="25" parent="hr_expense.menu_hr_expense_configuration" action="expense_type_action"/>
+
+    </data>
+</odoo>

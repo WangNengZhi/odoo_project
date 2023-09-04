@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="cutting_bed_production_record_view_tree">
+        <field name="name">裁床生产数据</field>
+        <field name="model">cutting_bed_production_record</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" create="false" edit="false">
+                    <field name="dsn" string="裁床序列号"/>
+                    <!-- <field name="dtype" string="裁床型号"/> -->
+                    <field name="marker" string="版图名称"/>
+                    <field name="param_file" string="参数文件"/>
+
+                    <field name="cut_time" string="裁剪时间（分钟）"/>
+                    <field name="job_time" string="工作时间（分钟）"/>
+                    <field name="cut_distance" string="裁剪距离（米）"/>
+                    <field name="segs" string="裁剪片数"/>
+
+                    <!-- <field name="pos_distance" string="定位距离"/>
+                    <field name="dryhaul_cuttime" string="定位时间"/>
+                    <field name="bite_time" string="过窗时间"/>
+                    <field name="secondary_time" string="准备时间"/>
+                    <field name="break_time" string="暂停时间"/> -->
+
+                    <!-- <field name="v" string="速度"/>
+                    <field name="vmax" string="最大速度"/>
+                    <field name="vmin" string="最小速度"/> -->
+
+                    <field name="sharpen" string="磨刀数"/>
+                    <!-- <field name="slit" string="I字剪口"/>
+                    <field name="vnotch" string="V字剪口"/>
+                    <field name="drill" string="主打孔钻数"/>
+                    <field name="helprdrill" string="辅打孔钻数"/>
+                    <field name="sections" string="窗口数"/> -->
+
+                    <field name="start_time" string="开始时间"/>
+                    <field name="end_time" string="结束时间"/>
+                    <field name="update_time" string="更新时间"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="cutting_bed_production_record_action">
+            <field name="name">裁床生产数据</field>
+            <field name="res_model">cutting_bed_production_record</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,86 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="template_income_tree">
+			<field name="name">模板收入tree</field>
+			<field name="model">template_income</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <field name="receipt_coding" string="收据编码"/>
+                    <field name="invoice_date" string="开票日期"/>
+                    <field name="purchaser" string="购买方"/>
+                    <field name="contact_way" string="联系方式"/>
+
+                    <field name="is_receive_money" string="是否收款"/>
+                    <field name="receive_money_date" string="收款日期"/>
+                    <field name="purchaser_username" string="对方账户名"/>
+                    <field name="purchaser_account_number" string="对方账号"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="template_income_form" model="ir.ui.view">
+			<field name="name">模板收入form</field>
+			<field name="model">template_income</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+
+					</header>
+					<sheet>
+						<div style="text-align: center"><h1>模板收入</h1></div>
+						<group col="4">
+                            <field name="receipt_coding" string="收据编码"/>
+                            <field name="invoice_date" string="开票日期"/>
+                            <field name="purchaser" string="购买方"/>
+                            <field name="contact_way" string="联系方式"/>
+                            <field name="is_receive_money" string="是否收款"/>
+                            <field name="receive_money_date" string="收款日期"/>
+                            <field name="purchaser_username" string="对方账户名"/>
+                            <field name="purchaser_account_number" string="对方账号"/>
+						</group>
+						<notebook>
+							<page string="模板收入明细">
+								<field name="template_income_line_ids" string="模板收入明细">
+									<tree editable="bottom">
+										<field name="template_type" string="模板规格类型"/>
+										<field name="quantity" string="数量"/>
+										<field name="unit_price" string="单价"/>
+										<field name="total_prices" string="总价"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+						</notebook>
+                        <group col="6" class="mt-2 mt-md-0">
+                            <group colspan="4">
+                                <field name="note" nolabel="1" placeholder="可填写备注信息..."/>
+                            </group>
+                            <group colspan="2">
+                                <!-- <field name="amount_untaxed" widget="monetary" options="{'currency_field': 'currency_id'}"/> -->
+                                <!-- <field name="amount_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/> -->
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                    <label for="total_prices"/>
+                                </div>
+                                <field name="total_prices" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                            </group>
+                            <div class="oe_clear"/>
+                        </group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <record model="ir.actions.act_window" id="template_income_action">
+            <field name="name">模板收入</field>
+            <field name="res_model">template_income</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

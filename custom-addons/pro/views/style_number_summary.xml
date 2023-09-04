@@ -1,0 +1,265 @@
+<odoo>
+    <data>
+        <record id="_inherit_finished_product_ware_line_tree" model="ir.ui.view">
+            <field name="name">仓库明细继承</field>
+            <field name="model">finished_product_ware_line</field>
+            <field name="inherit_id" ref="warehouse_management.finished_product_ware_line_tree"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+                <xpath expr="//button[@name='state_back']" position="after">
+
+                    <!-- <button name="set_style_number_summary" string="测试" type="object" class="btn-primary"/> -->
+
+                </xpath>
+            </field>
+        </record>
+        <record id="style_number_summary_search" model="ir.ui.view">
+            <field name="name">款-汇总search</field>
+            <field name="model">style_number_summary</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="order_number" string="订单号"/>
+                    <field name="style_number" string="款号"/>
+                </search>
+            </field>
+        </record>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="style_number_summary_tree">
+			<field name="name">款-汇总_tree</field>
+			<field name="model">style_number_summary</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0">
+                    <header>
+                        <!-- <button name="set_order_number_value" type="object" string="订单"/> -->
+                        <!-- <button name="set_workshop" type="object" string="车间"/> -->
+                        <!-- <button name="set_cutting_bed" type="object" string="裁床"/> -->
+                        <!-- <button name="set_posterior_passage" type="object" string="后道"/> -->
+                        <!-- <button name="set_inbound_outbound_info" type="object" string="仓库"/> -->
+
+                        <!-- <button name="set_defective_good_number" type="object" string="报次"/> -->
+                        <!-- <button name="set_qualified_stock" type="object" string="存量信息刷新"/> -->
+                        <!-- <button name="compute_is_abnormal" type="object" string="状态刷新"/> -->
+                        <!-- <button name="set_attrition_rate" type="object" string="损耗率刷新"/> -->
+                        <!-- <button name="set_factory_delivery_variance" type="object" string="工厂交付差异刷新"/> -->
+                    </header>
+                    <field name="date" string="日期"/>
+                    <field name="start_production_date" string="开始生产日期"/>
+					<field name="order_number" string="订单编号"/>
+                    <field name="processing_type" string="加工类型"/>
+					<field name="style_number" string="款号"/>
+					<field name="fsn_color" string="颜色"/>
+                    <field name="size" string="尺码"/>
+                    <field name="order_number_value" string="订单"/>
+                    <field name="cutting_bed" string="裁床"/>
+                    <field name="workshop" string="车间"/>
+                    <field name="suspension_system_summary_number" string="吊挂"/>
+                    <field name="posterior_passage" string="后道"/>
+
+                    <field name="finished_inventory_number" string="总库存件数"/>
+                    <field name="enter_warehouse" string="仓库(总入库)"/>
+                    <field name="out_of_warehouse" string="仓库(总出库)"/>
+
+					<field name="normal_number" string="正常库存件数" optional="hide"/>
+					<field name="normal_put_number" string="正常入库件数" optional="hide"/>
+					<field name="normal_out_number" string="正常出库件数" optional="hide"/>
+
+					<field name="defective_number" string="报次库存件数" optional="hide"/>
+					<field name="defective_put_number" string="报次入库件数" optional="hide"/>
+					<field name="defective_out_number" string="报次出库件数" optional="hide"/>
+
+					<field name="no_accomplish_number" string="半成品库存件数" optional="hide"/>
+					<field name="no_accomplish_put_number" string="半成品入库件数" optional="hide"/>
+					<field name="no_accomplish_out_number" string="半成品出库件数" optional="hide"/>
+
+					<field name="cutting_number" string="裁片库存件数" optional="hide"/>
+					<field name="cutting_put_number" string="裁片入库件数" optional="hide"/>
+					<field name="cutting_out_number" string="裁片出库件数" optional="hide"/>
+
+					<field name="no_normal_number" string="非正常库存件数" optional="hide"/>
+					<field name="no_normal_put_number" string="非正常入库件数" optional="hide"/>
+					<field name="no_normal_out_number" string="非正常出库件数" optional="hide"/>
+
+                    <field name="customer_enter" string="客户入库数"/>
+                    <field name="customer_out" string="客户出库数"/>
+
+                    <field name="defective_good_number" string="报次件数"/>
+                    <field name="lose_quantity" string="丢失"/>
+                    <field name="attrition_rate" string="损耗率" digits="[10, 4]" decoration-bf="1" decoration-danger="1"/>
+                    <field name="cashmere_filling_room" string="充绒房"/>
+                    <field name="qualified_stock" string="存量"/>
+                    <field name="factory_delivery_variance" string="工厂交付差异" decoration-bf="1" decoration-danger="1"/>
+                    <field name="delivery_quantity" string="客户交付数量"/>
+                    <field name="finish_plan_date" string="计划完成日期"/>
+                    <field name="actual_finish_date" string="实际完成日期"/>
+                    <field name="state" string="状态" decoration-danger="state == '退单'" decoration-info="state == '未开始'" decoration-warning="state == '未开始'" decoration-success="state == '完成'" widget="badge"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- form -->
+		<record id="style_number_summary_form" model="ir.ui.view">
+			<field name="name">款-汇总_form</field>
+			<field name="model">style_number_summary</field>
+			<field name="arch" type="xml">
+				<form create="0" edit="0">
+					<sheet>
+
+						<group col="4">
+                            <field name="date" string="创建时间"/>
+                            <field name="order_number" string="订单编号"/>
+                            <field name="sale_pro_line_id" string="订单明细"/>
+                            <field name="style_number" string="款号"/>
+                            <field name="size" string="尺码"/>
+                            <field name="order_number_value" string="订单"/>
+                            <field name="cutting_bed" string="裁床"/>
+                            <field name="workshop" string="车间"/>
+                            <field name="suspension_system_summary_number" string="吊挂"/>
+                            <field name="posterior_passage" string="后道"/>
+                            <field name="enter_warehouse" string="仓库(入库)"/>
+                            <field name="finished_inventory_number" string="仓库(库存)"/>
+                            <field name="out_of_warehouse" string="仓库(出仓)"/>
+
+
+                            <field name="defective_good_number" string="报次件数"/>
+                            <field name="lose_quantity" string="丢失"/>
+						</group>
+
+						<group col="4">
+                            <notebook>
+                                <page string="裁床（裁床产值）">
+                                    <field name="cutting_bed_ids" string="裁床（裁床产值）">
+                                        <tree editable="bottom" create="0" edit="0" delete="0">
+                                            <field name="id"/>
+                                            <!-- <field name="date"/> -->
+                                            <field name="number" sum="总和"/>
+                                        </tree>
+                                        <form>
+                                        </form>
+                                    </field>
+                                </page>
+                               <page string="车间（组产值）">
+                                    <field name="pro_pro" string="车间（组产值）">
+                                        <tree editable="bottom" create="0" edit="0" delete="0">
+                                            <field name="id"/>
+                                            <field name="number" sum="总和"/>
+                                        </tree>
+                                        <form>
+                                        </form>
+                                    </field>
+                                </page>
+                               <page string="吊挂">
+                                    <field name="suspension_system_summary_ids" string="吊挂">
+                                        <tree editable="bottom" create="0" edit="0" delete="0">
+                                            <field name="id"/>
+                                            <field name="total_quantity" sum="总和"/>
+                                        </tree>
+                                        <form>
+                                        </form>
+                                    </field>
+                                </page>
+                                <page string="后道（后道产值）">
+                                    <field name="posterior_passage_ids" string="后道（后道产值）">
+                                        <tree editable="bottom" create="0" edit="0" delete="0">
+                                            <field name="id"/>
+                                            <!-- <field name="date"/> -->
+                                            <field name="number" sum="总和"/>
+                                        </tree>
+                                        <form>
+                                        </form>
+                                    </field>
+                                </page>
+                                <page string="返修（返修产值）">
+                                    <field name="repair_value_ids" string="返修（返修产值）">
+                                        <tree editable="bottom" create="0" edit="0" delete="0">
+                                            <field name="id"/>
+                                            <!-- <field name="date"/> -->
+                                            <field name="number" sum="总和"/>
+                                        </tree>
+                                        <form>
+                                        </form>
+                                    </field>
+                                </page>
+                                <page string="入库出库（仓库入库出库）">
+                                    <field name="finished_product_ware_line_ids" string="入库（仓库入库出库）">
+                                        <tree>
+                                            <field name="date" string="日期"/>
+                                            <field name="finished_product_ware_id" string="单据编号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                            <field name="type" string="类型" decoration-primary="type == '出库'" decoration-success="type == '入库'" widget="badge"/>
+                                            <field name="process_type" string="加工类型"/>
+                                            <field name="production_factory" string="工厂名称" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                            <field name="order_number" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                            <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                            <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                            <field name="size" string="尺码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                            <field name="quality" string="质量" decoration-danger="quality == '次品'" decoration-success="quality == '合格'" widget="badge"/>
+                                            <field name="character" string="性质" decoration-primary="character == '正常'" decoration-warning="character == '返修'" decoration-info="character == '退货'" widget="badge"/>
+                                            <field name="number" string="件数" sum="总和"/>
+                                            <field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '确认'" widget="badge"/>
+                                        </tree>
+                                    </field>
+                                </page>
+
+                                <page string="报次">
+                                    <field name="chen_yi_bao_ci_line_ids" string="成衣报次明细">
+                                        <tree editable="bottom" create="0" edit="0" delete="0">
+                                            <field name="id"/>
+                                            <!-- <field name="date"/> -->
+                                            <field name="total" sum="总和"/>
+
+                                        </tree>
+                                        <form>
+                                        </form>
+                                    </field>
+                                </page>
+                                <page string="丢失">
+                                    <field name="lose_record_ids" string="丢失记录">
+                                        <tree editable="bottom" create="0" edit="0" delete="0">
+                                            <field name="id"/>
+                                            <!-- <field name="date"/> -->
+                                            <field name="number" sum="总和"/>
+
+                                        </tree>
+                                        <form>
+                                        </form>
+                                    </field>
+                                </page>
+
+                            </notebook>
+						</group>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- 透视表视图 -->
+		<record id="style_number_summary_graph" model="ir.ui.view">
+			<field name="name">款-汇总透视图</field>
+			<field name="model">style_number_summary</field>
+			<field name="arch" type="xml">
+				<graph>
+					<field name="style_number" string="款号" type="row"/>
+				</graph>
+			</field>
+		</record>
+        <!-- 动作 -->
+        <record id="style_number_summary_actions" model="ir.actions.act_window">
+            <field name="name">款-汇总</field>
+            <field name="res_model">style_number_summary</field>
+            <field name="view_mode">tree,graph,form</field>
+            <field name="context">{'factory_delivery_variance': True}</field>
+            <field name="domain">[('size', '!=', False), ("processing_type", "!=", "返修")]</field>
+        </record>
+        <!-- 菜单按钮 -->
+        <menuitem id="menu_summary_main"
+            name="汇总"
+            parent="menu_total_totlepro"
+            sequence="30"/>
+            <menuitem id="menu_style_number_summary"
+                name="款-汇总"
+                parent="menu_summary_main"
+                action="style_number_summary_actions"
+                sequence="30"/>
+    </data>
+</odoo>

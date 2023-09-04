@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+
+        <record id="fsn_bom_mhp_mhp_actions" model="ir.actions.act_window">
+            <field name="name">工时单</field>
+            <field name="res_model">mhp.mhp</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('state', '=', '已审批')]</field>
+            <field name="context">{'create': False, 'edit': False, 'delete': False}</field>
+        </record>
+
+
+        <menuitem name="工艺成本" id="fsn_working_hours_menu" parent="fsn_bom.fsn_bom_menu_root" sequence="15"/>
+            <menuitem name="工时单"
+                id="fsn_bom_mhp_mhp_actions_menu"
+                parent="fsn_working_hours_menu"
+                action="fsn_bom_mhp_mhp_actions"
+                sequence="20"/>
+    </data>
+</odoo>

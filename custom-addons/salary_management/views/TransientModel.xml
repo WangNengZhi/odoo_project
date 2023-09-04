@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="number_settings_wizard_form" model="ir.ui.view">
+            <field name="name">设置数量</field>
+            <field name="model">number_settings_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="number" string="数量"/>
+                    </group>
+                   
+                    <footer>
+                        <button name="action_number" type="object" string="确认" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="number_settings_wizard_action" model="ir.actions.act_window">
+            <field name="name">修改出勤天数</field>
+            <field name="res_model">number_settings_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="model_salary"/>
+            <field name="binding_view_types">list</field>
+        </record>
+
+
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,88 @@
+<odoo>
+    <data>
+        <!-- tree -->
+        <record id="become_full_member_tree" model="ir.ui.view">
+            <field name="name">员工转正记录</field>
+            <field name="model">become_full_member</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="employee_id" string='员工'/>
+                    <field name="age" string="年龄"/>
+                    <field name="education_background" string="学历"/>
+                    <field name="department_id" string='部门'/>
+                    <field name="job_id" string='岗位'/>
+
+                    <field name="entry_date" string="入职日期"/>
+                    <field name="turn_positive_date" string="转正日期"/>
+
+                    <field name="probation_period_treatment" string="试用期薪资"/>
+                    <field name="before_performance" string="试用期绩效"/>
+                    <field name="after_pay" string="转正之后薪资"/>
+                    <field name="after_performance" string="转正之后绩效"/>
+
+                    <field name="department_manager" string='部门主管签字'/>
+                    <field name="factory_manager" string='厂长签字'/>
+                    <field name="general_manager" string='总经理签字'/>
+					<field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '确认'" widget="badge"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- form -->
+        <record id="become_full_member_form" model="ir.ui.view">
+            <field name="name">员工转正记录</field>
+            <field name="model">become_full_member</field>
+            <field name="arch" type="xml">
+                <form>
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="草稿,确认"/>
+						<button name="action_affirm" string="确认" type="object"
+							class="oe_highlight o_expense_submit"
+							attrs="{'invisible': ['|', ('state', '=', '确认'), ('id', '=', False)]}"
+							confirm='确认吗？'
+							/>
+
+					</header>
+                    <sheet>
+                        <div><h1 style="text-align:center">员工转正记录</h1></div>
+                        <group col="4">
+                            <field name="employee_id" string='员工' options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="age" string="年龄"/>
+                            <field name="education_background" string="学历"/>
+                            <field name="department_id" string='部门' options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="job_id" string='岗位' options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                        </group>
+                        <group col="4">
+                            <field name="entry_date" string="入职日期"/>
+                            <field name="turn_positive_date" string="转正日期"/>
+                        </group>
+                        <group col="4">
+                            <field name="probation_period_treatment" string="试用期薪资"/>
+                            <field name="before_performance" string="试用期绩效"/>
+                            <field name="after_pay" string="转正之后薪资"/>
+                            <field name="after_performance" string="转正之后绩效"/>
+                        </group>
+                        <group col="4">
+                            <field name="department_manager" string='部门主管签字' options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="factory_manager" string='厂长签字' options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="general_manager" string='总经理签字' options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- 动作 -->
+        <record id="become_full_member_actions" model="ir.actions.act_window">
+            <field name="name">员工转正记录</field>
+            <field name="res_model">become_full_member</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_become_full_member"
+                        name="员工转正记录"
+                        parent="hr.menu_hr_employee_payroll"
+                        action="become_full_member_actions"
+                        sequence="20"/>
+    </data>
+</odoo>

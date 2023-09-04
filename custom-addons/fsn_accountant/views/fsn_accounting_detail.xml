@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+
+    
+		<record id="fsn_accounting_detail_tree" model="ir.ui.view">
+			<field name="name">FSN会计明细</field>
+			<field name="model">fsn_accounting_detail</field>
+			<field name="arch" type="xml">
+                <tree editable="bottom" create='0' edit='0' delete='1'>
+                    <field name="ymd" string="日期"/>
+                    <field name="jdy_subject_id" string="科目"/>
+                    <field name="voucherNo" string="凭证字号"/>
+					<field name="remark" string="摘要"/>
+                    <field name="debit" string="借方"/>
+                    <field name="credit" string="贷方"/>
+					<!-- <field name="dcType" string="方向"/> -->
+                    <!-- <field name="balance" string="余额"/> -->
+
+					<!-- <field name="creditFor" string="原币贷方发生"/> -->
+					<!-- <field name="balanceForOld" string="原币余额"/> -->
+					<!-- <field name="yearPeriod" string="会计期间"/> -->
+
+                    <!-- <field name="voucherNo" string="凭证字号"/> -->
+
+                    <!-- <field name="balance" string="余额"/> -->
+
+                    <!-- <field name="balanceOld" string="历史余额"/> -->
+                    <!-- <field name="periodfrom" string="起始日期"/> -->
+
+                    <!-- <field name="debit" string="借方"/> -->
+                    <!-- <field name="credit" string="贷方"/> -->
+
+                    <!-- <field name="debitFor" string="原币借方发生"/> -->
+                    <!-- <field name="dc" string="科目借贷方向"/> -->
+				</tree>
+			</field>
+		</record>
+
+        <record id="fsn_accounting_detail_action" model="ir.actions.act_window">
+            <field name="name">会计明细</field>
+            <field name="res_model">fsn_accounting_detail</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('type', 'in', ['1001', '1002', '1012'])]</field>
+        </record>
+
+        <record id="fsn_billing_detail_action" model="ir.actions.act_window">
+            <field name="name">开票明细</field>
+            <field name="res_model">fsn_accounting_detail</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('type', '=', '5001')]</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+read_fsn_color,FSN_颜色_read,model_fsn_color,fsn_base.fsn_base_read_group,1,0,0,0
+read_fsn_size,FSN_尺码_read,model_fsn_size,fsn_base.fsn_base_read_group,1,0,0,0
+read_fsn_unit,FSN_单位_read,model_fsn_unit,fsn_base.fsn_base_read_group,1,0,0,0
+read_fsn_staff_team,FSN_员工小组_read,model_fsn_staff_team,fsn_base.fsn_base_read_group,1,0,0,0
+read_fsn_source_where,FSN_来源和去向_read,model_fsn_source_where,fsn_base.fsn_base_read_group,1,0,0,0
+
+
+
+
+
+write_fsn_color,FSN_颜色_write,model_fsn_color,fsn_base.fsn_base_write_group,1,1,1,1
+write_fsn_size,FSN_尺码_write,model_fsn_size,fsn_base.fsn_base_write_group,1,1,1,1
+write_fsn_unit,FSN_单位_write,model_fsn_unit,fsn_base.fsn_base_write_group,1,1,1,1
+write_fsn_staff_team,FSN_员工小组_write,model_fsn_staff_team,fsn_base.fsn_base_write_group,1,1,1,1
+write_fsn_source_where,FSN_来源和去向_write,model_fsn_source_where,fsn_base.fsn_base_write_group,1,1,1,1

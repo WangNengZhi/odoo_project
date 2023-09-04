@@ -1,0 +1,128 @@
+<odoo>
+    <data noupdate="1">
+        <record id="workshop_dir_01" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">车间生产计划</field>
+            <field name="assessment_standard">1）根据本厂生产计划制订本车间各组每日、每周、每月生产计划
+2）负责按计划组织、安排生产工作，确保完成本车间生产计划
+3）合理调配人力、物力，调整生产布局和生产负荷，提高生产效率</field>
+            <field name="score">10</field>
+            <field name="calculation">计划完成率>95%，每低于1%的2分</field>
+            <field name="sequence">1</field>
+            <field name="fsn_kpi_job">车间主任</field>
+        </record>
+        <record id="workshop_dir_02" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">生产过程管理</field>
+            <field name="assessment_standard">1）主持车间各组早会、当日工作安排，全面协调车间工作
+2）对生产过程进行监督、指导，同时进行生产品质控制，保质保量完成当日计划产值</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率>95%，每低于1%的1分</field>
+            <field name="sequence">2</field>
+            <field name="fsn_kpi_job">车间主任</field>
+        </record>
+        <record id="workshop_dir_03" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">生产现场管理</field>
+            <field name="assessment_standard">1）建立现场管理制度，并指导培训现场管理知识
+2）推进6S现场管理制度，实现生产车间标准化管理
+3）按时考核车间员工生产效率情况，实施奖惩，确保公司制度落实</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率>95%，每低于1%的1分</field>
+            <field name="sequence">3</field>
+            <field name="fsn_kpi_job">车间主任</field>
+        </record>
+        <record id="workshop_dir_04" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">车间生产安全管理</field>
+            <field name="assessment_standard">1）负责落实本公司各项生产安全制度，开展经常性安全检查
+2）负责车间各部门消防安全检查工作和巡查记录工作
+3）定期组织安全生产教育培训，指导员工安全作业</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率100%，一次安全事故全扣完</field>
+            <field name="sequence">4</field>
+            <field name="fsn_kpi_job">车间主任</field>
+        </record>
+        <record id="workshop_dir_05" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">车间成本控制</field>
+            <field name="assessment_standard">1）统计分析车间成本消消耗，制定可操作性成本控制措施</field>
+            <field name="score">10</field>
+            <field name="calculation">成本有效控制>95%，每降低1%扣1分</field>
+            <field name="sequence">5</field>
+            <field name="fsn_kpi_job">车间主任</field>
+        </record>
+        <record id="workshop_dir_06" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">车间设备管理</field>
+            <field name="assessment_standard">1）合理安排车间设备的使用，使设备发挥最大效率
+2）负责车间劳动保护用品和工具的日常管理</field>
+            <field name="score">10</field>
+            <field name="calculation">使用率>95%,每降低1%扣1分</field>
+            <field name="sequence">6</field>
+            <field name="fsn_kpi_job">车间主任</field>
+        </record>
+        <record id="workshop_dir_07" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">车间员工管理</field>
+            <field name="assessment_standard">1）对员工、班组长进行考核管理
+2）配合人力部门做好车间员工考勤等事宜</field>
+            <field name="score">10</field>
+            <field name="calculation">工作完成率100%，每降低1%扣1分</field>
+            <field name="sequence">7</field>
+            <field name="fsn_kpi_job">车间主任</field>
+        </record>
+        <record id="workshop_dir_08" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">车间物料控制</field>
+            <field name="assessment_standard">1）负责车间原辅料的领取、退库工作
+2）对生产过程中物料的使用情况及不良品进行控制</field>
+            <field name="score">5</field>
+            <field name="calculation">工作完成率100%，每降低1%扣1分</field>
+            <field name="sequence">8</field>
+            <field name="fsn_kpi_job">车间主任</field>
+        </record>
+        <record id="workshop_dir_09" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">成品合格控制</field>
+            <field name="assessment_standard">1）车间产品合格率>95%</field>
+            <field name="score">10</field>
+            <field name="calculation">车间产品合格率>95%，每降低1%扣1分</field>
+            <field name="sequence">9</field>
+            <field name="fsn_kpi_job">车间主任</field>
+        </record>
+
+        <record id="workshop_dir_10" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">工作责任心</field>
+            <field name="assessment_standard">工作严谨认真，有强烈的责任意识</field>
+            <field name="score">5</field>
+            <field name="calculation">工作完成率100%，每降低1%扣1分</field>
+            <field name="sequence">10</field>
+            <field name="fsn_kpi_job">车间主任</field>
+        </record>
+        <record id="workshop_dir_11" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">团队建设</field>
+            <field name="assessment_standard">1.部门员工绩效考核与提升。
+2.团队目标的建立。
+3.团队精神的维护与提升。</field>
+            <field name="score">5</field>
+            <field name="calculation">工作完成率100%，每降低1%扣1分</field>
+            <field name="sequence">11</field>
+            <field name="fsn_kpi_job">车间主任</field>
+        </record>
+        <record id="workshop_dir_12" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">出勤率</field>
+            <field name="assessment_standard">缺卡、迟到、早退、等情况</field>
+            <field name="score">5</field>
+            <field name="calculation">出勤率100%，每降低1%扣1分</field>
+            <field name="sequence">12</field>
+            <field name="fsn_kpi_job">车间主任</field>
+        </record>
+
+
+    
+    </data>
+</odoo>

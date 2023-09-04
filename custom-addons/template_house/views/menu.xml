@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+
+        <menuitem name="技术科" id="menu_template_house_root"
+            web_icon="template_house,static/description/icon.png"
+            sequence="1"/>
+
+
+            <menuitem name="板房"
+                id="menu_template_house_results"
+                parent="menu_template_house_root"
+                sequence="10"
+                />
+                <menuitem name="样衣"
+                    id="menu_template_house_development"
+                    action="th_per_management_action"
+                    parent="menu_template_house_results"
+                    sequence="10"
+                    />
+                <menuitem name="制版"
+                    id="menu_fsn_platemaking_record"
+                    action="fsn_platemaking_record_action"
+                    parent="menu_template_house_results"
+                    sequence="20"
+                    />
+                <menuitem name="模板"
+                    id="menu_fsn_template_record"
+                    action="fsn_template_record_action"
+                    parent="menu_template_house_results"
+                    sequence="30"
+                    />
+                <menuitem name="工艺单"
+                    id="menu_fsn_process_sheet"
+                    action="fsn_process_sheet_action"
+                    parent="menu_template_house_results"
+                    sequence="40"
+                    />
+
+            <menuitem name="板房设备记录"
+                id="menu_template_machine_record"
+                action="template_machine_record_action"
+                parent="menu_template_house_root"
+                sequence="20"
+                />
+            <menuitem name="模板收入"
+                id="menu_template_income"
+                action="template_income_action"
+                parent="menu_template_house_root"
+                sequence="30"
+                />
+
+
+    </data>
+</odoo>

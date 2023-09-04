@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="fsn_base_file_upload_template" xml:space="preserve">
+    <div t-name="fsn_base_file_upload_template" class="o_field_image o_field_widget oe_avatar">
+        <input id="portrait_file" type="file" name="filename" class="portrait_file"/>
+    </div>
+</templates>

@@ -1,0 +1,50 @@
+<odoo>
+  	<data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="automatic_process_comparison_tree">
+			<field name="name">自动工序对比</field>
+			<field name="model">automatic_process_comparison</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0" editable="top">
+                    <header>
+                        <!-- <button name="set_work_type" type="object" string="测试按钮" class="btn-primary"/> -->
+                    </header>
+
+					<field name="date" string="日期"/>
+					<field name="employee_id" string="员工"/>
+					<field name="work_type" string="工种" optional="hide"/>
+					<field name="departure_date" string="离职日期" optional="hide"/>
+					<field name="group" string="组别"/>
+					<field name="style_number_id" string="款号"/>
+					<field name="process_id" string="工序号（自动）"/>
+					<field name="process_describe" string="工序描述（自动）"/>
+					<field name="process_level" string="工序等级（自动）"/>
+					<field name="process_time" string="工序时间（自动）"/>
+					<field name="process_price" string="工序价格（自动）"/>
+					<field name="number" string="件数（自动）"/>
+
+					<field name="on_work_process_id" string="工序号（手动）"/>
+					<field name="on_work_process_describe" string="工序描述（手动）"/>
+					<field name="on_work_process_level" string="工序等级（手动）"/>
+					<field name="on_work_process_time" string="工序时间（手动）"/>
+					<field name="on_work_process_price" string="工序价格（手动）"/>
+					<field name="on_work_number" string="件数（手动）"/>
+
+				</tree>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+        <record id="automatic_process_comparison_actions" model="ir.actions.act_window">
+            <field name="name">自动工序对比</field>
+            <field name="res_model">automatic_process_comparison</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <!-- 按钮 -->
+        <menuitem id="automatic_process_comparison_menu"
+            name="工序对比"
+            parent="automatic_scene_process_menu_root"
+            action="automatic_process_comparison_actions"
+            sequence="30"/>
+    </data>
+</odoo>

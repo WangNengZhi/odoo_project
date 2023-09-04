@@ -1,0 +1,168 @@
+<odoo>
+  	<data>
+        <record id="fsn_plan_search" model="ir.ui.view">
+            <field name="name">风丝袅计划搜索视图</field>
+            <field name="model">planning.slot</field>
+            <field name="arch" type="xml">
+                <search>
+                    <group>
+
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- 甘特图 -->
+        <record id="fsn_plan_gantt" model="ir.ui.view">
+            <field name="name">风丝袅计划甘特图</field>
+            <field name="model">planning.slot</field>
+            <field name="arch" type="xml">
+                <gantt
+                js_class="fsn_gantt"
+                default_scale="week"
+                date_start="start_datetime"
+                date_stop="end_datetime"
+                default_group_by="staff_group"
+                color="staff_group"
+                scales="week,month,year"
+                string="员工小组"
+                create="1"
+                plan="0"
+                >
+                    <field name="staff_group" string="员工小组"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="progress_bar" string="进度"/>
+                    <field name="plan_number" string="实际数量"/>
+                    <field name="actual_number" string="真实数量"/>
+                    <templates>
+                        <div t-name="gantt-popover" class="container-fluid">
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <ul class="pl-1 mb-0">
+                                        <li><strong>进度: <t t-esc="progress_bar"/>%</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </templates>
+                </gantt>
+            </field>
+        </record>
+        <!-- form视图 -->
+		<record id="fsn_plan_form" model="ir.ui.view">
+			<field name="name">风丝袅计划form视图</field>
+            <field name="model">planning.slot</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<!-- <button name="set_automatic_plan" string="测试按钮" type="object"/> -->
+					</header>
+                    <sheet>
+                        <group col="4">
+                            <!-- <field name="employee_id" string="员工" options="{'no_open': True}" /> -->
+                            <field name="dDate" string="日期"/>
+                            <field name="department_id" string="部门"/>
+                            <field name="staff_group" string="员工小组"/>
+                            <field name="number_people" string="人数"/>
+                            <field name="group_leader" string="组长" options="{'no_create': True, 'no_open': True}" />
+                            <field name="plan_type" string="计划类别"/>
+                            <field name="repair_source" string="返修来源" attrs="{'invisible' : [('plan_type', '!=', '返修')], 'required':[('plan_type','=', '返修')]}"/>
+                            <field name="plan_stage" string="计划阶段"/>
+                            <!-- <field name="start_datetime" string="开始时间"/> -->
+                            <!-- <field name="end_datetime" string="结束时间"/> -->
+                        </group>
+                        <group col="4">
+                            <!-- <field name="target_avg_production_value" string="目标人均产值"/> -->
+                            <!-- <field name="priority" string="优先级"/> -->
+                            <!-- <field name="department_id" string="部门"/> -->
+                        </group>
+                        <group col="4">
+                            <field name="order_number" string="订单号" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="product_size" string="尺码" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <group col="4">
+                            <field name="plan_number" string="计划数量"/>
+                            <field name="plan_output_value" string="计划产值"/>
+                            <field name="actual_number" string="实际数量"/>
+                            <field name="progress_bar" string="进度" widget="progressbar"/>
+                            <!-- <field name="unproduced_number" string="剩余未生产数量"/> -->
+                        </group>
+
+                    </sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="fsn_plan_tree">
+			<field name="name">风丝袅计划tree视图</field>
+			<field name="model">planning.slot</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+                    <header>
+                        <button name="set_lock_state" type="object" string="审批通过" class="btn-primary"
+							context="{'lock_state': '已审批'}"
+                            groups="fsn_base.fsn_super_user_group"
+                        />
+                        <button name="set_lock_state" type="object" string="审批回退" class="btn-danger"
+							context="{'lock_state': '未审批'}"
+                            groups="fsn_base.fsn_super_user_group"
+                        />
+                        <!-- <button name="fsn_anomaly_detection" type="object" string="异常检测" class="btn-primary"/> -->
+                    </header>
+                    <field name="dDate" string="日期"/>
+                    <field name="department_id" string="部门"/>
+                    <field name="staff_group" string="员工小组"/>
+                    <field name="number_people" string="人数"/>
+                    <field name="group_leader" string="组长"/>
+                    <field name="order_number" string="订单号" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="product_size" string="尺码"/>
+                    <field name="plan_number" string="计划数量"/>
+                    <field name="plan_output_value" string="计划产值"/>
+                    <field name="actual_number" string="实际数量"/>
+                    <field name="progress_bar" string="进度" widget="progressbar"/>
+                    <field name="start_datetime" string="开始时间"/>
+                    <field name="end_datetime" string="结束时间"/>
+                    <field name="plan_type" string="计划类别"/>
+                    <field name="plan_stage" string="计划阶段"/>
+                    <field name="repair_source" string="返修来源"/>
+                    <field name="lock_state" string="审批状态" decoration-info="lock_state == '未审批'" decoration-success="lock_state == '已审批'" widget="badge"/>
+				</tree>
+			</field>
+		</record>
+
+        <!-- 动作 -->
+        <record id="fsn_plan_actions" model="ir.actions.act_window">
+            <field name="name">风丝袅计划</field>
+            <field name="res_model">planning.slot</field>
+            <field name="view_mode">gantt,tree,form,search</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No shifts found</p><p>
+                    Let's start your planning by adding a new shift.
+                </p>
+            </field>
+        </record>
+        <!-- 指定gantt视图 -->
+        <record model="ir.actions.act_window.view" id="fsn_plan_actions_gantt">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">gantt</field>
+            <field name="view_id" ref="fsn_plan_gantt"/>
+            <field name="act_window_id" ref="fsn_plan_actions"/>
+        </record>
+        <!-- 指定form -->
+        <record model="ir.actions.act_window.view" id="fsn_plan_actions_form">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="fsn_plan_form"/>
+            <field name="act_window_id" ref="fsn_plan_actions"/>
+        </record>
+        <!-- 指定tree -->
+        <record model="ir.actions.act_window.view" id="fsn_plan_actions_tree">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="fsn_plan_tree"/>
+            <field name="act_window_id" ref="fsn_plan_actions"/>
+        </record>
+
+    </data>
+</odoo>

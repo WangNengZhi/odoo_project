@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- 通过 -->
+    <record id="hard_working_workers_of_year_form" model="ir.ui.view">
+        <field name="name">确认提示!</field>
+        <field name="model">hard_working_workers_of_year</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="state" string="状态" invisible="1"/>
+                <div attrs="{'invisible':[('state','!=', '已审批')]}">确认回退吗？</div>
+                <div attrs="{'invisible':[('state','!=', '待审批')]}">确认审批通过吗？</div>
+                <footer>
+                    <button name="action_state_changes" attrs="{'invisible':[('state','!=', '已审批')]}" context="{'type': 'fallback'}" type="object" string="回退" class="oe_highlight"/>
+                    <button name="action_state_changes"  attrs="{'invisible':[('state','!=', '待审批')]}" context="{'type': 'through'}" type="object" string="通过" class="oe_highlight"/>
+                    <button string="取消" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="hard_working_workers_of_year_tree" model="ir.ui.view">
+        <field name="name">全年奖</field>
+        <field name="model">hard_working_workers_of_year</field>
+        <field name="arch" type="xml">
+            <tree default_order="year desc" create="0" editable="top">
+
+
+
+                <!-- groups="fsn_base.fsn_super_user_group" -->
+
+                <field name="year_month"/>
+                <field name="end_year_month"/>
+                <field name="employee"/>
+                <field name="total_days_of_absence" readonly="1"/>
+                <field name="max_days_of_absence_in_a_month" string='月请假最多天数' readonly="1"/>
+                <field name="bonus" string="奖金" attrs="{'readonly':[('state','=', '已审批')]}"/>
+                <field name="state" decoration-info="state == '待审批'" decoration-success="state == '已审批'" widget="badge" string="状态"/>
+                <button name="confirmation_button" string="通过" type="object"
+                    class="btn btn-primary"
+                    attrs="{'invisible': ['|', ('state', '=', '已审批'), ('id', '=', False)]}"
+                    context="{'type': 'confirm'}"
+                    groups="fsn_base.fsn_super_user_group"
+                    />
+                <button name="confirmation_button" string="回退" type="object"
+                    class="btn btn-danger"
+                    attrs="{'invisible': ['|', ('state', '=', '待审批'), ('id', '=', False)]}"
+                    context="{'type': 'fallback'}"
+                    groups="fsn_base.fsn_super_user_group"
+                    />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="hard_working_workers_of_year_action">
+        <field name="name">全年奖</field>
+        <field name="res_model">hard_working_workers_of_year</field>
+        <field name="view_mode">tree,search</field>
+    </record>
+
+    <menuitem
+        id="hard_working_workers_of_year_menu"
+        name="全年奖"
+        parent="achievement_menu_root"
+        action="hard_working_workers_of_year_action"/>
+
+</odoo>

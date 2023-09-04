@@ -1,0 +1,49 @@
+<odoo>
+	<data>
+		<!-- <record id="work_bd_wbs_gantt" model="ir.ui.view">
+			<field name="name">WBS甘特图</field>
+			<field name="model">gantetu_gantetu</field>
+			<field name="arch" type="xml">
+				<gantt type="consolidate"
+					date_start="plan_start_time"
+					date_stop="plan_end_time"
+					consolidation="work_remark"
+					default_group_by="department"
+					string="WBS"
+				/>
+			</field>
+		</record> -->
+		<!-- actions opening views on models -->
+
+		<record model="ir.actions.act_window" id="gantetu_action_window">
+			<field name="name">gantetu window</field>
+			<field name="res_model">gantetu_gantetu</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+
+
+		<!-- Top menu item -->
+
+		<menuitem name="gantetu" id="gantetu.menu_root"/>
+
+		<!-- menu categories -->
+
+		<menuitem name="Menu 1" id="gantetu.menu_1" parent="gantetu.menu_root" action="gantetu_action_window"/>
+
+
+		<record id="client_action" model="ir.actions.client">
+				<field name="name">客户端动作</field>
+				<field name="tag">suspension_system_index</field>
+		</record>
+		<menuitem
+			id="client_action_menuitem"
+			name="自定义页面按钮"
+			action="client_action"
+			parent="gantetu.menu_root"
+			sequence="20"/>
+
+	</data>
+</odoo>

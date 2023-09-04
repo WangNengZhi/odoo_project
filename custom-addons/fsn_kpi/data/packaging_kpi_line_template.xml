@@ -1,0 +1,112 @@
+<odoo>
+    <data noupdate="1">
+        <record id="packaging_kpi_line_template_01" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作完成率</field>
+            <field name="assessment_standard">根据部门领导下达的指定目标要完成100%。</field>
+            <field name="score">10</field>
+            <field name="calculation">每低于10件扣1分</field>
+            <field name="sequence">1</field>
+            <field name="fsn_kpi_job">包装</field>
+        </record>
+        <record id="packaging_kpi_line_template_02" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作标准</field>
+            <field name="assessment_standard">根据客户的工艺单，品控主管，本部门主管交得包装方法要做到100%正确</field>
+            <field name="score">10</field>
+            <field name="calculation">客户每退仓一次扣1分</field>
+            <field name="sequence">2</field>
+            <field name="fsn_kpi_job">包装</field>
+        </record>
+        <record id="packaging_kpi_line_template_03" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作合格率</field>
+            <field name="assessment_standard">包装岗位的员工，穿吊牌要100%的合格率，不允许乱码，乱序。</field>
+            <field name="score">10</field>
+            <field name="calculation">每发现1件衣服扣1分</field>
+            <field name="sequence">3</field>
+            <field name="fsn_kpi_job">包装</field>
+        </record>
+        <record id="packaging_kpi_line_template_04" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作流程</field>
+            <field name="assessment_standard">每款大货下到后道，就要把各种包装辅料领回来，确认吊牌穿法，位置，包装方法，捆包件数等。</field>
+            <field name="score">10</field>
+            <field name="calculation">流程每错误1次扣1分</field>
+            <field name="sequence">4</field>
+            <field name="fsn_kpi_job">包装</field>
+        </record>
+        <record id="packaging_kpi_line_template_05" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作内容</field>
+            <field name="assessment_standard">在包装的整个过程中不能漏项，如干燥剂，拷备纸，备扣袋等。</field>
+            <field name="score">10</field>
+            <field name="calculation">客户每投诉1次扣1分</field>
+            <field name="sequence">5</field>
+            <field name="fsn_kpi_job">包装</field>
+        </record>
+        <record id="packaging_kpi_line_template_06" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">客户满意度</field>
+            <field name="assessment_standard">要做到让客户不投诉，检查员不投诉。</field>
+            <field name="score">10</field>
+            <field name="calculation">每投诉10次扣1分</field>
+            <field name="sequence">6</field>
+            <field name="fsn_kpi_job">包装</field>
+        </record>
+        <record id="packaging_kpi_line_template_07" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作区域6s</field>
+            <field name="assessment_standard">每天下班前要把自己的工作区域打扫干净，物品摆放整齐。</field>
+            <field name="score">10</field>
+            <field name="calculation">每发现一次扣1分</field>
+            <field name="sequence">7</field>
+            <field name="fsn_kpi_job">包装</field>
+        </record>
+        <record id="packaging_kpi_line_template_08" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">货期达成率</field>
+            <field name="assessment_standard">在特殊时间，品牌公司临时安排走货，要听从公司的安排，达到客户所要求的交货日期和品类数量，不能耽误货期。</field>
+            <field name="score">10</field>
+            <field name="calculation">不达标一次扣5分</field>
+            <field name="sequence">8</field>
+            <field name="fsn_kpi_job">包装</field>
+        </record>
+        <record id="packaging_kpi_line_template_09" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">工作责任心</field>
+            <field name="assessment_standard">对本职工作要热爱，喜欢，工作认真，能引导正确的结果</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">9</field>
+            <field name="fsn_kpi_job">包装</field>
+        </record>
+        <record id="packaging_kpi_line_template_10" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">团队配合</field>
+            <field name="assessment_standard">要懂团队的协作和配合。</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">10</field>
+            <field name="fsn_kpi_job">包装</field>
+        </record>
+        <record id="packaging_kpi_line_template_11" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">出勤率</field>
+            <field name="assessment_standard">缺卡，迟到，早退，等情况。</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">11</field>
+            <field name="fsn_kpi_job">包装</field>
+        </record>
+        <record id="packaging_kpi_line_template_12" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">言论</field>
+            <field name="assessment_standard">杜绝消极言论及负面情绪</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">12</field>
+            <field name="fsn_kpi_job">包装</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+
+        <record id="post_performance_setting_tree" model="ir.ui.view">
+            <field name="name">FSN岗位绩效设置</field>
+            <field name="model">post_performance_setting</field>
+            <field name="arch" type="xml">
+				<tree editable="top">
+                    <field name="job_id" string="岗位" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="frequency_distribution" string="发放频率（每几个月发放一次）"/>
+                    <field name="starting_month" string="启始月份" widget="fsn_month"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="post_performance_setting_action" model="ir.actions.act_window">
+            <field name="name">FSN岗位绩效设置</field>
+            <field name="res_model">post_performance_setting</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

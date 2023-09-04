@@ -1,0 +1,21 @@
+<odoo>
+
+    <record id="wechat_extension_group00" model="wechat_extension_group">
+        <field name="name">柜台销售</field>
+    </record>
+    <record id="wechat_extension_group01" model="wechat_extension_group">
+        <field name="name">工序确认</field>
+    </record>
+    <record id="wechat_extension_group02" model="wechat_extension_group">
+        <field name="name">修改密码</field>
+    </record>
+    <record id="wechat_extension_group03" model="wechat_extension_group">
+        <field name="name">仓库管理</field>
+    </record>
+    <record id="wechat_extension_group04" model="wechat_extension_group">
+        <field name="name">中查交货</field>
+    </record>
+    <record id="wechat_extension_group05" model="wechat_extension_group">
+        <field name="name">中查交货审批</field>
+    </record>
+</odoo>

@@ -1,0 +1,88 @@
+<odoo>
+    <data>
+        <!-- tree -->
+		<record model="ir.ui.view" id="outsource_surface_material_tree">
+			<field name="name">面里料订单tree</field>
+			<field name="model">outsource_surface_material</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <header>
+                    </header>
+					<field name="date" string="日期"/>
+                    <field name="verifier" string="审核"/>
+                    <field name="store_issue" string="发料"/>
+                    <field name="picking" string="领料"/>
+                    <field name="announcements" string="注意事项"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- form -->
+		<record id="outsource_surface_material_form" model="ir.ui.view">
+			<field name="name">面里料订单form</field>
+			<field name="model">outsource_surface_material</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+
+					</header>
+                    <sheet>
+						<div style="text-align: center"><h1>面里料订单</h1></div>
+                        <group col="4">
+                            <field name="date" string="日期"/>
+                            <field name="announcements" string="注意事项"/>
+                        </group>
+						<notebook>
+							<page string="款式明细">
+								<field name="osm_style_info_ids" string="款式明细">
+									<tree editable="bottom">
+										<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="cgmlms" string="采购面料米数"/>
+                                        <field name="ssxsms" string="缩水（洗水）米数"/>
+                                        <field name="mldhyl" string="面料单耗用量"/>
+                                        <field name="psdhyl" string="配色单耗用量"/>
+                                        <field name="ncdhyl" string="粘衬单耗用量"/>
+                                        <field name="cutting_ratio" string="裁剪比例"/>
+                                        <field name="residue_cloth" string="剩余布料"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+							<page string="物料明细">
+								<field name="osm_size_info" string="物料明细">
+									<tree editable="bottom">
+                                        <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="size" string="尺码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="predict_cut_number" string="预计裁剪数量"/>
+                                        <field name="practical_cut_number" string="实际裁剪数量"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+						</notebook>
+                        <group col="6">
+							<field name="verifier" string="审核"/>
+							<field name="store_issue" string="发料"/>
+							<field name="picking" string="领料"/>
+                        </group>
+                    </sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+		<record model="ir.actions.act_window" id="outsource_surface_material_actions">
+            <field name="name">外发面里料订单</field>
+            <field name="res_model">outsource_surface_material</field>
+            <field name="view_mode">tree,form</field>
+		</record>
+
+    </data>
+</odoo>

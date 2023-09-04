@@ -1,0 +1,146 @@
+<odoo>
+    <data>
+        <record id="reality_material_list_tree" model="ir.ui.view">
+            <field name="name">实际用料表</field>
+            <field name="model">reality_material_list</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string='客户'/>
+                    <field name="order_number" string='订单编号'/>
+                    <field name="style_number" string='款号'/>
+                    <field name="size" string='尺码'/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="reality_material_list_form" model="ir.ui.view">
+            <field name="name">实际用料表</field>
+            <field name="model">reality_material_list</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="order_number" options="{'no_create_edit': True, 'no_open': True}"/>
+                            <field name="name" options="{'no_create_edit': True, 'no_open': True}"/>
+                            <field name="style_number" options="{'no_create_edit': True, 'no_open': True}"/>
+                            <field name="size"/>
+                        </group>
+                        <notebook>
+                            <page string="面料">
+                                <group col="2">
+                                    <field name="picture" widget="image"/>
+                                    <!-- <field name="door_width"/> -->
+                                    <!-- <field name="number_of_pieces"/> -->
+                                    <!-- <field name="single_piece"/> -->
+
+                                    <field name="float_door_width"/>
+                                    <field name="float_number_of_pieces"/>
+                                    <field name="float_single_piece"/>
+                                    <field name="comment"/>
+                                </group>
+                            </page>
+
+                            <page string="里料">
+                                <group col="2">
+                                    <field name="picture1" widget="image"/>
+                                    <!-- <field name="door_width1"/> -->
+                                    <!-- <field name="number_of_pieces1"/> -->
+                                    <!-- <field name="single_piece1"/> -->
+
+                                    <field name="float_door_width1"/>
+                                    <field name="float_number_of_pieces1"/>
+                                    <field name="float_single_piece1"/>
+                                    <field name="comment1"/>
+                                </group>
+                            </page>
+
+                            <page string="胆布">
+                                <group col="2">
+                                    <field name="picture2" widget="image"/>
+                                    <!-- <field name="door_width2"/> -->
+                                    <!-- <field name="number_of_pieces2"/> -->
+                                    <!-- <field name="single_piece2"/> -->
+
+                                    <field name="float_door_width2"/>
+                                    <field name="float_number_of_pieces2"/>
+                                    <field name="float_single_piece2"/>
+                                    <field name="comment2"/>
+                                </group>
+                            </page>
+
+                            <page string="棉">
+                                <group col="2">
+                                    <field name="picture3" widget="image"/>
+                                    <!-- <field name="door_width3"/> -->
+                                    <!-- <field name="number_of_pieces3"/> -->
+                                    <!-- <field name="single_piece3"/> -->
+
+                                    <field name="float_door_width3"/>
+                                    <field name="float_number_of_pieces3"/>
+                                    <field name="float_single_piece3"/>
+                                    <field name="comment3"/>
+                                </group>
+                            </page>
+
+                            <page string="粘衬">
+                                <group col="2">
+                                    <field name="picture4" widget="image"/>
+                                    <!-- <field name="door_width4"/> -->
+                                    <!-- <field name="number_of_pieces4"/> -->
+                                    <!-- <field name="single_piece4"/> -->
+
+                                    <field name="float_door_width4"/>
+                                    <field name="float_number_of_pieces4"/>
+                                    <field name="float_single_piece4"/>
+                                    <field name="comment4"/>
+                                </group>
+                            </page>
+
+                            <page string="配料1">
+                                <group col="2">
+                                    <field name="picture5" widget="image"/>
+                                    <!-- <field name="door_width5"/> -->
+                                    <!-- <field name="number_of_pieces5"/> -->
+                                    <!-- <field name="single_piece5"/> -->
+
+                                    <field name="float_door_width5"/>
+                                    <field name="float_number_of_pieces5"/>
+                                    <field name="float_single_piece5"/>
+                                    <field name="comment5"/>
+                                </group>
+                            </page>
+
+                            <page string="配料2">
+                                <group col="2">
+                                    <field name="picture6" widget="image"/>
+                                    <!-- <field name="door_width6"/> -->
+                                    <!-- <field name="number_of_pieces6"/> -->
+                                    <!-- <field name="single_piece6"/> -->
+
+                                    <field name="float_door_width6"/>
+                                    <field name="float_number_of_pieces6"/>
+                                    <field name="float_single_piece6"/>
+                                    <field name="comment6"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="reality_material_list_action" model="ir.actions.act_window">
+            <field name="name">实际用料表</field>
+            <field name="res_model">reality_material_list</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="reality_material_list_menu"
+            name="实际用料表"
+            parent="menu_mater_mater"
+            action="reality_material_list_action"
+            sequence="10"/>
+    </data>
+</odoo>

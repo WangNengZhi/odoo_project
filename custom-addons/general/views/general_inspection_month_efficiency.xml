@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+		<record id="general_inspection_month_efficiency_tree" model="ir.ui.view">
+			<field name="name">总检月效率</field>
+			<field name="model">general_inspection_month_efficiency</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+                    <header>
+                        <button name="update_general_inspection_month_efficiency" type="object" string="刷新" class="btn-primary"/>
+                    </header>
+					<field name="month" string="月份"/>
+                    <field name="group" string="组别"/>
+                    <field name="general" string="总检"/>
+                    <field name="style_number" string="款号"/>
+
+                    <field name="general_repair_number" string="总检返修件数"/>
+                    <field name="general_check_number" string="总检查货件数"/>
+
+                    <field name="repair_rate" string="返修率" widget="percentage"/>
+                    
+                    <field name="client_ware_repair_number" string="尾查返修件数"/>
+                    <field name="omission_rate" string="漏查率" widget="percentage"/>
+
+                    <field name="dg_check_number" string="总检吊挂查货数"/>
+                    <field name="dg_repair_number" string="总检吊挂返修数"/>
+                    <field name="dg_rate_repair" string="吊挂返修率" widget="percentage"/>
+                    <field name="punishment" string="扣款"/>
+				</tree>
+			</field>
+		</record>
+        <record id="general_inspection_month_efficiency_actions" model="ir.actions.act_window">
+            <field name="name">总检月效率</field>
+            <field name="res_model">general_inspection_month_efficiency</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+
+    </data>
+</odoo>

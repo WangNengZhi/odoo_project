@@ -1,0 +1,121 @@
+<odoo>
+    <data>
+        <record id="fsn_customer_search" model="ir.ui.view">
+            <field name="name">客户</field>
+            <field name="model">fsn_customer</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <search string="未启用">
+                    <filter name="未启用" string="未启用" domain="[('active', '=', False)]"/>
+                </search>
+				<field name="name" string="客户名称"/>
+				<field name="customer_type" string="类别"/>
+				<field name="type" string="类型"/>
+            </field>
+        </record>
+		<!-- tree -->
+		<record model="ir.ui.view" id="fsn_customer_tree">
+			<field name="name">客户</field>
+			<field name="model">fsn_customer</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" string="客户名称"/>
+					<field name="customer_type" string="类别"/>
+					<field name="type" string="类型"/>
+					<field name="phone" string="电话"/>
+					<field name="email" string="邮箱"/>
+					<field name="country_id" string="国家"/>
+					<field name="state_id" string="省份" />
+					<field name="active" string="启用" />
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="fsn_customer_form" model="ir.ui.view">
+			<field name="name">客户</field>
+			<field name="model">fsn_customer</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+					<sheet>
+						<group col="4">
+                            <field name="name" string="客户名称"/>
+							<field name="customer_type" string="类别"/>
+                            <field name="type" string="类型"/>
+                            <field name="phone" string="电话"/>
+                            <field name="email" string="邮箱"/>
+						</group>
+						<group col="4" string="地址信息">
+                            <field name="country_id" string="国家" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="state_id" string="省份" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="detailed_address" string="详细地址"/>
+						</group>
+
+
+
+						<notebook>
+							<page string="员工明细">
+								<field name="fsn_customer_ids" string="员工明细" widget="many2many_kanban" context="{'default_customer_type': '个人', 'default_type': type}">
+									<kanban>
+										<templates>
+											<t t-name="kanban-box">
+												<div class="oe_kanban_global_click">
+													<div class="o_kanban_card_content">
+														<div class="row">
+															<div class="col-12">
+																<strong><field name="name"/></strong>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-12">
+																类别:<field name="customer_type"/>
+															</div>
+															<div class="col-12">
+																类型:<field name="type"/>
+															</div>
+															<div class="col-12">
+																电话:<field name="phone"/>
+															</div>
+														</div>
+													</div>
+												</div>
+											</t>
+										</templates>
+									</kanban>
+									<form>
+										<group col="4">
+											<field name="name" string="客户名称"/>
+											<field name="customer_type" string="类别" readonly="1" force_save="1"/>
+											<field name="type" string="类型" readonly="1" force_save="1"/>
+											<field name="phone" string="电话"/>
+											<field name="email" string="邮箱"/>
+										</group>
+										<group col="4" string="地址信息">
+											<field name="country_id" string="国家" options="{'no_create': True, 'no_open': True}"/>
+											<field name="state_id" string="省份" options="{'no_create': True, 'no_open': True}"/>
+											<field name="detailed_address" string="详细地址"/>
+										</group>
+									</form>
+								</field>
+							</page>
+						</notebook>
+
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <!-- form -->
+        <record model="ir.actions.act_window" id="fsn_customer_action">
+            <field name="name">客户</field>
+            <field name="res_model">fsn_customer</field>
+            <field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="fsn_customer_search"/>
+        </record>
+
+
+    </data>
+</odoo>

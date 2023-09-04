@@ -1,0 +1,73 @@
+<odoo>
+    <data>
+
+
+
+        <record id="is_issue_payroll3_actions" model="ir.actions.server">
+                <field name="name">修改是否发放</field>
+                <field name="model_id" ref="model_payroll3"/>
+                <field name="binding_model_id" ref="model_payroll3"/>
+                <field name="binding_view_types">list</field>
+                <field name="state">code</field>
+                <field name="code">
+                    action = records.set_is_grant()
+                </field>
+        </record>
+
+
+        <!-- tree -->
+        <record id="payroll3_tree" model="ir.ui.view">
+            <field name="name">工资条</field>
+            <field name="model">payroll3</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" edit="0" create="0" decoration-bf="is_delete_date!=False">
+                    <header>
+                        <button name="jianchayingfa2" type="object" string="检测应发2" class="btn-info"/>
+                        <button name="detection_real_hair" type="object" string="检测实发" class="btn-info"/>
+                    </header>
+
+                    <field name="month" string="月份"/>
+                    <field name="name" string="员工"/>
+                    <field name="entry_date" string="入职日期" optional="hide"/>
+                    <field name="is_delete_date" string="离职日期" optional="hide"/>
+                    <field name="id_card" string="身份证号" optional="hide"/>
+                    <field name="mobile_phone" string="手机号" optional="hide"/>
+                    <field name="practical_attendance_day" string="实出勤天数"/>
+                    <field name="first_level_department" string="部门" optional="hide"/>
+                    <field name="contract" string="工种" optional="hide"/>
+                    <field name="is_delete_date" string='离职日期' optional="hide"/>
+                    <field name="basic_wage" string="基本工资"/>
+                    <field name="overtime_wage" string="加班工资"/>
+                    <field name="subsidy" string="补贴"/>
+                    <field name="bonus" string="奖金"/>
+                    <field name="performance" string="业绩工资" optional="hide"/>
+                    <field name="deduct_money" string="扣款" optional="hide"/>
+                    <field name="merit_pay" string="绩效工资"/>
+
+                    <field name="should_wage1" string="应发工资2" decoration-danger="is_abnormal == True" widget="badge"/>
+                    <field name="dimission_subsidy" string="离职补贴" optional="hide"/>
+                    <field name="consumption_deduct" string="消费扣除" optional="hide"/>
+                    <field name="advance" string="预支工资" optional="hide"/>
+                    <field name="should_wage2" string="实发"/>
+                    <field name="pension_individual" string="养老(个人)"/>
+                    <field name="medical_personal" string="医疗（个人）"/>
+                    <field name="unemployed_individual" string="失业（个人）"/>
+                    <field name="provident_fund_deduction" string="公积金扣款"/>
+                    <field name="social_security_deductions" string="社保扣款"/>
+                    <field name="tax" string="个税"/>
+                    <field name="paid_wages" string="实发2"/>
+                    <field name="is_abnormal" string="是否异常" optional="hide"/>
+                    <field name="is_grant_derive" string="是否发放"/>
+                    <field name="is_grant" string="是否发放" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="payroll3_action">
+            <field name="name">工资条</field>
+            <field name="res_model">payroll3</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

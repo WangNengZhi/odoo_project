@@ -1,0 +1,65 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="sealed_samples_first_tree">
+			<field name="name">首件封样</field>
+			<field name="model">sealed_samples_first</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="date" string="日期"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="tarde_name" string="品名"/>
+					<field name="fsn_staff_team_id" string="生产小组" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="inspect_conclusion" string="检验结论"/>
+					<field name="picture" string="图片" widget='image' width='120px'/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="sealed_samples_first_form" model="ir.ui.view">
+			<field name="name">首件封样</field>
+			<field name="model">sealed_samples_first</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<div style="text-align: center"><h1>首件封样报告</h1></div>
+
+						<group col="4">
+                            <field name="date" string="日期"/>
+                            <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="tarde_name" string="品名"/>
+                            <field name="fsn_staff_team_id" string="生产小组" widget="many2many_tags" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="picture" string="图片" widget='image' width='120px'/>
+						</group>
+                        <notebook>
+                            <page string="首件封样明细">
+                                <field name="sealed_samples_first_line_ids">
+									<tree editable="bottom">
+                                        <field name="parts_name" string="部位名称"/>
+                                        <field name="size" string="尺码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="technical_requirements" string="技术要求"/>
+                                        <field name="sample_results" string="封样结果"/>
+                                        <field name="confirm_record" string="确认记录"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+						<group col="4">
+                            <field name="inspect_conclusion" string="检验结论"/>
+						</group>
+
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <record id="sealed_samples_first_actions" model="ir.actions.act_window">
+            <field name="name">首件封样</field>
+            <field name="res_model">sealed_samples_first</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

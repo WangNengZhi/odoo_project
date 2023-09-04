@@ -1,0 +1,117 @@
+<odoo>
+    <data noupdate="1">
+        <record id="group_leader_kpi_line_template_01" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">单款货期达成率</field>
+            <field name="assessment_standard">单款货期达成率=100%</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率=100%，每低于1%扣1分</field>
+            <field name="sequence">1</field>
+            <field name="fsn_kpi_job">组长</field>
+        </record>
+
+        <record id="group_leader_kpi_line_template_02" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">品质合格率</field>
+            <field name="assessment_standard">品质合格率>90%</field>
+            <field name="score">10</field>
+            <field name="calculation">每降低1%扣2分</field>
+            <field name="sequence">2</field>
+            <field name="fsn_kpi_job">组长</field>
+        </record>
+
+        <record id="group_leader_kpi_line_template_03" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">小组人员流失率</field>
+            <field name="assessment_standard">确保车间人员稳定性，人员控制流失率在5%以内</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率小于5%每增加一个百分点扣2分</field>
+            <field name="sequence">3</field>
+            <field name="fsn_kpi_job">组长</field>
+        </record>
+        <record id="group_leader_kpi_line_template_04" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">当日产值定标完成率</field>
+            <field name="assessment_standard">转款当天台产达到450元，转款第二天台产500元，第三天及以上为560元。完成率=100%</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率100%，每降低1%扣2分</field>
+            <field name="sequence">4</field>
+            <field name="fsn_kpi_job">组长</field>
+        </record>
+        <record id="group_leader_kpi_line_template_05" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">车间6S管理</field>
+            <field name="assessment_standard">生产组别按照6S的管理标准执行</field>
+            <field name="score">10</field>
+            <field name="calculation">执行标准100%，第降低1%扣1分</field>
+            <field name="sequence">5</field>
+            <field name="fsn_kpi_job">组长</field>
+        </record>
+
+        <record id="group_leader_kpi_line_template_06" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">车间安全事故</field>
+            <field name="assessment_standard">车间的安全事故</field>
+            <field name="score">10</field>
+            <field name="calculation">出现一次全扣完</field>
+            <field name="sequence">6</field>
+            <field name="fsn_kpi_job">组长</field>
+        </record>
+        <record id="group_leader_kpi_line_template_07" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">员工满意度</field>
+            <field name="assessment_standard">做好每个事项，服务好每个员工</field>
+            <field name="score">10</field>
+            <field name="calculation">被举报一次扣2分</field>
+            <field name="sequence">7</field>
+            <field name="fsn_kpi_job">组长</field>
+        </record>
+
+        <record id="group_leader_kpi_line_template_08" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">成本控制</field>
+            <field name="assessment_standard">破损及次品率控制在小于5%</field>
+            <field name="score">10</field>
+            <field name="calculation">若破损率每增加1%扣2分</field>
+            <field name="sequence">8</field>
+            <field name="fsn_kpi_job">组长</field>
+        </record>
+
+        <record id="group_leader_kpi_line_template_09" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">工作责任心</field>
+            <field name="assessment_standard">工作认真，严谨，能为正确的结果引导。</field>
+            <field name="score">5</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">9</field>
+            <field name="fsn_kpi_job">组长</field>
+        </record>
+        <record id="group_leader_kpi_line_template_10" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">团队配合</field>
+            <field name="assessment_standard">要懂团队的协作和配合。</field>
+            <field name="score">5</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">10</field>
+            <field name="fsn_kpi_job">组长</field>
+        </record>
+        <record id="group_leader_kpi_line_template_11" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">出勤率</field>
+            <field name="assessment_standard">缺卡，迟到，早退，等情况。</field>
+            <field name="score">5</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">11</field>
+            <field name="fsn_kpi_job">组长</field>
+        </record>
+        <record id="group_leader_kpi_line_template_12" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">言论</field>
+            <field name="assessment_standard">杜绝消极言论及负面情绪，对抗公司制度、诋毁公司处罚100元/次</field>
+            <field name="score">5</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">12</field>
+            <field name="fsn_kpi_job">组长</field>
+        </record>
+    </data>
+</odoo>

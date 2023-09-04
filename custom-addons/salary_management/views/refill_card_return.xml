@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <record id="refill_card_return_tree" model="ir.ui.view">
+            <field name="name">饭卡归还记录</field>
+            <field name="model">refill_card_return</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <header>
+                        <!-- <button name="test" type="object" string="测试按钮01" class="btn-primary"/> -->
+                    </header>
+                    <field name="month" string="退卡月份"/>
+                    <field name="employee_id" string="员工" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="departure_date" string="离职日期（如未离职：为当月最后一天）"/>
+                    <field name="recharge_amount" string="当月充值金额"/>
+                    <!-- <field name="working_days" string="离职月在职天数"/> -->
+                    <field name="attendance_day" string="饭卡充值天数"/>
+                    <field name="clock_in_time" string="实际出勤天数"/>
+                    <field name="should_allowance" string="应补金额"/>
+                    <field name="actual_cost" string="实际花费金额"/>
+                    <field name="refund_amount" string="退款金额"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="refill_card_return_action">
+            <field name="name">饭卡归还记录</field>
+            <field name="res_model">refill_card_return</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

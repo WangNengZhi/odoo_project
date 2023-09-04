@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <!-- Top menu item -->
+
+        <menuitem name="宿舍管理" id="fsn_dormitory_root"/>
+
+            <menuitem name="宿舍管理" id="fsn_dormitory_manage" parent="fsn_dormitory_root" sequence="10"/>
+
+                <menuitem name="住宿分配" id="room_allocation_menu" parent="fsn_dormitory_manage" sequence="10" action="room_allocation_action"/>
+        <!-- menu categories -->
+
+            <menuitem name="设置" id="dormitory_setting_menu" parent="fsn_dormitory_root" sequence="100"/>
+
+                <menuitem name="园区设置" id="dormitory_park_menu" parent="dormitory_setting_menu" sequence="10" action="dormitory_park_action"/>
+                <menuitem name="楼号设置" id="dormitory_building_number_menu" parent="dormitory_setting_menu" sequence="20" action="dormitory_building_number_action"/>
+                <menuitem name="房间配置" id="room_config_menu" parent="dormitory_setting_menu" sequence="30" action="room_config_action"/>
+
+    </data>
+</odoo>

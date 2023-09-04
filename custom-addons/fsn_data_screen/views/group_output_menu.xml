@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+
+        <record id="group_output_act_url" model="ir.actions.act_url">
+            <field name="name">组产值数据</field>
+            <field name="target">new</field>
+            <field name="url">/group_output/group_output/</field>
+        </record>
+   
+        <menuitem name="组产值数据"
+            id="group_output_menu"
+            parent="fsn_setting.fsn_data_screen_menu_root"
+            action="group_output_act_url"
+            groups="fsn_base.fsn_insiders_group"
+            sequence="10"
+            />
+
+   
+    </data>
+</odoo>

@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+
+        <record id="dg_attendance_tree" model="ir.ui.view">
+            <field name="name">吊挂考勤</field>
+            <field name="model">dg_attendance</field>
+            <field name="arch" type="xml">
+                <tree editable="top" create="0" edit="0" delete="1">
+                    <field name="date" string="日期"/>
+                    <field name="employee_id" string="员工" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="department_id" string="部门" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="job_id" string="岗位" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="contract" string="工种"/>
+                    <field name="record_moment" string="考勤时刻"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="dg_attendance_action">
+            <field name="name">吊挂考勤</field>
+            <field name="res_model">dg_attendance</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

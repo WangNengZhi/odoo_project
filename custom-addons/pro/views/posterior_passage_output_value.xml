@@ -1,0 +1,111 @@
+<odoo>
+    <data>
+        <!-- 搜索视图 -->
+        <record id="posterior_passage_output_value_search" model="ir.ui.view">
+            <field name="name">后道产值_search</field>
+            <field name="model">posterior_passage_output_value</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="date" string="日期"/>
+					<field name="order_number" string="订单号"/>
+					<field name="style_number" string="款号"/>
+                </search>
+            </field>
+        </record>
+		<!-- tree -->
+		<record model="ir.ui.view" id="posterior_passage_output_value_tree">
+			<field name="name">后道产值_tree</field>
+			<field name="model">posterior_passage_output_value</field>
+			<field name="arch" type="xml">
+				<tree decoration-bf="number!=yesterday_pro_pro_number">
+                    <!-- <header>
+                        <button name="set_yesterday_pro_pro_number" type="object" string="test" class="btn-primary"/>
+                    </header> -->
+                    <header>
+                        <!-- <button name="set_date" type="object" string="刷新数据" class="btn-primary"/> -->
+                        <!-- <button name="set_pro_value" type="object" string="刷新产值" class="btn-primary"/> -->
+                    </header>
+					<field name="date" string="日期"/>
+					<field name="order_number" string="订单号"/>
+					<field name="style_number" string="款号"/>
+					<field name="product_size" string="尺码"/>
+                    <field name="number" string="件数"/>
+                    <field name="num_people" string="人数"/>
+                    <field name="pro_value" string="产值"/>
+					<field name="is_inferior" string="合格/次品"/>
+					<field name="yesterday_pro_pro_number" string="昨天产量"/>
+				</tree>
+			</field>
+		</record>
+		<!-- form -->
+		<record id="posterior_passage_output_value_form" model="ir.ui.view">
+			<field name="name">后道产值_form</field>
+			<field name="model">posterior_passage_output_value</field>
+			<field name="arch" type="xml">
+				<form edit="0" duplicate="0">
+					<sheet>
+						<group col="4">
+                            <field name="date" string="日期" attrs="{'readonly': [('id', '>', 0)]}"/>
+							<field name="order_number" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="product_size" string="尺码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="number" string="件数"/>
+                            <field name="num_people" string="人数"/>
+                            <field name="pro_value" string="产值"/>
+							<field name="is_inferior" string="合格/次品"/>
+							<field name="yesterday_pro_pro_number" string="昨天产量"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- tree -->
+		<record model="ir.ui.view" id="posterior_passage_output_value_week_tree">
+			<field name="name">后道产值(周)_tree</field>
+			<field name="model">posterior_passage_output_value_week</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+					<field name="week" string="周"/>
+					<field name="style_number" string="款号"/>
+                    <field name="number" string="件数"/>
+                    <field name="num_people" string="人数"/>
+                    <field name="pro_value" string="产值"/>
+				</tree>
+			</field>
+		</record>
+		<!-- 透视表视图 -->
+		<record id="posterior_passage_output_value_week_graph" model="ir.ui.view">
+			<field name="name">后道产值(周)透视图</field>
+			<field name="model">posterior_passage_output_value_week</field>
+			<field name="arch" type="xml">
+				<graph>
+					<field name="week" string="周" type="row"/>
+				</graph>
+			</field>
+		</record>
+
+        <!-- 动作 -->
+        <record id="posterior_passage_output_value_actions" model="ir.actions.act_window">
+            <field name="name">后道产值</field>
+            <field name="res_model">posterior_passage_output_value</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+        <record id="posterior_passage_output_value_week_actions" model="ir.actions.act_window">
+            <field name="name">后道产值(周)</field>
+            <field name="res_model">posterior_passage_output_value_week</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+
+        <menuitem id="menu_posterior_passage_output_value"
+            name="后道产值"
+            parent="menu_total_totlepro1"
+            action="posterior_passage_output_value_actions"
+            sequence="40"/>
+        <menuitem id="menu_posterior_passage_output_value_week"
+            name="后道产值(周)"
+            parent="menu_total_totlepro1_week"
+            action="posterior_passage_output_value_week_actions"
+            sequence="40"/>
+    </data>
+</odoo>

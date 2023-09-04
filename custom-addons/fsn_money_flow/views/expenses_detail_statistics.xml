@@ -1,0 +1,74 @@
+<odoo>
+	<data>
+		<!-- tree视图 -->
+		<record id="expenses_detail_statistics_tree" model="ir.ui.view">
+			<field name="name">成本详情</field>
+			<field name="model">expenses_detail_statistics</field>
+			<field name="arch" type="xml">
+				<tree editable="top" create="0" edit="0" delete="0">
+                    <header>
+						<!-- <button name="set_stock_info" string="物料成本刷新" type="object"/> -->
+                    </header>
+					<field name="month" string="月份" widget="fsn_month"/>
+					<field name="cost_type_id" string="成本类别"/>
+					<field name="expense_type_id" string="费用类别"/>
+					<field name="expense" string="费用"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- 动作 -->
+		<record id="expenses_detail_statistics_action" model="ir.actions.act_window">
+			<field name="name">成本详情</field>
+			<field name="res_model">expenses_detail_statistics</field>
+			<field name="view_mode">tree,graph</field>
+		</record>
+
+
+
+
+
+		<!-- tree视图 -->
+		<record id="expenses_detail_details_tree" model="ir.ui.view">
+			<field name="name">成本详情</field>
+			<field name="model">expenses_detail_details</field>
+			<field name="arch" type="xml">
+				<tree editable="top" create="0" edit="0" delete="0">
+                    <header>
+						<!-- <button name="set_stock_info" string="物料成本刷新" type="object"/> -->
+                    </header>
+					<field name="month" string="月份" widget="fsn_month"/>
+					<field name="expense_type_id" string="费用类别"/>
+
+					<field name="transport_cost" string="运输费"/>
+					<field name="office_cost" string="办公费"/>
+					<field name="production_cost" string="生产成本"/>
+					<field name="wages_cost" string="工资"/>
+					<field name="social_security_cost" string="公积金及社保"/>
+					<field name="taxation_cost" string="税费"/>
+					<field name="refuelingr_cost" string="加油费"/>
+					<field name="staff_meals_cost" string="员工餐费"/>
+					<field name="plant_rent_cost" string="厂房租金"/>
+					<field name="fixed_assets_cost" string="固定资产"/>
+					<field name="intangible_assets" string="无形资产"/>
+					<field name="other_cost" string="其他费用"/>
+					<field name="total_cost" string="合计"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- 动作 -->
+		<record id="expenses_detail_details_action" model="ir.actions.act_window">
+			<field name="name">成本详情</field>
+			<field name="res_model">expenses_detail_details</field>
+			<field name="view_mode">tree,graph</field>
+		</record>
+
+
+
+	</data>
+</odoo>

@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <template id="fsn_money_flow_tem" name="fsn_money_flow_tem" inherit_id="web.assets_backend">
+            <xpath expr="//script[last()]" position="after">
+				<script type="text/javascript" src="/fsn_money_flow/static/src/js/month_choice.js"/>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

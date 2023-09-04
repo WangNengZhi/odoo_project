@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="maintenance_records_tree">
+			<field name="name">固定资产维护保养记录</field>
+			<field name="model">maintenance_records</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+                    <field name="assert_code" string="资产编号（资产编码）" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="assert_name" string="资产名称"/>
+                    <field name="asset_type" string="资产类型"/>
+                    <field name="maintenance_time" string="保养时间"/>
+                    <field name="maintenance_personnel" string="保养人员"/>
+                    <field name="maintenance_content" string="保养内容"/>
+                    <field name="maintenance_results" string="保养结果"/>
+                    <field name="problem_description" string="问题描述"/>
+                    <field name="maintenance_measures" string="维修措施"/>
+					<field name="maintenance_costs" string="维修费用"/>
+					<field name="notes" string="备注"/>
+                </tree>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="maintenance_records_action">
+			<field name="name">固定资产维护保养记录</field>
+			<field name="res_model">maintenance_records</field>
+			<field name="view_mode">tree</field>
+		</record>
+    </data>
+</odoo>

@@ -1,0 +1,13 @@
+<odoo>
+    <template id="group_output_template">
+        <!-- t-name qweb模板名称很重要 -->
+        <t t-name="Wdc111">
+            <div>
+
+
+
+            </div>
+        </t>
+    </template>
+
+</odoo>

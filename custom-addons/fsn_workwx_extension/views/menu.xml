@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+
+        <menuitem name="企业微信功能" id="menu_fsn_workwx_extension_root" sequence="1"/>
+
+            <menuitem name="企业微信审批记录"
+                id="menu_fsn_work_wx_approval_record"
+                action="fsn_work_wx_approval_record_actions"
+                parent="menu_fsn_workwx_extension_root"
+                sequence="10"
+                />
+
+
+
+    </data>
+</odoo>

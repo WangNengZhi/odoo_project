@@ -1,0 +1,167 @@
+<odoo>
+    <data>
+        <!-- 搜索视图 -->
+        <record id="fabric_ingredients_procurement_search" model="ir.ui.view">
+            <field name="name">面辅料采购</field>
+            <field name="model">fabric_ingredients_procurement</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="date" string="采购日期"/>
+                    <field name="type" string="物料类型"/>
+                    <field name="order_id" string="订单号"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="material_code" string="物品编码"/>
+                    <field name="material_name" string="物品名称"/>
+					<field name="supplier_supplier_id" string="供应商"/>
+                </search>
+            </field>
+        </record>
+		<!-- tree -->
+		<record model="ir.ui.view" id="fabric_ingredients_procurement_tree">
+			<field name="name">面辅料采购</field>
+			<field name="model">fabric_ingredients_procurement</field>
+			<field name="arch" type="xml">
+				<tree>
+					<header>
+
+					</header>
+                    <field name="date" string="采购日期"/>
+                    <field name="type" string="物料类型"/>
+                    <field name="use_type" string="用料类型"/>
+                    <field name="order_id" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="material_code" string="物品编码" readonly="1" force_save="1"/>
+                    <field name="material_name" string="物品名称"/>
+					<field name="supplier_supplier_id" string="供应商" required="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="specification" string="规格"/>
+					<field name="department_name" string="采购部门"/>
+					<field name="raw_materials_order_id" string="面辅料订单" invisible="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="amount" string="采购数量" attrs="{'readonly':[('raw_materials_order_id', '!=', False)]}"/>
+                    <field name="unit" string="单位"/>
+                    <field name="unit_price" string="单价"/>
+                    <field name="money_sum" string="金额"/>
+                    <field name="is_invoice" string="是否开票"/>
+                    <field name="tax" string="税点"/>
+                    <field name="after_tax_amount" string="税后金额"/>
+					<field name="manager" string="采购人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}" required="1"/>
+
+                    <field name="remark" string="备注"/>
+					<field name="payment_state" string="付款状态" decoration-info="payment_state == '未付款'" decoration-success="payment_state == '已付款'" widget="badge"/>
+					<!-- <button name="confirmation_button"
+						type="object"
+						string="设为已付款"
+						class="btn-primary"
+						attrs="{'invisible':['|', ('state','=', '待审批'), ('payment_state', '=', '已付款')]}"
+						context="{'type': '设为已付款'}"
+						groups="fsn_base.fsn_super_user_group"/>
+					<button name="confirmation_button"
+						type="object"
+						string="设为未付款"
+						class="btn-danger"
+						attrs="{'invisible':['|', ('state','=', '待审批'), ('payment_state', '=', '未付款')]}"
+						context="{'type': '设为未付款'}"
+						groups="fsn_base.fsn_super_user_group"/> -->
+					<field name="state" string="状态" decoration-info="state == '待采购'" decoration-success="state == '已采购'" widget="badge"/>
+					<button name="confirmation_button" type="object" string="通过" class="btn-primary" attrs="{'invisible':[('state','!=', '待审批')]}" context="{'type': 'through'}" groups="fsn_base.fsn_super_user_group"/>
+					<button name="confirmation_button" type="object" string="回退" class="btn-danger" attrs="{'invisible':[('state','=', '待审批')]}" context="{'type': 'fallback'}" groups="fsn_base.fsn_super_user_group"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="fsn_fabric_ingredients_procurement_form" model="ir.ui.view">
+			<field name="name">面辅料采购</field>
+			<field name="model">fabric_ingredients_procurement</field>
+			<field name="arch" type="xml">
+				<form duplicate="1">
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="待审批,待采购,已采购"/>
+					</header>
+                    <sheet>
+                        <group>
+							<field name="raw_materials_order_id" string="面辅料订单" invisible="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+						</group>
+                        <group col="4">
+							<field name="date" string="采购日期"/>
+							<field name="type" string="物料类型"/>
+							<field name="use_type" string="用料类型"/>
+						</group>
+                        <group col="4">
+							<field name="order_id" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="material_code" string="物品编码" readonly="1" force_save="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="material_name" string="物品名称" attrs="{'required':[('material_code','!=', False)]}"/>
+							<field name="supplier_supplier_id" string="供应商"  attrs="{'required':[('material_code','!=', False)]}" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="specification" string="规格" attrs="{'required':[('material_code','!=', False)]}"/>
+							<field name="department_name" string="采购部门"/>
+							<field name="amount" string="采购数量" attrs="{'readonly':[('raw_materials_order_id', '!=', False)]}"/>
+							<field name="unit" string="单位" attrs="{'required':[('material_code','!=', False)]}"/>
+							<field name="unit_price" string="单价"/>
+							<field name="money_sum" string="金额"/>
+						</group>
+                        <group col="4">
+							<field name="is_invoice" string="是否开票"/>
+							<field name="tax" string="税点" attrs="{'readonly':[('is_invoice','=', False)]}"/>
+							<field name="after_tax_amount" string="税后金额"/>
+						</group>
+                        <group col="4">
+							<field name="manager" string="采购人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"  attrs="{'required':[('material_code','!=', False)]}"/>
+
+							<field name="remark" string="备注"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+		<!-- form -->
+		<record id="fabric_ingredients_procurement_form" model="ir.ui.view">
+			<field name="name">面辅料采购</field>
+			<field name="model">fabric_ingredients_procurement</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+						<field name="state" string="状态" invisible="1"/>
+						<div invisible="context.get('type') != 'fallback'">确认回退吗？</div>
+                        <div invisible="context.get('type') != 'through'">确认审批通过吗？</div>
+						<field name="payment_state" string="付款状态" invisible="1"/>
+						<div invisible="context.get('type') != '设为已付款'">确认设为已付款吗？</div>
+                        <div invisible="context.get('type') != '设为未付款'">确认设为未付款吗？</div>
+                    </sheet>
+                    <footer>
+                        <button name="action_state_changes" invisible="context.get('type') != 'fallback'" context="{'type': 'fallback'}" type="object" string="回退" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != 'through'" context="{'type': 'through'}" type="object" string="通过" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '设为已付款'" context="{'type': '设为已付款'}" type="object" string="设为已付款" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '设为未付款'" context="{'type': '设为未付款'}" type="object" string="设为未付款" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="fabric_ingredients_procurement_action">
+            <field name="name">面辅料采购</field>
+            <field name="res_model">fabric_ingredients_procurement</field>
+            <field name="view_mode">tree,form</field>
+		</record>
+        <!-- 指定tree -->
+        <record model="ir.actions.act_window.view" id="fabric_ingredients_procurement_action_tree">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="fabric_ingredients_procurement_tree"/>
+            <field name="act_window_id" ref="fabric_ingredients_procurement_action"/>
+        </record>
+        <!-- 指定form -->
+        <record model="ir.actions.act_window.view" id="fabric_ingredients_procurement_action_form">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="fsn_fabric_ingredients_procurement_form"/>
+            <field name="act_window_id" ref="fabric_ingredients_procurement_action"/>
+        </record>
+    </data>
+</odoo>

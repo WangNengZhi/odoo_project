@@ -1,0 +1,124 @@
+<odoo>
+    <data>
+
+        <record id="outbound_order_progress_search" model="ir.ui.view">
+            <field name="name">外发订单进度表search</field>
+            <field name="model">outbound_order_progress</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="date" string="日期"/>
+					<field name="responsible_person" string="负责人"/>
+                    <field name="order_number" string="订单号"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="outsource_plant_id" string="生产厂商"/>
+                    <field name="contract_goods_time" string="合同货期"/>
+                </search>
+            </field>
+        </record>
+
+
+        <!-- tree -->
+		<record model="ir.ui.view" id="outbound_order_progress_tree">
+			<field name="name">外发订单进度表tree</field>
+			<field name="model">outbound_order_progress</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <header>
+                    </header>
+                    <field name="date" string="日期"/>
+					<field name="responsible_person" string="负责人"/>
+                    <field name="order_number" string="订单号"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="style" string="款式"/>
+                    <field name="voucher_quantity" string="订单数量"/>
+                    <field name="cutting_bed_quantity" string="总裁床数量"/>
+                    <field name="solid_cutting_quantity" string="裁床数量"/>
+                    <field name="total_number_completed" string="总完成数量"/>
+                    <field name="complete_number" string="完成数量"/>
+                    <field name="remaining_number" string="剩余数量"/>
+                    <field name="quantity_delivered" string="交货数量"/>
+                    <field name="contract_goods_time" string="合同货期"/>
+                    <field name="outsource_plant_id" string="生产厂商"/>
+                    <field name="outsource_plant_contact" string="生产厂商联系方式"/>
+                    <field name="actual_line_date" string="实际上线日期"/>
+                    <field name="estimated_completion_date" string="预计完成日期"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- form -->
+		<record id="outbound_order_progress_form" model="ir.ui.view">
+			<field name="name">外发订单进度表form</field>
+			<field name="model">outbound_order_progress</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+
+					</header>
+                    <sheet>
+						<div style="text-align: center"><h1>外发订单进度表</h1></div>
+
+                        <group col="4">
+                            <field name="date" string="日期"/>
+                            <field name="outbound_order_progress_id" string="前一天进度" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <group col="4">
+                            <field name="outsource_order_id" string="外发订单" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="order_number" string="订单号" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="style" string="款式"/>
+                            <field name="voucher_quantity" string="订单数量"/>
+                        </group>
+                        <group col="4">
+                            <field name="cutting_bed_quantity" string="总裁床数量"/>
+                            <field name="solid_cutting_quantity" string="裁床数量"/>
+                            <field name="complete_number" string="完成数量"/>
+                            <field name="complete_number" string="总完成数量"/>
+                            <field name="remaining_number" string="剩余数量"/>
+                            <field name="quantity_delivered" string="交货数量"/>
+                        </group>
+                        <group col="4">
+                            <field name="contract_goods_time" string="合同货期"/>
+
+                            <field name="outsource_plant_id" string="生产厂商" options="{'no_create': True, 'no_open': True}"/>
+
+                            <field name="outsource_plant_contact" string="生产厂商联系方式" required="1"/>
+
+                            <field name="actual_line_date" string="实际上线日期" required="1"/>
+
+                            <field name="estimated_completion_date" string="预计完成日期" required="1"/>
+                        </group>
+						<group col="4">
+                            <field name="responsible_person" string="负责人" options="{'no_create': True, 'no_open': True}"/>
+						</group>
+						<notebook>
+							<page string="外发订单进度表明细">
+								<field name="outbound_order_progress_line_ids" string="外发订单进度表明细">
+									<tree editable="bottom">
+										<field name="size" string="尺码" options="{'no_create': True, 'no_open': True}"/>
+                                        <field name="solid_cutting_quantity" string="裁床数量"/>
+                                        <field name="complete_number" string="完成数量"/>
+                                        <field name="quantity_delivered" string="交货数量"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+						</notebook>
+                    </sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+		<record model="ir.actions.act_window" id="outbound_order_progress_actions">
+            <field name="name">订单进度表</field>
+            <field name="res_model">outbound_order_progress</field>
+            <field name="view_mode">tree,form</field>
+		</record>
+
+    </data>
+</odoo>

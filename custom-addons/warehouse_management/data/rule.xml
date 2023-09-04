@@ -1,0 +1,20 @@
+<odoo>
+    <data noupdate="0">
+
+        <record id="finished_product_ware01" model="ir.rule">
+            <field name="name">成品仓记录规则1</field>
+            <field name="model_id" ref="model_finished_product_ware"/>
+            <field name="domain_force" eval="[('state','!=','确认')]"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- <record id="finished_product_ware02" model="ir.rule">
+            <field name="name">成品仓记录规则1</field>
+            <field name="model_id" ref="model_finished_product_ware"/>
+            <field name="domain_force" eval="[('state','=','确认')]"/>
+            <field name="perm_unlink" eval="False"/>
+        </record> -->
+
+    </data>
+</odoo>

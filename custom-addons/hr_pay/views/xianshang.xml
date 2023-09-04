@@ -1,0 +1,85 @@
+<odoo>
+	<data>
+
+        <record id="punch_in_record_search" model="ir.ui.view">
+            <field name="name">打卡记录搜索试图</field>
+            <field name="model">punch.in.record</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="employee" string="员工"/>
+                </search>
+            </field>
+        </record>
+
+		<record model="ir.ui.view" id="punch_list">
+		<field name="name">考勤</field>
+		<field name="model">punch.in.record</field>
+		<field name="arch" type="xml">
+			<tree>
+				<header>
+					<button name="come_to_work_refresh" type="object" string="迟到早退刷新"/>
+				</header>
+			<field name="date" string="日期"/>
+			<field name="employee" string="员工"/>
+			<field name="department_id" string="部门"/>
+			<field name="job_id" string="岗位"/>
+			<field name="check_sign" string="打卡记录"/>
+			</tree>
+		</field>
+		</record>
+
+		<record model="ir.ui.view" id="punch_form">
+		<field name="name">考勤</field>
+		<field name="model">punch.in.record</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+	<!--                        <button name="do_unreserve" type="object" string="Unreserve"/>-->
+				</header>
+				<sheet>
+					<group col="4">
+					<field name="date"/>
+					<field name="employee" options="{'no_create_edit': True, 'no_open': True}"/>
+					<field name="check_sign"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+		</record>
+
+		<record id="view_punch_gantt" model="ir.ui.view">
+			<field name="name">打卡机甘特图</field>
+			<field name="model">punch.in.record</field>
+			<field name="arch" type="xml">
+				<gantt
+				js_class="fsn_punch_gantt"
+				date_start="date"
+				date_stop="date"
+				default_group_by="employee"
+				scales="day,week,month,year"
+				string="员工"
+				precision="{'day': 'hour:full', 'week': 'day:full', 'month': 'day:full', 'year': 'day:full'}"
+					>
+					<field name="date"/>
+					<field name="employee"  options="{'no_create_edit': True, 'no_open': True}"/>
+					<field name="check_sign"/>
+				</gantt>
+			</field>
+		</record>
+
+
+		<record id="punch_shift_view_gantt1" model="ir.actions.act_window.view">
+				<field name="sequence" eval="1"/>
+				<field name="view_mode">gantt</field>
+				<field name="view_id" ref="view_punch_gantt"/>
+		</record>
+
+		<record model="ir.actions.act_window" id="punch_action_window1">
+			<field name="name">打卡机记录</field>
+			<field name="res_model">punch.in.record</field>
+			<field name="view_mode">tree,form,gantt</field>
+		</record>
+
+		<menuitem name="打卡机记录" id="menu_punch" parent="menu_attend_attend1" action="punch_action_window1"/>
+	</data>
+</odoo>

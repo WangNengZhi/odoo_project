@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <menuitem name="黑名单管理"
+            web_icon="blacklist,static/description/icon.png"
+            id="blacklist_menu_root"/>
+        <!-- 菜单按钮 -->
+        <menuitem id="blacklist_menu"
+            name="黑名单管理"
+            parent="blacklist_menu_root"
+            action="blacklist_actions"
+            sequence="10"/>
+    </data>
+</odoo>

@@ -1,0 +1,115 @@
+<odoo>
+	<data>
+        <record id="suspension_system_dashboard_search" model="ir.ui.view">
+            <field name="name">吊挂系统站位数据搜索视图</field>
+            <field name="model">suspension_system_station_summary</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="dDate" string="日期"/>
+                    <field name="group" string="组别"/>
+                    <field name="station_number" string="站号"/>
+                    <field name="employee_id" string="员工"/>
+
+                    <filter string="当天,车缝二组" name="today_two_group"  domain="[('dDate','=', time.strftime('%Y-%m-%d')), ('group','=', '车缝二组')]"/>
+                    <filter string="当天,车缝三组" name="today_three_group"  domain="[('dDate','=', time.strftime('%Y-%m-%d')), ('group','=', '车缝三组')]"/>
+                    <filter string="当天,车缝五组" name="today_five_group"  domain="[('dDate','=', time.strftime('%Y-%m-%d')), ('group','=', '车缝五组')]"/>
+                    <filter string="当天,车缝六组" name="today_six_group"  domain="[('dDate','=', time.strftime('%Y-%m-%d')), ('group','=', '车缝六组')]"/>
+                    <group>
+
+                        <filter string="站号" name="group_by_station_number" context="{'group_by': 'station_number'}"/>
+                        <filter string="员工" name="group_by_employee_id" context="{'group_by' : 'employee_id'}"/>
+
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="suspension_system_dashboard_graph" model="ir.ui.view">
+            <field name="name">吊挂系统站位数据graph视图</field>
+            <field name="model">suspension_system_station_summary</field>
+            <field name="arch" type="xml">
+                <graph sample="1">
+                    <field name="total_quantity" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="suspension_system_dashboard_two_group_action" model="ir.actions.act_window">
+            <field name="name">吊挂系统站位二组数据</field>
+            <field name="res_model">suspension_system_station_summary</field>
+            <field name="view_mode">graph</field>
+            <field name="context">{'search_default_today_two_group': True, 'search_default_group_by_station_number': True, 'search_default_group_by_employee_id': True}</field>
+        </record>
+
+        <record id="suspension_system_dashboard_three_group_action" model="ir.actions.act_window">
+            <field name="name">吊挂系统站位三组数据</field>
+            <field name="res_model">suspension_system_station_summary</field>
+            <field name="view_mode">graph</field>
+            <field name="context">{'search_default_today_three_group': True, 'search_default_group_by_station_number': True, 'search_default_group_by_employee_id': True}</field>
+        </record>
+
+        <record id="suspension_system_dashboard_five_group_action" model="ir.actions.act_window">
+            <field name="name">吊挂系统站位五组数据</field>
+            <field name="res_model">suspension_system_station_summary</field>
+            <field name="view_mode">graph</field>
+            <field name="context">{'search_default_today_five_group': True, 'search_default_group_by_station_number': True, 'search_default_group_by_employee_id': True}</field>
+        </record>
+
+        <record id="suspension_system_dashboard_six_group_action" model="ir.actions.act_window">
+            <field name="name">吊挂系统站位六组数据</field>
+            <field name="res_model">suspension_system_station_summary</field>
+            <field name="view_mode">graph</field>
+            <field name="context">{'search_default_today_six_group': True, 'search_default_group_by_station_number': True, 'search_default_group_by_employee_id': True}</field>
+        </record>
+
+        <!-- <menuitem 
+            id="suspension_system_dashboard_menu_root"
+            name="吊挂站位产量"
+            parent="base.menu_board_root"
+            sequence="10"/>
+            <menuitem 
+                id="suspension_system_dashboard_two_group_menu"
+                name="二组"
+                parent="suspension_system_dashboard_menu_root"
+                action="suspension_system_dashboard_two_group_action"
+                sequence="20"/>
+            <menuitem 
+                id="suspension_system_dashboard_three_group_menu"
+                name="三组"
+                parent="suspension_system_dashboard_menu_root"
+                action="suspension_system_dashboard_three_group_action"
+                sequence="30"/>
+            <menuitem 
+                id="suspension_system_dashboard_five_group_menu"
+                name="五组"
+                parent="suspension_system_dashboard_menu_root"
+                action="suspension_system_dashboard_five_group_action"
+                sequence="50"/>
+            <menuitem 
+                id="suspension_system_dashboard_six_group_menu"
+                name="六组"
+                parent="suspension_system_dashboard_menu_root"
+                action="suspension_system_dashboard_six_group_action"
+                sequence="60"/> -->
+
+
+        <record id="test_url_action" model="ir.actions.act_url">
+            <field name="name">组产值数据</field>
+            <field name="target">new</field>
+            <field name="url">/my_dashboard/my_dashboard/</field>
+        </record>
+
+        <record id="fsn_dashboard_action" model="ir.actions.client">
+            <field name="name">FSN仪表板</field>
+            <field name="tag">fsn_dashboard</field>
+        </record>
+        
+        <menuitem 
+            id="fsn_dashboard_menu"
+            name="FSN仪表板"
+            parent="base.menu_board_root"
+            action="fsn_dashboard_action"
+            groups="fsn_base.fsn_insiders_group"
+            sequence="20"/>
+	</data>
+</odoo>

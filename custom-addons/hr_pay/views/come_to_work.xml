@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id="come_to_work_view" model="ir.ui.view">
+            <field name="name">迟到早退统计</field>
+            <field name="model">come.to.work</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date" string="日期"/>
+                    <field name="name" string="姓名"/>
+                    <field name="time" string="出勤时间"/>
+                    <field name="minutes_late" string="迟到总时间" widget="float_time"/>
+                    <field name="total_time_early" string="早退总时间" widget="float_time"/>
+                    <field name="comment" string="备注"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="come_to_work_actions" model="ir.actions.act_window">
+            <field name="name">迟到早退统计</field>
+            <field name="res_model">come.to.work</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="统计"  id="statistics_of_late_and_early_leave_menu" parent="menu_attend_attend13"/>
+        <menuitem name="迟到早退统计" action="come_to_work_actions" id="come_to_work_actions_menu" parent="statistics_of_late_and_early_leave_menu"/>
+    </data>
+</odoo>

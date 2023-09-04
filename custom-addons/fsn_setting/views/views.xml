@@ -1,0 +1,35 @@
+<odoo>
+	<data>
+		<record id="gst_sql_server_settig" model="ir.ui.view">
+			<field name="name">GST数据库配置</field>
+			<field name="model">res.company</field>
+			<field name="inherit_id" ref="base.view_company_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//page[@name='general_info']" position="after">
+					<!-- <page string="系统配置" name="sql_server_settig">
+						<group string="数据配置">
+							<field name="sql_server_host" string="数据库地址"/>
+							<field name="sql_server_user" string="数据库用户名"/>
+							<field name="sql_server_password" string="数据库密码"/>
+							<field name="sql_server_database" string="数据库名"/>
+						</group>
+
+						<group string="吊挂系统配置">
+							<field name="dg_host" string="吊挂系统地址"/>
+							<field name="dg_port" string="吊挂系统端口"/>
+						</group>
+					</page> -->
+					<page string="GST配置" name="sql_server_settig">
+						<group>
+							<field name="gst_sql_server_host" string="GST数据库地址"/>
+							<field name="gst_sql_server_user" string="GST数据库用户名"/>
+							<field name="gst_sql_server_password" string="GST数据库密码"/>
+							<field name="gst_sql_server_database" string="GST数据库名"/>
+						</group>
+
+					</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

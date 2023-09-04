@@ -1,0 +1,28 @@
+{
+    'name': "考勤管理",
+    'summary': "考勤管理",
+    'description': "考勤管理",
+    'author': "My Company",
+    'version': '0.1',
+    'depends': ['base', 'fsn_employee', 'fsn_setting'],
+    'data': [
+        'views/views.xml',
+        'data/celery.xml',
+        'views/xianshang.xml',
+        'views/template.xml',
+        'views/come_to_work.xml',
+        'views/exchange_rest.xml',
+        'views/repair_clock_in.xml',
+        'views/meal_subsidy_top_up.xml',
+        'views/attendance_record.xml',
+        'views/punch_record_stats.xml',
+        'views/leave_form.xml',
+        'views/dg_attendance.xml',
+        'views/attendance_days_statistics.xml',
+        'views/menu.xml',
+        'views/no_attendance_data.xml',
+        ],
+    'sequence': 1,
+    'application': True,
+
+}

@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+
+    
+        <menuitem name="数据屏幕" id="fsn_data_screen_menu_root"/>
+
+
+   
+    </data>
+</odoo>

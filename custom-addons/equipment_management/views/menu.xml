@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+
+
+        <menuitem name="设备管理"
+            web_icon="equipment_management,static/description/icon.png"
+            id="equipment_management_menu_root"/>
+        <!-- 菜单按钮 -->
+        <menuitem id="equipment_management_menu"
+            name="设备管理"
+            parent="equipment_management_menu_root"
+            action="equipment_management_actions"
+            sequence="10"/>
+    </data>
+</odoo>

@@ -1,0 +1,49 @@
+.fsn_line{
+    width: 1820px;
+    margin-top: 5px;
+}
+.window_01{
+    margin-left: 25px;
+}
+
+.window_04{
+    margin-left: 25px;
+}
+
+.dashboard {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+
+
+/*大屏*/
+.box3{width: 1100px; height: 120px; padding: 10px 25px 25px 25px; float: left;}
+.data_bg{width: 180px; height: 120px; background: url(../img/data_icon.png) no-repeat; margin-left: 30px; text-align: center; font-size: 24px; color: #FFFFFF; padding-top: 20px;}
+small{font-size: 18px; color: #FF9000;}
+
+
+
+.navboxall{height: calc(100% - 30px);}
+
+.table1 th{border-bottom: 1px solid rgba(255,255,255,.2); font-size: 16px; color:rgba(255,255,255,.6); font-weight: normal; padding:0 0 10px 0;}
+.table1 td{ font-size: 16px; color:rgba(255,255,255,.4); padding: 15px 0 0 0; }
+.table1 span{ width: 24px; height: 24px; border-radius: 3px; display: block; background: #878787; color: #fff; line-height: 24px; text-align: center;}
+
+.table1 tr:nth-child(2) span{ background: #ed405d}
+.table1 tr:nth-child(3) span{ background: #f78c44}
+.table1 tr:nth-child(4) span{ background: #49bcf7}
+
+
+.wraptit span{ display: inline-block; font-size: 18px;color: rgba(255,255,255,.6); margin-left: 0px;}
+.wraptit span:nth-child(1){ width: 30% }
+.wraptit span:nth-child(2){ width: 20% }
+.wraptit span:nth-child(3){ width: 20% }
+.wraptit span:nth-child(4){ width: 30% }
+
+
+
+
+
+
+

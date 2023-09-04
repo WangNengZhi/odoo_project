@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+		<record id="jdy_setting_tree" model="ir.ui.view">
+			<field name="name">精斗云配置</field>
+			<field name="model">jdy_setting</field>
+			<field name="arch" type="xml">
+                <tree editable="bottom" create='0' delete='0'>
+					<field name="key" string="键" readonly="1"/>
+					<field name="value" string="值"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="jdy_setting_action" model="ir.actions.act_window">
+            <field name="name">精斗云配置</field>
+            <field name="res_model">jdy_setting</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

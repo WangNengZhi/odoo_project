@@ -1,0 +1,97 @@
+<odoo>
+    <data>
+		<!-- form -->
+		<record id="hr_employee_social_security_wizard_form" model="ir.ui.view">
+			<field name="name">手动设置开始缴纳社保月份</field>
+			<field name="model">hr_employee_social_security_wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+						开始缴纳社保月份: <field name="start_paying_social_security_month" string="开始缴纳社保月份" widget="fsn_month"/>
+                    </sheet>
+                    <footer>
+                        <button name="manual_set_start_paying_social_security" type="object" string="确认" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+        
+
+
+        <record model="ir.ui.view" id="hr_employee_social_security_tree">
+            <field name="name">员工社保</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <tree editable="top" create="0" edit="0" delete="0">
+                    <header>
+
+                    </header>
+                    <field name="name" string="员工"/>
+                    <field name="entry_time" string="入职日期"/>
+                    <field name="is_delete_date" string="离职日期"/>
+                    <field name="is_it_a_temporary_worker" string="工种"/>
+                    <field name="fsn_department_id" string="部门" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="fsn_job_id" string="岗位" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="start_paying_social_security_month" string="开始缴纳社保月份"/>
+                    <field name="is_social_security" string="是否交社保"/>
+                    <button name="manual_set_start_paying_social_security_action" context="{'type': 'fallback'}"
+                        type="object" string="修改社保缴纳月份" class="btn-primary"
+                        groups="fsn_base.fsn_super_user_group"/>
+                    <!-- <field name="social_security_state" string="状态" decoration-info="social_security_state == '草稿'" decoration-success="social_security_state == '已审批'" widget="badge"/> -->
+                    <!-- <button name="employee_social_security_examine_and_approve" context="{'type': 'through'}"
+                        type="object" string="通过" class="btn-primary" attrs="{'invisible':[('social_security_state','!=', '草稿')]}"
+                        groups="fsn_base.fsn_super_user_group"/>
+                    <button name="employee_social_security_examine_and_approve" context="{'type': 'fallback'}"
+                        type="object" string="回退" class="btn-danger" attrs="{'invisible':[('social_security_state','!=', '已审批')]}"
+                        groups="fsn_base.fsn_super_user_group"/> -->
+                </tree>
+            </field>
+        </record>
+
+		<!-- form -->
+		<record id="hr_employee_social_security_form" model="ir.ui.view">
+			<field name="name">社保审批</field>
+			<field name="model">hr.employee</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+						<field name="social_security_state" string="social_security_state" invisible="1"/>
+                        <div attrs="{'invisible':[('social_security_state','!=', '草稿')]}">确认审批通过吗？</div>
+						<div attrs="{'invisible':[('social_security_state','!=', '已审批')]}">确认状态回退吗？</div>
+                    </sheet>
+                    <footer>
+                        <button name="social_security_action_state_changes" attrs="{'invisible':[('social_security_state','!=', '草稿')]}" context="{'type': 'through'}" type="object" string="确认" class="oe_highlight"/>
+						<button name="social_security_action_state_changes" attrs="{'invisible':[('social_security_state','!=', '已审批')]}" context="{'type': 'fallback'}" type="object" string="确认" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+
+        <!-- 动作 -->
+        <record id="hr_employee_social_security_action" model="ir.actions.act_window">
+            <field name="name">员工社保</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <!-- 指定tree -->
+        <record model="ir.actions.act_window.view" id="hr_employee_social_security_action_tree">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="hr_employee_social_security_tree"/>
+            <field name="act_window_id" ref="hr_employee_social_security_action"/>
+        </record>
+
+        <menuitem id="menu_hr_employee_social_security"
+            name="员工社保"
+            parent="hr.menu_hr_employee_payroll"
+            action="hr_employee_social_security_action"
+            sequence="40"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,54 @@
+<odoo>
+	<data>
+		<!-- tree视图 -->
+		<record model="ir.ui.view" id="fsn_operate_tree">
+			<field name="name">运营tree视图</field>
+			<field name="model">fsn_operate</field>
+			<field name="arch" type="xml">
+				<!-- <tree editable="bottom"> -->
+				<tree create="0" edit="0">
+                    <header>
+						<!-- <button name="set_stock_info" string="物料成本刷新" type="object"/> -->
+                    </header>
+					<field name="month" string="月份"/>
+					<field name="sale_order_value" string="销售"/>
+					<field name="order_number_value" string="订单"/>
+					<field name="factory_order_number_value" string="工厂（订单）"/>
+					<field name="send_out_order_number_value" string="外发（订单）"/>
+					<field name="cutting_bed" string="裁床"/>
+					<field name="workshop" string="车间"/>
+					<field name="shop_sales_value" string="车间销售产值"/>
+					<field name="outbound" string="外发"/>
+					<field name="send_out_sales_value" string="外发销售产值"/>
+					<field name="posterior_passage" string="后道"/>
+					<field name="stock_output_value" string="存量产值"/>
+					<field name="actual_delivery" string="实际出库产值"/>
+					<!-- <field name="enter_warehouse" string="仓库(入仓)"/> -->
+					<!-- <field name="out_of_warehouse" string="仓库(出仓)"/> -->
+					<!-- <field name="cashmere_filling_room" string="充绒房"/> -->
+					<!-- <button name="set_posterior_passage" type="object" string="测试按钮一" class="btn-primary"></button> -->
+				</tree>
+			</field>
+		</record>
+
+		<!-- 透视表视图 -->
+		<record id="fsn_operate_graph" model="ir.ui.view">
+			<field name="name">运营透视图</field>
+			<field name="model">fsn_operate</field>
+			<field name="arch" type="xml">
+				<graph string="运营透视图">
+					<field name="month" string="月份" type="row"/>
+				</graph>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="fsn_operate_action">
+			<field name="name">运营</field>
+			<field name="res_model">fsn_operate</field>
+			<field name="view_mode">tree,graph</field>
+		</record>
+
+	</data>
+</odoo>

@@ -1,0 +1,136 @@
+<odoo>
+    <data>
+
+        <!-- 通过 -->
+        <record id="advance_of_wages_wizard_form" model="ir.ui.view">
+            <field name="name">确认提示!</field>
+            <field name="model">advance_of_wages_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    确认审批通过吗？
+                    <footer>
+                        <button name="action_audit_through" type="object" string="确认" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="advance_of_wages_confirm_wizard_action" model="ir.actions.act_window">
+            <field name="name">确认提示!</field>
+            <field name="res_model">advance_of_wages_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="fsn_employee.advance_of_wages_wizard_form"/>
+        </record>
+
+
+        <!-- 拒绝 -->
+        <record id="audit_refused_wizard_form" model="ir.ui.view">
+            <field name="name">确认提示!</field>
+            <field name="model">advance_of_wages_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+
+                    <sheet>
+                        <div>确认拒绝通过吗？</div>
+                        <group>
+                            <field name="refused_note" string="备注"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_audit_refused" type="object" string="确认" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="audit_refused_wizard_action" model="ir.actions.act_window">
+            <field name="name">确认提示!</field>
+            <field name="res_model">advance_of_wages_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="fsn_employee.audit_refused_wizard_form"/>
+        </record>
+
+
+		<record id="advance_of_wages_tree" model="ir.ui.view">
+			<field name="name">预支工资记录</field>
+			<field name="model">advance_of_wages</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+                    <header>
+                        <!-- <button name="%(fsn_employee.advance_of_wages_confirm_wizard_action)d" string="审批" type="action" class="btn-primary"/> -->
+                    </header>
+					<field name="dDate" string="结算日期" attrs="{'readonly':[('approve_state','=', '已审批')]}"/>
+					<field name="employee_id" string="员工" options="{'no_create': True, 'no_open': True}" attrs="{'readonly':[('approve_state','=', '已审批')]}"/>
+                    <field name="contract_attribute" string="合同属性"/>
+                    <!-- <field name="working_state" string="是否离职"/> -->
+                    <field name="is_delete_date" string="离职时间"/>
+                    <field name="wages_type" string="预支类型"/>
+					<field name="money" string="金额" attrs="{'readonly':[('approve_state','=', '已审批')]}"/>
+					<field name="approve_state" string="审批状态" decoration-danger="approve_state == '未通过'" decoration-success="approve_state == '已审批'" widget="badge" attrs="{'readonly':[('approve_state','=', '已审批')]}"/>
+                    <button name="%(fsn_employee.advance_of_wages_confirm_wizard_action)d" string="通过" type="action" class="btn-primary" attrs="{'invisible':[('approve_state','=', '已审批')]}" groups="fsn_base.fsn_super_user_group"/>
+                    <button name="state_back" type="object" string="回退" class="btn-danger" attrs="{'invisible':[('approve_state','!=', '已审批')]}" groups="fsn_base.fsn_super_user_group"/>
+                    <button name="%(fsn_employee.audit_refused_wizard_action)d" string="拒绝" type="action" class="btn-danger" attrs="{'invisible':[('approve_state', 'in', ['未通过', '已审批'])]}" groups="fsn_base.fsn_super_user_group"/>
+                    <field name="refused_note" string="备注"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record id="epiboly_wages_tree" model="ir.ui.view">
+			<field name="name">预支工资记录</field>
+			<field name="model">advance_of_wages</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+                    <header>
+                        <!-- <button name="%(fsn_employee.advance_of_wages_confirm_wizard_action)d" string="审批" type="action" class="btn-primary"/> -->
+                    </header>
+					<field name="dDate" string="结算日期" attrs="{'readonly':[('approve_state','=', '已审批')]}"/>
+					<field name="employee_id" string="员工" options="{'no_create': True, 'no_open': True}" attrs="{'readonly':[('approve_state','=', '已审批')]}"/>
+                    <field name="contract_attribute" string="合同属性"/>
+                    <field name="outsourcing_type" string="外包类型"/>
+                    <!-- <field name="working_state" string="是否离职"/> -->
+                    <field name="is_delete_date" string="离职时间"/>
+                    <field name="wages_type" string="预支类型"/>
+					<field name="money" string="金额" attrs="{'readonly':[('approve_state','=', '已审批')]}"/>
+					<field name="approve_state" string="审批状态" decoration-danger="approve_state == '未通过'" decoration-success="approve_state == '已审批'" widget="badge" attrs="{'readonly':[('approve_state','=', '已审批')]}"/>
+                    <button name="%(fsn_employee.advance_of_wages_confirm_wizard_action)d" string="通过" type="action" class="btn-primary" attrs="{'invisible':[('approve_state','=', '已审批')]}" groups="fsn_base.fsn_super_user_group"/>
+                    <button name="state_back" type="object" string="回退" class="btn-danger" attrs="{'invisible':[('approve_state','!=', '已审批')]}" groups="fsn_base.fsn_super_user_group"/>
+                    <button name="%(fsn_employee.audit_refused_wizard_action)d" string="拒绝" type="action" class="btn-danger" attrs="{'invisible':[('approve_state', 'in', ['未通过', '已审批'])]}" groups="fsn_base.fsn_super_user_group"/>
+                    <field name="refused_note" string="备注"/>
+				</tree>
+			</field>
+		</record>
+
+        <!-- 动作 -->
+        <record id="advance_of_wages_actions" model="ir.actions.act_window">
+            <field name="name">预支工资记录</field>
+            <field name="res_model">advance_of_wages</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('contract_attribute', 'not in', ['外包(计时)', '外包(计件)'])]</field>
+            <field name="view_id" ref="advance_of_wages_tree"/>
+        </record>
+        <!-- 动作 -->
+        <record id="epiboly_wages_actions" model="ir.actions.act_window">
+            <field name="name">外包工资发放</field>
+            <field name="res_model">advance_of_wages</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('contract_attribute', 'in', ['外包(计时)', '外包(计件)'])]</field>
+            <field name="view_id" ref="epiboly_wages_tree"/>
+        </record>
+
+        <menuitem id="menu_advance_of_wages"
+            name="预支工资记录"
+            parent="hr.menu_hr_employee_payroll"
+            action="advance_of_wages_actions"
+            sequence="30"/>
+        <menuitem id="menu_epiboly_wages"
+            name="外包工资发放"
+            parent="hr.menu_hr_employee_payroll"
+            action="epiboly_wages_actions"
+            sequence="31"/>
+    </data>
+</odoo>

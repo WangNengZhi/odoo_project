@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+
+
+        <!-- 菜单 -->
+       <menuitem id="menu_counter_sales_root"
+              name="柜台销售"
+              sequence="10"/>
+            <menuitem id="menu_sales_management"
+                    name="销售管理"
+                    parent="menu_counter_sales_root"
+                    sequence="10"/>
+                <menuitem id="menu_counter_sales_order"
+                        name="销售订单"
+                        parent="menu_sales_management"
+                        action="counter_sales_order_action"
+                        sequence="10"/>
+            <menuitem id="menu_setting"
+                    name="设置"
+                    parent="menu_counter_sales_root"
+                    sequence="20"/>
+                <menuitem id="menu_goods_info"
+                        name="产品信息"
+                        parent="menu_setting"
+                        action="goods_info_action"
+                        sequence="10"/>
+    </data>
+</odoo>

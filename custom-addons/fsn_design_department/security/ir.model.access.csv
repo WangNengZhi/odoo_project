@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+product_design_read,产品设计（读）,model_product_design,product_design_group_read,1,0,0,0
+product_design_write,产品设计（写）,model_product_design,product_design_group_write,1,1,1,1

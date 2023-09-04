@@ -1,0 +1,88 @@
+<odoo>
+    <data>
+		<!-- search -->
+        <record id="production_operation_ingredients_outbound_search" model="ir.ui.view">
+            <field name="name">仓库生产工具(出库)</field>
+            <field name="model">production_operation_ingredients_outbound</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="material_name" string="物料编号"/>
+                </search>
+            </field>
+        </record>
+		<!-- tree -->
+		<record model="ir.ui.view" id="production_operation_ingredients_outbound_tree">
+			<field name="name">仓库生产工具(出库)</field>
+			<field name="model">production_operation_ingredients_outbound</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <field name="date" string="日期"/>
+                    <field name="material_name" string="物料编号"/>
+					<!-- <field name="supplier_supplier_id" string="供应商"/> -->
+                    <field name="specification" string="规格"/>
+					<field name="inventory_number" string="库存数量"/>
+                    <field name="amount" string="出库数量"/>
+                    <field name="unit" string="单位"/>
+					<field name="consigner" string="发货人"/>
+                    <field name="supplier" string="班组"/>
+					<field name="consignee" string="收货人"/>
+                    <field name="remark" string="备注"/>
+					<field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '已出库'" widget="badge"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- form -->
+		<record id="production_operation_ingredients_outbound_form" model="ir.ui.view">
+			<field name="name">仓库生产工具(出库)</field>
+			<field name="model">production_operation_ingredients_outbound</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="草稿,已出库"/>
+						<button name="affirm_outbound" string="确认出库" type="object"
+							class="oe_highlight o_expense_submit"
+							attrs="{'invisible': ['|', ('state', '=', '已出库'), ('id', '=', False)]}"
+							confirm='确认出库吗？'
+							/>
+					</header>
+					<sheet>
+						<div style="text-align: center"><h1>仓库生产工具(出库)</h1></div>
+						<group col="4">
+                            <field name="date" string="日期"/>
+                            <field name="odd_numbers" string="出库单号"/>
+                            <field name="inventory" string="库存" options="{'no_create': True, 'no_open': True}"/>
+						</group>
+						<group col="4">
+							<field name="material_coding" string="物料编码" options="{'no_create': True, 'no_open': True}"/>
+							<field name="material_name" string="物料名称"/>
+							<!-- <field name="supplier_supplier_id" string="供应商" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/> -->
+                            <field name="specification" string="规格"/>
+							<field name="inventory_number" string="库存数量"/>
+                            <field name="unit" string="单位"/>
+						</group>
+						<group col="4">
+                            <field name="amount" string="出库数量"/>
+						</group>
+						<group col="4">
+                            <field name="supplier" string="班组"/>
+							<field name="consigner" string="发货人" options="{'no_create': True, 'no_open': True}"/>
+							<field name="consignee" string="收货人" options="{'no_create': True, 'no_open': True}"/>
+                            <!-- <field name="operation_type" string="出库/入库"/> -->
+                            <field name="remark" string="备注"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="production_operation_ingredients_outbound_action">
+			<field name="name">仓库生产工具(出库)</field>
+			<field name="res_model">production_operation_ingredients_outbound</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+    </data>
+</odoo>

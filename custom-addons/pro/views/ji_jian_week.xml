@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        <!-- tree视图 -->
+        <record id="ji_jian_week_tree" model="ir.ui.view">
+            <field name="name">计件工资(周)</field>
+            <field name="model">ji.jian.week</field>
+            <field name="arch" type="xml">
+                <tree create="0" edit="0" delete="0">
+                    <field name="week"/>
+                    <field name="employee_id"/>
+                    <field name="employee"/>
+                    <field name="group"/>
+                    <field name="cost"/>
+                </tree>
+            </field>
+        </record>
+        <!-- 透视表视图 -->
+        <record id="ji_jian_week_tree_graph" model="ir.ui.view">
+            <field name="name">计件工资(周)</field>
+            <field name="model">ji.jian.week</field>
+            <field name="arch" type="xml">
+                <graph string="计件工资(周)">
+                    <field name="employee" type="row"/>
+                    <field name="cost" type="measure"/>
+                </graph>
+            </field>
+        </record>
+        <!-- 动作 -->
+        <record id="ji_jian_week_actions" model="ir.actions.act_window">
+            <field name="name">计件工资(周)</field>
+            <field name="res_model">ji.jian.week</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+        <!-- 指定tree视图 -->
+        <record model="ir.actions.act_window.view" id="ji_jian_week_actions_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="ji_jian_week_tree"/>
+            <field name="act_window_id" ref="ji_jian_week_actions"/>
+        </record>
+        <!-- 指定graph视图 -->
+        <record model="ir.actions.act_window.view" id="ji_jian_week_actions_graph">
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="ji_jian_week_tree_graph"/>
+            <field name="act_window_id" ref="ji_jian_week_actions"/>
+        </record>
+        <!-- 菜单按钮 -->
+        <!-- <menuitem id="menu_ji_jian_week"
+                name="计件工资(周)"
+                parent="menu_cost_cost"
+                action="ji_jian_week_actions"
+                sequence="40"/> -->
+    </data>
+</odoo>

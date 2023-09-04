@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="xinziboss" model="ir.module.category">
+            <field name="name">薪资</field>
+            <field name="sequence">5</field>
+        </record>
+        <record id="xinziboss2" model="res.groups">
+            <field name="name">薪资</field>
+            <field name="category_id" ref="xinziboss"/>
+    <!--        <field name="implied_ids" eval="[(4, ref('继承的组'))]"/>-->
+            <!-- 也就是说这个组也拥有这些继承组的权限 -->
+    <!--        <field name="users" eval="[(4, ref('base.user_root'))]"/>-->
+            <!-- 给这个组添加admin用户 -->
+        </record>
+    </data>
+</odoo>

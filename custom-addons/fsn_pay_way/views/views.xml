@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="fsn_pay_way.list">
+      <field name="name">fsn_pay_way list</field>
+      <field name="model">fsn_pay_way.fsn_pay_way</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="fsn_pay_way.action_window">
+      <field name="name">fsn_pay_way window</field>
+      <field name="res_model">fsn_pay_way.fsn_pay_way</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="fsn_pay_way.action_server">
+      <field name="name">fsn_pay_way server</field>
+      <field name="model_id" ref="model_fsn_pay_way_fsn_pay_way"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="fsn_pay_way" id="fsn_pay_way.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="fsn_pay_way.menu_1" parent="fsn_pay_way.menu_root"/>
+    <menuitem name="Menu 2" id="fsn_pay_way.menu_2" parent="fsn_pay_way.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="fsn_pay_way.menu_1_list" parent="fsn_pay_way.menu_1"
+              action="fsn_pay_way.action_window"/>
+    <menuitem name="Server to list" id="fsn_pay_way" parent="fsn_pay_way.menu_2"
+              action="fsn_pay_way.action_server"/>
+-->
+  </data>
+</odoo>

@@ -1,0 +1,90 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="automatic_cutting_bed_tree">
+        <field name="name">自动裁床</field>
+        <field name="model">automatic_cutting_bed</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" create="false" edit="false">
+
+                    <field name="date" string="日期"/>
+                    <field name="key_id" string="记录识别号"/>
+
+                    <field name="start_time" string="开始时间"/>
+                    <field name="end_time" string="结束时间"/>
+
+                    <field name="marker" string="版图名称"/>
+                    <field name="param_file" string="参数文件"/>
+                    <field name="order" string="订单"/>
+                    <field name="operator" string="操作员"/>
+
+                    <field name="cutdistance" string="裁割距离"/>
+                    <field name="posdistance" string="定位距离"/>
+                    <field name="pendistance" string="笔距离"/>
+                    <field name="contourdistance" string="轮廓线距离"/>
+                    <field name="markerlength" string="Ｘ轴（版长）"/>
+                    <field name="markerheight" string="Ｙ轴（幅宽）"/>
+
+                    <field name="job_time" string="工作时间（分钟）"/>
+                    <field name="cut_time" string="裁剪时间（分钟）"/>
+                    <field name="dryhaulcuttime" string="空裁时间"/>
+                    <field name="coutourtime" string="轮廓线时间"/>
+                    <field name="pentime" string="笔时间"/>
+                    <field name="dryhaulpentime" string="空笔时间"/>
+                    <field name="bitetime" string="过窗时间"/>
+                    <field name="secondarytime" string="二次时间"/>
+                    <field name="breaktime" string="休息时间"/>
+                    <field name="aborttime" string="终止时间"/>
+
+                    <field name="v" string="裁割速度"/>
+                    <field name="vmax" string="最大裁割速度"/>
+                    <field name="vmin" string="最小裁割速度"/>
+
+                    <field name="parameter1" string="机器ID"/>
+                    <field name="parameter2" string="笔（最大速度）"/>
+                    <field name="parameter3" string="角度"/>
+                    <field name="parameter4" string="弯曲"/>
+                    <field name="parameter5" string="断开尺寸"/>
+                    <field name="parameter6" string="工具"/>
+                    <field name="parameter7" string="最小磨刀"/>
+                    <field name="parameter8" string="最大磨刀"/>
+                    <field name="parameter9" string="有效裁割速度"/>
+                    <field name="parameter10" string="过裁量"/>
+
+                    <field name="ignoredpoints" string="忽略点"/>
+                    <field name="points" string="点"/>
+                    <field name="segs" string="缺陷"/>
+                    <field name="ignoredsegs" string="忽略缺陷"/>
+
+                    <field name="xzoom" string="X轴缩放比例"/>
+                    <field name="yzoom" string="Y轴缩放比例"/>
+
+                    <field name="sharpen" string="磨刀"/>
+                    <field name="slit" string="一字剪口"/>
+                    <field name="stitch" string="缝制剪口"/>
+                    <field name="vnotch" string="V字剪口"/>
+                    <field name="drill" string="主钻"/>
+                    <field name="helprdrill" string="轴钻"/>
+                    <field name="matchingpoint" string="对条格点"/>
+                    <field name="tooledown" string="工具下"/>
+                    <field name="labels" string="贴标"/>
+                    <field name="sections" string="窗数"/>
+                    <field name="layer" string="层数"/>
+
+
+                    <field name="machineid" string="设备ID"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+
+
+        <record model="ir.actions.act_window" id="automatic_cutting_bed_action">
+            <field name="name">自动裁床</field>
+            <field name="res_model">automatic_cutting_bed</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

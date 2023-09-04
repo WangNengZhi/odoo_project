@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+        <!-- Top menu item -->
+        <menuitem name="外发"
+            id="fsn_outsource_root"
+            web_icon="fsn_outsource,static/description/icon.png"
+        />
+
+        <menuitem name="外发" id="outsource_order_menu" parent="fsn_outsource_root" sequence="5"/>
+
+            <menuitem name="外发订单" id="outsource_order_sub_menu" parent="outsource_order_menu" sequence="10" action="outsource_order_actions"/>
+            <menuitem name="外发价格" id="outbound_price_menu" parent="outsource_order_menu" sequence="20" action="outbound_price_actions"/>
+            <menuitem name="外发退货" id="outbource_return_menu" parent="outsource_order_menu" sequence="30" action="outbource_return_actions"/>
+
+        <!-- menu categories -->
+        <menuitem name="跟踪" id="outsource_tracking_menu" parent="fsn_outsource_root" sequence="10"/>
+
+            <menuitem name="订单进度表" id="outbound_order_progress_menu" parent="outsource_tracking_menu" sequence="10" action="outbound_order_progress_actions"/>
+            <menuitem name="订单生产明细表" id="production_order_details_menu" parent="outsource_tracking_menu" sequence="20" action="production_order_details_actions"/>
+
+
+
+        <menuitem name="面辅料" id="outsource_fabirc_menu" parent="fsn_outsource_root" sequence="20"/>
+
+            <menuitem name="面辅料生产任务" id="outsource_fabirc_production_menu" parent="outsource_fabirc_menu" sequence="10" action="outsource_fabirc_production_actions"/>
+
+            <menuitem name="面辅料退料单" id="outsource_fabirc_retreat_menu" parent="outsource_fabirc_menu" sequence="10" action="outsource_fabirc_retreat_actions"/>
+
+            <menuitem name="面里料订单" id="outsource_surface_material_menu" parent="outsource_fabirc_menu" sequence="10" action="outsource_surface_material_actions"/>
+    
+        <menuitem name="外发资源" id="outsource_setting_menu" parent="fsn_outsource_root" sequence="30"/>
+
+            <menuitem name="外发工厂" id="outsource_plant_menu" parent="outsource_setting_menu" sequence="10" action="outsource_plant_actions"/>
+
+            <menuitem name="加工类型" id="outsource_plant_process_type_menu" parent="outsource_setting_menu" sequence="20" action="outsource_plant_process_type_actions"/>
+
+            <menuitem name="生产线类型" id="outsource_plant_pl_type_menu" parent="outsource_setting_menu" sequence="30" action="outsource_plant_pl_type_actions"/>
+
+            <menuitem name="加工厂资源" id="outsource_plant_resources_type_menu" parent="outsource_setting_menu" sequence="40" action="outsource_plant_resources_type_actions"/>
+
+    </data>
+</odoo>

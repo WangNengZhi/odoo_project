@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fsn_recruitment_fsn_recruitment,fsn_recruitment.fsn_recruitment,model_fsn_recruitment_fsn_recruitment,base.group_user,1,1,1,1

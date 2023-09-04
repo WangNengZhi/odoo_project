@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="lack_card_generate_ticket_wizard_form" model="ir.ui.view">
+            <field name="name">缺打卡操作</field>
+            <field name="model">lack_card_generate_ticket_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <div><h2>请确认自定义日历已经设置完成，并且要操作的月份的请假表以及调休记录皆设置完毕！，否则生成数据将会发生错误！</h2></div>
+                    <group col="4">
+                        <field name="year_month" string="生成月份" widget="fsn_month"/>
+                    </group>
+                    <footer>
+                        <button name="lack_card_generate_ticket" type="object" string="生成" class="oe_highlight"/>
+                        <button name="view_lack_card_record" type="object" string="检测" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

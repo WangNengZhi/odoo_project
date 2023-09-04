@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <menuitem name="车队管理"
+            web_icon="fleet_management,static/description/icon.png"
+            id="fleet_management_menu_root"/>
+        <!-- 菜单按钮 -->
+        <menuitem id="fleet_management_menu"
+            name="使用记录"
+            parent="fleet_management_menu_root"
+            action="fleet_management_actions"
+            sequence="10"/>
+        <menuitem id="fleet_management_cost_menu"
+            name="费用"
+            parent="fleet_management_menu_root"
+            sequence="20"/>
+            <menuitem id="team_cost_menu"
+                name="车队费用"
+                parent="fleet_management_cost_menu"
+                action="team_cost_actions"
+                sequence="10"/>
+            <menuitem id="car_rental_cost_menu"
+                name="租车费用"
+                parent="fleet_management_cost_menu"
+                action="car_rental_cost_actions"
+                sequence="20"/>
+    </data>
+</odoo>

@@ -1,0 +1,8 @@
+<odoo>
+    <data>
+        <record id="amoeba_chart_client_action" model="ir.actions.client">
+            <field name="name">阿米巴</field>
+            <field name="tag">amoeba_chart</field>
+        </record>
+    </data>
+</odoo>

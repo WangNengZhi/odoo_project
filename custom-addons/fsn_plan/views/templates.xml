@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+
+        <template id="assets_backend" name="custom page assets" inherit_id="web.assets_backend">
+            <xpath expr="//script[last()]" position="after">
+                <script type="text/javascript" src="/fsn_plan/static/src/js/progress_template.js"></script>
+                <script type="text/javascript" src="/fsn_plan/static/src/js/target_output_value.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

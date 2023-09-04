@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+		<record model="ir.ui.view" id="sheet_materials_line_tree">
+			<field name="name">单件用量表明细</field>
+			<field name="model">sheet_materials_line</field>
+			<field name="arch" type="xml">
+				<tree>
+
+					<field name="type" string="类型"/>
+					<field name="style_number_base" string="款号前缀"/>
+					<field name="material_name" string="物料名称"/>
+					<field name="material_specifications" string="物料规格（颜色、尺码等）"/>
+					<field name="single_dosage" string="单件用量"/>
+					<field name="unit_id" string="单位" options="{'no_create': True, 'no_open': True}"/>
+				</tree>
+			</field>
+		</record>
+
+    </data>
+</odoo>

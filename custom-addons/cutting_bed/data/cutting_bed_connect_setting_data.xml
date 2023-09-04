@@ -1,0 +1,25 @@
+<odoo>
+    <data noupdate="1">
+        <record id="cutting_bed_connect_setting_ip" model="cutting_bed_connect_setting">
+            <field name="key">IP</field>
+        </record>
+        <record id="cutting_bed_connect_setting_port" model="cutting_bed_connect_setting">
+            <field name="key">端口</field>
+        </record>
+        <record id="cutting_bed_connect_setting_db_account" model="cutting_bed_connect_setting">
+            <field name="key">数据库账号</field>
+        </record>
+        <record id="cutting_bed_connect_setting_db_password" model="cutting_bed_connect_setting">
+            <field name="key">数据库密码</field>
+        </record>
+        <record id="cutting_bed_connect_setting_db_password" model="cutting_bed_connect_setting">
+            <field name="key">数据库密码</field>
+        </record>
+        <record id="cutting_bed_connect_setting_db_name" model="cutting_bed_connect_setting">
+            <field name="key">数据库名</field>
+        </record>
+        <record id="cutting_bed_connect_setting_db_table_name" model="cutting_bed_connect_setting">
+            <field name="key">数据库表名</field>
+        </record>
+    </data>
+</odoo>

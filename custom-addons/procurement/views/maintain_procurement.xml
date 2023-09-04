@@ -1,0 +1,86 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="maintain_procurement_tree">
+			<field name="name">机修采购</field>
+			<field name="model">maintain_procurement</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<header>
+						<!-- <button name="code_generation" type="object" string="生成编码" class="btn btn-warning"/> -->
+					</header>
+					<field name="date" string="日期"/>
+                    <field name="material_code" string="物品选择（物品编码）" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="material_name" string="物品名称"/>
+					<field name="supplier_supplier_id" string="供应商" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="specification" string="规格"/>
+					<field name="unit_price" string="单价"/>
+					<field name="amount" string="数量"/>
+					<field name="unit" string="单位"/>
+					<field name="department_name" string="采购部门"/>
+                    <field name="is_consumables" string="是否消耗品"/>
+					<field name="money_sum" string="金额"/>
+					<field name="is_invoice" string="是否开票"/>
+					<field name="tax" string="税点" attrs="{'readonly':[('is_invoice','=', False)]}"/>
+					<field name="after_tax_amount" string="税后金额"/>
+					<field name="manager" string="负责人" options="{'no_create': True, 'no_open': True}" />
+					<field name="payment_state" string="付款状态" decoration-info="payment_state == '未付款'" decoration-success="payment_state == '已付款'" widget="badge"/>
+					<button name="confirmation_button"
+						type="object"
+						string="设为已付款"
+						class="btn-primary"
+						attrs="{'invisible':['|', ('state','=', '待审批'), ('payment_state', '=', '已付款')]}"
+						context="{'type': '设为已付款'}"
+						groups="fsn_base.fsn_super_user_group"/>
+					<button name="confirmation_button"
+						type="object"
+						string="设为未付款"
+						class="btn-danger"
+						attrs="{'invisible':['|', ('state','=', '待审批'), ('payment_state', '=', '未付款')]}"
+						context="{'type': '设为未付款'}"
+						groups="fsn_base.fsn_super_user_group"/>
+					<field name="state" string="状态" decoration-info="state == '待采购'" decoration-success="state == '已采购'" widget="badge"/>
+					<button name="confirmation_button" type="object" string="通过" class="btn-primary" attrs="{'invisible':[('state','!=', '待审批')]}" context="{'type': 'through'}" groups="fsn_base.fsn_super_user_group"/>
+					<button name="confirmation_button" type="object" string="回退" class="btn-danger" attrs="{'invisible':[('state','!=', '待采购')]}" context="{'type': 'fallback'}" groups="fsn_base.fsn_super_user_group"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- form -->
+		<record id="maintain_procurement_form" model="ir.ui.view">
+			<field name="name">机修采购</field>
+			<field name="model">maintain_procurement</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+						<field name="state" string="状态" invisible="1"/>
+						<div invisible="context.get('type') != 'fallback'">确认回退吗？</div>
+                        <div invisible="context.get('type') != 'through'">确认审批通过吗？</div>
+						<field name="payment_state" string="付款状态" invisible="1"/>
+						<div invisible="context.get('type') != '设为已付款'">确认设为已付款吗？</div>
+                        <div invisible="context.get('type') != '设为未付款'">确认设为未付款吗？</div>
+                    </sheet>
+                    <footer>
+                        <button name="action_state_changes" invisible="context.get('type') != 'fallback'" context="{'type': 'fallback'}" type="object" string="回退" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != 'through'" context="{'type': 'through'}" type="object" string="通过" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '设为已付款'" context="{'type': '设为已付款'}" type="object" string="设为已付款" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '设为未付款'" context="{'type': '设为未付款'}" type="object" string="设为未付款" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="maintain_procurement_action">
+            <field name="name">机修采购</field>
+            <field name="res_model">maintain_procurement</field>
+            <field name="view_mode">tree</field>
+		</record>
+    </data>
+</odoo>

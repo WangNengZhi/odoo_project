@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <record id="fsn_hr_employee_wx" model="ir.ui.view">
+            <field name="name">员工微信小程序扩展</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <!-- 员工编号自动设为只读 -->
+                <xpath expr="//group[@name='identification_group']" position="after">
+                    <group string='微信扩展' name="wx_extension">
+                        <field name="wx_password" string="微信小程序密码"/>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+        <record id="general_suspension_system_station_summary_tree" model="ir.ui.view">
+            <field name="name">吊挂站位继承</field>
+            <field name="model">suspension_system_station_summary</field>
+            <field name="inherit_id" ref="suspension_system.suspension_system_station_summary_tree"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+                <xpath expr="//header" position="inside">
+                    <!-- <button string="测试按钮" type="object" name="set_group_statistical" class="oe_highlight"/> -->
+                </xpath>
+            </field>
+        </record>
+
+        <record id="general_view_tree_product_product" model="ir.ui.view">
+            <field name="name">组产值继承</field>
+            <field name="model">pro.pro</field>
+            <field name="inherit_id" ref="pro.view_tree_product_product"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+                <xpath expr="//header" position="inside">
+                    <!-- <button string="测试按钮666" type="object" name="set_group_statistical_id" class="oe_highlight"/> -->
+                </xpath>
+            </field>
+        </record>
+
+		<record model="ir.ui.view" id="group_statistical_tree">
+			<field name="name">组返修统计</field>
+			<field name="model">group_statistical</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+                    <header>
+                        <!-- <button name="set_day_qing_day_bi_ids" type="object" string="刷新数据" class="btn-primary"/> -->
+                    </header>
+					<field name="dDate" string="日期"/>
+                    <field name="group" string="组别"/>
+                    <field name="invest" string="中查"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="repair_quantity" string="返修数量"/>
+                    <field name="check_quantity" string="查货数量"/>
+                    <field name="group_secondary_repair_number" string="小组二次返修数"/>
+                    <field name="group_secondary_check_number" string="小组二次返修查货数"/>
+                    <field name="repair_ratio" string="返修率" widget="progressbar"/>
+                    <!-- <field name="hang_the_stranded" string="吊挂滞留"/> -->
+                    <!-- <field name="dg_number" string="吊挂件数"/> -->
+                    <!-- <field name="repair_ratio_a" string="返修率（件）" widget="percentage"/> -->
+                    <field name="deliveries_number" string="组上交货件数"/>
+                    <field name="dg_group_number" string="吊挂件数"/>
+                    <field name="auto_repair_number" string="返修件数（自动）"/>
+                    <field name="auto_repair_ratio" string="返修率（自动）" widget="percentage"/>
+                    <field name="assess_index" string="考核"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="group_statistical_actions" model="ir.actions.act_window">
+            <field name="name">组返修统计</field>
+            <field name="res_model">group_statistical</field>
+            <field name="view_mode">tree,graph</field>
+            <!-- <field name="view_id" ref="client_warehouse_repair_tree"/> -->
+        </record>
+
+    </data>
+</odoo>

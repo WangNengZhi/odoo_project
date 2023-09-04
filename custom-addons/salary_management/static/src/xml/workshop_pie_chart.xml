@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template01" xml:space="preserve">
+    <!-- t-name qweb模板名称很重要 -->
+    <t t-name="workshop_pie_chart">
+        <!-- 增加滚动条 -->
+        <div style="background-color: #FFFFFF; height:920px;overflow:scroll;overflow-x:hidden;">
+            <div class="container wdc_margin">
+
+                <div class="row">
+                    <div class="col">
+                        <!-- 月薪资 -->
+                        <div id="salary_pie_chart" style="width: 530px;height:800px;"></div>
+                    </div>
+
+                    <div class="col">
+                        <!-- 月平均效率 -->
+                        <div id="efficiency_pie_chart" style="width: 530px;height:800px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <!-- 月日均薪资 -->
+                        <div id="day_average_salary_pie_chart" style="width: 530px;height:800px;"></div>
+                    </div>
+                    <div class="col">
+                        <!-- 月日均薪资 -->
+                        <div id="day_average_salary_pie_chart_integer" style="width: 530px;height:800px;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div>
+                            <input type="month" id="pie_chart_date" class="form-control"></input>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div>
+                            <button type="button" id="pie_chart_refresh" class="btn btn-outline-primary">查询</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <script type="text/javascript" src="/salary_management/static/src/js/_workshop_pie_chart.js"></script>
+        </div>
+    </t>
+
+</templates>

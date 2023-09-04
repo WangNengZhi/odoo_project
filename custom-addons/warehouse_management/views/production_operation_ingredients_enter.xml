@@ -1,0 +1,89 @@
+<odoo>
+    <data>
+		<!-- search -->
+        <record id="production_operation_ingredients_enter_search" model="ir.ui.view">
+            <field name="name">仓库生产工具(入库)</field>
+            <field name="model">production_operation_ingredients_enter</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="material_coding" string="物料编码"/>
+                    <field name="material_name" string="物料名称"/>
+                </search>
+            </field>
+        </record>
+		<!-- tree -->
+		<record model="ir.ui.view" id="production_operation_ingredients_enter_tree">
+			<field name="name">仓库生产工具(入库)</field>
+			<field name="model">production_operation_ingredients_enter</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <field name="date" string="日期"/>
+
+					<field name="material_coding" string="物料编码"/>
+                    <field name="material_name" string="物料名称"/>
+					<!-- <field name="supplier_supplier_id" string="供应商"/> -->
+                    <field name="specification" string="规格"/>
+                    <field name="amount" string="入库数量"/>
+                    <field name="unit" string="单位"/>
+                    <field name="unit_price" string="单价"/>
+                    <field name="money_sum" string="金额"/>
+
+                    <field name="consigner" string="发货方"/>
+                    <field name="consignee" string="收货人"/>
+					<field name="remark" string="备注"/>
+
+                    <field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '已入库'" widget="badge"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="production_operation_ingredients_enter_form" model="ir.ui.view">
+			<field name="name">仓库生产工具(入库)</field>
+			<field name="model">production_operation_ingredients_enter</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="草稿,已入库"/>
+						<button name="affirm_enter" string="确认入库" type="object"
+							class="oe_highlight o_expense_submit"
+							attrs="{'invisible': ['|', ('state', '=', '已入库'), ('id', '=', False)]}"
+							confirm='确认入库吗？'
+							/>
+					</header>
+					<sheet>
+						<div style="text-align: center"><h1>仓库生产工具(入库)</h1></div>
+						<group col="4">
+                            <field name="date" string="日期"/>
+                            <field name="odd_numbers" string="入库单号"/>
+						</group>
+						<group col="4">
+							<field name="material_coding" string="物料编码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <!-- <field name="supplier_supplier_id" string="供应商" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/> -->
+                            <field name="material_name" string="物料名称"/>
+                            <field name="specification" string="规格"/>
+						</group>
+
+						<group col="4">
+                            <field name="amount" string="入库数量"/>
+                            <field name="unit" string="单位"/>
+                            <field name="unit_price" string="单价"/>
+                            <field name="money_sum" string="金额"/>
+						</group>
+						<group col="4">
+                            <field name="consigner" string="发货方"/>
+                            <field name="consignee" string="收货人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="remark" string="备注"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="production_operation_ingredients_enter_action">
+			<field name="name">仓库生产工具(入库)</field>
+			<field name="res_model">production_operation_ingredients_enter</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+    </data>
+</odoo>

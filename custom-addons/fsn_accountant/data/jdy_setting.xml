@@ -1,0 +1,28 @@
+<odoo>
+    <data noupdate="1">
+    
+        <record id="jdy_setting_app_key" model="jdy_setting">
+            <field name="key">APP_KEY</field>
+        </record>
+        
+        <record id="jdy_setting_app_secret" model="jdy_setting">
+            <field name="key">APP_SECRET</field>
+        </record>
+
+        <record id="jdy_setting_client_id" model="jdy_setting">
+            <field name="key">CLIENT_ID</field>
+        </record>
+        
+        <record id="jdy_setting_client_secret" model="jdy_setting">
+            <field name="key">CLIENT_SECRET</field>
+        </record>
+
+        <record id="jdy_setting_outer_instance_id" model="jdy_setting">
+            <field name="key">OUTER_INSTANCE_ID</field>
+        </record>
+
+
+
+
+    </data>
+</odoo>

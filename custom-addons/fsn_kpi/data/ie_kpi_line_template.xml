@@ -1,0 +1,83 @@
+<odoo>
+    <data noupdate="1">
+        <record id="ie_kpi_line_template_01" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">目标管理</field>
+            <field name="assessment_standard">生产线平衡率达70%（瓶颈实际实际/平衡实际）</field>
+            <field name="score">10</field>
+            <field name="calculation">负5分/10%</field>
+            <field name="sequence">1</field>
+            <field name="fsn_kpi_job">IE</field>
+        </record>
+
+        <record id="ie_kpi_line_template_02" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">目标管理</field>
+            <field name="assessment_standard">生产线达成率达95%</field>
+            <field name="score">15</field>
+            <field name="calculation">负5分/10%</field>
+            <field name="sequence">2</field>
+            <field name="fsn_kpi_job">IE</field>
+        </record>
+
+        <record id="ie_kpi_line_template_03" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">目标管理</field>
+            <field name="assessment_standard">SAM要在大货上线后两天（第二天）制作出来</field>
+            <field name="score">15</field>
+            <field name="calculation">负7分/迟1天</field>
+            <field name="sequence">3</field>
+            <field name="fsn_kpi_job">IE</field>
+        </record>
+
+        <record id="ie_kpi_line_template_04" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">目标管理</field>
+            <field name="assessment_standard">RFT%大于85%(反工率)</field>
+            <field name="score">15</field>
+            <field name="calculation">负6分/10%</field>
+            <field name="sequence">4</field>
+            <field name="fsn_kpi_job">IE</field>
+        </record>
+        <record id="ie_kpi_line_template_05" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">目标管理</field>
+            <field name="assessment_standard">提案改善项目（CIP）每车间每月三件</field>
+            <field name="score">10</field>
+            <field name="calculation">负6分/10%</field>
+            <field name="sequence">5</field>
+            <field name="fsn_kpi_job">IE</field>
+        </record>
+
+        <record id="ie_kpi_line_template_06" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">目标管理</field>
+            <field name="assessment_standard">6S评分达270分</field>
+            <field name="score">15</field>
+            <field name="calculation">负5分/27分</field>
+            <field name="sequence">6</field>
+            <field name="fsn_kpi_job">IE</field>
+        </record>
+
+        <record id="ie_kpi_line_template_07" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">目标管理</field>
+            <field name="assessment_standard">留任期大于等于3年</field>
+            <field name="score">15</field>
+            <field name="calculation">看不清！！！！</field>
+            <field name="sequence">7</field>
+            <field name="fsn_kpi_job">IE</field>
+        </record>
+
+        <record id="ie_kpi_line_template_08" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">目标管理</field>
+            <field name="assessment_standard">准时参加会议</field>
+            <field name="score">5</field>
+            <field name="calculation">负2分/次</field>
+            <field name="sequence">8</field>
+            <field name="fsn_kpi_job">IE</field>
+        </record>
+
+    </data>
+</odoo>

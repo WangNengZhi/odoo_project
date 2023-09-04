@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+
+        <record id="view_tree_attendance_days_statistics_table" model="ir.ui.view">
+            <field name="name">出勤天数统计表(周)</field>
+            <field name="model">attendance.days.statistics.table</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="actual_attendance"/>
+                    <field name="number_of_workers"/>
+                    <field name="number_of_leave"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_attendance_days_statistics_table" model="ir.actions.act_window">
+            <field name="name">出勤天数统计表(周)</field>
+            <field name="res_model">attendance.days.statistics.table</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+        <record id="view_tree_attendance_days_statistics_day" model="ir.ui.view">
+            <field name="name">出勤天数统计表(天)</field>
+            <field name="model">attendance.days.statistics.day</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="actual_attendance"/>
+                    <field name="number_of_workers"/>
+                    <field name="number_of_leave"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action_attendance_days_statistics_day" model="ir.actions.act_window">
+            <field name="name">出勤天数统计表(天)</field>
+            <field name="res_model">attendance.days.statistics.day</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+    </data>
+</odoo>

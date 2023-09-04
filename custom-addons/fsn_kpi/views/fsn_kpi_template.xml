@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="fsn_kpi_template_tree">
+			<field name="name">模板设置tree</field>
+			<field name="model">fsn_kpi_template</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="date" string="日期"/>
+					<field name="department_id" string="部门" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="job_id" string="岗位" options="{'no_create': True, 'no_open': True}"/>
+					<field name="is_active" string="启用"/>
+				</tree>
+			</field>
+		</record>
+		<!-- form -->
+		<record id="fsn_kpi_template_form" model="ir.ui.view">
+			<field name="name">模板设置form</field>
+			<field name="model">fsn_kpi_template</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+
+					</header>
+
+					<!-- <div style="text-align: center"><h1>KPI</h1></div> -->
+					<group col="4">
+						<field name="date" string="日期"/>
+						<field name="department_id" string="部门" options="{'no_create': True, 'no_open': True}" readonly="1" force_save="1"/>
+						<field name="job_id" string="岗位" options="{'no_create': True, 'no_open': True}"/>
+						<field name="is_active" string="启用"/>
+					</group>
+
+					<notebook>
+						<page string="模板明细">
+							<field name="fsn_kpi_template_line_ids" string="模板明细">
+								<tree editable="bottom">
+									<field name="sequence" string="序号"/>
+									<field name="assessment_project" string="考核项目"/>
+									<field name="assess_project" string="自动考核" options="{'no_create': True, 'no_open': True}"/>
+									<field name="assessment_content" string="考核内容" attrs="{'readonly':[('assess_project', '!=', False)]}" force_save="1"/>
+									<field name="assessment_standard" string="考核标准" attrs="{'readonly':[('assess_project', '!=', False)]}" force_save="1"/>
+									<field name="score" string="分值" attrs="{'readonly':[('assess_project', '!=', False)]}" force_save="1"/>
+									<field name="calculation" string="计算方式" attrs="{'readonly':[('assess_project', '!=', False)]}" force_save="1"/>
+								</tree>
+								<form>
+								</form>
+							</field>
+						</page>
+					</notebook>
+ 
+				</form>
+			</field>
+		</record>
+
+    </data>
+</odoo>

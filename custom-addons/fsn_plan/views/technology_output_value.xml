@@ -1,0 +1,87 @@
+<odoo>
+  	<data>
+        <record id="technology_output_value_tree" model="ir.ui.view">
+            <field name="name">技术科产值（技术科主管）</field>
+            <field name="model">technology_output_value</field>
+            <field name="arch" type="xml">
+				<tree create="0" delete="1">
+                    <header>
+						<!-- <button name="set_fsn_month_plan_info" string="刷新大单小单中单" type="object" class="btn btn-danger"/> -->
+					</header>
+                    <field name="year_month" string="月份" readonly="1"/>
+                    <field name="employee_id" string="负责人"/>
+                    <field name="entry_time" string="入职日期" readonly="1"/>
+                    <field name="is_delete_date" string="离职日期" readonly="1"/>
+                    <field name="department_id" string="部门" readonly="1"/>
+                    <field name="job_id" string="岗位" readonly="1"/>
+                    <field name="number" string="人数" readonly="1"/>
+
+                    <field name="sample_clothes_plan_number" string="样衣计划件数" readonly="0"/>
+                    <field name="sample_clothes_complete_number" string="样衣完成件数" readonly="1"/>
+                    <field name="sample_clothes_per_capita_complete_number" string="样衣人均完成件数" readonly="1"/>
+
+                    <field name="template_plan_number" string="模板计划件数" readonly="0"/>
+                    <field name="template_complete_number" string="模板完成件数" readonly="1"/>
+                    <field name="template_per_capita_complete_number" string="模板人均完成件数" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+
+		<!-- form -->
+		<record id="technology_output_value_form" model="ir.ui.view">
+			<field name="name">技术科产值（技术科主管）</field>
+			<field name="model">technology_output_value</field>
+			<field name="arch" type="xml">
+				<form create="0" edit="1" delete="1">
+					<sheet>
+						<group col="4">
+                            <field name="year_month" string="月份" readonly="1"/>
+                            <field name="employee_id" string="负责人" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="entry_time" string="入职日期" readonly="1"/>
+                            <field name="is_delete_date" string="离职日期" readonly="1"/>
+                            <field name="department_id" string="部门" readonly="1" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="job_id" string="岗位" readonly="1" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="number" string="人数" readonly="1"/>
+						</group>
+						<group>
+                            <group>
+                                <field name="sample_clothes_plan_number" string="样衣计划件数" readonly="0"/>
+                                <field name="sample_clothes_complete_number" string="样衣完成件数" readonly="1"/>
+                                <field name="sample_clothes_per_capita_complete_number" string="样衣人均完成件数" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="template_plan_number" string="模板计划件数" readonly="0"/>
+                                <field name="template_complete_number" string="模板完成件数" readonly="1"/>
+                                <field name="template_per_capita_complete_number" string="模板人均完成件数" readonly="1"/>
+                            </group>
+						</group>
+
+                        <!-- <notebook>
+                            <page string="逾期明细">
+                                <field name="send_out_output_value_line_ids" string="逾期明细">
+                                    <tree editable="bottom" create="0" edit="0" delete="0">
+                                        <field name="date" string="日期"/>
+                                        <field name="delay_time_days" string="逾期天数"/>
+                                        <field name="order_quantity" string="订单数"/>
+                                        <field name="stock" string="存量"/>
+                                    </tree>
+                                    <form>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook> -->
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <!-- 动作 -->
+        <record id="technology_output_value_actions" model="ir.actions.act_window">
+            <field name="name">技术科产值（技术科主管）</field>
+            <field name="res_model">technology_output_value</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('employee_id', '!=', False)]</field>
+        </record>
+  	</data>
+</odoo>

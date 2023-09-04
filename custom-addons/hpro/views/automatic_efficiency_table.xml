@@ -1,0 +1,40 @@
+<odoo>
+  	<data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="automatic_efficiency_table_tree">
+			<field name="name">自动效率表</field>
+			<field name="model">automatic_efficiency_table</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0" editable="top">
+                    <header>
+                        <!-- <button name="set_employee_info" type="object" string="测试按钮" class="btn-primary"/> -->
+                    </header>
+
+					<field name="date" string="日期"/>
+					<field name="employee_id" string="员工"/>
+					<field name="work_type" string="工种"/>
+					<field name="departure_date" string="离职日期"/>
+					<field name="job_id" string="岗位"/>
+					<field name="group" string="组别"/>
+					<field name="last_month_avg_efficiency" string="上月平均效率" widget="progressbar"/>
+					<field name="efficiency" string="效率" widget="progressbar"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+        <record id="automatic_efficiency_table_actions" model="ir.actions.act_window">
+            <field name="name">自动效率表</field>
+            <field name="res_model">automatic_efficiency_table</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">['|', ('job_id.name', '!=', '中查'), ('group.group', '!=', '后整')]</field>
+        </record>
+        <!-- 按钮 -->
+        <menuitem id="automatic_efficiency_table_menu"
+            name="效率表"
+            parent="automatic_scene_process_menu_root"
+            action="automatic_efficiency_table_actions"
+            sequence="20"/>
+    </data>
+</odoo>

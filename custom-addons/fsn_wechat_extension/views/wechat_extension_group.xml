@@ -1,0 +1,57 @@
+
+<odoo>
+    <data>
+        <!-- tree -->
+		<record model="ir.ui.view" id="wechat_extension_group_tree">
+			<field name="name">微信小程序权限组</field>
+			<field name="model">wechat_extension_group</field>
+			<field name="arch" type="xml">
+				<tree create="0" delete="0">
+                    <header>
+                        <!-- <button name="set_assess_index" type="object" string="考核刷新" class="btn-primary"/> -->
+                    </header>
+					<field name="name" string="组名" readonly="1"/>
+
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="wechat_extension_group_form" model="ir.ui.view">
+			<field name="name">微信小程序权限组</field>
+			<field name="model">wechat_extension_group</field>
+			<field name="arch" type="xml">
+				<form create="0" delete="0">
+                    <sheet>
+                        <group col="4">
+                            <field name="name" string="组名" readonly="1"/>
+
+                        </group>
+                        <notebook>
+                         <!-- options="{'no_create': True, 'no_create_edit': True, 'no_open': True}" -->
+                            <page string="岗位">
+                                <field name="job_ids" string="岗位" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}">
+                                    <tree>
+                                        <field name="name" string="岗位"/>
+                                        <field name="department_id" string="部门"/>
+                                        <field name="no_of_employee" string="当前员工数"/>
+                                    </tree>
+                                    <form>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- action -->
+		<record model="ir.actions.act_window" id="wechat_extension_group_actions">
+            <field name="name">微信小程序权限组</field>
+            <field name="res_model">wechat_extension_group</field>
+            <field name="view_mode">tree,form</field>
+		</record>
+
+    </data>
+</odoo>

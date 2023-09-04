@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+		<record model="ir.ui.view" id="employees_statistical_tree">
+			<field name="name">员工返修统计</field>
+			<field name="model">employees_statistical</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+                    <header>
+                        <!-- <button name="set_date" type="object" string="刷新数据" class="btn-primary"/> -->
+                        <!-- <button name="set_repair_quantity" type="object" string="刷新返修数量" class="btn-primary"/> -->
+                    </header>
+					<field name="dDate" string="日期"/>
+                    <field name="employee_id" string="员工"/>
+                    <field name="group" string="组别"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="repair_quantity" string="返修数量"/>
+                    <field name="check_quantity" string="查货数量"/>
+                    <field name="repair_ratio" string="返修率" widget="progressbar"/>
+                    <!-- <field name="assess_index" string="考核"/> -->
+				</tree>
+			</field>
+		</record>
+
+        <record id="employees_statistical_actions" model="ir.actions.act_window">
+            <field name="name">员工返修统计</field>
+            <field name="res_model">employees_statistical</field>
+            <field name="view_mode">tree,graph</field>
+            <!-- <field name="view_id" ref="client_warehouse_repair_tree"/> -->
+        </record>
+
+    </data>
+</odoo>

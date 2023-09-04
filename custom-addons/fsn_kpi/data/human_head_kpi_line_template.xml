@@ -1,0 +1,134 @@
+<odoo>
+    <data noupdate="1">
+        <record id="human_head_01" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">招聘平台相关措施落地</field>
+            <field name="assessment_standard">部门内招聘渠道的响应速度及准确性</field>
+            <field name="score">10</field>
+            <field name="calculation">落地是否及时准确，无差错</field>
+            <field name="sequence">1</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+        <record id="human_head_02" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">招聘计划达成率</field>
+            <field name="assessment_standard">根据各部门人员需求，本月总计划招聘（）人</field>
+            <field name="score">20</field>
+            <field name="calculation">实际完成率*该项分值</field>
+            <field name="sequence">2</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+        <record id="human_head_03" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">人事部门的sop流程</field>
+            <field name="assessment_standard">相关人力部门流程是否准确及时无误落地</field>
+            <field name="score">5</field>
+            <field name="calculation">准确及时完成，无差错</field>
+            <field name="sequence">3</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+        <record id="human_head_04" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">相关合同管理</field>
+            <field name="assessment_standard">根据相应法规的规避潜在风险，保证其各项制度措施合法合规。</field>
+            <field name="score">5</field>
+            <field name="calculation">准确及时完成，无差错</field>
+            <field name="sequence">4</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+        <record id="human_head_05" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">社保管理</field>
+            <field name="assessment_standard">审核公司员工社保五金缴纳及管理</field>
+            <field name="score">5</field>
+            <field name="calculation">是否及时、准确、无遗漏</field>
+            <field name="sequence">5</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+        <record id="human_head_06" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">员工关系管理</field>
+            <field name="assessment_standard">处理员工劳动关系争议纠纷</field>
+            <field name="score">5</field>
+            <field name="calculation">能够在在最小的损失下妥善解决</field>
+            <field name="sequence">6</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+        <record id="human_head_07" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">制度建设及企业文化的监督</field>
+            <field name="assessment_standard">对公司制度及企业文化实施进行监督</field>
+            <field name="score">5</field>
+            <field name="calculation">是否起到监督的作用</field>
+            <field name="sequence">7</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+        <record id="human_head_08" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">固定资产的监督</field>
+            <field name="assessment_standard">固定资产的采购、维修、统计及其档案管理审核</field>
+            <field name="score">5</field>
+            <field name="calculation">其费用合理控制，保障正常使用</field>
+            <field name="sequence">8</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+        <record id="human_head_09" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">其他工作</field>
+            <field name="assessment_standard">领导临时交代的其他工作</field>
+            <field name="score">5</field>
+            <field name="calculation">是否能够及时完成</field>
+            <field name="sequence">9</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+        <record id="human_head_10" model="special_kpi_line_template">
+            <field name="assessment_project">工作能力</field>
+            <field name="assessment_content">团队协作能力</field>
+            <field name="assessment_standard">部门内：对团队的工作情况负责，能及时的对员工遇到的问题和困难进行解决</field>
+            <field name="score">10</field>
+            <field name="calculation">团队人均KPI分比</field>
+            <field name="sequence">10</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+        <record id="human_head_11" model="special_kpi_line_template">
+            <field name="assessment_project">工作能力</field>
+            <field name="assessment_content">组织策划能力</field>
+            <field name="assessment_standard">能够良好主导策划并组织公司活动及团队活动</field>
+            <field name="score">10</field>
+            <field name="calculation">活动过程是否衔接良好、无失误</field>
+            <field name="sequence">11</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+        <record id="human_head_12" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">工作责任心</field>
+            <field name="assessment_standard">工作严谨认真，有强烈的责任意识</field>
+            <field name="score">5</field>
+            <field name="calculation">对自己部门的工作能够保障其高效精准的完成和落地</field>
+            <field name="sequence">12</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+        <record id="human_head_13" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">工作效率及积极性</field>
+            <field name="assessment_standard">工作严谨认真，有强烈的责任意识对工作积极主动对部门内的员工负责。</field>
+            <field name="score">5</field>
+            <field name="calculation">a.工作热情高，能对计划内和计划外的项目提供有意义的意见和见解 （5分）
+b.能主动考虑问题，并提出解决方案，对职责内的事务尽心尽责  （3分）
+c.有一定的主动性和热情，但还需要上级监督  （1分）</field>
+            <field name="sequence">13</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+        <record id="human_head_14" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">出勤率</field>
+            <field name="assessment_standard">缺卡、迟到、早退、请假情况</field>
+            <field name="score">10</field>
+            <field name="calculation">a.缺卡、迟到、早退：一次扣2分
+b.旷工：一次扣5分
+</field>
+            <field name="sequence">14</field>
+            <field name="fsn_kpi_job">人事主管</field>
+        </record>
+    </data>
+</odoo>

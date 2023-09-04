@@ -1,0 +1,44 @@
+<odoo>
+	<data>
+		<!-- tree视图 -->
+		<record model="ir.ui.view" id="bank_account_tree">
+			<field name="name">记账tree视图</field>
+			<field name="model">bank_account</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom">
+					<field name="date" string="日期"/>
+					<field name="personage_or_unit" string="付款单位/个人"/>
+					<field name="category" string="类别" options="{'no_create': True, 'no_open': True}"/>
+					<field name="income" string="收入"/>
+					<field name="expenditure" string="支出"/>
+					<field name="bank_or_cash" string="银行/现金"/>
+					<field name="proposer" string="申请人"/>
+					<field name="abstract" string="摘要"/>
+					<field name="comment" string="备注"/>
+					<field name="voucher_number" string="凭证号"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- 透视表视图 -->
+		<record id="bank_account_graph" model="ir.ui.view">
+			<field name="name">记账透视图</field>
+			<field name="model">bank_account</field>
+			<field name="arch" type="xml">
+				<graph string="盘点透视图">
+					<field name="date" string="日期" type="row"/>
+                    <field name="income" string="收入" type="measure"/>
+					<field name="expenditure" string="支出" type="measure"/>
+				</graph>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="bank_account_action">
+			<field name="name">记账</field>
+			<field name="res_model">bank_account</field>
+			<!-- <field name="view_mode">tree</field> -->
+			<field name="view_mode">tree,graph</field>
+		</record>
+	</data>
+</odoo>

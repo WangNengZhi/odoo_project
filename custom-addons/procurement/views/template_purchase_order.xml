@@ -1,0 +1,87 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="template_purchase_order_tree">
+			<field name="name">模板采购单</field>
+			<field name="model">template_purchase_order</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <field name="apply_date" string="申请日期"/>
+                    <field name="apply_department" string="申请部门"/>
+                    <field name="proposer" string="申请人"/>
+                    <field name="money_sum" string="合计金额"/>
+                    <field name="firm_principal" string="公司负责人"/>
+                    <field name="manager" string="主管/经理"/>
+					<field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '已采购'" widget="badge"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- form -->
+		<record id="template_purchase_order_form" model="ir.ui.view">
+			<field name="name">模板采购单</field>
+			<field name="model">template_purchase_order</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="待采购,正在采购,已领用"/>
+						<button name="action_confirm_purchase" string="确认采购" type="object"
+							class="oe_highlight o_expense_submit"
+							attrs="{'invisible': ['|', ('state', 'in', ['正在采购', '已领用']), ('id', '=', False)]}"
+							confirm='确认采购吗？'
+							/>
+						<button name="action_confirm_recipients" string="确认领用" type="object"
+							class="oe_highlight o_expense_submit"
+							attrs="{'invisible': ['|', ('state', 'in', ['待采购', '已领用']), ('id', '=', False)]}"
+							confirm='确认领用吗？'
+							/>
+
+					</header>
+					<sheet>
+						<group col="4">
+                            <field name="apply_date" string="申请日期"/>
+                            <field name="apply_department" string="申请部门" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="proposer" string="申请人" options="{'no_create': True, 'no_open': True}"/>
+						</group>
+						<group col="4">
+                            <field name="firm_principal" string="公司负责人" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="manager" string="主管/经理" options="{'no_create': True, 'no_open': True}"/>
+						</group>
+						<notebook>
+							<page string="采购明细">
+								<field name="template_purchase_order_line_ids" string="采购明细">
+									<tree editable="bottom">
+                                        <field name="item_name" string="物品编码" options="{'no_create': True, 'no_open': True, 'no_create_edit': True}"/>
+                                        <field name="name" string="物品名称"/>
+										<!-- <field name="supplier_supplier_id" string="供应商" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/> -->
+                                        <field name="specification" string="规格"/>
+                                        <field name="unit_price" string="单价"/>
+                                        <field name="unit" string="单位"/>
+                                        <field name="amount" string="数量"/>
+                                        <field name="money_sum" string="金额"/>
+                                        <field name="remark" string="备注"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+
+							</page>
+						</notebook>
+                        <group class="oe_right">
+                            <field name="money_sum" string="合计金额"/>
+                        </group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="template_purchase_order_action">
+			<field name="name">模板采购单</field>
+			<field name="res_model">template_purchase_order</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+    </data>
+</odoo>

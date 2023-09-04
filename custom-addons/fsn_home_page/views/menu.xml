@@ -1,0 +1,9 @@
+<odoo>
+  	<data>
+
+
+
+        <menuitem name="主页滚动条设置" id="scroll_bar_config_menu" parent="fsn_base.fsn_config_menu" action="scroll_bar_config_action" sequence="999"/>
+
+  	</data>
+</odoo>

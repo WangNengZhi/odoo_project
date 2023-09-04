@@ -1,0 +1,92 @@
+<odoo>
+    <data>
+
+        <record id="fsn_view_hr_job_tree_inherit" model="ir.ui.view">
+            <field name="name">FSN_岗位tree扩展</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr.view_hr_job_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="create">0</attribute>
+                </xpath>
+
+                 <xpath expr="//field[@name='no_of_hired_employee']" position="after">
+                    <field name="actual_number_of_employees" string="实际在职员工数量" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="fsn_view_hr_job_form_inherit" model="ir.ui.view">
+            <field name="name">FSN_岗位form扩展</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr.view_hr_job_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="attributes">
+                    <attribute name="create">0</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="fsn_job_create_audit_tree">
+            <field name="name">岗位审核</field>
+            <field name="model">fsn_job_create_audit</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <header>
+
+                    </header>
+                    <field name="date" string="申请日期"/>
+                    <field name="department_id" string="部门" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="job_name" string="岗位名称"/>
+					<field name="state" string="状态" decoration-success="state == '已审批'" decoration-primary="state == '待审批'" widget="badge"/>
+                    <button name="confirmation_button" type="object" string="通过" class="btn-primary" attrs="{'invisible':[('state','!=', '待审批')]}" context="{'type': 'through'}" groups="fsn_base.fsn_insiders_group"/>
+					<button name="confirmation_button" type="object" string="回退" class="btn-danger" attrs="{'invisible':[('state','!=', '已审批')]}" context="{'type': 'fallback'}" groups="fsn_base.fsn_insiders_group"/>
+                </tree>
+            </field>
+        </record>
+
+
+		<!-- form -->
+		<record id="fsn_job_create_audit_form" model="ir.ui.view">
+			<field name="name">岗位审核</field>
+			<field name="model">fsn_job_create_audit</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+						<field name="state" string="状态" invisible="1"/>
+						<div invisible="context.get('type') != 'fallback'">确认回退吗？</div>
+                        <div invisible="context.get('type') != 'through'">确认审批通过吗？</div>
+                    </sheet>
+                    <footer>
+                        <button name="action_state_changes" invisible="context.get('type') != 'fallback'" context="{'type': 'fallback'}" type="object" string="回退" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != 'through'" context="{'type': 'through'}" type="object" string="通过" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+        
+        <!-- 动作 -->
+        <record id="fsn_job_create_audit_action" model="ir.actions.act_window">
+            <field name="name">岗位审核记录</field>
+            <field name="res_model">fsn_job_create_audit</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem id="menu_fsn_job_create_audit"
+            name="岗位审核"
+            parent="hr.menu_hr_employee_payroll"
+            action="fsn_job_create_audit_action"
+            sequence="60"/>
+
+
+
+    </data>
+</odoo>

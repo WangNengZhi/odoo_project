@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <!-- <record id="sales_target_actions" model="ir.actions.act_window">
+            <field name="name">销售指标</field>
+            <field name="res_model">fsn_sales_order</field>
+            <field name="view_mode">graph</field>
+        </record>
+        <record id="sale_pro_actions" model="ir.actions.act_window">
+            <field name="name">生产指标</field>
+            <field name="res_model">sale_pro.sale_pro</field>
+            <field name="view_mode">graph</field>
+        </record> -->
+        
+    </data>
+</odoo>

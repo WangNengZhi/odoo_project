@@ -1,0 +1,34 @@
+<odoo>
+    <data>
+
+
+        <record id="dg_piece_rate_tree" model="ir.ui.view">
+            <field name="name">吊挂计件工资</field>
+            <field name="model">dg_piece_rate</field>
+            <field name="arch" type="xml">
+                <tree create="0" edit="0">
+                    <field name="date" string="日期"/>
+                    <field name="employee_id" string="员工"/>
+                    <field name="contract_type" string="合同/工种"/>
+                    <field name="group_id" string="组别"/>
+                    <field name="cost" string="计件工资"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="dg_piece_rate_act_window" model="ir.actions.act_window">
+            <field name="name">吊挂计件工资</field>
+            <field name="res_model">dg_piece_rate</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+
+
+        <menuitem id="menu_dg_piece_rate"
+                name="吊挂计件工资"
+                parent="pro.menu_cost_cost"
+                action="dg_piece_rate_act_window"
+                sequence="10"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="month_choice_templates" xml:space="preserve">
+    <div t-name="month_choice">
+        <div>
+            <input type="month" id="month_choice"/>
+            <!-- <span id="label"></span> -->
+        </div>
+    </div> 
+</templates>

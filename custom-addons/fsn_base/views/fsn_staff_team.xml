@@ -1,0 +1,30 @@
+<odoo>
+  	<data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="fsn_staff_team_tree">
+			<field name="name">FSN_员工小组</field>
+			<field name="model">fsn_staff_team</field>
+			<field name="arch" type="xml">
+
+				<tree editable="top">
+					<field name="sequence" widget="handle"/>
+					<field name="name" string="小组名称"/>
+					<field name="type" string="类型"/>
+					<field name="department_id" string="部门"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="fsn_staff_team_action">
+			<field name="name">FSN_员工小组</field>
+			<field name="res_model">fsn_staff_team</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+		
+  	</data>
+</odoo>

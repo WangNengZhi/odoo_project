@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fsn_production_fsn_production,fsn_production.fsn_production,model_fsn_production_fsn_production,base.group_user,1,1,1,1

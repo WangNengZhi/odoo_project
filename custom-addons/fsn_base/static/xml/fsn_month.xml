@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="fsn_base_fsn_month_template" xml:space="preserve">
+    <div t-name="fsn_base_fsn_month_template">
+        <input id="fsn_month" type="month" t-att-value="month"/>
+    </div>
+</templates>

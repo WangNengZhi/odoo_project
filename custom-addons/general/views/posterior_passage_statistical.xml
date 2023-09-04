@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+
+        <record id="general_suspension_system_rework_tree" model="ir.ui.view">
+            <field name="name">吊挂返修继承</field>
+            <field name="model">suspension_system_rework</field>
+            <field name="inherit_id" ref="suspension_system.suspension_system_rework_tree"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+                <xpath expr="//header" position="inside">
+                    <!-- <button string="测试按钮" type="object" name="set_posterior_passage_statistical" class="oe_highlight"/> -->
+                </xpath>
+            </field>
+        </record>
+
+
+		<record model="ir.ui.view" id="posterior_passage_statistical_tree">
+			<field name="name">后道返修统计</field>
+			<field name="model">posterior_passage_statistical</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+                    <header>
+                        <button name="set_suspension_system_station_summary_ids" type="object" string="刷新数据" class="btn-primary"/>
+                        <!-- <button name="set_dg_rework_ids" type="object" string="刷新返修数量" class="btn-primary"/> -->
+                    </header>
+					<field name="dDate" string="日期"/>
+                    <field name="group" string="组别"/>
+                    <field name="general" string="总检"/>
+                    <field name="style_number" string="款号"/>
+
+                    <field name="repair_quantity" string="返修数量"/>
+                    <field name="check_quantity" string="查货数量"/>
+                    <field name="secondary_repair_number" string="二次返修数"/>
+                    <field name="secondary_check_number" string="二次返修查货数"/>
+                    <field name="repair_ratio" string="返修率" widget="progressbar"/>
+
+                    <field name="hang_number" string="吊挂件数"/>
+                    <field name="dg_rework_number" string="吊挂返修件数"/>
+                    <!-- <field name="dg_number" string="吊挂件数"/> -->
+                    <!-- <field name="hang_the_stranded" string="吊挂滞留"/> -->
+                    <!-- <field name="repair_ratio_a" string="返修率（件）"/> -->
+
+                    <field name="quantity_put_storage" string="入库件数"/>
+                    <field name="assess_index" string="考核"/>
+
+				</tree>
+			</field>
+		</record>
+
+        <record id="posterior_passage_statistical_actions" model="ir.actions.act_window">
+            <field name="name">后道返修统计</field>
+            <field name="res_model">posterior_passage_statistical</field>
+            <field name="view_mode">tree,graph</field>
+            <field name="domain">['|', '|', ('general_general_ids', '!=', False), ('dg_detail_ids', '!=', False), ('dg_rework_ids', '!=', False)]</field>
+            <!-- <field name="view_id" ref="client_warehouse_repair_tree"/> -->
+        </record>
+
+    </data>
+</odoo>

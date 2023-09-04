@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+
+		<menuitem id="menu_every_totle"
+			name="出勤统计"
+			parent="menu_attend_attend13"
+			sequence="3"/>
+
+			<menuitem id="menu_attend_totle2"
+				name="每日出勤统计表"
+				parent="menu_every_totle"
+				action="action_attendance_totle_attendance"
+				sequence="10"/>
+            
+			<menuitem id="menu_no_attend_totle2"
+				name="每日缺勤统计表"
+				parent="menu_every_totle"
+				action="action_no_attendance"
+				sequence="20"/>
+ 
+
+			<menuitem id="menu_attendance_days_statistics_day"
+				name="出勤天数统计表(天)"
+				parent="menu_every_totle"
+				action="action_attendance_days_statistics_day"
+				sequence="30"/>
+
+			<menuitem id="menu_attendance_days_statistics_table"
+				name="出勤天数统计表(周)"
+				parent="menu_every_totle"
+				action="action_attendance_days_statistics_table"
+				sequence="40"/>
+
+			<menuitem id="menu_attendance_record"
+				name="考勤打卡"
+				parent="menu_every_totle"
+				action="attendance_record_action"
+				sequence="50"/>
+
+		<menuitem id="menu_dg_attendance"
+				name="吊挂考勤"
+				parent="menu_attend_attend1"
+				action="dg_attendance_action"
+				sequence="2"/>
+    </data>
+</odoo>

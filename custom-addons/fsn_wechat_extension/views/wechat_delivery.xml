@@ -1,0 +1,86 @@
+
+<odoo>
+    <data>
+        <!-- tree -->
+		<record model="ir.ui.view" id="wechat_delivery_tree">
+			<field name="name">中查交货tree</field>
+			<field name="model">wechat.delivery</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0">
+                    <header>
+                        <!-- <button name="set_assess_index" type="object" string="考核刷新" class="btn-primary"/> -->
+                    </header>
+					<field name="date" string="交货日期"/>
+					<field name="check_in_name" string="中查姓名"/>
+					<field name="group" string="组别"/>
+					<field name="order_number"/>
+					<field name="style_number"/>
+					<field name="large_cargo_inspection_number"/>
+					<field name="number_of_bulk_repairs"/>
+					<field name="number_of_bulk_deliveries"/>
+					<field name="number_of_secondary_inspections"/>
+					<field name="number_of_secondary_repairs"/>
+					<field name="number_of_second_repair_deliveries"/>
+					<field name="problems"/>
+					<field name="question_points"/>
+					<field name="rework_type"/>
+					<field name="parking_space_name"/>
+					<field name="status"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="wechat_delivery_form" model="ir.ui.view">
+			<field name="name">中查交货</field>
+			<field name="model">wechat.delivery</field>
+			<field name="arch" type="xml">
+				<form create="0" edit="0">
+					<sheet>
+						<group col="4">
+                            <field name="date" string="交货日期"/>
+                            <field name="check_in_name" string="中查姓名"/>
+							<field name="group" string="组别"/>
+                            <field name="order_number"/>
+                            <field name="style_number"/>
+                            <field name="large_cargo_inspection_number"/>
+                            <field name="number_of_bulk_repairs"/>
+                            <field name="number_of_bulk_deliveries"/>
+                            <field name="number_of_secondary_inspections"/>
+                            <field name="number_of_secondary_repairs"/>
+                            <field name="number_of_second_repair_deliveries"/>
+                            <field name="problems"/>
+                            <field name="question_points"/>
+                            <field name="rework_type"/>
+                            <field name="parking_space_name"/>
+                            <field name="status"/>
+						</group>
+
+                        <notebook>
+                            <page string="审批流程明细">
+                                <field name="wechat_delivery_line_ids" string="审批流程明细">
+                                    <tree editable="bottom">
+                                        <field name="sequence" string="审批顺序"/>
+                                        <field name="emp_id" string="审批人"/>
+										<field name="status" string="审批状态"/>
+                                    </tree>
+                                    <form>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+        <!-- action -->
+		<record id="wechat_delivery_actions" model="ir.actions.act_window">
+            <field name="name">中查交货</field>
+            <field name="res_model">wechat.delivery</field>
+            <field name="view_mode">tree,form</field>
+		</record>
+
+    </data>
+</odoo>

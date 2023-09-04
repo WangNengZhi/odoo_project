@@ -1,0 +1,27 @@
+
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="manufacturing_bom_default_tree">
+			<field name="name">FSN生产物料清单(预设)</field>
+			<field name="model">manufacturing_bom_default</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom">
+                    <header>
+                        <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+					<field name="name" string="物料名称"/>
+					<field name="type" string="物料类型"/>
+                    <field name="quantity_demanded" string="需求量"/>
+                    <field name="unit_price" string="单价"/>
+				</tree>
+			</field>
+		</record>
+        <!-- 动作 -->
+        <record model="ir.actions.act_window" id="manufacturing_bom_default_action">
+			<field name="name">FSN生产物料清单(预设)</field>
+			<field name="res_model">manufacturing_bom_default</field>
+			<field name="view_mode">tree</field>
+
+        </record>
+	</data>
+</odoo>

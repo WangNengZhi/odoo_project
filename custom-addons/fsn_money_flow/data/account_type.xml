@@ -1,0 +1,109 @@
+<odoo>
+	<data noupdate="1">
+        <record id="account_type_banche" model="account_type">
+            <field name="name">班车费</field>
+        </record>
+        <record id="account_type_dache" model="account_type">
+            <field name="name">打车费</field>
+        </record>
+        <record id="account_type_yunfei" model="account_type">
+            <field name="name">运费</field>
+        </record>
+        <record id="account_type_songhuoyunfei" model="account_type">
+            <field name="name">送货运费</field>
+        </record>
+        <record id="account_type_tingche" model="account_type">
+            <field name="name">停车费</field>
+        </record>
+        <record id="account_type_bangong" model="account_type">
+            <field name="name">办公费</field>
+        </record>
+        <record id="account_type_zhusu" model="account_type">
+            <field name="name">住宿费</field>
+        </record>
+        <record id="account_type_shouxv" model="account_type">
+            <field name="name">手续费</field>
+        </record>
+        <record id="account_type_susheshuidian" model="account_type">
+            <field name="name">宿舍水电费</field>
+        </record>
+        <record id="account_type_sushezujin" model="account_type">
+            <field name="name">宿舍租金</field>
+        </record>
+        <record id="account_type_zhaopin" model="account_type">
+            <field name="name">招聘费</field>
+        </record>
+        <record id="account_type_yuancailiao" model="account_type">
+            <field name="name">原材料</field>
+        </record>
+        <record id="account_type_dzyhp" model="account_type">
+            <field name="name">低值易耗品</field>
+        </record>
+        <record id="account_type_ranqi" model="account_type">
+            <field name="name">燃气费</field>
+        </record>
+        <record id="account_type_zhiyinshui" model="account_type">
+            <field name="name">直饮水租金</field>
+        </record>
+        <record id="account_type_zhizao" model="account_type">
+            <field name="name">制造费用</field>
+        </record>
+        <record id="account_type_anbaofuwu" model="account_type">
+            <field name="name">安保服务费</field>
+        </record>
+        <record id="account_type_fuli" model="account_type">
+            <field name="name">福利费</field>
+        </record>
+        <record id="account_type_gongzi" model="account_type">
+            <field name="name">工资</field>
+        </record>
+        <record id="account_type_gongjijin" model="account_type">
+            <field name="name">公积金</field>
+        </record>
+        <record id="account_type_yuangongyiwaixian" model="account_type">
+            <field name="name">员工意外险</field>
+        </record>
+        <record id="account_type_shebao" model="account_type">
+            <field name="name">社保费</field>
+        </record>
+        <record id="account_type_shuifei" model="account_type">
+            <field name="name">税费</field>
+        </record>
+        <record id="account_type_songhuojiayou" model="account_type">
+            <field name="name">送货加邮费</field>
+        </record>
+        <record id="account_type_zhaopinjiayou" model="account_type">
+            <field name="name">招聘加油费</field>
+        </record>
+        <record id="account_type_jiayouchongzhika" model="account_type">
+            <field name="name">加油充值卡</field>
+        </record>
+        <record id="account_type_shitangcanfei" model="account_type">
+            <field name="name">食堂餐费</field>
+        </record>
+        <record id="account_type_jiabancanfei" model="account_type">
+            <field name="name">加班餐费</field>
+        </record>
+        <record id="account_type_changfangzujin" model="account_type">
+            <field name="name">厂房租金</field>
+        </record>
+        <record id="account_type_kongtiao_and_reshuiqi" model="account_type">
+            <field name="name">采购空调和热水器</field>
+        </record>
+        <record id="account_type_gudingzichan" model="account_type">
+            <field name="name">固定资产</field>
+        </record>
+        <record id="account_type_yvfukuan" model="account_type">
+            <field name="name">预付款(佳田设备)</field>
+        </record>
+        <record id="account_type_jiagongfei" model="account_type">
+            <field name="name">加工费收入</field>
+        </record>
+        <record id="account_type_lixi" model="account_type">
+            <field name="name">利息收入</field>
+        </record>
+        <record id="account_type_qita" model="account_type">
+            <field name="name">其他收入</field>
+        </record>
+	</data>
+</odoo>

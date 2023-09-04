@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+        <template id="template_house_backend" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <!-- <script type="text/javascript" src="/template_house/static/src/js/sync_machine_data.js"></script> -->
+
+                <script type="text/javascript" src="/template_house/static/src/js/clothing_version_sample.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

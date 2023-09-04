@@ -1,0 +1,10 @@
+.o_form_view .o_form_statusbar {
+    position: fixed;
+    width:100%;
+    z-index:999;
+    margin-top: -12px
+}
+
+.o_form_view .o_form_sheet_bg > .o_form_sheet {
+     padding-top: 55px !important;
+}

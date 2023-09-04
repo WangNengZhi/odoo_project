@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+		<!-- search -->
+        <record id="production_operation_ingredients_list_search" model="ir.ui.view">
+            <field name="name">生产工具清单</field>
+            <field name="model">production_operation_ingredients_list</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="material_coding" string="物料编码"/>
+                    <field name="material_name" string="物料名称"/>
+                </search>
+            </field>
+        </record>
+		<!-- tree -->
+		<record model="ir.ui.view" id="production_operation_ingredients_list_tree">
+			<field name="name">生产工具清单</field>
+			<field name="model">production_operation_ingredients_list</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+
+                    <field name="create_date" string="创建日期" readonly="1"/>
+                    <field name="material_coding" string="物料编码"/>
+                    <field name="material_name" string="物料名称"/>
+                    <!-- <field name="supplier_supplier_id" string="供应商" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/> -->
+                    <field name="specification" string="规格"/>
+                    <field name="unit" string="单位"/>
+                    <field name="unit_price" string="单价"/>
+                    <field name="remark" string="备注"/>
+				</tree>
+			</field>
+		</record>
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="production_operation_ingredients_list_action">
+			<field name="name">生产工具清单</field>
+			<field name="res_model">production_operation_ingredients_list</field>
+			<field name="view_mode">tree</field>
+		</record>
+    </data>
+</odoo>

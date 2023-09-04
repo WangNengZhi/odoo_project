@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+
+        <record id="auto_employee_information_tree" model="ir.ui.view">
+            <field name="name">自动员工信息</field>
+            <field name="model">auto_employee_information</field>
+            <field name="arch" type="xml">
+                <tree create="0" edit="0">
+                    <field name="date" string="日期"/>
+                    <field name="employee_id" string="员工"/>
+                    <field name="group_id" string="组别"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="auto_employee_information_act_window" model="ir.actions.act_window">
+            <field name="name">自动员工信息</field>
+            <field name="res_model">auto_employee_information</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+
+
+        <menuitem id="menu_auto_employee_information"
+                name="自动员工信息"
+                parent="pro.menu_memp_memp_root"
+                action="auto_employee_information_act_window"
+                sequence="10"/>
+
+
+    </data>
+</odoo>

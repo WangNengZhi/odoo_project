@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+		<record model="ir.ui.view" id="production_order_details_tree">
+			<field name="name">外发生产订单明细表</field>
+			<field name="model">production_order_details</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+                    <header>
+                        <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+					<field name="order_number" string="订单号" options="{'no_create': True, 'no_open': True}"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+					<field name="style" string="款式"/>
+					<field name="outsource_plant_id" string="生产厂商" options="{'no_create': True, 'no_open': True}"/>
+					<field name="voucher_quantity" string="订单数量"/>
+					<field name="solid_cutting_quantity" string="实裁数量"/>
+
+					<field name="contract_delivery_date" string="合同货期"/>
+					<field name="sample_sealing_date" string="封样日期"/>
+					<field name="picking_date" string="领面辅料日期"/>
+					<field name="online_date" string="上线日期"/>
+					<field name="first_package_date" string="首包日期"/>
+					<field name="day_production" string="日产量"/>
+
+					<field name="quantity_remaining" string="剩余数量"/>
+                    <field name="down_date" string="下线日期"/>
+
+                    <field name="after_road_repairs" string="后道返修数"/>
+                    <field name="rate_repair" string="返修率"/>
+                    <field name="final_inbound_date" string="最终入库日期"/>
+					<field name="responsible_person" string="负责人" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="note" string="备注"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.actions.act_window" id="production_order_details_actions">
+            <field name="name">外发生产订单明细表</field>
+            <field name="res_model">production_order_details</field>
+            <field name="view_mode">tree</field>
+		</record>
+
+    </data>
+</odoo>

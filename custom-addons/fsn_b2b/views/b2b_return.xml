@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="b2b_return_tree">
+			<field name="name">B2B退货tree</field>
+			<field name="model">b2b_return</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="date" string="日期"/>
+					<field name="customer_name" string="客户名称"/>
+					<field name="managers" string="经手人"/>
+					<field name="order_id" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="fsn_color" string="颜色"/>
+					<field name="size" string="尺码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="number" string="件数"/>
+					<field name="unit_price" string="单价"/>
+					<field name="total_amount" string="总金额"/>
+
+					<field name="state" string="状态"/>
+					<field name="problem" string="问题"/>
+					<field name="quality" string="产品质量"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+        <record model="ir.actions.act_window" id="b2b_return_action">
+			<field name="name">B2B退货</field>
+			<field name="res_model">b2b_return</field>
+			<field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

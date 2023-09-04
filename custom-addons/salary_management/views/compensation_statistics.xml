@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+
+
+        <record id="compensation_statistics_tree" model="ir.ui.view">
+            <field name="name">薪酬统计</field>
+            <field name="model">compensation_statistics</field>
+            <field name="arch" type="xml">
+                <tree create="0" edit="0" delete="0">
+                    <field name="month" string="日期"/>
+                    <!-- <field name="department_type" string="一级部门"/> -->
+                    <field name="department_id" string="部门"/>
+                    <field name="number" string="人数"/>
+                    <field name="total_wages" string="总工资"/>
+                    <field name="average_salary" string="平均工资"/>
+                    <field name="day_average_salary" string="日均工资"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="compensation_statistics_action" model="ir.actions.act_window">
+            <field name="name">薪酬统计</field>
+            <field name="res_model">compensation_statistics</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+    </data>
+</odoo>

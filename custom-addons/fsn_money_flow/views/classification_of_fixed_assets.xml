@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+        <!-- 定义一个用于创建和编辑资产分类记录的表单视图 -->
+        <record model="ir.ui.view" id="view_classification_of_fixed_assets_form">
+            <field name="name">classification_of_fixed_assets.form</field>
+            <field name="model">classification_of_fixed_assets</field>
+            <field name="arch" type="xml">
+                <form string="固定资产分类登记表">
+                    <group>
+                        <group>
+                            <field name="date" string="日期" />
+                            <field name="assert_code" string="资产编码"/>
+                            <field name="assert_name" string="资产名称"/>
+                            <field name="asset_type" string="资产类型"/>
+                            <field name="use_department" string="使用部门"/>
+                            <field name="recipients_people" string="使用人"/>
+                            <field name="specification_model" string="规格型号"/>
+                            <field name="acquisition_date" string="取得日期"/>
+                            <field name="original_value" string="原值"/>
+                            <field name="expected_service_life" string="预计使用年限"/>
+                            <field name="accumulated_depreciation" string="累计折旧"/>
+                            <field name="book_value" string="账面净值"/>
+                            <field name="notes" string="备注"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- 定义一个用于显示资产分类记录的树视图 -->
+        <record model="ir.ui.view" id="view_classification_of_fixed_assets_tree">
+            <field name="name">classification_of_fixed_assets.tree</field>
+            <field name="model">classification_of_fixed_assets</field>
+            <field name="arch" type="xml">
+                <tree string="固定资产分类登记表" create="0" editable="top">
+                    <field name="date" string="日期" readonly="1"/>
+                    <field name="assert_code" string="资产编码" readonly="1"/>
+                    <field name="assert_name" string="资产名称" readonly="1"/>
+                    <field name="asset_type" string="资产类型" readonly="1"/>
+                    <field name="use_department" string="使用部门" readonly="1"/>
+                    <field name="recipients_people" string="使用人" readonly="1"/>
+                    <field name="specification_model" string="规格型号" readonly="1"/>
+                    <field name="acquisition_date" string="取得日期" readonly="1"/>
+                    <field name="original_value" string="原值"/>
+                    <field name="expected_service_life" string="预计使用年限"/>
+                    <field name="accumulated_depreciation" string="累计折旧"/>
+                    <field name="book_value" string="账面净值"/>
+                    <field name="notes" string="备注"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- 定义一个动作以在菜单中打开资产分类记录 -->
+        <record model="ir.actions.act_window" id="action_classification_of_fixed_assets">
+            <field name="name">固定资产分类登记表</field>
+            <field name="res_model">classification_of_fixed_assets</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_classification_of_fixed_assets_tree"/>
+        </record>
+    </data>
+</odoo>
+

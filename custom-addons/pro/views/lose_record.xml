@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <record id="lose_record_tree" model="ir.ui.view">
+            <field name="name">丢失记录</field>
+            <field name="model">lose_record</field>
+            <field name="arch" type="xml">
+				<tree editable="top">
+                    <field name="date" string="日期"/>
+                    <field name="order_number" string="订单号" options="{'no_create_edit': True, 'no_open': True, 'no_create': True}"/>
+                    <field name="style_number" string="款号" options="{'no_create_edit': True, 'no_open': True, 'no_create': True}"/>
+                    <field name="product_size" string="尺码" options="{'no_create_edit': True, 'no_open': True, 'no_create': True}"/>
+                    <field name="number" string="件数"/>
+                    <field name="pro_value" string="产值"/>
+                    <field name="principal" string="负责人" widget="many2many_tags" options="{'no_create_edit': True, 'no_open': True, 'no_create': True}"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="lose_record_actions" model="ir.actions.act_window">
+            <field name="name">丢失记录</field>
+            <field name="res_model">lose_record</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+
+		<menuitem id="menu_lose_record"
+				name="丢失记录"
+				parent="menu_total_totlepro1"
+				action="lose_record_actions"
+				sequence="65"/>
+    </data>
+</odoo>

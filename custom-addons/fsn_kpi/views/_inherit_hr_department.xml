@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <record id="_inherit_view_department_tree" model="ir.ui.view">
+            <field name="name">kpi继承部门tree视图</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_tree"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+                <xpath expr="//field[@name='parent_id']" position="after">
+
+                    <field name="kpi_menu_id" invisible="1"/>
+                    
+					<button name="generate_kpi" type="object" string="生成KPI" groups="fsn_base.fsn_insiders_group" class="btn btn-primary" attrs="{'invisible': [('kpi_menu_id', '!=', False)]}"></button>
+                    <button name="delete_kpi" type="object" string="删除KPI" groups="fsn_base.fsn_insiders_group"  class="btn btn-danger" attrs="{'invisible': [('kpi_menu_id', '=', False)]}"></button>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

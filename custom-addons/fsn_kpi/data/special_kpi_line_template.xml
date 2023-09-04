@@ -1,0 +1,158 @@
+<odoo>
+    <data noupdate="1">
+        <record id="special_kpi_line_template_01" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">6s</field>
+            <field name="assessment_standard">上班第一件事，是检查机器，特别是内部油污，灰要清理干净。</field>
+            <field name="score">2</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">1</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_02" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作内容</field>
+            <field name="assessment_standard">每天晨会要准时参加，在晨会中要聆听自己前一天的问题及要怎样修改，自己当天的工作目标数量及生产是多少。</field>
+            <field name="score">3</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">2</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_03" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作要求</field>
+            <field name="assessment_standard">每款开款时要根据样衣点位位置，及工艺单，品控主管的要求操作。</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">3</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_04" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作细节</field>
+            <field name="assessment_standard">上班时间特别注意衣服不能落地。</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">4</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_05" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作常识</field>
+            <field name="assessment_standard">洗手后要擦拭干净，不能直接拿衣，以免有水渍留在成衣上。</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">5</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_06" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">机针要求</field>
+            <field name="assessment_standard">每天要检查机针三次，以免机针有问题破损衣服。</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">6</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_07" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">直眼要求</field>
+            <field name="assessment_standard">锁直眼时要每天检查刀片三次，特别是直眼不能有线毛毛</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">7</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_08" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">圆眼要求</field>
+            <field name="assessment_standard">锁圆眼时，一定要找到主管，机修，品控主管根据扣的大小，来准备用刀大小</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">8</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_09" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">操作流程</field>
+            <field name="assessment_standard">作为一名专机员工，要懂得专机最基本的换阵，引线的操作流程及方法</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">9</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_10" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">操作技巧</field>
+            <field name="assessment_standard">特别的昂贵的专机一定按说明书及机修指导操作，以免造成损坏</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">10</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_11" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作完成率</field>
+            <field name="assessment_standard">每天要完成生产指定的目标量，（如多少件衣服直眼圆眼，扣子多少粒）在完成目标下班时要与部门主管沟通请示。</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">11</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_12" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">6s</field>
+            <field name="assessment_standard">每天下班前要清扫自己的工作位置。</field>
+            <field name="score">2</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">12</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_13" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">积极性</field>
+            <field name="assessment_standard">如果车间有半成品要配合锁眼，要及时满足车间大货生产需求，决不能因为个人行为导致车间停产。</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">13</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+
+        <record id="special_kpi_line_template_14" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">工作责任心</field>
+            <field name="assessment_standard">对本职工作要热爱，喜欢，工作认真，能引导正确的结果</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">14</field>
+             <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_15" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">团队配合</field>
+            <field name="assessment_standard">要懂团队的协作和配合。</field>
+            <field name="score">5</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">15</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_16" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">出勤率</field>
+            <field name="assessment_standard">缺卡，迟到，早退，等情况。</field>
+            <field name="score">3</field>
+            <field name="calculation">失误一次扣1分</field>
+            <field name="sequence">16</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+        <record id="special_kpi_line_template_17" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">言论</field>
+            <field name="assessment_standard">杜绝消极言论及负面情绪</field>
+            <field name="score">10</field>
+            <field name="calculation">失误一次扣2分</field>
+            <field name="sequence">17</field>
+            <field name="fsn_kpi_job">专机</field>
+        </record>
+    </data>
+</odoo>

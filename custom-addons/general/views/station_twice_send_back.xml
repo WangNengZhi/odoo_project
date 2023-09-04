@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+		<record model="ir.ui.view" id="station_twice_send_back_tree">
+			<field name="name">车位二次退回</field>
+			<field name="model">station_twice_send_back</field>
+			<field name="arch" type="xml">
+                <tree editable="top" edit="0">
+                    <header>
+
+                    </header>
+					<field name="dDate" string="日期"/>
+					<field name="style_number" string="款号"/>
+					<field name="gGroup" string="组别"/>
+					<field name="employee_name" string="员工"/>
+					<field name="inspector" string="检查员"/>
+                    <field name="repair_number" string="退修数"/>
+                    <field name="twice_repair_number" string="二次退回数"/>
+                    <field name="twice_repair_ratio" string="二次退回率" widget="progressbar"/>
+                    <field name="repair_type" string="返修类型"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="station_twice_send_back_actions" model="ir.actions.act_window">
+            <field name="name">车位二次退回</field>
+            <field name="res_model">station_twice_send_back</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+
+
+    </data>
+</odoo>

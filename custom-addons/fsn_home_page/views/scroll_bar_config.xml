@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        <!-- tree -->
+        <record id="scroll_bar_config_tree" model="ir.ui.view">
+            <field name="name">组别设置</field>
+            <field name="model">scroll_bar_config</field>
+                <field name="arch" type="xml">
+                    <tree editable="bottom">
+                        <field name="content" string="文本内容"/>
+                        <field name="user_ids" string="可见用户" widget="many2many_tags" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="is_enable" string="启用"/>
+                    </tree>
+                </field>
+        </record>
+
+        <record id="scroll_bar_config_action" model="ir.actions.act_window">
+            <field name="name">裁床产量</field>
+            <field name="res_model">scroll_bar_config</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

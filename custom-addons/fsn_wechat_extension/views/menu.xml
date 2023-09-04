@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <menuitem name="小程序功能" id="menu_fsn_wechat_extension_root" sequence="1"/>
+            <menuitem name="工序确认记录"
+                id="menu_wechat_process_confirm"
+                action="wechat_process_confirm_actions"
+                parent="menu_fsn_wechat_extension_root"
+                sequence="10"
+                />
+            <menuitem name="微信小程序权限组"
+                id="menu_wechat_extension_group"
+                action="wechat_extension_group_actions"
+                parent="menu_fsn_wechat_extension_root"
+                sequence="20"
+                />
+            <menuitem name="中查交货"
+                id="menu_wechat_delivery_root"
+                action="wechat_delivery_actions"
+                parent="menu_fsn_wechat_extension_root"
+                sequence="30"
+                />
+
+            <menuitem name="设置"
+                id="menu_setting_root"
+                parent="menu_fsn_wechat_extension_root"
+                sequence="99"
+                />
+
+                <menuitem name="审批类型设置"
+                    id="menu_approval_process_config_type"
+                    action="approval_process_config_type_actions"
+                    parent="menu_setting_root"
+                    sequence="10"
+                    />
+                <menuitem name="审批流程设置"
+                    id="menu_approval_process_config"
+                    action="approval_process_config_actions"
+                    parent="menu_setting_root"
+                    sequence="20"
+                    />
+
+    </data>
+</odoo>

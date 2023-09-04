@@ -1,0 +1,119 @@
+<odoo>
+  	<data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="reward_punish_record_tree">
+			<field name="name">reward_punish_record_tree</field>
+			<field name="model">reward_punish_record</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <header>
+						<button name="batch_approval" type="object" string="批量审批" class="btn-primary" groups="fsn_base.fsn_super_user_group"/>
+                    </header>
+					<field name="declare_time" string="申报时间"/>
+					<field name="emp_id" string="员工"/>
+					<field name="department2" string="部门"/>
+					<field name="record_type" string="申报类别"/>
+					<field name="punish_type" string="类型"/>
+					<field name="matter_type" string="事项类型"/>
+					<field name="kpi_deduct_marks" string="KPI扣分"/>
+					<field name="money_amount" string="金额" optional="hide"/>
+					<field name="record_matter" string="事项"/>
+					<field name="propose_department" string="提出部门"/>
+					<field name="registrar_id" string="登记人"/>
+					<field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '审批通过'" decoration-primary="state == '等待厂长审批'" decoration-warning="state == '等待总经理审批'" widget="badge"/>
+					<field name="is_automatic" string="是否自动生成" optional="hide"/>
+					<field name="event_date" string="事件日期" optional="hide"/>
+					<field name="event_type" string="事件类型" optional="hide"/>
+				</tree>
+			</field>
+		</record>
+		<!-- form -->
+		<record id="reward_punish_record_form" model="ir.ui.view">
+			<field name="name">reward_punish_record_form</field>
+			<field name="model">reward_punish_record</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<button name="state_changes" type="object" string="提交审批" class="btn-primary" confirm='确认无误并提交审批吗？'
+							attrs="{'invisible':['|', ('state','!=', '草稿'), ('id', '=', False)]}"
+							context="{'type': 'confirm'}"/>
+						<button name="state_changes" type="object" string="厂长审批" class="btn-primary" confirm='确认审批通过吗？'
+							attrs="{'invisible':[('state','!=', '等待厂长审批')]}"
+							groups="fsn_base.fsn_insiders_group"
+							context="{'type': 'phase1'}"/>
+						<button name="state_changes" type="object" string="总经理审批" class="btn-primary" confirm='确认审批通过吗？'
+							attrs="{'invisible':[('state','in', ['草稿', '审批通过'])]}"
+							groups="fsn_base.fsn_super_user_group"
+							context="{'type': 'phase2'}"/>
+
+						<button name="state_back" type="object" string="回退" class="btn-danger" confirm='确认状态回退吗？'
+							attrs="{'invisible':[('state','!=', '等待厂长审批')]}"
+							context="{'button_type': 'state_back1'}"/>
+						<button name="state_back" type="object" string="回退" class="btn-danger" confirm='确认状态回退吗？'
+							attrs="{'invisible':[('state','!=', '等待总经理审批')]}"
+							groups="fsn_base.fsn_insiders_group"
+							context="{'button_type': 'state_back2'}"/>
+						<button name="state_back" type="object" string="回退" class="btn-danger" confirm='确认状态回退吗？'
+							attrs="{'invisible':[('state','!=', '审批通过')]}"
+							groups="fsn_base.fsn_super_user_group"
+							context="{'button_type': 'state_back3'}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="草稿,等待厂长审批,等待总经理审批,审批通过"/>
+					</header>
+					<sheet>
+
+						<div style="text-align: center"><h1>绩效考核记录单</h1></div>
+						<group col="4">
+							<field name="emp_id" string="员工" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}" required="1"/>
+							<field name="department2" string="部门"/>
+						</group>
+						<group col="4">
+							<field name="declare_time" string="申报时间"/>
+							<field name="matter_type" string="事项类型" required="1"/>
+						</group>
+						<group col="4">
+							<field name="record_type" string="申报类别"/>
+							<field name="punish_type" string="类型" attrs="{'invisible': [('record_type','=', 'reward')], 'required': [('record_type','=', 'punish')]}"/>
+						</group>
+						<group col="4">
+							<field name="kpi_deduct_marks" string="KPI扣分"/>
+							<field name="money_amount" string="金额"/>
+							<field name="record_matter" string="事项"/>
+						</group>
+						<group col="4">
+							<field name="propose_department" string="提出部门" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="registrar_id" string="登记人" required="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+						</group>
+
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_
+						followers"/>
+						<field name="message_ids" widget="mail_thread"/>
+					</div>
+				</form>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+
+		<record model="ir.actions.act_window" id="reward_punish_record_action_window">
+		<field name="name">绩效考核记录单</field>
+		<field name="res_model">reward_punish_record</field>
+		<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+		<!-- Top menu item -->
+
+		<menuitem name="绩效考核" id="achievement_menu_root" web_icon="punish,static/description/icon.png"/>
+
+		<!-- menu categories -->
+
+		<menuitem name="绩效考核记录" id="reward_punish_record_menu" parent="achievement_menu_root" action="reward_punish_record_action_window" sequence="10"/>
+
+
+  	</data>
+</odoo>

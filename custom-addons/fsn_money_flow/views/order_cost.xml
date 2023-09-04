@@ -1,0 +1,45 @@
+<odoo>
+	<data>
+		<!-- tree视图 -->
+		<record model="ir.ui.view" id="order_cost_tree">
+			<field name="name">订单成本tree视图</field>
+			<field name="model">order_cost</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom" create="0">
+                    <header>
+						<button name="set_material_cost" string="物料成本刷新" type="object"/>
+						<button name="set_wages_cost" string="工价刷新" type="object"/>
+                    </header>
+					<field name="order_id" string="订单编号" readonly="1"/>
+					<field name="style_number_id" string="款号" readonly="1"/>
+                    <field name="material_cost" string="物料" readonly="1"/>
+                    <field name="special_process_cost" string="特殊工艺" readonly="1"/>
+                    <field name="wages_cost" string="工价" readonly="1"/>
+                    <field name="accept_order_cost" string="接单价" readonly="1"/>
+                    <field name="contract_price" string="合同价格" readonly="1"/>
+                    <field name="sell_price" string="售价"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- 透视表视图 -->
+		<record id="order_cost_graph" model="ir.ui.view">
+			<field name="name">订单成本透视图</field>
+			<field name="model">order_cost</field>
+			<field name="arch" type="xml">
+				<graph string="盘点透视图">
+					<!-- <field name="month" string="月份" type="row"/> -->
+					<!-- <field name="total_cost" string="合计" type="measure"/> -->
+				</graph>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="order_cost_action">
+			<field name="name">订单成本</field>
+			<field name="res_model">order_cost</field>
+			<field name="view_mode">tree,graph</field>
+		</record>
+
+	</data>
+</odoo>

@@ -1,0 +1,81 @@
+<odoo>
+    <data>
+		<!-- 自动编号 -->
+        <record id="product_design_sequence" model="ir.sequence">
+            <field name="name">设计编号</field>
+            <field name="code">product_design_sequence</field>
+            <field name="prefix"></field>
+            <field name="padding">8</field>
+        </record>
+
+		<!-- tree -->
+		<record id="product_design_tree" model="ir.ui.view">
+			<field name="name">产品设计</field>
+			<field name="model">product_design</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <field name="date" string="日期"/>
+                    <field name="design_number" string="设计编号"/>
+                    <field name="design_type" string="设计类型"/>
+                    <field name="designer_id" string="设计人"/>
+                    <field name="design_image" string="设计图片" widget='image' width='120px'/>
+                    <field name="surface_material_cost" string="面辅料成本"/>
+					<field name="fabric_composition" string="面料成分"/>
+                    <field name="selling_point" string="卖点"/>
+					<field name="state" string="状态" decoration-success="state == '已审批'" decoration-primary="state == '草稿'" widget="badge"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="product_design_form" model="ir.ui.view">
+			<field name="name">产品设计</field>
+			<field name="model">product_design</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="草稿,已审批"/>
+						<button name="action_approval_operation" string="审批通过" type="object"
+							class="btn-primary"
+							context="{'type': 'through'}"
+							confirm='确定要通过吗？'
+							attrs="{'invisible': ['|', ('state', '=', '已审批'), ('id', '=', False)]}"
+							groups="fsn_design_department.product_design_group_audit"
+						/>
+						<button name="action_approval_operation" string="回退" type="object"
+							class="btn-danger"
+							context="{'type': 'rollback'}"
+							confirm='确定要回退吗？'
+							attrs="{'invisible': ['|', ('state', '=', '草稿'), ('id', '=', False)]}"
+							groups="fsn_design_department.product_design_group_audit"
+						/>
+					</header>
+					<sheet>
+						<group col="4">
+                            <field name="date" string="日期"/>
+							<field name="design_type" string="设计类型"/>
+                            <field name="designer_id" string="设计人" options="{'no_create': True, 'no_open': True}"/>
+                           <field name="surface_material_cost" string="面辅料成本"/>
+						   <field name="fabric_composition" string="面料成分"/>
+						</group>
+						<group col="4">
+                            <field name="design_image" string="设计图片" widget='image' width='120px'/>
+                             <field name="design_attachment_ids" string="设计附件" widget="many2many_binary"/>
+						</group>
+						<group col="4">
+							<field name="selling_point" string="卖点"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record id="product_design_action" model="ir.actions.act_window">
+            <field name="name">产品设计</field>
+            <field name="res_model">product_design</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('design_number', '!=', '100000000')]</field>
+		</record>
+    </data>
+</odoo>

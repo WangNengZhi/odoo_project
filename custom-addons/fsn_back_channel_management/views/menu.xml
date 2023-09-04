@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <menuitem name="后整管理"
+            id="fsn_back_channel_management_menu_root"/>
+
+            <menuitem id="back_channel_progress_menu"
+                name="进度表"
+                parent="fsn_back_channel_management_menu_root"
+                action="back_channel_progress_actions"
+                sequence="10"/>
+            <menuitem id="back_channel_setting_menu"
+                name="设置"
+                parent="fsn_back_channel_management_menu_root"
+                sequence="100"/>
+                <menuitem id="back_channel_progress_job_setting_menu"
+                    name="进度表岗位设置"
+                    parent="back_channel_setting_menu"
+                    action="back_channel_progress_job_setting_actions"
+                    sequence="10"/>
+
+
+    </data>
+</odoo>

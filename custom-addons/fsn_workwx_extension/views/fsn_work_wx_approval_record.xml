@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+
+		<!-- tree -->
+		<record id="fsn_work_wx_approval_record_tree" model="ir.ui.view">
+			<field name="name">企业微信审批记录</field>
+			<field name="model">fsn_work_wx_approval_record</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="sp_no" string="审批编号"/>
+					<field name="sp_name" string="审批名称"/>
+					<field name="template_id" string="模板ID"/>
+					<field name="apply_time" string="申请时间"/>
+					<field name="sp_status" string="审批状态"/>
+				</tree> 
+			</field>
+		</record>
+
+
+        <!-- action -->
+		<record id="fsn_work_wx_approval_record_actions" model="ir.actions.act_window">
+            <field name="name">企业微信审批记录</field>
+            <field name="res_model">fsn_work_wx_approval_record</field>
+            <field name="view_mode">tree</field>
+		</record>
+
+    </data>
+</odoo>

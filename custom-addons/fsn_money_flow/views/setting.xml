@@ -1,0 +1,40 @@
+<odoo>
+	<data>
+
+		<record id="bank_filter_config_tree" model="ir.ui.view">
+			<field name="name">银行过滤配置</field>
+			<field name="model">bank_filter_config</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom" create="1" edit="1">
+					<field name="filter_key" string="关键字"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record id="bank_filter_config_action" model="ir.actions.act_window">
+			<field name="name">盘点</field>
+			<field name="res_model">bank_filter_config</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+		<record id="fsn_income_detail_type_tree" model="ir.ui.view">
+			<field name="name">收入明细类别设置</field>
+			<field name="model">fsn_income_detail_type</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom" create="1" edit="1">
+					<field name="name" string="类别名称"/>
+					<field name="jdy_subject_id" string="科目" widget="many2many_tags" options="{'no_create': True, 'no_open': True}"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record id="fsn_income_detail_type_action" model="ir.actions.act_window">
+			<field name="name">收入明细类别设置</field>
+			<field name="res_model">fsn_income_detail_type</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+	</data>
+</odoo>

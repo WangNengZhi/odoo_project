@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="salary_management_fsn_employee_advance_of_wages_tree" model="ir.ui.view">
+        <field name="name">继承预支工资tree</field>
+        <field name="model">advance_of_wages</field>
+        <field name="inherit_id" ref="fsn_employee.advance_of_wages_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='wages_type']" position="after">
+                <field name="total_wages" string="应付工资"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="salary_management_fsn_employee_epiboly_wages_tree" model="ir.ui.view">
+        <field name="name">继承预支工资tree</field>
+        <field name="model">advance_of_wages</field>
+        <field name="inherit_id" ref="fsn_employee.epiboly_wages_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='wages_type']" position="after">
+                <field name="total_wages" string="应付工资"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="outsourcing_wages_per_work_time_tree" model="ir.ui.view">
+        <field name="name">外包计时薪酬</field>
+        <field name="model">outsourcing_wages</field>
+        <field name="arch" type="xml">
+            <tree default_order="year desc, month desc" create="false" edit="false">
+                <field name="year_month"/>
+                <field name="start_date" string="开始日期"/>
+                <field name="end_date" string="结束日期"/>
+                <field name="employee" string="外包计时员工"/>
+                <field name="id_card"/>
+                <field name="contract" string="工种"/>
+                <field name="fixed_salary" string="每小时工资"/>
+                <field name="work_hours"/>
+                <field name="deduct_money" string="扣款"/>
+                <field name="month_workpiece_ratio" string="效率（%）"/>
+                <field name="total_wages"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_outsourcing_wages_per_work_time">
+        <field name="name">外包计时薪酬</field>
+        <field name="res_model">outsourcing_wages</field>
+        <field name="view_mode">tree,search</field>
+        <field name="view_id" ref="outsourcing_wages_per_work_time_tree"/>
+        <field name="domain">[('contract', '=', '外包(计时)')]</field>
+    </record>
+
+</odoo>

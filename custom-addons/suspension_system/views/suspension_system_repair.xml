@@ -1,0 +1,32 @@
+
+
+<odoo>
+    <data>
+        <!-- tree -->
+        <record model="ir.ui.view" id="suspension_system_repair_tree">
+            <field name="name">吊挂修复信息</field>
+            <field name="model">suspension_system_repair</field>
+                <field name="arch" type="xml">
+                    <tree edit="0" create="0">
+                        <header>
+                            
+                        </header>
+                        <field name="date" string="日期"/>
+                        <field name="order_number_show" string="订单号"/>
+                        <field name="order_number" string="订单号（对象）" optional="hide"/>
+                        <field name="style_number_show" string="款号"/>
+                        <field name="style_number" string="款号（对象）" optional="hide"/>
+                        <field name="product_size_show" string="尺码"/>
+                        <field name="product_size" string="尺码（对象）" optional="hide"/>
+                        <field name="number" string="件数"/>
+                    </tree>
+                </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="suspension_system_repair_action">
+            <field name="name">吊挂修复信息</field>
+            <field name="res_model">suspension_system_repair</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+    </data>
+</odoo>

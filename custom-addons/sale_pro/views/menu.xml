@@ -1,0 +1,92 @@
+<odoo>
+    <data>
+       <menuitem id="menu_sale_pro"
+			name="生产订单管理"
+			web_icon="sale_pro,static/description/icon.png"
+			sequence="2"/>
+        <menuitem id="menu_ib_detail"
+			name="订单"
+			parent="menu_sale_pro"
+			sequence="10"/>
+            <menuitem id="menu_order"
+				name="订单"
+				parent="menu_ib_detail"
+				action="action_sale_pro"
+				sequence="10"/>
+            <menuitem id="menu_ib_detail_style_number"
+				name="款号"
+				parent="menu_ib_detail"
+				action="action_ib_detail"
+				sequence="20"/>
+            <menuitem id="menu_sale_pro_bar_code"
+				name="条码"
+				parent="menu_ib_detail"
+				action="sale_pro_bar_code_action"
+				sequence="30"/>
+        <menuitem id="menu_after_sales"
+			name="售后"
+			parent="menu_sale_pro"
+			sequence="15"/>
+            <menuitem id="menu_fsn_sales_return"
+				name="退货"
+				parent="menu_after_sales"
+				action="fsn_sales_return_action"
+				sequence="10"/>
+
+
+
+        <menuitem id="menu_sch_sch"
+			name="进度表"
+			parent="menu_sale_pro"
+			sequence="20"/>
+            <menuitem id="menu_totle_sch"
+				name="订单进度表"
+				parent="menu_sch_sch"
+				action="action_sch_sch"
+				sequence="3"/>
+            <menuitem id="menu_style_num_sch"
+				name="单款进度表"
+				parent="menu_sch_sch"
+				action="action_style_num_sch"
+				sequence="4"/>
+        <menuitem id="menu_sum_sum"
+			name="汇总表"
+			parent="menu_sale_pro"
+			action="action_sum_sum"
+			sequence="30"/>
+
+
+        <menuitem id="menu_sale_pro_setting"
+			name="设置"
+			parent="menu_sale_pro"
+			sequence="90"/>
+            <menuitem id="menu_order_attribute"
+				name="订单属性"
+				parent="menu_sale_pro_setting"
+				action="order_attribute_action"
+				sequence="30"/>
+            <menuitem id="menu_fsn_customer"
+				name="客户"
+				parent="menu_sale_pro_setting"
+				action="fsn_customer_action"
+				sequence="40"/>
+			<menuitem name="颜色"
+				id="fsn_base_fsn_color_menu"
+				parent="menu_sale_pro_setting"
+				action="fsn_base.fsn_color_action"
+				sequence="50"/>
+			<menuitem name="尺码"
+				id="fsn_base_fsn_size_menu"
+				parent="menu_sale_pro_setting"
+				action="fsn_base.fsn_size_action"
+				sequence="60"/>
+			<menuitem name="单位"
+				id="fsn_base_fsn_unit_menu"
+				parent="menu_sale_pro_setting"
+				action="fsn_base.fsn_unit_action"
+				sequence="70"/>
+
+
+
+    </data>
+</odoo>

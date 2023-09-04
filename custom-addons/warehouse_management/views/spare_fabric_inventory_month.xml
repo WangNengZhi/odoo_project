@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+		<!-- search -->
+        <record id="spare_fabric_inventory_month_search" model="ir.ui.view">
+            <field name="name">备用面料库存</field>
+            <field name="model">spare_fabric_inventory_month</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="material_coding" string="面料编码"/>
+                    <field name="material_name" string="面料名称"/>
+					<field name="order_id" string="订单号"/>
+					<field name="style_number" string="款号"/>
+                    <field name="supplier" string="供应商"/>
+                    <field name="client_id" string="客户"/>
+                </search>
+            </field>
+        </record>
+		<!-- tree -->
+		<record id="spare_fabric_inventory_month_tree" model="ir.ui.view">
+			<field name="name">备用面料库存</field>
+			<field name="model">spare_fabric_inventory_month</field>
+			<field name="arch" type="xml">
+				<tree edit="0" create="0">
+                    <header>
+                    </header>
+                    <field name="date" string="更新日期"/>
+                    <field name="material_coding" string="面料编码"/>
+                    <field name="material_name" string="面料名称"/>
+					<field name="order_id" string="订单号"/>
+					<field name="style_number" string="款号"/>
+                    <field name="supplier" string="供应商"/>
+                    <field name="client_id" string="客户"/>
+                    <field name="specification" string="规格"/>
+                    <field name="color" string="颜色"/>
+                    <field name="amount" string="库存数量"/>
+                    <field name="money_sum" string="总价"/>
+				</tree>
+			</field>
+		</record>
+		<!-- 动作 -->
+		<record id="spare_fabric_inventory_month_action" model="ir.actions.act_window">
+			<field name="name">备用面料库存</field>
+			<field name="res_model">spare_fabric_inventory_month</field>
+			<field name="view_mode">tree,graph</field>
+            <field name="view_id" ref="spare_fabric_inventory_month_tree"/>
+		</record>
+
+
+		
+
+		
+    </data>
+</odoo>

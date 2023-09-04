@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+		<record model="ir.ui.view" id="client_warehouse_repair_tree">
+			<field name="name">客户仓库返修</field>
+			<field name="model">client_warehouse_repair</field>
+			<field name="arch" type="xml">
+				<tree create="0">
+                    <header>
+                        <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                        <button name="set_data" type="object" string="数据刷新" class="btn-primary"/>
+                    </header>
+                    <field name="month" string="月份"/>
+					<field name="style_number" string="款号"/>
+                    <field name="repair_group_line_ids" string="组别" widget="many2many_tags"/>
+                    <field name="repair_amount" string="返修件数"/>
+                    <field name="repair_scene" string="现场返修件数"/>
+                    <field name="repair_value" string="返修产值"/>
+                    <field name="workshop_amount" string="车间件数"/>
+                    <field name="repair_proportion" string="返修率" widget="progressbar"/>
+                    <field name="assess_index" string="考核"/>
+				</tree>
+			</field>
+		</record>
+        <record id="client_warehouse_repair_actions" model="ir.actions.act_window">
+            <field name="name">客户仓库返修(品控主管)</field>
+            <field name="res_model">client_warehouse_repair</field>
+            <field name="view_mode">tree,graph</field>
+            <!-- <field name="view_id" ref="client_warehouse_repair_tree"/> -->
+        </record>
+
+    </data>
+</odoo>

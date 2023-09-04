@@ -1,0 +1,27 @@
+<odoo>
+  	<data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="fsn_unit_tree">
+			<field name="name">FSN_单位</field>
+			<field name="model">fsn_unit</field>
+			<field name="arch" type="xml">
+				<!-- <tree editable="bottom" create="0" delete="0"> -->
+				<tree editable="top">
+					<field name="name" string="单位名称"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="fsn_unit_action">
+			<field name="name">FSN_单位</field>
+			<field name="res_model">fsn_unit</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+
+
+  	</data>
+</odoo>

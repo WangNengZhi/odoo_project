@@ -1,0 +1,73 @@
+<odoo>
+	<data>
+
+        <record id="fsn_back_channel_management_suspension_system_station_summary_tree" model="ir.ui.view">
+            <field name="name">吊挂站位继承</field>
+            <field name="model">suspension_system_station_summary</field>
+            <field name="inherit_id" ref="suspension_system.suspension_system_station_summary_tree"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+                <xpath expr="//header" position="inside">
+                    <!-- <button string="测试按钮" type="object" name="set_back_channel_progress" class="oe_highlight"/> -->
+                </xpath>
+            </field>
+        </record>
+
+        <record id="fsn_back_channel_management_suspension_system_rework_tree" model="ir.ui.view">
+            <field name="name">吊挂返修继承</field>
+            <field name="model">suspension_system_rework</field>
+            <field name="inherit_id" ref="suspension_system.suspension_system_rework_tree"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+                <xpath expr="//header" position="inside">
+                    <!-- <button string="测试按钮" type="object" name="set_back_channel_progress" class="oe_highlight"/> -->
+                </xpath>
+            </field>
+        </record>
+
+        <record id="fsn_back_channel_management_finished_product_ware_line_tree" model="ir.ui.view">
+            <field name="name">仓库明细</field>
+            <field name="model">finished_product_ware_line</field>
+            <field name="inherit_id" ref="warehouse_management.finished_product_ware_line_tree"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+                <xpath expr="//header" position="inside">
+                    <!-- <button string="测试按钮11111" type="object" name="set_back_channel_progress" class="oe_highlight"/> -->
+                </xpath>
+            </field>
+        </record>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="back_channel_progress_tree">
+			<field name="name">后整进度表</field>
+			<field name="model">back_channel_progress</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0">
+                    <header>
+                        <!-- <button name="set_back_channel_progress_info" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+					<field name="date" string="日期"/>
+					<field name="number" string="人数"/>
+                    <field name="plan_number" string="计划产量"/>
+                    <button name="action_suspension_system_station_summary_ids" type="object" icon="fa-list"/>
+					<field name="up_coat_hanger_number" string="上衣架产量"/>
+					<field name="manual_number" string="手工产量"/>
+					<field name="special_number" string="专机产量"/>
+					<field name="big_iron_number" string="大烫产量"/>
+					<field name="always_check_number" string="总检产量"/>
+					<field name="always_check_repair_number" string="总检返修数"/>
+					<field name="tail_check_number" string="尾查产量"/>
+					<field name="tail_check_repair_number" string="尾查返修数"/>
+					<field name="put_storage_number" string="入库数"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+        <record id="back_channel_progress_actions" model="ir.actions.act_window">
+            <field name="name">后整进度表</field>
+            <field name="res_model">back_channel_progress</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+	</data>
+</odoo>

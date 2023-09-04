@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+
+        <record id="warehouse_management_inherit_fsn_fabric_ingredients_procurement_form" model="ir.ui.view">
+            <field name="name">外发订单form继承扩展</field>
+            <field name="model">fabric_ingredients_procurement</field>
+            <field name="inherit_id" ref="procurement.fsn_fabric_ingredients_procurement_form"/>
+            <field name="arch" type="xml">
+
+				<xpath expr="//field[@name='material_code']" position="after">
+                    <field name="material_name_list_id" string="物料名称" options="{'no_create': True, 'no_open': True}"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+
+
+        <record id="material_name_list_tree" model="ir.ui.view">
+            <field name="name">物料名称列表</field>
+            <field name="model">material_name_list</field>
+            <field name="arch" type="xml">
+				<tree editable="top">
+                    <field name="name" string="物料名称"/>
+                    <field name="material_name_type_id" string="物料品类" options="{'no_create': True, 'no_open': True}"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="material_name_list_actions" model="ir.actions.act_window">
+            <field name="name">物料名称列表</field>
+            <field name="res_model">material_name_list</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+        <record id="material_name_type_tree" model="ir.ui.view">
+            <field name="name">物料品类</field>
+            <field name="model">material_name_type</field>
+            <field name="arch" type="xml">
+				<tree editable="bottom">
+                    <field name="name" string="品类名称"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="material_name_type_actions" model="ir.actions.act_window">
+            <field name="name">物料品类</field>
+            <field name="res_model">material_name_type</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+
+    </data>
+</odoo>

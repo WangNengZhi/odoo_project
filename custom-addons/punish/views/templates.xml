@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <template id="assets_backend" name="assets_backend" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/punish/static/src/js/hard_working_workers_of_year.js"></script>
+                <script type="text/javascript" src="/punish/static/src/js/manually_refresh_reward_punish_record.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

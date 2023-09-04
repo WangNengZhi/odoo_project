@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+		<!-- search -->
+        <record id="outbource_return_search" model="ir.ui.view">
+            <field name="name">外发退货</field>
+            <field name="model">outbource_return</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="date" string="日期"/>
+					<field name="outsource_plant_id" string="加工厂"/>
+					<field name="order_id" string="订单号"/>
+					<field name="style_number" string="款号"/>
+                </search>
+            </field>
+        </record>
+		<!-- tree -->
+		<record model="ir.ui.view" id="outbource_return_tree">
+			<field name="name">外发退货</field>
+			<field name="model">outbource_return</field>
+			<field name="arch" type="xml">
+				<tree editable="top" create="0" edit="0" delete="0">
+                    <header>
+                        <!-- <button name="set_voucher_quantity" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+					<field name="date" string="日期"/>
+					<field name="outsource_plant_id" string="加工厂" required="1" options="{'no_create': True, 'no_open': True}"/>
+					<field name="order_id" string="订单号" options="{'no_create': True, 'no_open': True}"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+					<field name="fsn_color" string="颜色" options="{'no_create': True, 'no_open': True}"/>
+					<field name="size" string="尺码" options="{'no_create': True, 'no_open': True}"/>
+					<field name="number" string="件数"/>
+					<field name="problem" string="问题"/>
+					<field name="quality_inspection_id" string="总检" options="{'no_create': True, 'no_open': True}"/>
+					<field name="repair_type" string="返修类型"/>
+					<field name="repair_price" string="返修工价"/>
+					<field name="repair_total_price" string="返修总工价"/>
+					<field name="repair_ie_price" string="返修IE工价"/>
+					<field name="repair_ie_total_price" string="返修总IE工价"/>
+                    <field name="lock_state" string="审批状态" decoration-info="lock_state == '未审批'" decoration-success="lock_state == '已审批'" widget="badge"/>
+					<button name="set_lock_state" type="object" string="审批通过" class="btn-primary"
+						context="{'lock_state': '已审批'}"
+						groups="fsn_base.fsn_super_user_group"
+						attrs="{'invisible':[('lock_state', '!=', '未审批')]}"
+					/>
+					<button name="set_lock_state" type="object" string="审批回退" class="btn-danger"
+						context="{'lock_state': '未审批'}"
+						groups="fsn_base.fsn_super_user_group"
+						attrs="{'invisible':[('lock_state', '!=', '已审批')]}"
+					/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="outbource_return_actions">
+            <field name="name">外发退货</field>
+            <field name="res_model">outbource_return</field>
+			<field name="domain">[("order_id", "!=", False)]</field>
+            <field name="view_mode">tree</field>
+		</record>
+
+    </data>
+</odoo>

@@ -1,0 +1,167 @@
+<odoo>
+    <data>
+
+        <menuitem id="menu_procurement_home"
+            name="采购"
+			web_icon="procurement,static/description/icon.png"
+            sequence="10"/>
+
+
+            <menuitem id="menu_maintain"
+				name="设备采购管理"
+				parent="menu_procurement_home"
+				sequence="20"/>
+                <menuitem id="menu_maintain_object_instance"
+					name="物品实例"
+					parent="menu_maintain"
+					action="maintain_object_instance_action"
+					sequence="5"/>
+                <menuitem id="menu_maintain_procurement"
+					name="采购管理"
+					parent="menu_maintain"
+					action="maintain_procurement_action"
+					sequence="10"/>
+                <menuitem id="menu_maintain_put"
+					name="入库管理"
+					parent="menu_maintain"
+					action="maintain_put_action"
+					sequence="20"/>
+                <menuitem id="menu_maintain_recipients"
+					name="领用管理"
+					parent="menu_maintain"
+					action="maintain_recipients_action"
+					sequence="30"/>
+                <menuitem id="menu_maintain_return"
+					name="归还管理"
+					parent="menu_maintain"
+					action="maintain_return_action"
+					sequence="40"/>
+                <menuitem id="menu_maintain_inventory"
+					name="采购库存"
+					parent="menu_maintain"
+					action="maintain_inventory_action"
+					sequence="50"/>
+
+
+            <menuitem id="menu_office_procurement"
+				name="办公室用品采购管理"
+				parent="menu_procurement_home"
+				sequence="30"/>
+                <menuitem id="menu_office_object_instance"
+					name="物品实例"
+					parent="menu_office_procurement"
+					action="office_object_instance_action"
+					sequence="5"/>
+                <menuitem id="menu_office_procurement_enter"
+					name="物品采购"
+					parent="menu_office_procurement"
+					action="office_procurement_enter_action"
+					sequence="10"/>
+                <menuitem id="menu_office_procurement_put"
+					name="物品入库"
+					parent="menu_office_procurement"
+					action="office_procurement_put_action"
+					sequence="20"/>
+                <menuitem id="menu_office_procurement_outbound"
+					name="物品出库"
+					parent="menu_office_procurement"
+					action="office_procurement_outbound_action"
+					sequence="30"/>
+                <menuitem id="menu_office_procurement_inventory"
+					name="物品库存"
+					parent="menu_office_procurement"
+					action="office_procurement_inventory_action"
+					sequence="40"/>
+
+            <menuitem id="menu_fabric_ingredients"
+				name="面辅料采购管理"
+				parent="menu_procurement_home"
+				sequence="40"/>
+                <menuitem id="menu_fabric_ingredients_enter"
+					name="面辅料采购"
+					parent="menu_fabric_ingredients"
+					action="fabric_ingredients_procurement_action"
+					sequence="10"/>
+                <menuitem id="menu_fabric_ingredients_refund"
+					name="面辅料退还"
+					parent="menu_fabric_ingredients"
+					action="fabric_ingredients_refund_action"
+					sequence="20"/>
+                <menuitem id="menu_fabric_ingredients_summary"
+					name="面辅料采购汇总"
+					parent="menu_fabric_ingredients"
+					action="fabric_ingredients_summary_action"
+					sequence="30"/>
+                <!-- <menuitem id="menu_fabric_ingredients_inventory"
+					name="面辅料库存"
+					parent="menu_fabric_ingredients"
+					action="fabric_ingredients_inventory_action"
+					sequence="30"/> -->
+
+
+
+            <!-- <menuitem id="menu_template_purchase_order"
+				name="模板采购单"
+				parent="menu_procurement_home"
+				action="template_purchase_order_action"
+				sequence="50"/> -->
+
+            <menuitem id="menu_equipment_leasing"
+				name="物品租赁记录"
+				parent="menu_procurement_home"
+				action="equipment_leasing_action"
+				sequence="55"/>
+
+            <menuitem id="menu_supplier_supplier"
+				name="供应商"
+				parent="menu_procurement_home"
+				sequence="60"/>
+
+			<menuitem id="menu_asset_classification"
+				name="固定资产分类登记表"
+				parent="menu_procurement_home"
+				action="action_asset_classification"
+				sequence="65"/>
+
+                <menuitem id="menu_supplier_supplier_mfl"
+					name="面辅料供应商"
+					parent="menu_supplier_supplier"
+					action="mfl_supplier_supplier_action"
+					groups="procurement_mfl_group_groups"
+					sequence="10"/>
+                <menuitem id="menu_supplier_supplier_jxsb"
+					name="机修设备供应商"
+					parent="menu_supplier_supplier"
+					action="jxsb_supplier_supplier_action"
+					groups="procurement_jxsb_group_groups"
+					sequence="20"/>
+                <menuitem id="menu_supplier_supplier_bgs"
+					name="办公室供应商"
+					parent="menu_supplier_supplier"
+					action="bgsyp_supplier_supplier_action"
+					groups="procurement_bgs_group_groups"
+					sequence="30"/>
+                <!-- <menuitem id="menu_supplier_supplier_all"
+					name="供应商"
+					parent="menu_supplier_supplier"
+					action="supplier_supplier_action"
+					sequence="40"/> -->
+			<menuitem id="menu_registration_form"
+          		name="固定资产"
+          		parent="menu_procurement_home"
+          		sequence="70"/>
+
+				<menuitem id="menu_use_registration_form"
+          			name="固定资产使用登记表"
+          			parent="menu_registration_form"
+          			action="use_registration_form_action"
+          			sequence="10"/>
+
+				<menuitem id="menu_maintenance_records"
+          			name="固定资产维护保养记录"
+          			parent="menu_registration_form"
+          			action="maintenance_records_action"
+          			sequence="20"/>
+
+    </data>
+</odoo>

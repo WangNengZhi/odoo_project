@@ -1,0 +1,13 @@
+<odoo>
+
+    <record id="fsn_employee_extension_category" model="ir.module.category">
+        <field name="name">FSN员工扩展</field>
+        <field name="sequence">5</field>
+    </record>
+        <record id="fsn_non_professional_personnel" model="res.groups">
+            <field name="name">非人事访问员工</field>
+            <field name="category_id" ref="fsn_employee_extension_category"/>
+        </record>
+
+
+</odoo>

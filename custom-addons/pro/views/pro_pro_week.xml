@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+        <!-- tree视图 -->
+        <record id="pro_pro_week_tree" model="ir.ui.view">
+            <field name="name">组产值(周)</field>
+            <field name="model">pro.pro.week</field>
+            <field name="arch" type="xml">
+                <tree create="0">
+                    <field name="week" string="周"/>
+                    <field name="style_number"/>
+                    <field name="group"/>
+                    <field name="number"/>
+                    <field name="num_people"/>
+                    <field name="avg_value"/>
+                    <field name="pro_value"/>
+                </tree>
+            </field>
+        </record>
+        <!-- 透视表视图 -->
+        <record id="pro_pro_week_graph" model="ir.ui.view">
+            <field name="name">组产值透视表(周)</field>
+            <field name="model">pro.pro.week</field>
+            <field name="arch" type="xml">
+                <graph string="产值表">
+                    <field name="week" type="row"/>
+                    <field name="group" type="row"/>
+                    <field name="pro_value" type="measure"/>
+                </graph>
+            </field>
+        </record>
+        <!-- 动作 -->
+        <record id="group_pro_week_actions" model="ir.actions.act_window">
+            <field name="name">组产值(周)</field>
+            <field name="res_model">pro.pro.week</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+        <!-- 指定tree视图 -->
+        <record model="ir.actions.act_window.view" id="group_pro_week_actions_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="pro_pro_week_tree"/>
+            <field name="act_window_id" ref="group_pro_week_actions"/>
+        </record>
+        <!-- 指定graph视图 -->
+        <record model="ir.actions.act_window.view" id="group_pro_week_actions_graph">
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="pro_pro_week_graph"/>
+            <field name="act_window_id" ref="group_pro_week_actions"/>
+        </record>
+        <!-- 菜单按钮 -->
+        <menuitem id="menu_group_pro_week"
+                name="组产值(周)"
+                parent="menu_total_totlepro1_week"
+                action="group_pro_week_actions"
+                sequence="31"/>
+    </data>
+</odoo>

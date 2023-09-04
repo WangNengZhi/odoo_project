@@ -1,0 +1,31 @@
+<odoo>
+  	<data>
+        <record id="fsn_plan_wizard_form" model="ir.ui.view">
+            <field name="name">创建计划</field>
+            <field name="model">fsn_plan_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4">
+                        <field name="dDate" string="日期"/>
+                        <field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="staff_group" string="员工小组"/>
+                        <field name="group_leader" string="组长" options="{'no_create': True, 'no_open': True}"/>
+                    </group>
+                   
+                    <footer>
+                        <button name="create_plan" type="object" string="确认" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="fsn_plan_wizard_action" model="ir.actions.act_window">
+            <field name="name">创建计划</field>
+            <field name="res_model">fsn_plan_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+  	</data>
+</odoo>

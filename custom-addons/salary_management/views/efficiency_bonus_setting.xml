@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="efficiency_bonus_setting_tree" model="ir.ui.view">
+            <field name="name">效率奖金设置</field>
+            <field name="model">efficiency_bonus_setting</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="month" string="月份" widget="fsn_month"/>
+                    <field name="workpiece_ratio_lower_limit" string="效率下限" widget="percentage"/>
+                    <field name="workpiece_ratio_upper_limit" string="效率上限" widget="percentage"/>
+                    <field name="bonus_quota" string="奖金额度"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="efficiency_bonus_setting_action" model="ir.actions.act_window">
+            <field name="name">效率奖金设置</field>
+            <field name="res_model">efficiency_bonus_setting</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

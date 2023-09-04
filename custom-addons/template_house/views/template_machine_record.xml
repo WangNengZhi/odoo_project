@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="template_machine_record_tree">
+        <field name="name">模板机器记录</field>
+        <field name="model">template_machine_record</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" create="false" edit="false">
+                    <field name="MachineID" string="机器标识"/>
+                    <field name="FileName" string="文件名称"/>
+                    <field name="FileUUD" string="文件UUD"/>
+                    <field name="FileStitches" string="文件针"/>
+                    <field name="BaseLineUse" string="基线使用"/>
+                    <field name="ProcCounts" string="程序计数"/>
+                    <field name="ProcTime" string="程序时间"/>
+                    <field name="EndStitch" string="结束针"/>
+                    <field name="StartTime" string="开始时间"/>
+                    <field name="CreateTime" string="创建时间"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="template_machine_record_action">
+            <field name="name">模板机器记录</field>
+            <field name="res_model">template_machine_record</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

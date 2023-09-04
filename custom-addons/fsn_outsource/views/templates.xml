@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+        <!-- <template id="assets_backend" name="assets_backend" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+
+                <script type="text/javascript" src="/fsn_outsource/controllers/enterprise_wechat/outward_delivery_approve/wxwork_sdk.js"></script>
+
+            </xpath>
+        </template> -->
+    </data>
+</odoo>

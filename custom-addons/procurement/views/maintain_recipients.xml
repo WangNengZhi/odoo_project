@@ -1,0 +1,78 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="maintain_recipients_tree">
+			<field name="name">机修领用</field>
+			<field name="model">maintain_recipients</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+
+					<field name="date" string="领用日期"/>
+					<field name="inventory" string="库存" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="material_code" string="物品编码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="material_name" string="物品名称" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="supplier_supplier_id" string="供应商" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="specification" string="规格"/>
+					<field name="department_name" string="领用部门"/>
+					<field name="inventory_number" string="库存数量"/>
+					<field name="amount" string="数量"/>
+					<field name="unit" string="单位"/>
+					<field name="manager" string="负责人" options="{'no_create': True, 'no_open': True}" />
+					<field name="recipients_people" string="领用人" options="{'no_create': True, 'no_open': True}" />
+					<field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '已领用'" widget="badge"/>
+					<button name="confirmation_button" type="object" string="领用" class="btn-primary" attrs="{'invisible':[('state','!=', '草稿')]}" context="{'type': 'confirm'}"/>
+					<button name="confirmation_button" type="object" string="回退" class="btn-danger" attrs="{'invisible':[('state','!=', '已领用')]}" context="{'type': 'fallback'}" groups="fsn_base.fsn_super_user_group"/>
+				</tree>
+			</field>
+		</record>
+		<!-- form -->
+		<record id="maintain_recipients_form" model="ir.ui.view">
+			<field name="name">设备采购出库</field>
+			<field name="model">maintain_recipients</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+                        <div>确认出库吗？</div>
+                        <!-- <group>
+                            <field name="refused_note" string="备注"/>
+                        </group> -->
+                    </sheet>
+                    <footer>
+                        <button name="action_through" type="object" string="确认" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="maintain_recipients_fallback_form" model="ir.ui.view">
+			<field name="name">设备采购出库</field>
+			<field name="model">maintain_recipients</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+                        <div>确认回退吗？</div>
+                        <!-- <group>
+                            <field name="refused_note" string="备注"/>
+                        </group> -->
+                    </sheet>
+                    <footer>
+                        <button name="action_fallback" type="object" string="确认" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="maintain_recipients_action">
+            <field name="name">机修领用</field>
+            <field name="res_model">maintain_recipients</field>
+            <field name="view_mode">tree</field>
+		</record>
+    </data>
+</odoo>

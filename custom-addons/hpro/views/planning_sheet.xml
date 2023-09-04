@@ -1,0 +1,185 @@
+<odoo>
+    <data>
+        <record id="validation_mhp_mhp_form" model="ir.ui.view">
+            <field name="name">工时单弹窗</field>
+            <field name="model">mhp.mhp</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4">
+                        <field name="order_price" string="销售订单接单价" readonly="1"/>
+                        <field name="totle_price" string="线上总单价" readonly="1"/>
+                        
+                        
+                    </group>
+
+                    <div attrs="{'invisible': [('totle_price', '=', 0)]}">销售订单接单价是线上总单价的<b><field name="price_multiples" string="价格倍数" readonly="1"/></b>倍！</div>
+
+                    <div attrs="{'invisible': [('totle_price', '!=', 0)]}"><b>线上总单价为0或无线上工序！</b></div>
+
+                    <div attrs="{'invisible': [('cc_totle_price', '&lt;=', 1)]}">裁床总单价<field name="cc_totle_price" string="裁床总单价" readonly="1"/>元，<b>大于1元！</b></div>
+
+                    <div attrs="{'invisible': [('hd_totle_price', '&lt;=', 1)]}">后道总单价<field name="hd_totle_price" string="后道总单价" readonly="1"/>元，<b>大于1元！</b></div>
+
+                    <div>是否确认通过?</div>
+
+                    <footer>
+                        <button name="examination_and_approval" type="object" string="确认" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <!-- view -->
+        <record id="view_tree_mhp_view" model="ir.ui.view">
+            <field name="name">工时单</field>
+            <field name="model">mhp.mhp</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date" string="分析日期"/>
+                    <field name="customer" string="客户(旧)"/>
+                    <field name="client_id" string="客户"/>
+                    <field name="style_number" string="订单编号"/>
+                    <field name="order_number" string="款式编号"/>
+                    <field name="analyst" string="分析员"/>
+                    <field name="difficulty_coefficient" string="难度系数"/>
+                    <field name="totle_time" string="线上时间汇总"/>
+                    <field name="totle_price" string="线上总单价"/>
+                    <field name="cc_totle_time" string="裁床时间汇总"/>
+                    <field name="cc_totle_price" string="裁床总单价"/>
+                    <field name="hd_totle_time" string="后道时间汇总"/>
+                    <field name="hd_totle_price" string="后道总单价"/>
+                    <field name="work_order" string="工序单"/>
+                    <field name="state" decoration-info="state == '待审批'" decoration-success="state == '已审批'" widget="badge" string="状态"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    form      -->
+        <record id="view_tree_form_view" model="ir.ui.view">
+            <field name="name">工时单</field>
+            <field name="model">mhp.mhp</field>
+            <field name="arch" type="xml">
+                <form duplicate="false">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="待审批,已审批"/>
+                        <button name="validation_totle_price" string="通过" type="object"
+                            class="btn btn-primary"
+                            attrs="{'invisible': ['|', ('state', '=', '已审批'), ('id', '=', False)]}"
+                            groups="fsn_base.fsn_super_user_group"
+                            />
+                        <button name="state_fallback" string="回退" type="object"
+                            class="btn btn-primary"
+                            attrs="{'invisible': ['|', ('state', '=', '待审批'), ('id', '=', False)]}"
+                            confirm='确认状态回退吗？'
+                            groups="fsn_base.fsn_super_user_group"
+                            />
+                    </header>
+                    <sheet>
+                        <group col="4">
+
+                            <field name="style_number" options="{'no_create_edit': True, 'no_open': True, 'no_create': True}"/>
+                            <field name="order_number" options="{'no_create_edit': True, 'no_open': True, 'no_create': True}"/>
+                            <field name="customer" string="客户(旧)"/>
+                            <field name="client_id" string="客户" options="{'no_create_edit': True, 'no_open': True, 'no_create': True}"/>
+                            <field name="order_price" string="接单价"/>
+                        </group>
+                        <group col="4">
+                            <field name="date"/>
+                            <field name="analyst"/>
+                            <field name="difficulty_coefficient" string="难度系数"/>
+                            <field name="totle_time" string="线上时间汇总"/>
+                            <field name="totle_price" string="线上总单价"/>
+                            <field name="cc_totle_time" string="裁床时间汇总"/>
+                            <field name="cc_totle_price" string="裁床总单价"/>
+                            <field name="hd_totle_time" string="后道时间汇总"/>
+                            <field name="hd_totle_price" string="后道总单价"/>
+                        </group>
+                        <notebook>
+                            <page string="工序明细">
+                                <field name="work_order" string="工序明细" options="{'no_create_edit': True, 'no_open': True, 'no_create': True}">
+
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                        <div class="oe_chatter">
+                        <field name="message_follower_ids"
+                            widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="view_tree_work_view" model="ir.ui.view">
+            <field name="name">工序单</field>
+            <field name="model">work.work</field>
+            <field name="arch" type="xml">
+                <tree delete="0">
+                    <header>
+                        <button name="manual_examination_process_price" string="工序价格检测" type="object" class="btn btn-primary"/>
+                        <!-- <button name="inspection_total_process_price" string="测试按钮" type="object" class="btn btn-primary"/> -->
+                    </header>
+                    <header>
+                        <button name="delete_operation" string="删除" type="object" groups="fsn_base.fsn_super_user_group" class="btn btn-primary"/>
+                    </header>
+                    <field name="date" string='日期'/>
+                    <field name="order_number" string="款式编号"/>
+                    <field name="employee_id" string="工序号"/>
+                    <field name="process_type" string="工序类型"/>
+                    <field name="part_name" string="部件名称"/>
+                    <field name="process_abbreviation" string="工序描述"/>
+                    <field name="mechanical_type" string="机器类型"/>
+                    <field name="process_level" string="工序等级"/>
+                    <field name="standard_time" string="标准时间"/>
+                    <field name="standard_price" string="原单价"/>
+                    <field name="label" string="标签"/>
+                    <field name="state" decoration-info="state == '待审批'" decoration-success="state == '已审批'" widget="badge" string="状态"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_form_work_view" model="ir.ui.view">
+            <field name="name">工序单</field>
+            <field name="model">work.work</field>
+            <field name="arch" type="xml">
+                <form>
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="待审批,已审批"/>
+					</header>
+                    <sheet>
+                        <group col="4">
+                            <field name="date" string='日期'/>
+                            <field name="order_number"  string="款式编号" options="{'no_create_edit': True, 'no_open': True}"/>
+                            <field name="employee_id" string="工序号"/>
+                            <field name="process_type" string="工序类型"/>
+                            <field name="part_name" string="部件名称"/>
+                            <field name="process_abbreviation" string="工序描述"/>
+                            <field name="mechanical_type" string="机器类型"/>
+                            <field name="process_level" string="工序等级"/>
+                            <field name="standard_time" string="标准时间"/>
+                            <field name="standard_price" string="原单价"/>
+                            <field name="label" string="标签"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_mhp_mhp" model="ir.actions.act_window">
+            <field name="name">工时单</field>
+            <field name="res_model">mhp.mhp</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_work_work" model="ir.actions.act_window">
+            <field name="name">工序单</field>
+            <field name="res_model">work.work</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,52 @@
+<odoo>
+    <data noupdate="1">
+        <record id="production_preparation_inspect_channel" model="mail.channel">
+            <field name="name">产前准备检查专用频道</field>
+        </record>
+
+        <record id="fsn_postpartum_inspect_channel" model="mail.channel">
+            <field name="name">产后检查专用频道</field>
+        </record>
+
+        <record id="fsn_hr_inspect_channel" model="mail.channel">
+            <field name="name">人事部专用频道</field>
+        </record>
+
+        <record id="fsn_daily_inspect_channel" model="mail.channel">
+            <field name="name">日报专用频道</field>
+        </record>
+    
+        <record id="fsn_weekly_inspect_channel" model="mail.channel">
+            <field name="name">周报专用频道</field>
+        </record>
+
+        <record id="fsn_workshop_inspect_channel" model="mail.channel">
+            <field name="name">车间专用频道</field>
+        </record>
+
+        <record id="fsn_after_the_road_inspect_channel" model="mail.channel">
+            <field name="name">后道专用频道</field>
+        </record>
+
+        <record id="fsn_ie_daily_inspect_channel" model="mail.channel">
+            <field name="name">IE专用频道</field>
+        </record>
+
+        <record id="fsn_finance_daily_inspect_channel1111" model="mail.channel">
+            <field name="name">财务专用频道</field>
+        </record>
+
+        <record id="fsn_sales_inspect_channel" model="mail.channel">
+            <field name="name">销售专用频道</field>
+        </record>
+
+        <record id="fsn_quality_inspect_channel" model="mail.channel">
+            <field name="name">品控专用频道</field>
+        </record>
+
+        <record id="fsn_technology_section_inspect_channel" model="mail.channel">
+            <field name="name">技术科专用频道</field>
+        </record>
+
+    </data>
+</odoo>

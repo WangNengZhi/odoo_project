@@ -1,0 +1,85 @@
+<odoo>
+  	<data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="loss_accounting_statement_tree">
+			<field name="name">损失核算表</field>
+			<field name="model">loss_accounting_statement</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="date" string="日期"/>
+					<field name="department_id" string="部门"/>
+					<field name="order_number" string="订单号"/>
+					<field name="style_number" string="款号"/>
+					<field name="name_or_style" string="品名/款式"/>
+					<field name="unit_working_hours" string="单件工时"/>
+					<field name="accounting_numbersa" string="核算数量（件）"/>
+					<field name="unit_wages" string="单件工价"/>
+					<field name="fabric_price" string="面料价格/件"/>
+					<field name="material_price" string="辅料价格/件"/>
+					<field name="note" string="备注"/>
+					<field name="total_price" string="总价"/>
+					<field name="responsibility_peoples" string="责任人" widget="many2many_tags"/>
+                    <field name="show_how" string="情况说明"/>
+                    <field name="state" string="状态" decoration-info="state == '待审批'" decoration-success="state == '已审批'" widget="badge"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="loss_accounting_statement_form" model="ir.ui.view">
+			<field name="name">损失核算表</field>
+			<field name="model">loss_accounting_statement</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="待审批,已审批"/>
+						<button name="through" string="审批通过" type="object"
+							class="oe_highlight o_expense_submit"
+							attrs="{'invisible': ['|', ('state', '=', '已审批'), ('id', '=', False)]}"
+							confirm='确认审批通过吗？'
+                            groups="fsn_base.fsn_super_user_group"
+							/>
+						<button name="fallback" string="回退" type="object"
+							class="oe_highlight o_expense_submit btn-danger"
+							attrs="{'invisible': [('state', '=', '待审批')]}"
+							confirm='确认回退吗？'
+                            groups="fsn_base.fsn_super_user_group"
+							/>
+					</header>
+                    <sheet>
+						<div style="text-align: center"><h1>损失核算表</h1></div>
+
+						<group col="4">
+                            <field name="date" string="日期"/>
+                            <field name="department_id" string="部门" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="order_number" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="name_or_style" string="品名/款式"/>
+                            <field name="unit_working_hours" string="单件工时"/>
+                            <field name="accounting_numbersa" string="核算数量（件）"/>
+                            <field name="unit_wages" string="单件工价"/>
+                            <field name="fabric_price" string="面料价格/件"/>
+                            <field name="material_price" string="辅料价格/件"/>
+                            <field name="total_price" string="总价"/>
+                            <field name="responsibility_peoples" string="责任人" widget="many2many_tags" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="note" string="备注"/>
+						</group>
+						<group col="2">
+                            <field name="show_how" string="情况说明"/>
+						</group>
+                    </sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="loss_accounting_statement_action">
+			<field name="name">损失核算表</field>
+			<field name="res_model">loss_accounting_statement</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+  	</data>
+</odoo>

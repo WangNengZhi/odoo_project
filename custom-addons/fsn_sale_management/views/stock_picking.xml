@@ -1,0 +1,19 @@
+
+<odoo>
+    <data>
+
+        <record id="fsn_sale_management_stock_vpicktree_tree" model="ir.ui.view">
+            <field name="name">stock.picking.tree</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+
+                
+                <xpath expr="//field[@name='picking_type_id']" position="after">
+                    <field name="quantity_completion" string="完成数量"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

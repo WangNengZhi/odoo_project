@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+        <!-- 定义一个用于显示资产分类记录列表的树视图 -->
+        <record model="ir.ui.view" id="cash_income_and_expenditure_registration_tree">
+            <field name="name">现金收支登记表</field>
+            <field name="model">cash_income_and_expenditure_registration</field>
+            <field name="arch" type="xml">
+                <tree string="现金收支登记表" editable="bottom">
+                    <field name="date" string="日期" />
+                    <field name="income_type" string="收支类别"/>
+                    <field name="income_name" string="收方"/>
+                    <field name="out_name" string="支方"/>
+                    <field name="income_date" string="支内容"/>
+                    <field name="bank" string="银行"/>
+                    <field name="number" string="票据号码"/>
+                    <field name="money" string="金额"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- 定义一个用于在菜单中显示的动作 -->
+        <record model="ir.actions.act_window" id="cash_income_and_expenditure_registration_action">
+            <field name="name">现金收支登记表</field>
+            <field name="res_model">cash_income_and_expenditure_registration</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="cash_income_and_expenditure_registration_tree"/>
+        </record>
+    </data>
+</odoo>

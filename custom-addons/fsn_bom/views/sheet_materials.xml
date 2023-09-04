@@ -1,0 +1,106 @@
+<odoo>
+    <data>
+        <record id="sheet_materials_tree" model="ir.ui.view">
+            <field name="name">单件用料表</field>
+            <field name="model">sheet_materials</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date" string="日期"/>
+                    <field name="client_id" string="客户"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="product_name" string="品名"/>
+                    <field name="size" string="尺码"/>
+                    <field name="employee_id" string="负责人"/>
+                    <field name="state" string="状态" decoration-info="state == '待审批'" decoration-success="state == '已审批'" widget="badge"/>
+                    <field name="sheet_materials_line_ids" string="明细" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+		<!-- form -->
+		<record id="sheet_materials_line_del_form" model="ir.ui.view">
+			<field name="name">确认要删除该明细行吗？</field>
+			<field name="model">sheet_materials_line</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+                        <div>确认要删除该明细行吗？</div>
+                    </sheet>
+                    <footer>
+                        <button name="unlink" type="object" string="删除" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+
+        <record id="sheet_materials_form" model="ir.ui.view">
+            <field name="name">单件用料表</field>
+            <field name="model">sheet_materials</field>
+            <field name="arch" type="xml">
+                <form>
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="待审批,已审批"/>
+						<button name="through" string="审批通过" type="object"
+							class="oe_highlight o_expense_submit"
+							attrs="{'invisible': ['|', ('state', '=', '已审批'), ('id', '=', False)]}"
+							confirm='确认审批通过吗？'
+                            groups="fsn_base.fsn_executives_group"
+							/>
+						<button name="fallback" string="回退" type="object"
+							class="oe_highlight o_expense_submit"
+							attrs="{'invisible': [('state', '=', '待审批')]}"
+							confirm='确认回退吗？'
+                            groups="fsn_base.fsn_executives_group"
+							/>
+					</header>
+                    <sheet>
+                        <group col="4">
+                            <field name="date" string="日期"/>
+                            <field name="picture" widget="image" string="图片" width='120px'/>
+                            <field name="client_id" string="客户" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="product_name" string="品名"/>
+                            <field name="size" string="尺码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="employee_id" string="负责人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                        </group>
+                        <notebook>
+							<page string="单件用量明细">
+								<field name="sheet_materials_line_ids" string="单件用量明细">
+                                    <tree editable="bottom" delete="0">
+										<field name="type" string="类型" attrs="{'readonly':[('is_must','=', True)]}" force_save="1"/>
+                                        <field name="material_name_list_id" string="物料名称" attrs="{'readonly':[('is_must','=', True)]}" force_save="1" options="{'no_create': True, 'no_open': True}"/>
+                                        <field name="material_name" string="物料名称"/>
+										<field name="material_specifications" string="物料规格（颜色、尺码、幅宽等）"/>
+										<field name="single_dosage" string="单件用量"/>
+										<field name="unit_id" string="单位" attrs="{'readonly':[('is_must','=', True)]}" force_save="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										<field name="is_must" string="是否预设" readonly="1" force_save="1"/>
+										<field name="is_points_size" string="是否分尺码" attrs="{'readonly':[('is_must','=', True)]}" force_save="1"/>
+                                        <button name="confirm_deletion" class="fa fa-trash-o oe_read_only" type="object" attrs="{'invisible':[('is_must','=', True)]}"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="sheet_materials_actions" model="ir.actions.act_window">
+            <field name="name">单件用料表</field>
+            <field name="res_model">sheet_materials</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('state', '=', '已审批')]</field>
+            <field name="context">{'create': False, 'edit': False, 'delete': False}</field>
+        </record>
+        <record id="sheet_materials_operational_actions" model="ir.actions.act_window">
+            <field name="name">单件用料表</field>
+            <field name="res_model">sheet_materials</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

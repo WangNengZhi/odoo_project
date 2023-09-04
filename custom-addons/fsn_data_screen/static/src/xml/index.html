@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="ch">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" type="text/css" href="/fsn_data_screen/static/src/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/fsn_data_screen/static/src/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/fsn_data_screen/static/src/css/fsn_kanban.css">
+	<link rel="stylesheet" type="text/css" href="/fsn_data_screen/static/src/css/liMarquee.css">
+	<link rel="stylesheet" type="text/css" href="/fsn_data_screen/static/src/css/window_04.css">
+	<style>
+		.dowebok { width: 400px; height: 300px; margin: 20px anto; font-size: 18px; background-color: rgba(220,38,38,0.0);}
+		.dowebok ul { margin: 0; line-height: 30px;}
+		.dowebok p { color: rgb(255, 255, 255); text-decoration: none;}
+		</style>
+	<script src="/fsn_data_screen/static/src/libs/echarts.min.js"></script>
+	<!-- <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script> -->
+	<script src="/fsn_data_screen/static/src/libs/jquery-1.9.1.min.js"></script>
+	<script src="/fsn_data_screen/static/src/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+
+	<title>测试页面</title>
+</head>
+<body>
+	<div class="wrap">
+		<div class="wid_1820">
+
+			<div class="header">
+				<!-- <p class="tmtext"><span>2017-12-08 &emsp;&emsp;<span>14:39</span></span></p> -->
+				<p class="tmtext"><span id="date"></span></p>
+				<p><span class="hefont" onclick="toindex()">风丝袅数据</span></p>
+				<!-- <p><span>用户名<a>[退出]</a></span></p> -->
+			</div>
+			<h3 class="title">实时监测-xxxx</h3>
+			<div class="content"> <img class="guang" src="/fsn_data_screen/static/src/img/title.png"/>
+				<div class="row fsn_line">
+					<div class="tb col window_01">
+						<h3>吊挂组产量</h3>
+						<table class="table1" id="group_output">
+							<tr class="tb_title"><td>日期</td><td>组别</td><td>款号</td><td>总产量</td><td>总产值</td></tr>
+						</table>
+					</div>
+					<div class="tb col-6 window_02">
+						<h3>XXXXXXX</h3>
+						<div class="box3">
+							<div class="row">
+								<div class="col-lg-2 data_bg"><p><span id="window_02_val_01"></span></p><small>在职员工数</small></div>
+								<div class="col-lg-2 data_bg"><p><span id="window_02_val_02"></span></p><small>累计订单数</small></div>
+								<div class="col-lg-2 data_bg"><p><span id="window_02_val_03"></span></p><small>月产值</small></div>
+								<div class="col-lg-2 data_bg"><p><span id="window_02_val_04"></span></p><small>日产值</small></div>
+							</div>
+
+							<div class="row">
+								<div id="window_02_1" class="col-lg-2 dashboard" style="width: 150px; height: 150px;"></div>
+								<div id="window_02_2" class="col-lg-2 dashboard" style="width: 150px; height: 150px;"></div>
+								<div id="window_02_3" class="col-lg-2 dashboard" style="width: 150px; height: 150px;"></div>
+								<div id="window_02_4" class="col-lg-2 dashboard" style="width: 150px; height: 150px;"></div>
+							</div>
+						</div>
+
+					</div>
+					<div class="tb col window_03">
+						<h3>今日个人生产数据</h3>
+						<div class="wraptit">
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;组别</span><span>员工</span><span>产量</span><span>效率</span>
+							<div class="dowebok">
+								<ul id="window_03_ul">
+									<!-- <li><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</span><span>小白</span><span>236</span><span>1231</span></li>
+									<li><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</span><span>小明</span><span>237</span><span>4561</span></li>
+									<li><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</span><span>小黑</span><span>239</span><span>7891</span></li>
+									<li><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4</span><span>大壮</span><span>231</span><span>3211</span></li>
+									<li><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</span><span>啊啊</span><span>234</span><span>6546</span></li>
+									<li><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</span><span>小白</span><span>236</span><span>1231</span></li>
+									<li><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</span><span>小明</span><span>237</span><span>4561</span></li>
+									<li><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</span><span>小黑</span><span>239</span><span>7891</span></li>
+									<li><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4</span><span>大壮</span><span>231</span><span>3211</span></li>
+									<li><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5</span><span>啊啊</span><span>234</span><span>6546</span></li> -->
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row fsn_line">
+					<div class="tb col-3 window_04">
+						<h3>当日计划完成情况</h3>
+						<!-- <div id="window_04" style="width: 900px;height:300px;">
+
+						</div> -->
+						<div id="today_plan" style="width: 100%;height:100%;">
+							<table class="table1" width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tbody id="today_plan_tbody">
+									<tr>
+										<th scope="col">排名</th>
+										<th scope="col">组别</th>
+										<!-- <th scope="col">款号</th> -->
+										<th scope="col">计划产量</th>
+										<th scope="col">当日产量</th>
+										<th scope="col">完成进度</th>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tb col-2 window_05">
+						<h3><span id="window_05_date"></span>返修率</h3>
+						<!-- <div id="window_05" style="width: 800px;height:300px;"></div> -->
+						<div class="navboxall">
+							<table class="table1" width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tbody id="group_statistical">
+									<tr>
+										<th scope="col">排名</th>
+										<th scope="col">组别</th>
+										<th scope="col">返修率</th>
+									</tr>
+									<!-- <tr>
+										<td><span>1</span></td>
+										<td>腾讯科技</td>
+										<td>100%<br></td>
+									</tr> -->
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tb col-3 window_06">
+						<h3>上月产值</h3>
+						<!-- <div id="window_05" style="width: 800px;height:300px;"></div> -->
+						<div class="navboxall">
+							<table class="table1" width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tbody>
+									<tr>
+										<th scope="col">排名</th>
+										<th scope="col">公司</th>
+										<th scope="col">产值</th>
+										<th scope="col">增长率</th>
+									</tr>
+									<tr>
+										<td><span>1</span></td>
+										<td>风丝袅</td>
+										<td>106万<br></td>
+										<td>64%<br></td>
+									</tr>
+									<tr>
+										<td><span>2</span></td>
+										<td>伊芙丽</td>
+										<td>92万</td>
+										<td>21%</td>
+									</tr>
+
+									<tr>
+										<td><span>3</span></td>
+										<td>秋水伊人</td>
+										<td>65万</td>
+										<td>12%</td>
+									</tr>
+									<tr>
+										<td><span>4</span></td>
+										<td>曼德诗</td>
+										<td>45万</td>
+										<td>5%</td>
+									</tr>
+									<tr>
+										<td><span>5</span></td>
+										<td>红袖</td>
+										<td>24万</td>
+										<td>3%</td>
+									</tr>
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+
+					<!-- <div class="tb col-3 window_06">
+						<h3>XXXXXXX</h3>
+						<div id="window_06" style="width: 800px;height:300px;"></div>
+						<div class="navboxall">
+
+						</div>
+					</div> -->
+
+					<div class="tb col window_07">
+						<!-- <h3>XXXXXXX</h3> -->
+						<!-- <div id="window_05" style="width: 800px;height:300px;"></div> -->
+						<div class="navboxall" style="margin-top:20px">
+							<iframe id="window_07_01" name="content_frame" marginwidth=0 marginheight=0 width=100% height=350px src="" frameborder=0>
+							</iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+<script src="/fsn_data_screen/static/src/libs/jquery.liMarquee.js"></script>
+
+
+<script src="/fsn_data_screen/static/src/js/get_suspension_system_data.js" type="module"></script>
+
+<script src="/fsn_data_screen/static/src/js/window_01.js" type="module"></script>
+<script src="/fsn_data_screen/static/src/js/window_02.js" type="module"></script>
+<script src="/fsn_data_screen/static/src/js/window_03.js"></script>
+<script src="/fsn_data_screen/static/src/js/window_04.js" type="module"></script>
+<script src="/fsn_data_screen/static/src/js/window_05.js"></script>
+
+<script src="/fsn_data_screen/static/src/js/window_07.js"></script>
+
+<script src="/fsn_data_screen/static/src/js/index.js" type="module"></script>
+
+
+
+
+
+

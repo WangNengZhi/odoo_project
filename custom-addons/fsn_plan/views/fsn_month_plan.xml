@@ -1,0 +1,126 @@
+<odoo>
+  	<data>
+        <record id="fsn_month_plan_tree" model="ir.ui.view">
+            <field name="name">月计划tree</field>
+            <field name="model">fsn_month_plan</field>
+            <field name="arch" type="xml">
+                <tree string="结算方式">
+					<header>
+                        <button name="set_lock_state" type="object" string="审批通过" class="btn-primary"
+							context="{'lock_state': '已审批'}"
+                            groups="fsn_base.fsn_super_user_group"
+                        />
+                        <button name="set_lock_state" type="object" string="审批回退" class="btn-danger"
+							context="{'lock_state': '未审批'}"
+                            groups="fsn_base.fsn_super_user_group"
+                        />
+					</header>
+                    <field name="month" string="月份"/>
+                    <field name="order_number_date" string="订单日期"/>
+                    <field name="fsn_staff_team_id" string="组别"/>
+                    <field name="people_number" string="人数"/>
+                    <field name="order_number" string="订单编号"/>
+                    <field name="processing_type" string="加工类型"/>
+                    <field name="is_external_clipping" string="外部裁剪"/>
+                    <field name="client_id" string="客户"/>
+                    <field name="customer_delivery_time" string="客户货期"/>
+                    <field name="product_name" string="品名"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="fsn_color" string="颜色"/>
+                    <field name="plan_number" string="计划数量"/>
+
+                    <field name="fabric_item_number" string="面料货号"/>
+                    <field name="style" string="款式"/>
+                    <field name="surface_material_expected_date" string="面辅料齐备预计日期"/>
+                    <field name="surface_material_practical_date" string="面辅料齐备实际日期"/>
+                    <field name="plan_tailor_date" string="计划开裁日期"/>
+                    <field name="plan_online_date" string="计划上线日期"/>
+                    <field name="production_delivery_time" string="计划交货期"/>
+                    <field name="ultimately_delivery_time" string="实际交货期"/>
+
+
+                    <field name="production_batch" string="生产批次"/>
+
+                    <field name="remark" string="备注"/>
+                    <field name="lock_state" string="审批状态" decoration-info="lock_state == '未审批'" decoration-success="lock_state == '已审批'" widget="badge"/>
+                </tree>
+            </field>
+        </record>
+
+		<!-- form -->
+		<record id="fsn_month_plan_form" model="ir.ui.view">
+			<field name="name">月计划form</field>
+			<field name="model">fsn_month_plan</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<field name="lock_state" widget="statusbar" statusbar_visible="未审批,已审批"/>
+					</header>
+					<sheet>
+						<div style="text-align: center"><h1>月计划</h1></div>
+						<group col="4">
+                            <field name="month" string="月份" widget="fsn_month"/>
+                            <field name="order_number_date" string="订单日期"/>
+						</group>
+						<group col="4">
+                            <field name="fsn_staff_team_id" string="组别" required="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="people_number" string="人数"/>
+						</group>
+						<group col="4">
+                            <field name="order_number" string="订单编号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="processing_type" string="加工类型"/>
+                            <field name="is_external_clipping" string="外部裁剪"/>
+                            <field name="client_id" string="客户" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="customer_delivery_time" string="客户货期"/>
+                            <field name="product_name" string="品名"/>
+						</group>
+						<group col="4">
+                            <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="plan_number" string="计划数量"/>
+						</group>
+						<group col="4">
+                            <field name="fabric_item_number" string="面料货号"/>
+                            <field name="style" string="款式"/>
+						</group>
+						<group col="4">
+                            <field name="surface_material_expected_date" string="面辅料齐备预计日期"/>
+                            <field name="surface_material_practical_date" string="面辅料齐备实际日期"/>
+						</group>
+						<group col="4">
+                            <field name="plan_tailor_date" string="计划开裁日期"/>
+                            <field name="plan_online_date" string="计划上线日期"/>
+						</group>
+						<group col="4">
+                            <field name="production_delivery_time" string="计划交货期"/>
+                            <field name="ultimately_delivery_time" string="实际交货期"/>
+
+						</group>
+						<group col="4">
+                            <field name="production_batch" string="生产批次"/>
+
+                            <field name="remark" string="备注"/>
+						</group>
+
+
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <!-- 动作 -->
+        <record id="fsn_month_plan_actions" model="ir.actions.act_window">
+            <field name="name">月计划</field>
+            <field name="res_model">fsn_month_plan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'show_fsn_month_plan_button': True}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No shifts found</p><p>
+                    Let's start your planning by adding a new shift.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

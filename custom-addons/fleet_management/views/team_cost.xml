@@ -1,0 +1,54 @@
+<odoo>
+	<data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="team_cost_tree">
+			<field name="name">车队费用</field>
+			<field name="model">team_cost</field>
+			<field name="arch" type="xml">
+				<tree editable="top" create="0" edit="0" delete="0">
+					<field name="date" string="日期"/>
+					<field name="fleet_management_id" string="序号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="cause" string="出车事由"/>
+					<field name="user_people_id" string="使用人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="before_refueling" string="加油前照片" widget='image' width='120px'/>
+					<field name="after_refueling" string="加油后照片" widget='image' width='120px'/>
+                    <field name="cost" string="费用"/>
+                    <field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '确认'" widget="badge"/>
+                    <button name="confirmation_button" context="{'type': 'through'}" type="object" string="通过" class="btn-primary" attrs="{'invisible':[('state','!=', '草稿')]}" groups="fsn_base.fsn_super_user_group"/>
+					<button name="confirmation_button" context="{'type': 'fallback'}" type="object" string="回退" class="btn-danger" attrs="{'invisible':[('state','!=', '确认')]}" groups="fsn_base.fsn_super_user_group"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="team_cost_form" model="ir.ui.view">
+			<field name="name">车队费用审批</field>
+			<field name="model">team_cost</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+						<field name="state" string="状态" invisible="1"/>
+                        <div attrs="{'invisible':[('state','!=', '草稿')]}">确认审批通过吗？</div>
+						<div attrs="{'invisible':[('state','!=', '确认')]}">确认状态回退吗？</div>
+                    </sheet>
+                    <footer>
+                        <button name="action_state_changes" attrs="{'invisible':[('state','!=', '草稿')]}" context="{'type': 'through'}" type="object" string="确认" class="oe_highlight"/>
+						<button name="action_state_changes" attrs="{'invisible':[('state','!=', '确认')]}" context="{'type': 'fallback'}" type="object" string="确认" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+
+
+
+		<!-- 动作 -->
+        <record id="team_cost_actions" model="ir.actions.act_window">
+            <field name="name">车队费用</field>
+            <field name="res_model">team_cost</field>
+            <field name="view_mode">tree</field>
+        </record>
+	</data>
+</odoo>

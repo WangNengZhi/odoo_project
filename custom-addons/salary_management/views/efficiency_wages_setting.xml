@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="efficiency_wages_setting_tree" model="ir.ui.view">
+            <field name="name">FSN效率薪资设置</field>
+            <field name="model">efficiency_wages_setting</field>
+            <field name="arch" type="xml">
+				<tree editable="top">
+                    <field name="date" string="月份" widget="fsn_month"/>
+                    <field name="type" string="类型"/>
+                    <field name="lowest_efficiency" string="最低效率"/>
+                    <field name="growth_numerical" string="增长数值"/>
+                    <field name="lowest_efficiency_wages" string="最低效率薪资"/>
+                    <field name="first_month_min_wages" string="正式工首月最低效率薪资"/>
+                    <field name="lowest_efficiency_following_wages" string="最低效率以下薪资"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="efficiency_wages_setting_action" model="ir.actions.act_window">
+            <field name="name">FSN效率薪资设置</field>
+            <field name="res_model">efficiency_wages_setting</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <record id="group_leader_wages_setting_tree" model="ir.ui.view">
+            <field name="name">FSN组长效率薪资设置</field>
+            <field name="model">group_leader_wages_setting</field>
+            <field name="arch" type="xml">
+				<tree editable="top" create="0" delete="0">
+                    <field name="employees_number" string="员工人数"/>
+                    <field name="salary_quota" string="薪酬额度"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="group_leader_wages_setting_action" model="ir.actions.act_window">
+            <field name="name">FSN组长效率薪资设置</field>
+            <field name="res_model">group_leader_wages_setting</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+    </data>
+</odoo>

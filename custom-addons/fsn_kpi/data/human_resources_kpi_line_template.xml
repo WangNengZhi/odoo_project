@@ -1,0 +1,145 @@
+<odoo>
+    <data noupdate="1">
+        <record id="human_resources_01" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">招聘信息发布及筛选</field>
+            <field name="assessment_standard">1）网络招聘信息的发布、筛选
+2）电话邀约，安排面试
+3）面试结果跟进、通知报到</field>
+            <field name="score">10</field>
+            <field name="calculation">是否及时准确，无差错</field>
+            <field name="sequence">1</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_02" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">招聘计划达成率</field>
+            <field name="assessment_standard">根据各部门人员需求，本月计划招聘（）人</field>
+            <field name="score">20</field>
+            <field name="calculation">实际完成率*该项分值</field>
+            <field name="sequence">2</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_03" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">入离职手续办理及档案管理</field>
+            <field name="assessment_standard">及时办理好员工的入离职手续，按要求对员工的资料收集完整，纳入档案管理，确保无丢失、无遗漏</field>
+            <field name="score">5</field>
+            <field name="calculation">准确及时完成，无差错</field>
+            <field name="sequence">3</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_04" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">劳动合同管理</field>
+            <field name="assessment_standard">劳动合同的签订、变更、续签等及时办理</field>
+            <field name="score">5</field>
+            <field name="calculation">准确及时完成，无差错</field>
+            <field name="sequence">4</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_05" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">社保办理</field>
+            <field name="assessment_standard">及时办理公司员工社保五金缴纳及管理</field>
+            <field name="score">5</field>
+            <field name="calculation">是否及时、准确、无遗漏</field>
+            <field name="sequence">5</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_06" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">采购管理</field>
+            <field name="assessment_standard">采购和发放公司办公用品及相关福利</field>
+            <field name="score">5</field>
+            <field name="calculation">是否及时、准确、无遗漏</field>
+            <field name="sequence">6</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_07" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">制度建设及企业文化的监督</field>
+            <field name="assessment_standard">对公司制度及企业文化实施进行监督</field>
+            <field name="score">5</field>
+            <field name="calculation">是否起到监督的作用</field>
+            <field name="sequence">7</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_08" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">办公用品完好率</field>
+            <field name="assessment_standard">固定资产的采购、维修、统计及其档案管理</field>
+            <field name="score">5</field>
+            <field name="calculation">不能影响正常办公使用</field>
+            <field name="sequence">8</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_09" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">其他工作</field>
+            <field name="assessment_standard">领导临时交代的其他工作</field>
+            <field name="score">5</field>
+            <field name="calculation">是否能够及时完成</field>
+            <field name="sequence">9</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_10" model="special_kpi_line_template">
+            <field name="assessment_project">工作能力</field>
+            <field name="assessment_content">团队协作能力</field>
+            <field name="assessment_standard">1、部门内：与同事、上级沟通顺畅，人际关系和谐</field>
+            <field name="score">10</field>
+            <field name="calculation">部门内外是否能够沟通顺畅无障碍</field>
+            <field name="sequence">10</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_11" model="special_kpi_line_template">
+            <field name="assessment_project">工作能力</field>
+            <field name="assessment_content">团队协作能力</field>
+            <field name="assessment_standard">1、与其他部门：能够协调对外关系，与相关部门保持良好联系及交流</field>
+            <field name="score">10</field>
+            <field name="calculation">部门内外是否能够沟通顺畅无障碍</field>
+            <field name="sequence">11</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_12" model="special_kpi_line_template">
+            <field name="assessment_project">工作能力</field>
+            <field name="assessment_content">组织策划能力</field>
+            <field name="assessment_standard">能够参与策划并组织公司大型活动及团队活动</field>
+            <field name="score">5</field>
+            <field name="calculation">活动过程是否衔接良好、无失误</field>
+            <field name="sequence">12</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_13" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">工作责任心</field>
+            <field name="assessment_standard">工作严谨认真，有强烈的责任意识</field>
+            <field name="score">5</field>
+            <field name="calculation">对自己的本职工作是否能够尽心完成，不推脱</field>
+            <field name="sequence">13</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_14" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">工作效率及积极性</field>
+            <field name="assessment_standard">对工作积极主动，交代的工作要按时完成</field>
+            <field name="score">5</field>
+            <field name="calculation">a.工作热情高，能对计划内和计划外的项目提供有意义的意见和见解 （5分）
+b.能主动考虑问题，并提出解决方案，对职责内的事务尽心尽责  （3分）
+c.有一定的主动性和热情，但还需要上级监督  （1分）</field>
+            <field name="sequence">14</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+        <record id="human_resources_15" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">出勤率</field>
+            <field name="assessment_standard">缺卡、迟到、早退、等情况</field>
+            <field name="score">10</field>
+            <field name="calculation">a.缺卡、迟到、早退：一次扣2分
+b.旷工：一次扣5分
+</field>
+            <field name="sequence">15</field>
+            <field name="fsn_kpi_job">人事专员</field>
+        </record>
+    </data>
+</odoo>

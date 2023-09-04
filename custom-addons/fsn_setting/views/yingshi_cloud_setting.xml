@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="yingshi_cloud_setting_tree">
+			<field name="name">萤石云设置</field>
+			<field name="model">yingshi_cloud_setting</field>
+			<field name="arch" type="xml">
+				<!-- <tree editable="bottom" create="0" delete="0"> -->
+				<tree editable="bottom" create="0">
+					<field name="key" string="Key" readonly="1"/>
+					<field name="value" string="Value"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="yingshi_equipment_info_tree">
+			<field name="name">萤石云设备信息</field>
+			<field name="model">yingshi_equipment_info</field>
+			<field name="arch" type="xml">
+				<!-- <tree editable="bottom" create="0" delete="0"> -->
+				<tree editable="bottom">
+					<field name="device_name" string="设备标识（唯一）"/>
+					<field name="device_serial_number" string="设备序列号"/>
+					<field name="device_channel_number" string="通道编号"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="yingshi_cloud_setting_action">
+			<field name="name">萤石云设置</field>
+			<field name="res_model">yingshi_cloud_setting</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="yingshi_equipment_info_action">
+			<field name="name">萤石云设备信息</field>
+			<field name="res_model">yingshi_equipment_info</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+        <menuitem
+            id="yingshi_cloud"
+            name="FSN设置"
+            parent="base.menu_administration"
+            sequence="110"/>
+
+		<menuitem name="萤石云设置" id="yingshi_cloud_setting_menu" parent="yingshi_cloud" action="yingshi_cloud_setting_action" sequence="10"/>
+		<menuitem name="萤石云设备信息" id="yingshi_equipment_info_menu" parent="yingshi_cloud" action="yingshi_equipment_info_action" sequence="20"/>
+
+    </data>
+</odoo>

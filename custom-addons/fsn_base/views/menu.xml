@@ -1,0 +1,23 @@
+<odoo>
+  	<data>
+
+
+        <menuitem
+        id="fsn_config_menu"
+        name="FSN_基础设置"
+        parent="base.menu_administration"
+        sequence="100"/>
+
+            <menuitem name="尺码" id="fsn_size_menu" parent="fsn_config_menu" action="fsn_size_action" sequence="10"/>
+
+            <menuitem name="颜色" id="fsn_color_menu" parent="fsn_config_menu" action="fsn_color_action" sequence="20"/>
+
+		    <menuitem name="单位" id="fsn_unit_menu" parent="fsn_config_menu" action="fsn_unit_action" sequence="30"/>
+
+		    <menuitem name="员工小组" id="fsn_staff_team_menu" parent="fsn_config_menu" action="fsn_staff_team_action" sequence="40"/>
+
+            <menuitem name="导出权限设置" id="data_export_setting_menu" parent="fsn_config_menu" action="data_export_setting_action" sequence="50"/>
+
+		    <menuitem name="来源与去向" id="fsn_source_where_menu" parent="fsn_config_menu" action="fsn_source_where_action" sequence="60"/>
+  	</data>
+</odoo>

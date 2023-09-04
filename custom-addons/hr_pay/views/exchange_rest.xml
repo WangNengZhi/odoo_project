@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+        <record id="exchange_rest_tree" model="ir.ui.view">
+            <field name="name">调休记录</field>
+            <field name="model">exchange_rest</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="write_date" string="更新时间"/>
+                    <field name="employee" string="员工"/>
+                    <field name="department" string="部门"/>
+                    <field name="time_remaining" string="可调休时长"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="exchange_rest_form" model="ir.ui.view">
+            <field name="name">调休记录</field>
+            <field name="model">exchange_rest</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <h1 style="text-align:center">调休记录</h1>
+                        <group col="4">
+                            <field name="employee" string="员工" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="department" string="部门"/>
+                            <field name="time_remaining" string="可调休时长"/>
+                        </group>
+						<notebook>
+							<page string="调休增加明细">
+								<field name="exchange_rest_add_line_ids" string="调休增加明细">
+									<tree editable="bottom">
+                                        <field name="employee_id" string="员工"/>
+                                        <field name="start_date" string="开始时间"/>
+                                        <field name="end_date" string="结束时间"/>
+                                        <field name="hours" string="时长(小时)"/>
+                                        <field name="remarks" string="备注"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+							<page string="调休使用明细">
+								<field name="exchange_rest_use_line_ids" string="调休使用明细">
+									<tree editable="bottom">
+                                        <field name="employee_id" string="员工"/>
+                                        <field name="start_date" string="开始时间"/>
+                                        <field name="end_date" string="结束时间"/>
+                                        <field name="hours" string="时长(小时)"/>
+                                        <field name="remarks" string="备注"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+						</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="exchange_rest_actions" model="ir.actions.act_window">
+            <field name="name">调休记录</field>
+            <field name="res_model">exchange_rest</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="调休记录" action="exchange_rest_actions" id="exchange_rest_menu" parent="menu_attend_attend1"/>
+
+    </data>
+</odoo>

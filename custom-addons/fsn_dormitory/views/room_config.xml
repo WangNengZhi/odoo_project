@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+
+		<record model="ir.ui.view" id="room_config_tree">
+			<field name="name">宿舍楼号</field>
+			<field name="model">room_config</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom">
+                    <header>
+                        <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+					<field name="dormitory_park_id" string="园区" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="dormitory_building_number_id" string="楼号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="room_serial_number" string="房间号"/>
+					<field name="bed_number" string="床位数量"/>
+					<field name="is_air_conditioner" string="空调"/>
+					<field name="is_water_heater" string="热水器"/>
+					<field name="is_wardrobe" string="衣柜"/>
+					<field name="note" string="备注"/>
+				</tree>
+			</field>
+		</record>
+        <!-- 动作 -->
+        <record id="room_config_action" model="ir.actions.act_window">
+            <field name="name">房间配置</field>
+            <field name="res_model">room_config</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

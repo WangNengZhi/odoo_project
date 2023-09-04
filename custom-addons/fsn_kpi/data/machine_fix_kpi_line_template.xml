@@ -1,0 +1,123 @@
+<odoo>
+    <data noupdate="1">
+        <record id="machine_fix_kpi_line_template_01" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">设备完好率</field>
+            <field name="assessment_standard">设备完好率保障值为100%</field>
+            <field name="score">10</field>
+            <field name="calculation">设备运转率=100%，每降低于1%扣1分</field>
+            <field name="sequence">1</field>
+            <field name="fsn_kpi_job">机修</field>
+        </record>
+
+        <record id="machine_fix_kpi_line_template_02" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">专业技能</field>
+            <field name="assessment_standard">对所有设备故障的维修结果达到100%</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率=100%，每降低于1%扣1分</field>
+            <field name="sequence">2</field>
+            <field name="fsn_kpi_job">机修</field>
+        </record>
+
+        <record id="machine_fix_kpi_line_template_03" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">产前准备</field>
+            <field name="assessment_standard">所有款设备的产前准备务必100%完成</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率=100%，每降低于1%扣2分</field>
+            <field name="sequence">3</field>
+            <field name="fsn_kpi_job">机修</field>
+        </record>
+
+        <record id="machine_fix_kpi_line_template_04" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">出勤效率</field>
+            <field name="assessment_standard">对于每一次车间呼叫维修时确保5分钟到达事故现场</field>
+            <field name="score">10</field>
+            <field name="calculation">出勤率100%每降低1%扣1分</field>
+            <field name="sequence">4</field>
+            <field name="fsn_kpi_job">机修</field>
+        </record>
+        <record id="machine_fix_kpi_line_template_05" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作态度</field>
+            <field name="assessment_standard">根据公司总计划，听从厂长工作安排、调度，无条件配合每个相关联部门维修</field>
+            <field name="score">10</field>
+            <field name="calculation">配合度100%，每降低1%扣1分</field>
+            <field name="sequence">5</field>
+            <field name="fsn_kpi_job">机修</field>
+        </record>
+        <record id="machine_fix_kpi_line_template_06" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">大货停产杜绝率</field>
+            <field name="assessment_standard">杜绝因产前准备不足或设备/特殊工具没有及时到位导至大货停产</field>
+            <field name="score">10</field>
+            <field name="calculation">杜绝率100%，降低1%扣4分</field>
+            <field name="sequence">6</field>
+            <field name="fsn_kpi_job">机修</field>
+        </record>
+
+        <record id="machine_fix_kpi_line_template_07" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">投诉率</field>
+            <field name="assessment_standard">因工作未完成或失误被相关部门投诉</field>
+            <field name="score">10</field>
+            <field name="calculation">被投诉一次扣2分</field>
+            <field name="sequence">7</field>
+            <field name="fsn_kpi_job">机修</field>
+        </record>
+
+        <record id="machine_fix_kpi_line_template_08" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">日常巡查</field>
+            <field name="assessment_standard">对所有生产设备每日巡查，对锅炉房、发电机、机械臂等专业机器利行巡查</field>
+            <field name="score">10</field>
+            <field name="calculation">没有巡查一次扣1分</field>
+            <field name="sequence">8</field>
+            <field name="fsn_kpi_job">机修</field>
+        </record>
+
+        <record id="machine_fix_kpi_line_template_09" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">工作责任心</field>
+            <field name="assessment_standard">工作认真，严谨，能为正确的结果引导。</field>
+            <field name="score">5</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">9</field>
+            <field name="fsn_kpi_job">机修</field>
+        </record>
+
+        <record id="machine_fix_kpi_line_template_10" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">团队配合</field>
+            <field name="assessment_standard">要懂团队的协作和配合。</field>
+            <field name="score">5</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">10</field>
+            <field name="fsn_kpi_job">机修</field>
+        </record>
+
+        <record id="machine_fix_kpi_line_template_11" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">出勤率</field>
+            <field name="assessment_standard">缺卡，迟到，早退，等情况。</field>
+            <field name="score">5</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">11</field>
+            <field name="fsn_kpi_job">机修</field>
+        </record>
+
+        <record id="machine_fix_kpi_line_template_12" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">言论</field>
+            <field name="assessment_standard">杜绝消极言论及负面情绪，对抗公司制度、诋毁公司处罚100元/次</field>
+            <field name="score">5</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">12</field>
+            <field name="fsn_kpi_job">机修</field>
+        </record>
+
+
+    </data>
+</odoo>

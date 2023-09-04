@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+
+        <template id="assets_backend" name="custom page assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+
+                <script type="text/javascript" src="/hpro/static/src/js/message_button.js"></script>
+                <!-- <script type="text/javascript" src="/hpro/static/src/js/planning_sheet_button.js"></script> -->
+
+            </xpath>
+        </template>
+    </data>
+</odoo>

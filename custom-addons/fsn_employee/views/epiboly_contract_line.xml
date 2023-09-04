@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+
+		<record model="ir.ui.view" id="epiboly_contract_line_tree">
+			<field name="name">外包计件合同明细</field>
+			<field name="model">epiboly_contract_line</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="hr_employee_id" string="员工" options="{'no_create': True, 'no_open': True}"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+					<field name="process_number" string="工序号"/>
+					<field name="number" string="件数"/>
+					<field name="processing_cost" string="加工费"/>
+					<field name="delivery_date" string="交货日期"/>
+					<field name="remark" string="备注"/>
+				</tree>
+			</field>
+		</record>
+
+        <!-- 动作 -->
+        <record id="epiboly_contract_line_actions" model="ir.actions.act_window">
+            <field name="name">外包计件合同明细</field>
+            <field name="res_model">epiboly_contract_line</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <menuitem id="menu_epiboly_contract_line"
+            name="外包计件合同明细"
+            parent="hr.menu_hr_employee_payroll"
+            action="epiboly_contract_line_actions"
+            sequence="70"/>
+    </data>
+</odoo>

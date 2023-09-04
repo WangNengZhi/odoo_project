@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+        <record id="repair_clock_in_tree" model="ir.ui.view">
+            <field name="name">补卡申请单</field>
+            <field name="model">repair_clock_in</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="repair_clock_date" string="补卡申请时间"/>
+                    <field name="employee_id" string="员工"/>
+                    <field name="department_id" string="部门"/>
+                    <field name="approver_signature" string="审批人"/>
+                    <field name="repair_clock_in_line_ids" string="补卡申请单明细"/>
+                    <field name="reason" string="补卡原因"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="repair_clock_in_form" model="ir.ui.view">
+            <field name="name">补卡申请单</field>
+            <field name="model">repair_clock_in</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="4">
+                            <field name="repair_clock_date" string="补卡申请时间"/>
+                            <field name="employee_id" string="员工" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="department_id" string="部门" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="approver_signature" string="审批人" required="1" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="reason" string="补卡原因"/>
+                        </group>
+						<notebook>
+							<page string="补卡明细">
+								<field name="repair_clock_in_line_ids" string="补卡明细">
+									<tree editable="bottom">
+										<field name="line_date" string="补卡日期"/>
+										<field name="employee_id" string="员工"/>
+										<field name="repair_clock_type" string="上班卡/下班卡"/>
+										<field name="type" string="补卡类型"/>
+										<field name="reason" string="补卡原因"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+						</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="repair_clock_in_actions" model="ir.actions.act_window">
+            <field name="name">补卡申请单</field>
+            <field name="res_model">repair_clock_in</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="补卡申请单" action="repair_clock_in_actions" id="repair_clock_in_menu" parent="menu_attend_attend1"/>
+    </data>
+</odoo>

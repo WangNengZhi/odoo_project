@@ -1,0 +1,263 @@
+<odoo>
+    <data>
+
+        <record id="view_tree_totlepro_totlepro" model="ir.ui.view">
+            <field name="name">totle_pro</field>
+            <field name="model">totlepro.totlepro</field>
+            <field name="arch" type="xml">
+                <tree create="0">
+
+                    <field name="date"/>
+                    <field name="number"/>
+                    <field name="num_people"/>
+                    <field name="avg_pro"/>
+                    <field name="pro_value"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_form_totlepro_totlepro" model="ir.ui.view">
+            <field name="name">totlepro_totlepro_form</field>
+            <field name="model">totlepro.totlepro</field>
+            <field name="arch" type="xml">
+                <form edit="0" create="0">
+                    <sheet>
+                        <group col="4">
+                            <field name="date"/>
+                            <field name="number" readonly="1" force_save="1"/>
+                            <field name="pro_value" readonly="1" force_save="1"/>
+                            <field name="num_people" readonly="1" force_save="1"/>
+                            <field name="avg_pro" readonly="1" force_save="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_search_product_product" model="ir.ui.view">
+            <field name="name">product_search</field>
+            <field name="model">pro.pro</field>
+            <field name="arch" type="xml">
+                <search>
+                    <group>
+                        <filter string="组别" name="filter_group" context="{'group_by': 'group'}"/>
+                        <filter string="日期" name="filter_date" context="{'group_by': 'date'}"/>
+                    </group>
+                    <field name="date" string="日期"/>
+                    <field name="order_number" string="订单"/>
+                    <field name="style_number" string="款号"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_tree_product_product" model="ir.ui.view">
+            <field name="name">product_tree</field>
+            <field name="model">pro.pro</field>
+            <field name="arch" type="xml">
+
+                <tree>
+                    <header>
+                        <button name="inspect_data" type="object" string="检测数据"/>
+                    </header>
+
+                    <field name="date" string="日期"/>
+                    <field name="order_number" string="订单"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="product_size" string="尺码"/>
+                    <field name="group" string="组别"/>
+                    <field name="number" string="件数"/>
+                    <field name="num_people" string="人数"/>
+                    <field name="avg_value" string="人均产值"/>
+                    <field name="pro_value" string="产值"/>
+
+                    <field name="dg_number" string="吊挂件数"/>
+                    <field name="dg_value" string="吊挂产值"/>
+                    <field name="stranded_number" string="滞留件数"/>
+                    <field name="retention_value" string="滞留产值"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_form_product_product" model="ir.ui.view">
+            <field name="name">product_form</field>
+            <field name="model">pro.pro</field>
+            <field name="arch" type="xml">
+                <form edit="0" duplicate="0">
+                    <header>
+                        <!-- <button name="compute_retention_value" type="object" string="测试按钮06661"/> -->
+                    </header>
+                    <sheet>
+                        <group col="4">
+                            <field name="date" string="日期"/>
+                            <field name="order_number" string="订单" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="product_size" string="尺码"/>
+                            <field name="group" string="组别"/>
+                            <field name="number" string="件数"/>
+                            <field name="num_people" string="人数"/>
+                            <field name="avg_value" string="人均产值"/>
+                            <field name="pro_value" string="产值"/>
+                            <field name="retention_value" string="滞留产值"/>
+                        </group>
+                    </sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_
+						followers"/>
+						<field name="message_ids" widget="mail_thread"/>
+					</div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_tree_memp_memp" model="ir.ui.view">
+            <field name="name">员工信息</field>
+            <field name="model">memp.memp</field>
+            <field name="arch" type="xml">
+                <tree create="0" edit="0">
+                    <field name="date"/>
+                    <field name="employee"/>
+                    <field name="group"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_search_cost_cost" model="ir.ui.view">
+            <field name="name">工序工资</field>
+            <field name="model">cost.cost1</field>
+            <field name="arch" type="xml">
+                <search>
+                    <group>
+                        <filter string="日期" name="filter_date" context="{'group_by': 'date1'}"/>
+                        <filter string="组" name="filter_group" context="{'group_by': 'group'}"/>
+                        <filter string="员工" name="filter_employee" context="{'group_by': 'employee'}"/>
+                        <!-- <aggregate name="qqqq2" string="qqqq2" field="num_people" group_operator="avg" value_label="666"/> -->
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_tree_cost_cost" model="ir.ui.view">
+            <field name="name">工序工资</field>
+            <field name="model">cost.cost1</field>
+            <field name="arch" type="xml">
+                <tree create="0" edit="0">
+                    <field name="date1"/>
+                    <field name="employee_id"/>
+                    <field name="employee"/>
+                    <field name="group"/>
+                    <field name="cost"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_search_cost_cost2" model="ir.ui.view">
+            <field name="name">计件工资</field>
+            <field name="model">ji.jian</field>
+            <field name="arch" type="xml">
+                <search>
+                    <group>
+                        <filter string="日期" name="filter_date" context="{'group_by': 'date1'}"/>
+                        <filter string="组" name="filter_group" context="{'group_by': 'group'}"/>
+                        <filter string="员工" name="filter_employee" context="{'group_by': 'employee'}"/>
+                        <!-- <aggregate name="qqqq2" string="qqqq2" field="num_people" group_operator="avg" value_label="666"/> -->
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_tree_cost_cost2" model="ir.ui.view">
+            <field name="name">计件工资</field>
+            <field name="model">ji.jian</field>
+            <field name="arch" type="xml">
+                <tree create="0" edit="0">
+                    <field name="date1"/>
+                    <field name="employee_id"/>
+                    <field name="employee"/>
+                    <field name="contract_type" string="合同"/>
+                    <field name="group"/>
+                    <field name="cost"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <act_window id="action_total_totlepro"
+                    name="车间产值"
+                    res_model="totlepro.totlepro"
+                    view_mode="tree,form,graph" />
+
+        <act_window id="action_pro_pro"
+                    name="组产值"
+                    res_model="pro.pro"
+                    view_mode="tree,form,graph" />
+
+        <act_window id="action_memp_memp"
+                    name="员工信息"
+                    res_model="memp.memp"
+                    view_mode="tree"/>
+        <act_window id="action_cost_cost"
+                    name="工序工资"
+                    res_model="cost.cost1"
+                    view_mode="tree"/>
+        <act_window id="action_ji_jian"
+                    name="计件工资"
+                    res_model="ji.jian"
+                    view_mode="tree"/>
+
+
+
+
+        <menuitem id="menu_total_totlepro"
+                name="统计"
+                web_icon="pro,static/description/icon.png"/>
+            <menuitem id="menu_total_totlepro1"
+                name="产值明细"
+                parent="menu_total_totlepro"
+                sequence="2"/>
+                <menuitem id="menu_total_totlepro_two"
+                    name="车间产值"
+                    parent="menu_total_totlepro1"
+                    action="action_total_totlepro"
+                    sequence="20"/>
+                <menuitem id="menu_group_pro"
+                    name="组产值"
+                    parent="menu_total_totlepro1"
+                    action="action_pro_pro"
+                    sequence="30"/>
+            <menuitem id="menu_total_totlepro1_week"
+                name="产值明细(周)"
+                parent="menu_total_totlepro"
+                sequence="3"/>
+
+            <menuitem id="menu_memp_memp_root"
+                    name="员工信息"
+                    parent="menu_total_totlepro"
+                    sequence="4"/>
+            <menuitem id="menu_memp_memp"
+                    name="员工信息"
+                    parent="menu_memp_memp_root"
+                    action="action_memp_memp"
+                    sequence="4"/>
+
+            <menuitem id="menu_cost_cost"
+                    name="工资明细"
+                    parent="menu_total_totlepro"
+                    sequence="5"/>
+
+
+                <menuitem id="menu_cost_cost4"
+                        name="工序工资"
+                        parent="menu_cost_cost"
+                        action="action_cost_cost"
+                        sequence="2"/>
+
+                <menuitem id="menu_cost_cost5"
+                        name="计件工资"
+                        parent="menu_cost_cost"
+                        action="action_ji_jian"
+                        sequence="2"/>
+
+    </data>
+</odoo>

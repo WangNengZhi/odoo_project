@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+
+        <record id="material_preset_tree" model="ir.ui.view">
+            <field name="name">物料预设</field>
+            <field name="model">material_preset</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="type" string="类型"/>
+                    <field name="material_name_list_id" string="物料名称"/>
+                    <field name="name" string="名称"/>
+                    <field name="unit_id" string="单位"/>
+                    <field name="is_size" string="是否分尺码"/>
+                </tree>
+            </field>
+        </record>
+
+		<!-- form -->
+		<record id="material_preset_form" model="ir.ui.view">
+			<field name="name">物料预设</field>
+			<field name="model">material_preset</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group col="4">
+                            <field name="type" string="类型"/>
+                            <field name="material_name_list_id" string="物料名称" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="name" string="名称"/>
+                            <field name="unit_id" string="单位" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="is_size" string="是否分尺码"/>
+						</group>
+						<!-- <notebook>
+							<page string="变体">
+								<field name="variation_preset_ids" string="变体">
+									<tree editable="bottom">
+                                        <field name="key" string="属性" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="value" string="值" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                    </tree>
+                                </field>
+                            </page>
+						</notebook> -->
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <record id="material_preset_actions" model="ir.actions.act_window">
+            <field name="name">物料预设</field>
+            <field name="res_model">material_preset</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

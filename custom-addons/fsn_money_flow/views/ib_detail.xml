@@ -1,0 +1,43 @@
+<odoo>
+	<data>
+        <record id="inherit_finished_product_ware_line_tree_tree" model="ir.ui.view">
+            <field name="name">仓库明细试图增加按钮</field>
+            <field name="model">finished_product_ware_line</field>
+            <field name="inherit_id" ref="warehouse_management.finished_product_ware_line_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="inside">
+                    <header>
+                        <button string="测试按钮" type="object" name="set_fsn_operate_id" class="oe_highlight"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- <record id="inherit_ib_detail_tree" model="ir.ui.view">
+            <field name="name">款号视图增加按钮</field>
+            <field name="model">ib.detail</field>
+            <field name="inherit_id" ref="sale_pro.view_ib_detail_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="inside">
+                    <header>
+                        <button string="生成订单成本" type="object" name="create_order_cost" class="oe_highlight"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="inherit_sale_pro_tree" model="ir.ui.view">
+            <field name="name">订单视图增加按钮</field>
+            <field name="model">sale_pro.sale_pro</field>
+            <field name="inherit_id" ref="sale_pro.view_sale_pro_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="inside">
+                    <header>
+                        <button string="同步盘点运营数据" type="object" name="set_fsn_operate_id" class="oe_highlight"/>
+                    </header>
+                </xpath>
+            </field>
+        </record> -->
+
+	</data>
+</odoo>

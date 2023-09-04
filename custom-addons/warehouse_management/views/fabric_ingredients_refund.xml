@@ -1,0 +1,33 @@
+<odoo>
+	<data>
+        <record id="inheritance_warehouse_bom_inventory_tree" model="ir.ui.view">
+            <field name="name">面料库存tree继承</field>
+            <field name="model">warehouse_bom_inventory</field>
+            <field name="inherit_id" ref="warehouse_management.warehouse_bom_inventory_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="create_fabric_ingredients_refund" type="object" string="确认" class="btn-primary"
+                    invisible="context.get('show_button') != True"
+                    />
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="inheritance_plus_material_inventory_tree" model="ir.ui.view">
+            <field name="name">物料库存tree继承</field>
+            <field name="model">plus_material_inventory</field>
+            <field name="inherit_id" ref="warehouse_management.plus_material_inventory_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="create_fabric_ingredients_refund" type="object" string="确认" class="btn-primary"
+                    invisible="context.get('show_button') != True"
+                    />
+                </xpath>
+            </field>
+        </record>
+
+
+
+	</data>
+</odoo>

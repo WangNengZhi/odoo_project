@@ -1,0 +1,51 @@
+<odoo>
+    <data>
+
+        <record id="res_hr_appointment_rec_view_tree_from" model="ir.ui.view">
+            <field name="name">招聘数据</field>
+            <field name="model">appointment.recritment</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="apply_to_position"/>
+                    <field name="recruitment_location"/>
+                    <field name="interview_time" string="面试时间"/>
+                    <field name="interviewer" string="面试官"/>
+                    <field name="eligibility"/>
+                    <field name="entry_time"/>
+                    <field name="resignation_time"/>
+                    <field name="recruiter"/>
+                    <!-- <field name="recruiter_ids" string="招聘员"/> -->
+                    <field name="candidate_number" string="面试人数"/>
+                    <field name="comment"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="action_hr_appointment_recritment">
+            <field name="name">招聘数据</field>
+            <field name="res_model">appointment.recritment</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem   id="menu_job_hr_appointment"
+                    name="招聘明细"
+                    parent="hr_recruitment.menu_hr_recruitment_root"
+                    sequence="0"/>
+
+            <menuitem   id="menu_job_hr_appointment1"
+                        name="招聘数据"
+                        parent="menu_job_hr_appointment"
+                        action='action_hr_appointment_recritment'
+                        sequence="10"/>
+
+
+            <menuitem name="线上招聘" parent="menu_job_hr_appointment" id="menu_hr_job_position" action="hr_recruitment.action_hr_job" sequence="20"/>
+
+
+    </data>
+</odoo>

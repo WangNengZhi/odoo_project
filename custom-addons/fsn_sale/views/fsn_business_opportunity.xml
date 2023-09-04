@@ -1,0 +1,33 @@
+
+<odoo>
+    <data>		
+
+		<!-- tree -->
+		<record id="fsn_business_opportunity_tree" model="ir.ui.view">
+			<field name="name">FSN销售商机</field>
+			<field name="model">fsn_business_opportunity</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+
+					<field name="date" string="日期"/>
+					<field name="sales_staff_id" string="销售人员" options="{'no_create': True, 'no_open': True}"/>
+					<field name="potential_customer" string="潜在客户"/>
+					<field name="contact_person" string="联系人"/>
+					<field name="telephone" string="电话"/>
+					<field name="address" string="地址"/>
+					<field name="mailbox" string="邮箱"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- 动作 -->
+        <record id="fsn_business_opportunity_actions" model="ir.actions.act_window">
+            <field name="name">FSN销售商机</field>
+            <field name="res_model">fsn_business_opportunity</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

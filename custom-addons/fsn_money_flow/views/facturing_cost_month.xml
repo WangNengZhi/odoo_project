@@ -1,0 +1,30 @@
+<odoo>
+	<data>
+		<!-- tree视图 -->
+		<record model="ir.ui.view" id="facturing_cost_month_tree">
+			<field name="name">制造费用成本月报</field>
+			<field name="model">manufacturing_cost_month</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="date" string="日期"/>
+					<field name="cost_center" string="成本中心"/>
+					<field name="type" string="制造费用类别"/>
+					<field name="month_count" string="本月发生额"/>
+					<field name="year_count" string="本年累计发生额"/>
+					<field name="proportion" string="占营业成本比"/>
+					<field name="month_update_money" string="环比增减"/>
+					<field name="completion_rate" string="预算完成率"/>
+					<field name="production" string="产量"/>
+					<field name="unit_manufacturing_cost" string="单位制造费用"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="facturing_cost_month_action">
+			<field name="name">制造费用成本月报</field>
+			<field name="res_model">manufacturing_cost_month</field>
+			<field name="view_mode">tree,graph</field>
+		</record>
+	</data>
+</odoo>

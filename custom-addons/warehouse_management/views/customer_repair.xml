@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <!-- tree -->
+        <record id="customer_repair_line_tree" model="ir.ui.view">
+            <field name="name">客户返修tree</field>
+            <field name="model">customer_repair_line</field>
+            <field name="arch" type="xml">
+                <tree create="0">
+                        <field name="date" string="日期"/>
+                        <field name="item_number" string="款号"/>
+                        <field name="color" string="颜色"/>
+                        <field name="coustm" string="客户"/>
+                        <field name="reality_tailor" string="实裁数量"/>
+                        <field name="out_of_stock_xs" string="XS"/>
+                        <field name="out_of_stock_s" string="S"/>
+                        <field name="out_of_stock_m" string="M"/>
+                        <field name="out_of_stock_l" string="L"/>
+                        <field name="out_of_stock_xl" string="XL"/>
+                        <field name="out_of_stock_two_xl" string="XXL"/>
+                        <field name="out_of_stock_three_xl" string="XXXL"/>
+                        <field name="out_of_stock_repair_parts" string="疵品/返修件"/>
+                        <field name="out_of_total" string="返修总数"/>
+                </tree>
+            </field>
+        </record>
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="customer_repair_line_action">
+		<field name="name">客户返修</field>
+		<field name="res_model">customer_repair_line</field>
+		<field name="view_mode">tree</field>
+		</record>
+    </data>
+</odoo>

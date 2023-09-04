@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+        <!-- tree -->
+        <record model="ir.ui.view" id="check_position_settings_tree">
+            <field name="name">组别设置</field>
+            <field name="model">check_position_settings</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name="sequence" widget="handle"/>
+                        <field name="group" string="组别"/>
+                        <field name="true_group_ids" string="真实组别" widget="many2many_tags"/>
+                        <field name="line_number" string="线号"/>
+                        <field name="line_guid" string="流水线唯一标识"/>
+                        <field name="position_line_ids" string="站位设置" widget="many2many_tags"/>
+                        <field name="repair_fulcrum" string="返修支点"/>
+                        <field name="repair_group" string="返修组别"/>
+                        <field name="repair_group_position_lines_id" string="返修组别站位明细" widget="many2many_tags"/>
+                        <field name="department_id" string="部门"/> 
+                    </tree>
+                </field>
+        </record>
+
+        <!-- form -->
+        <record id="check_position_settings_form" model="ir.ui.view">
+            <field name="name">组别设置</field>
+            <field name="model">check_position_settings</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div>
+                            <h1 style="text-align:center">组别设置</h1>
+                        </div>
+                        <group col="4">
+                            <field name="group" string="组别" attrs="{'readonly':[('id', '!=', False)]}"/>
+                            <field name="true_group_ids" string="真实组别" options="{'no_create': True, 'no_open': True}" widget="many2many_tags"/>
+                            <field name="position_line_ids" string="站位设置">
+                                <tree editable="bottom">
+                                    <field name="position" string="站位"/>
+                                    <field name="type" string="站位类型"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group col="4" string="流水线配置">
+                            <field name="suspension_system_line_id" string="流水线选择" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="line_number" string="线号"/>
+                            <field name="line_guid" string="流水线唯一标识"/>
+                        </group>
+                        <group col="4" string="返修配置">
+                            <field name="repair_fulcrum" string="返修支点"/>
+                            <field name="repair_group" string="返修组别" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="repair_group_position_lines_id" string="返修组别站位明细">
+                                <tree editable="bottom">
+                                    <field name="position" string="站位"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group col="4" string="类别">
+                            <field name="department_id" string="部门"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="check_position_settings_action">
+            <field name="name">组别设置</field>
+            <field name="res_model">check_position_settings</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

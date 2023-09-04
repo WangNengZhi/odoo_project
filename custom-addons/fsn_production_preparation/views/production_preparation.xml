@@ -1,0 +1,90 @@
+<odoo>
+  	<data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="production_preparation_tree">
+			<field name="name">production_preparation_tree</field>
+			<field name="model">production_preparation</field>
+			<field name="arch" type="xml">
+				<tree create="1">
+					<field name="date" string="日期"/>
+					<field name="order_number" string="订单号"/>
+					<field name="style_number" string="款号"/>
+					<field name="client" string="客户（旧）"/>
+					<field name="client_id" string="客户"/>
+					<field name="group" string="组别（旧）"/>
+					<field name="group_id" string="组别"/>
+					<field name="up_wire_date" string="上线日期"/>
+					<field name="finish_plan_date" string="计划完成日期"/>
+				</tree>
+			</field>
+		</record>
+		<!-- form -->
+		<record id="production_preparation_form" model="ir.ui.view">
+			<field name="name">production_preparation_form</field>
+			<field name="model">production_preparation</field>
+			<field name="arch" type="xml">
+				<form create="1">
+					<sheet>
+						<!-- <div style="text-align: center"><h1>员工奖惩记录单</h1></div> -->
+						<group col="4">
+							<field name="order_number" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="client" string="客户（旧）"/>
+							<field name="client_id" string="客户" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="group" string="组别（旧）"/>
+							<field name="group_id" string="组别" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+
+							<field name="date" string="日期"/>
+							<field name="up_wire_date" string="上线日期"/>
+							<field name="finish_plan_date" string="计划完成日期"/>
+						</group>
+						<group col="4">
+							<field name="th_per_management_id" string="样衣记录" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="sample_image" string="样衣" widget='image' width='120px'/>
+						</group>
+						<group col="4">
+							<field name="fsn_process_sheet_id" string="工艺单记录" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="process_sheet" string="工艺单" widget="many2many_binary"/>
+						</group>
+						<group col="4">
+							<field name="device_list" string="设备清单" widget="many2many_binary"/>
+							<field name="check_cloth_report" string="验布报告" widget="many2many_binary"/>
+							<field name="production_decision" string="生产方案" widget="many2many_binary"/>
+							<field name="process_requirement" string="工艺要求" widget="many2many_binary"/>
+							<field name="shell_fabric_card" string="面辅料卡" widget="many2many_binary"/>
+						</group>
+						<notebook>
+							<page string="3P流程明细">
+								<field name="line_ids" string="3P流程明细">
+									<tree editable="bottom" create="0" delete="0">
+										<field name="sequence" string="序号" readonly="1" force_save="1"/>
+										<!-- <field name="group_type" string="组别" readonly="1" force_save="1"/> -->
+										<!-- <field name="before_go_online" string="新款上线前"/> -->
+										<field name="content" string="内容" readonly="1" force_save="1"/>
+										<field name="department_ids" string="部门" readonly="1" force_save="1" widget="many2many_tags" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										<field name="person_in_charge" string="负责人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										<field name="completion_date" string="完成日期"/>
+										<field name="is_confirm" string="确认"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+		<!-- 动作 -->
+
+		<record model="ir.actions.act_window" id="production_preparation_action">
+			<field name="name">3P流程</field>
+			<field name="res_model">production_preparation</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+  	</data>
+</odoo>

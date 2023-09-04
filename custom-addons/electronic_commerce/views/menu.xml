@@ -1,0 +1,73 @@
+<odoo>
+    <data>
+
+        <menuitem id="menu_electronic_commerce_home"
+            name="电商"
+			web_icon="electronic_commerce,static/description/icon.png"
+            sequence="10"/>
+            <menuitem id="menu_ec_results_manage"
+				name="绩效管理"
+				parent="menu_electronic_commerce_home"
+                action="ec_results_manage_action"
+				sequence="5"/>
+            <menuitem id="menu_platform_linkman"
+				name="联系人"
+				parent="menu_electronic_commerce_home"
+                action="platform_linkman_action"
+				sequence="10"/>
+            <menuitem id="menu_electronic_commerce_data"
+				name="数据"
+				parent="menu_electronic_commerce_home"
+				sequence="20"/>
+                <menuitem id="menu_ec_product_data"
+                    name="货品数据"
+                    parent="menu_electronic_commerce_data"
+                    action="ec_product_data_action"
+                    sequence="10"/>
+                <menuitem id="menu_ec_live_audience_analysis"
+                    name="直播观客群"
+                    parent="menu_electronic_commerce_data"
+                    action="ec_live_audience_analysis_action"
+                    sequence="20"/>
+                <menuitem id="menu_ec_live_data_collect"
+                    name="直播数据汇总"
+                    parent="menu_electronic_commerce_data"
+                    action="ec_live_data_collect_action"
+                    sequence="30"/>
+                <menuitem id="menu_flow_conversion_efficiency"
+                    name="流量转换效率"
+                    parent="menu_electronic_commerce_data"
+                    action="flow_conversion_efficiency_action"
+                    sequence="40"/>
+                <menuitem id="menu_ec_video_data"
+                    name="视频数据"
+                    parent="menu_electronic_commerce_data"
+                    action="ec_video_data_action"
+                    sequence="50"/>
+                <menuitem id="menu_ec_flow_channel"
+                    name="渠道数据"
+                    parent="menu_electronic_commerce_data"
+                    action="ec_flow_channel_action"
+                    sequence="60"/>
+            <menuitem id="menu_electronic_commerce_setting"
+				name="设置"
+				parent="menu_electronic_commerce_home"
+				sequence="90"/>
+                <menuitem id="menu_platform_type"
+                    name="平台"
+                    parent="menu_electronic_commerce_setting"
+                    action="platform_type_action"
+                    sequence="10"/>
+                <menuitem id="menu_platform_account"
+                    name="账号"
+                    parent="menu_electronic_commerce_setting"
+                    action="platform_account_action"
+                    sequence="15"/>
+                <menuitem id="menu_ec_task"
+                    name="任务"
+                    parent="menu_electronic_commerce_setting"
+                    action="ec_task_action"
+                    sequence="20"/>
+
+    </data>
+</odoo>

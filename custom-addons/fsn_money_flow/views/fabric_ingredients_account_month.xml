@@ -1,0 +1,32 @@
+<odoo>
+	<data>
+		<!-- tree视图 -->
+		<record id="fabric_ingredients_account_month_tree" model="ir.ui.view">
+			<field name="name">原材料采购成本月报</field>
+			<field name="model">fabric_ingredients_account_month</field>
+			<field name="arch" type="xml">
+				<tree editable="top" create="0" edit="0" delete="1">
+					<field name="date" string="日期" />
+					<field name="type" string="采购原材料类别"/>
+					<field name="month_count_number" string="本月采购量"/>
+					<field name="month_unit_price" string="本月采购单价"/>
+                    <field name="month_count_money" string="本月采购金额"/>
+					<field name="year_count_number" string="本年采购量"/>
+					<field name="year_unit_price" string="本年采购单价"/>
+					<field name="year_count_money" string="本年采购金额"/>
+                    <field name="month_update_count" string="环比上月采购量增减"/>
+					<field name="month_update_money" string="环比上月采购单价增减"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- 动作 -->
+		<record id="fabric_ingredients_account_month_action" model="ir.actions.act_window">
+			<field name="name">原材料采购成本月报</field>
+			<field name="res_model">fabric_ingredients_account_month</field>
+			<field name="view_mode">tree,graph</field>
+		</record>
+	</data>
+</odoo>

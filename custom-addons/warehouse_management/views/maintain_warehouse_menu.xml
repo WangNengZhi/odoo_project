@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+
+
+        <menuitem id="maintain_warehouse_menu"
+                name="仓库设备管理"
+                parent="menu_warehouse_management_root"
+                sequence="50"/>
+            <!-- <menuitem id="menu_production_operation_ingredients_enter"
+                    name="仓库生产工具(入库)"
+                    parent="menu_production_operation_ingredients"
+                    action="production_operation_ingredients_enter_action"
+                    sequence="10"/> -->
+
+            <menuitem id="maintain_warehouse_put"
+                name="入库管理"
+                parent="maintain_warehouse_menu"
+                action="procurement.maintain_put_action"
+                sequence="20"/>
+            <menuitem id="maintain_warehouse_recipients"
+                name="领用管理"
+                parent="maintain_warehouse_menu"
+                action="procurement.maintain_recipients_action"
+                sequence="30"/>
+            <menuitem id="maintain_warehouse_return"
+                name="归还管理"
+                parent="maintain_warehouse_menu"
+                action="procurement.maintain_return_action"
+                sequence="40"/>
+            <menuitem id="maintain_warehouse_inventory"
+                name="采购库存"
+                parent="maintain_warehouse_menu"
+                action="procurement.maintain_inventory_action"
+                sequence="50"/>
+
+  	</data>
+</odoo>

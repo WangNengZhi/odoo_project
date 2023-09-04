@@ -1,0 +1,283 @@
+<odoo>
+    <data>
+        <record id="outsource_order_search" model="ir.ui.view">
+            <field name="name">外发订单search</field>
+            <field name="model">outsource_order</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="date" string="订单日期"/>
+                    <field name="order_id" string="订单号"/>
+                    <field name="outsource_contract" string="合同号"/>
+                    <field name="style_number" string="款号"/>
+					<field name="outsource_plant_id" string="加工厂"/>
+					<field name="responsible_person" string="负责人"/>
+                    <field name="customer_delivery_time" string="客户货期"/>
+                </search>
+            </field>
+        </record>
+        <!-- tree -->
+		<record model="ir.ui.view" id="outsource_order_tree">
+			<field name="name">外发订单tree</field>
+			<field name="model">outsource_order</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <header>
+                    </header>
+					<field name="date" string="订单日期"/>
+                    <field name="order_id" string="订单号"/>
+                    <field name="outsource_contract" string="合同号"/>
+                    <field name="style_number" string="款号"/>
+					<field name="outsource_plant_id" string="加工厂"/>
+					<field name="rating" string="工厂评级"/>
+					<field name="responsible_person" string="负责人"/>
+                    <field name="outsource_price" string="外发单价"/>
+                    <field name="contract_price" string="合同价格"/>
+                    <field name="IE_working_hours" string="IE工时(秒)"/>
+                    <field name="workshop_unit_price" string="车间单价"/>
+                    <field name="product_name" string="品名"/>
+                    <field name="attribute" string="属性"/>
+                    <field name="customer_delivery_time" string="客户货期"/>
+                    <field name="face_to_face_time" string="面辅齐套时间"/>
+                    <field name="order_category" string="订单类型"/>
+                    <field name="special_craft" string="特种工艺"/>
+                    <field name="is_tailor" string="是否裁剪"/>
+                    <field name="tailor_ie_price" string="裁剪IE工价"/>
+                    <field name="tailor_ie_total_price" string="裁剪总工价"/>
+                    <field name="order_quantity" string="订单总数"/>
+                    <field name="actual_delivered_quantity" string="实际交货数"/>
+                    <field name="state" string="订单状态" decoration-info="state == '未完成'" decoration-success="state == '已完成'" decoration-danger="state == '退单'" decoration-warning="state == '未上线'" widget="badge"/>
+                    <field name="total_price" string="加工费"/>
+                    <field name="sales_return_number" string="退货数量"/>
+                    <field name="deduct_money" string="退货扣款"/>
+                    <field name="other_deductions" string="其他扣款"/>
+                    <field name="customer_payment_amount" string="付款金额"/>
+                    <field name="actual_line_date" string="实际上线日期"/>
+                    <field name="plan_finish_date" string="计划完成日期"/>
+                    <field name="actual_finish_date" string="实际完成日期"/>
+                    <field name="remarks" string="备注"/>
+					<field name="bill_state" string="是否开票" decoration-info="bill_state == '未开票'" decoration-success="bill_state == '已开票'" widget="badge"/>
+					<button name="confirmation_button"
+						type="object"
+						string="设为已开票"
+						class="btn-primary"
+						attrs="{'invisible':['|', ('approval_state','=', '待审批'), ('bill_state', '=', '已开票')]}"
+						context="{'type': '设为已开票'}"
+						groups="fsn_base.fsn_super_user_group"/>
+					<button name="confirmation_button"
+						type="object"
+						string="设为未开票"
+						class="btn-danger"
+						attrs="{'invisible':['|', ('approval_state','=', '待审批'), ('bill_state', '=', '未开票')]}"
+						context="{'type': '设为未开票'}"
+						groups="fsn_base.fsn_super_user_group"/>
+					<field name="payment_state" string="付款状态" decoration-info="payment_state == '未付款'" decoration-warning="payment_state == '部分付款'" decoration-success="payment_state == '已付款'" widget="badge"/>
+					<!-- <button name="confirmation_button"
+						type="object"
+						string="设为已付款"
+						class="btn-primary"
+						attrs="{'invisible':['|', ('approval_state','=', '待审批'), ('payment_state', '=', '已付款')]}"
+						context="{'type': '设为已付款'}"
+						groups="fsn_base.fsn_super_user_group"/>
+					<button name="confirmation_button"
+						type="object"
+						string="设为未付款"
+						class="btn-danger"
+						attrs="{'invisible':['|', ('approval_state','=', '待审批'), ('payment_state', '=', '未付款')]}"
+						context="{'type': '设为未付款'}"
+						groups="fsn_base.fsn_super_user_group"/> -->
+					<button name="confirmation_button"
+						type="object"
+						string="修改付款状态"
+						class="btn-primary"
+						context="{'type': '修改付款状态'}"
+						groups="fsn_base.fsn_super_user_group"/>
+					<field name="approval_state" string="审批状态" decoration-info="approval_state == '待审批'" decoration-success="approval_state == '已审批'" widget="badge"/>
+					<button name="confirmation_button" type="object" string="通过" class="btn-primary" attrs="{'invisible':[('approval_state','!=', '待审批')]}" context="{'type': 'through'}" groups="fsn_base.fsn_super_user_group"/>
+					<button name="confirmation_button" type="object" string="回退" class="btn-danger" attrs="{'invisible':[('approval_state','!=', '已审批')]}" context="{'type': 'fallback'}" groups="fsn_base.fsn_super_user_group"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="outsource_order_form" model="ir.ui.view">
+            <field name="name">外发订单form</field>
+            <field name="model">outsource_order</field>
+            <field name="arch" type="xml">
+                <form>
+					<header>
+						<button name="change_state" string="开始" type="object"
+                            class="btn btn-primary"
+							attrs="{'invisible': ['|', ('state', '!=', '未上线'), ('id', '=', False)]}"
+							confirm='确认要开始吗？（请仔细检查订单信息是否填写完毕！）'
+							/>
+						<!-- <button name="change_state" string="完成" type="object"
+                            class="btn btn-primary"
+							attrs="{'invisible': ['|', ('state', '!=', '未完成'), ('id', '=', False)]}"
+							confirm='确认要完成吗？（请仔细检查订单信息是否填写完毕！）'
+							/> -->
+
+						<button name="action_chargeback" string="退单" type="object" class="btn btn-primary" attrs="{'invisible': ['|', ('state', '!=', '未上线'), ('id', '=', False)]}" confirm='确认要退单吗？'/>
+                        <button name="state_back" type="object" string="回退" class="btn-danger" attrs="{'invisible':[('state','=', '未上线')]}" groups="fsn_base.fsn_super_user_group"/>
+						<field name="state" widget="statusbar" statusbar_visible="未上线,未完成,已完成,退单"/>
+                        <button name="set_ie_info" string="刷新IE信息" type="object" class="btn btn-warning"/>
+					</header>
+                    <sheet>
+						<div style="text-align: center"><h1>外发订单</h1></div>
+						<group col="4">
+                            <field name="date" string="订单日期"/>
+                            <field name="style_picture" string="款式图片" required="1" widget='image' width='256px' height='256px'/>
+                            <field name="order_id" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="outsource_plant_id" string="加工厂" required="0" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="outsource_contract" string="合同号"/>
+                            <field name="style_number" string="款号" required="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="contract_attachment" string="合同附件" widget="many2many_binary"/>
+                            <field name="outsource_price" string="外发单价"/>
+                            <field name="contract_price" string="合同价格"/>
+                            <field name="IE_working_hours" string="IE工时(秒)"/>
+                            <field name="workshop_unit_price" string="车间单价"/>
+                            <field name="product_name" string="品名" required="1"/>
+                            <field name="attribute" string="属性" required="1" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="customer_delivery_time" string="客户货期"/>
+                            <field name="face_to_face_time" string="面辅齐套时间" required="1"/>
+                            <field name="order_category" string="订单类型" required="1"/>
+                            <field name="special_craft" string="特种工艺" required="1"/>
+						</group>
+						<group col="4" string="裁剪相关">
+                            <field name="is_tailor" string="是否裁剪"/>
+                            <field name="tailor_ie_price" string="裁剪IE工价"/>
+                            <field name="tailor_ie_total_price" string="裁剪总工价"/>
+						</group>
+						<group col="4" string="扣款相关">
+                            <field name="sales_return_number" string="退货数量"/>
+                            <field name="deduct_money" string="退货扣款" readonly="1" force_save="1"/>
+                            <field name="other_deductions" string="其他扣款"/>
+						</group>
+						<group col="4">
+                            <field name="total_price" string="加工费"/>
+                            <field name="customer_payment_amount" string="付款金额"/>
+                            <field name="plan_finish_date" string="计划完成日期" required="1"/>
+                            <field name="actual_line_date" string="实际上线日期"/>
+                            <field name="actual_finish_date" string="实际完成日期"/>
+                            <field name="order_quantity" string="订单总数"/>
+                            <field name="actual_delivered_quantity" string="实际交货数"/>
+						</group>
+						<group col="4">
+                            <field name="responsible_person" string="负责人" required="1" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="remarks" string="备注"/>
+						</group>
+						<notebook>
+							<page string="订单明细">
+                                <field name="outsource_order_line_ids" string="订单明细">
+                                    <tree editable="bottom">
+                                        <field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+                                        <field name="unit_price" string="外发单价"/>
+                                        <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_open': True}"/>
+                                        <field name="size" string="尺码" options="{'no_create': True, 'no_open': True}"/>
+                                        <field name="voucher_count" string="制单数"/>
+                                        <field name="actual_cutting_count" string="实裁数"/>
+                                        <field name="actual_cutting_price" string="价格"/>
+                                    </tree>
+                                </field>
+							</page>
+							<page string="外发进度明细">
+                                <field name="outbound_order_progress_id" string="外发进度明细" readonly="1">
+                                    <tree editable="bottom">
+                                        <field name="date" string="日期"/>
+                                        <field name="responsible_person" string="负责人"/>
+                                        <field name="order_number" string="订单号"/>
+                                        <field name="style_number" string="款号"/>
+                                        <field name="style" string="款式"/>
+                                        <field name="voucher_quantity" string="订单数量"/>
+                                        <field name="cutting_bed_quantity" string="总裁床数量"/>
+                                        <field name="solid_cutting_quantity" string="裁床数量"/>
+                                        <field name="total_number_completed" string="总完成数量"/>
+                                        <field name="complete_number" string="完成数量"/>
+                                        <field name="remaining_number" string="剩余数量"/>
+                                        <field name="quantity_delivered" string="交货数量"/>
+                                    </tree>
+                                </field>
+							</page>
+							<page string="退货明细">
+                                <field name="outbource_return_ids" string="退货明细">
+                                    <tree editable="bottom">
+                                        <field name="date" string="日期"/>
+                                        <field name="outsource_order_line_ids" string="款号" domain="[('outsource_order_id', '=', parent.id)]"  options="{'no_create': True, 'no_open': True}"/>
+                                        <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_open': True}"/>
+                                        <field name="size" string="尺码" options="{'no_create': True, 'no_open': True}"/>
+                                        <field name="number" string="件数"/>
+
+                                        <field name="problem" string="问题"/>
+                                        <field name="quality_inspection_id" string="总检" options="{'no_create': True, 'no_open': True}"/>
+                                        <field name="repair_type" string="返修类型"/>
+                                        <field name="repair_price" string="返修工价"/>
+                                        <field name="repair_total_price" string="返修总工价"/>
+                                        <field name="repair_ie_price" string="返修IE工价"/>
+                                        <field name="repair_ie_total_price" string="返修总IE工价"/>
+                                        <field name="lock_state" string="审批状态" decoration-info="lock_state == '未审批'" decoration-success="lock_state == '已审批'" widget="badge"/>
+                                    </tree>
+                                </field>
+							</page>
+						</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+		<!-- form -->
+		<record id="outsource_order_approval_form" model="ir.ui.view">
+			<field name="name">外发订单</field>
+			<field name="model">outsource_order</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+						<field name="state" string="状态" invisible="1"/>
+						<div invisible="context.get('type') != 'fallback'">确认回退吗？</div>
+                        <div invisible="context.get('type') != 'through'">确认审批通过吗？</div>
+						<field name="payment_state" string="付款状态" invisible="1"/>
+						<div invisible="context.get('type') != '设为已付款'">确认设为已付款吗？</div>
+                        <div invisible="context.get('type') != '设为未付款'">确认设为未付款吗？</div>
+						<field name="bill_state" string="是否开票" invisible="1"/>
+						<div invisible="context.get('type') != '设为已开票'">确认设为已开票吗？</div>
+                        <div invisible="context.get('type') != '设为未开票'">确认设为未开票吗？</div>
+                        <div invisible="context.get('type') != '修改付款状态'">请选择要设置为的状态！</div>
+                    </sheet>
+                    <footer>
+						<button name="action_state_changes" invisible="context.get('type') != '修改付款状态'" context="{'type': '设为未付款'}" type="object" string="设为未付款" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '修改付款状态'" context="{'type': '设为部分付款'}" type="object" string="设为部分付款" class="oe_highlight"/>
+                        <button name="action_state_changes" invisible="context.get('type') != '修改付款状态'" context="{'type': '设为已付款'}" type="object" string="设为已付款" class="oe_highlight"/>
+                        <button name="action_state_changes" invisible="context.get('type') != 'fallback'" context="{'type': 'fallback'}" type="object" string="回退" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != 'through'" context="{'type': 'through'}" type="object" string="通过" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '设为已付款'" context="{'type': '设为已付款'}" type="object" string="设为已付款" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '设为未付款'" context="{'type': '设为未付款'}" type="object" string="设为未付款" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '设为已开票'" context="{'type': '设为已开票'}" type="object" string="设为已开票" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != '设为未开票'" context="{'type': '设为未开票'}" type="object" string="设为未开票" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+
+
+		<record model="ir.actions.act_window" id="outsource_order_actions">
+            <field name="name">外发订单</field>
+            <field name="res_model">outsource_order</field>
+            <field name="view_mode">tree,form</field>
+		</record>
+        <!-- 指定tree -->
+        <record model="ir.actions.act_window.view" id="outsource_order_action_tree">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="outsource_order_tree"/>
+            <field name="act_window_id" ref="outsource_order_actions"/>
+        </record>
+        <!-- 指定form -->
+        <record model="ir.actions.act_window.view" id="outsource_order_action_form">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="outsource_order_form"/>
+            <field name="act_window_id" ref="outsource_order_actions"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_tree_set_up_basic" model="ir.ui.view">
+            <field name="name">设置基本信息</field>
+            <field name="model">set.up.base</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date" string="日期"/>
+                    <field name="base_pay" string="基本工资"/>
+                    <field name="housing_supplement" string="房补"/>
+                    <!-- <field name="rice_tonic" string="饭补"/> -->
+                    <field name="perfect_attendance" string="全勤奖"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="view_form_set_up_basic" model="ir.ui.view">
+            <field name="name">设置基本信息</field>
+            <field name="model">set.up.base</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <h1 style="text-align:center">设置基本信息</h1>
+                        <group col="4">
+                            <field name="date" string="日期"/>
+                            <field name="base_pay" string="基本工资"/>
+                            <field name="housing_supplement" string="房补"/>
+                            <!-- <field name="rice_tonic" string="饭补"/> -->
+                            <field name="perfect_attendance" string="全勤奖"/>
+                        </group>
+                    </sheet>
+                </form>
+
+            </field>
+        </record>
+
+
+
+        <act_window id="action_set_up_base"
+                    name="补贴设置"
+                    res_model="set.up.base"
+                    view_mode="tree,form"/>
+
+
+    </data>
+</odoo>

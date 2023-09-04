@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template01" xml:space="preserve">
+    <!-- t-name qweb模板名称很重要 -->
+    <t t-name="qweb_suspension_system_index">
+        <div style="background-color: #FFFFFF; height:920px;overflow:scroll;overflow-x:hidden;">
+            <!-- <div>
+                <button id="wdc">wdc</button>
+            </div> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col" style="margin-top: 30px;">
+                        <h2 style="text-align: center;"><span id="min_number_table_date"></span>产量最少员工</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">组别</th>
+                                    <th scope="col">员工</th>
+                                    <th scope="col">件数</th>
+                                </tr>
+                            </thead>
+                            <tbody id="min_number_table">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col" style="margin-top: 30px;">
+                        <h2 style="text-align: center;"><span id="max_quality_worst_date"></span>质量最差员工</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">组别</th>
+                                    <th scope="col">员工</th>
+                                    <th scope="col">返修件数</th>
+                                </tr>
+                            </thead>
+                            <tbody id="max_quality_worst">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col" style="margin-top: 30px;">
+                        <h2 style="text-align: center;"><span id="min_lowest_efficiency_date"></span>效率最低员工</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">组别</th>
+                                    <th scope="col">员工</th>
+                                    <th scope="col">效率(%)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="min_lowest_efficiency">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col" style="margin-top: 30px;">
+                        <h2 style="text-align: center;"><span id="last_week_min_number_table_date"></span></h2>
+                        <h2 style="text-align: center;">产量最少员工</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">组别</th>
+                                    <th scope="col">员工</th>
+                                    <th scope="col">平均件数</th>
+                                </tr>
+                            </thead>
+                            <tbody id="last_week_min_number_table">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col" style="margin-top: 30px;">
+                        <h2 style="text-align: center;"><span id="last_week_max_quality_worst_date"></span></h2>
+                        <h2 style="text-align: center;">质量最差员工</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">组别</th>
+                                    <th scope="col">员工</th>
+                                    <th scope="col">平均返修件数</th>
+                                </tr>
+                            </thead>
+                            <tbody id="last_week_min_min_lowest_efficiency">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col" style="margin-top: 30px;">
+                        <h2 style="text-align: center;"><span id="last_week_min_lowest_efficiency_date"></span></h2>
+                        <h2 style="text-align: center;">效率最低员工</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">组别</th>
+                                    <th scope="col">员工</th>
+                                    <th scope="col">平均效率(%)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="last_week_min_lowest_efficiency">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col" style="margin-top: 30px;">
+                        <h2 style="text-align: center;"><span id="last_week_group_output_data"></span></h2>
+                        <h2 style="text-align: center;">组产值排名</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">排名</th>
+                                    <th scope="col">组别</th>
+                                    <th scope="col">总产值</th>
+                                </tr>
+                            </thead>
+                            <tbody id="last_week_group_output">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col" style="margin-top: 30px;">
+                        <h2 style="text-align: center;"><span id="last_week_group_repair_rate_data"></span></h2>
+                        <h2 style="text-align: center;">组返修率排名</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">排名</th>
+                                    <th scope="col">组别</th>
+                                    <th scope="col">平均返修率(%)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="last_week_group_output_repair_rate">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col" style="margin-top: 30px;">
+                        <h2 style="text-align: center;"><span id="fsn_group_avg_output_date"></span></h2>
+                        <h2 style="text-align: center;">组人均产值排名</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">排名</th>
+                                    <th scope="col">组别</th>
+                                    <th scope="col">人均产值</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fsn_group_avg_output">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col" style="margin-top: 30px;">
+                        <!-- <h2 style="text-align: center;"></h2> -->
+                        <h2 style="text-align: center;"><span id="fsn_production_plan_progress_date"></span>生产计划进度</h2>
+                        <!-- <div id="fsn_production_plan_progress">
+
+                        </div> -->
+                        <table id="fsn_production_plan_progress" class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" width="70px">组别</th>
+                                    <th scope="col">进度</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </t>
+
+
+</templates>

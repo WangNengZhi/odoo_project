@@ -1,0 +1,191 @@
+<odoo>
+  <data>
+        <record id="view_warehouse_management" model="ir.ui.view">
+            <field name="name">仓库管理</field>
+            <field name="model">warehouse_management</field>
+            <field name="arch" type="xml">
+                    <tree create="0" edit="0" delete="0">
+                        <field name="date" string="日期"/>
+                        <field name="type" string="类型" decoration-primary="type == '人工'" decoration-success="type == '扫码'" widget="badge"/>
+                        <field name="number_delivery" string="出库单号"/>
+                        <field name="inbound_order_number" string="入库单号"/>
+                        <field name="number_no" string="订单"/>
+                        <field name="customer_id" string="客户名称"/>
+                        <field name="client_name" string="客户名称(旧)"/>
+                        <field name="arrival_time" string="到仓时间"/>
+                        <field name="out_of_warehouse_time" string="出仓时间"/>
+                        <field name="arrival_number" string="到仓件数"/>
+                        <field name="out_of_warehouse_number" string="出仓件数"/>
+                        <field name="number_of_inventory" string="库存件数"/>
+                        <field name="inbound_sender" string="入库送件人"/>
+                        <field name="inbound_recipient" string="入库收件人"/>
+                        <field name="outgoer" string="出库人"/>
+                        <field name="receiving_customers" string="接收客户"/>
+                        <field name="remark" string="备注"/>
+                    </tree>
+            </field>
+        </record>
+
+
+        <record id="view_warehouse_management_form" model="ir.ui.view">
+            <field name="name">仓库管理</field>
+            <field name="model">warehouse_management</field>
+            <field name="arch" type="xml">
+                    <form string="仓库管理" create="0" edit="0" delete="0">
+                        <group col="4">
+                            <field name="date" string="日期"/>
+                        </group>
+                        <group col="4">
+                            <field name="number_delivery" string="出库单号"/>
+                            <field name="inbound_order_number" string="入库单号"/>
+                        </group>
+                        <group col="4">
+                            <field name="number_no" string="订单" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="customer_id" string="客户名称"/>
+                            <field name="client_name" string="客户名称(旧)"/>
+                        </group>
+                        <group col="4">
+                            <field name="arrival_time" string="到仓时间"/>
+                            <field name="out_of_warehouse_time" string="出仓时间"/>
+                            <field name="arrival_number" string="到仓件数"/>
+                            <field name="out_of_warehouse_number" string="出仓件数"/>
+                            <field name="number_of_inventory" string="库存件数"/>
+                        </group>
+                        <group col="4">
+                            <field name="inbound_sender" string="入库送件人"/>
+                            <field name="inbound_recipient" string="入库收件人"/>
+                            <field name="outgoer" string="出库人"/>
+                            <field name="receiving_customers" string="接收客户"/>
+                        </group>
+                        <group col="4">
+                            <field name="remark" string="备注"/>
+                        </group>
+
+
+                        <notebook>
+                            <page string="入库与出库数量">
+                                <field name="inbound_and_outbound" string="" options="{'no_create': True}">
+                                    <tree>
+                                        <field name="style_number" string="订单"/>
+                                        <field name="item_number" string="款号"/>
+                                        <field name="color"/>
+                                        <field name="warehousing_xs"/>
+                                        <field name="warehousing_s"/>
+                                        <field name="warehousing_m"/>
+                                        <field name="warehousing_l"/>
+                                        <field name="warehousing_xl"/>
+                                        <field name="warehousing_two_xl"/>
+                                        <field name="warehousing_three_xl"/>
+                                        <field name="warehousing_four_xl"/>
+                                        <field name="warehousing_repair_parts"/>
+                                        <field name="warehousing_total"/>
+
+                                        <field name="out_of_stock_xs"/>
+                                        <field name="out_of_stock_s"/>
+                                        <field name="out_of_stock_m"/>
+                                        <field name="out_of_stock_l"/>
+                                        <field name="out_of_stock_xl"/>
+                                        <field name="out_of_stock_two_xl"/>
+                                        <field name="out_of_stock_three_xl"/>
+                                        <field name="out_of_stock_four_xl"/>
+                                        <field name="out_of_stock_repair_parts"/>
+                                        <field name="out_of_total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+
+
+
+                        
+                    </form>
+            </field>
+        </record>
+
+
+        <record id="inbound_outbound_formaaa" model="ir.ui.view">
+            <field name="name">入库与出库数量</field>
+            <field name="model">inbound.outbound</field>
+            <field name="arch" type="xml">
+                <form  create="0" edit="0" delete="0">
+                    <sheet>
+                        <group col="4">
+                            <!-- <field name="warehouse_management_id"/> -->
+                            <field name="date"/>
+                            <field name="manage"/>
+                            <field name="color" string="颜色（旧）"/>
+                            <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="inspector"/>
+                            <field name="style_number" string="订单" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="item_number"  string="款号" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="customer_id"/>
+                        </group>
+                        <notebook>
+                            <page string="入库与出库明细">
+                                <group col="4">
+                                    <field name="warehousing_xs"/>
+                                    <field name="out_of_stock_xs"/>
+                                    <field name="warehousing_s"/>
+                                    <field name="out_of_stock_s"/>
+                                    <field name="warehousing_m"/>
+                                    <field name="out_of_stock_m"/>
+                                    <field name="warehousing_l"/>
+                                    <field name="out_of_stock_l"/>
+                                    <field name="warehousing_xl"/>
+                                    <field name="out_of_stock_xl"/>
+                                    <field name="warehousing_two_xl"/>
+                                    <field name="out_of_stock_two_xl"/>
+                                    <field name="warehousing_three_xl"/>
+                                    <field name="out_of_stock_three_xl"/>
+                                    <field name="warehousing_four_xl"/>
+                                    <field name="out_of_stock_four_xl"/>
+                                    <field name="warehousing_repair_parts"/>
+                                    <field name="out_of_stock_repair_parts"/>
+                                    <field name="warehousing_total"/>
+                                    <field name="out_of_total"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_inbound_outbound_tree" model="ir.ui.view">
+            <field name="name">入库与出库数量</field>
+            <field name="model">inbound.outbound</field>
+            <field name="arch" type="xml">
+                <tree  create="0" edit="0" delete="0">
+                        <field name="date"/>
+                        <!-- <field name="warehouse_management_id" string="仓库管理单号"/> -->
+                        <field name="style_number" string="订单"/>
+                        <field name="customer_id"/>
+                        <field name="item_number"  string="款号"/>
+                        <field name="color" string="颜色（旧）"/>
+                        <field name="fsn_color" string="颜色"/>
+                        <field name="manage"/>
+                        <field name="inspector"/>
+                        <field name="warehousing_total"/>
+                        <field name="out_of_total"/>
+                </tree>
+            </field>
+            </record>
+
+
+		<record model="ir.actions.act_window" id="warehouse_management_action">
+            <field name="name">仓库管理</field>
+            <field name="res_model">warehouse_management</field>
+            <field name="view_mode">tree,form,graph</field>
+		</record>
+		<record model="ir.actions.act_window" id="inbound_outbound_action">
+            <field name="name">入库与出库数量</field>
+            <field name="res_model">inbound.outbound</field>
+            <field name="view_mode">tree,form</field>
+		</record>
+
+
+
+
+    </data>
+</odoo>

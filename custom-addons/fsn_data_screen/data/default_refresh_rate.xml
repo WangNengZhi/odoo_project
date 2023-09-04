@@ -1,0 +1,24 @@
+<odoo>
+    <data noupdate="1">
+			<record id="data_refresh_frequency_01" model="data_refresh_frequency">
+				<field name="data_page">组产量</field>
+				<field name="refresh_frequency">30000</field>
+			</record>
+
+			<record id="fsn_kanban_setting_01" model="fsn_kanban_setting">
+				<field name="template_serial_number">window_01</field>
+			</record>
+			<record id="fsn_kanban_setting_02" model="fsn_kanban_setting">
+				<field name="template_serial_number">window_02</field>
+			</record>
+			<record id="fsn_kanban_setting_03" model="fsn_kanban_setting">
+				<field name="template_serial_number">window_03</field>
+			</record>
+			<record id="fsn_kanban_setting_04" model="fsn_kanban_setting">
+				<field name="template_serial_number">window_04</field>
+			</record>
+			<record id="fsn_kanban_setting_05" model="fsn_kanban_setting">
+				<field name="template_serial_number">window_05</field>
+			</record>
+    </data>
+</odoo>

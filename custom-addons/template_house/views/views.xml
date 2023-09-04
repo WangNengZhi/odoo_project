@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="template_house.list">
+      <field name="name">template_house list</field>
+      <field name="model">template_house.template_house</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="template_house.action_window">
+      <field name="name">template_house window</field>
+      <field name="res_model">template_house.template_house</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="template_house.action_server">
+      <field name="name">template_house server</field>
+      <field name="model_id" ref="model_template_house_template_house"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="template_house" id="template_house.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="template_house.menu_1" parent="template_house.menu_root"/>
+    <menuitem name="Menu 2" id="template_house.menu_2" parent="template_house.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="template_house.menu_1_list" parent="template_house.menu_1"
+              action="template_house.action_window"/>
+    <menuitem name="Server to list" id="template_house" parent="template_house.menu_2"
+              action="template_house.action_server"/>
+-->
+  </data>
+</odoo>

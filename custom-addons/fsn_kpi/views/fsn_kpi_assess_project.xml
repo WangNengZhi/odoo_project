@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <record id="fsn_kpi_assess_project_sequence" model="ir.sequence">
+            <field name="name">考核项目自动编号</field>
+            <field name="code">fsn_kpi_assess_project_sequence</field>
+            <field name="prefix">KPI</field>
+            <field name="padding">5</field>
+            <field name="use_date_range" eval="True"/>
+            <field name="company_id" eval="False"/>
+        </record>
+
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="fsn_kpi_assess_project_tree">
+			<field name="name">FSN_KPI考核项目tree</field>
+			<field name="model">fsn_kpi_assess_project</field>
+			<field name="arch" type="xml">
+				<tree editable="top" create="1" edit="1" delete="1">
+					<field name="assess_project_serial_number" string="考核项目编号" readonly="1"/>
+					<field name="department_id" string="部门" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="job_id" string="岗位" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="assessment_content" string="考核内容"/>
+                    <field name="assessment_standard" string="考核标准"/>
+                    <field name="score" string="分值"/>
+                    <field name="calculation" string="计算方式"/>
+                    <field name="method_name" string="方法名称"/>
+				</tree>
+			</field>
+		</record>
+
+
+        <!-- 动作 -->
+        <record id="fsn_kpi_assess_project" model="ir.actions.act_window">
+			<field name="name">FSN_KPI考核项目</field>
+			<field name="res_model">fsn_kpi_assess_project</field>
+			<field name="view_mode">tree</field>
+        </record>
+		
+    </data>
+</odoo>

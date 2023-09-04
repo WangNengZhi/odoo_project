@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+
+        <menuitem name="B2B展厅" id="fsn_b2b_menu_root"/>
+
+            <menuitem name="销售" id="fsn_b2b_hall_menu" parent="fsn_b2b_menu_root" sequence="10"/>
+
+                <menuitem name="订单"
+                    id="fsn_b2b_order_menu"
+                    parent="fsn_b2b_hall_menu"
+                    action="b2b_order_action"
+                    sequence="10"/>
+                <menuitem name="退货"
+                    id="fsn_b2b_return_menu"
+                    parent="fsn_b2b_hall_menu"
+                    action="b2b_return_action"
+                    sequence="20"/>
+    </data>
+</odoo>

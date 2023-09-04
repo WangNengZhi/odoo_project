@@ -1,0 +1,98 @@
+<odoo>
+    <data noupdate="1">
+        <record id="small_iron_kpi_line_template_01" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">产量完成率</field>
+            <field name="assessment_standard">根据公司生产需求，每天完成公司当日计划产量</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率=100%，每低于1%扣1分</field>
+            <field name="sequence">1</field>
+            <field name="fsn_kpi_job">小烫</field>
+        </record>
+        <record id="small_iron_kpi_line_template_02" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">生产合格率</field>
+            <field name="assessment_standard">当时个人工序生产合格率</field>
+            <field name="score">10</field>
+            <field name="calculation">合格率=100%，每低于1%的1分</field>
+            <field name="sequence">2</field>
+            <field name="fsn_kpi_job">小烫</field>
+        </record>
+        <record id="small_iron_kpi_line_template_03" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作配合度</field>
+            <field name="assessment_standard">生产过程中，听从组长或IE临时调动，配合公司生产布局</field>
+            <field name="score">10</field>
+            <field name="calculation">配合度=100%，每低于1%的1分</field>
+            <field name="sequence">3</field>
+            <field name="fsn_kpi_job">小烫</field>
+        </record>
+        <record id="small_iron_kpi_line_template_04" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">工作区6S</field>
+            <field name="assessment_standard">每天上下班把自己的工作区域打扫干净，物品摆放整齐，人走关灯关机器。</field>
+            <field name="score">10</field>
+            <field name="calculation">完成率=100%，每低于1%的1分</field>
+            <field name="sequence">4</field>
+            <field name="fsn_kpi_job">小烫</field>
+        </record>
+        <record id="small_iron_kpi_line_template_05" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">当日返修完成率</field>
+            <field name="assessment_standard">当日退回返修必须当日返修完成，做到日清日毕</field>
+            <field name="score">10</field>
+            <field name="calculation">返修完成率=100%，每低于1%的1分</field>
+            <field name="sequence">5</field>
+            <field name="fsn_kpi_job">小烫</field>
+        </record>
+        <record id="small_iron_kpi_line_template_06" model="special_kpi_line_template">
+            <field name="assessment_project">本职工作</field>
+            <field name="assessment_content">生产大事故杜绝率</field>
+            <field name="assessment_standard">损毁或烫坏衣服</field>
+            <field name="score">10</field>
+            <field name="calculation">杜绝率=100%，每低于1%的1分</field>
+            <field name="sequence">6</field>
+            <field name="fsn_kpi_job">小烫</field>
+        </record>
+
+        <record id="small_iron_kpi_line_template_07" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">工作责任心</field>
+            <field name="assessment_standard">工作认真，严谨，能为正确的结果引导。</field>
+            <field name="score">10</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">7</field>
+            <field name="fsn_kpi_job">小烫</field>
+        </record>
+
+        <record id="small_iron_kpi_line_template_08" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">团队配合</field>
+            <field name="assessment_standard">要懂团队的协作和配合。</field>
+            <field name="score">10</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">8</field>
+            <field name="fsn_kpi_job">小烫</field>
+        </record>
+
+        <record id="small_iron_kpi_line_template_09" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">出勤率</field>
+            <field name="assessment_standard">缺卡，迟到，早退，等情况。</field>
+            <field name="score">10</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">9</field>
+            <field name="fsn_kpi_job">小烫</field>
+        </record>
+
+        <record id="small_iron_kpi_line_template_10" model="special_kpi_line_template">
+            <field name="assessment_project">工作态度</field>
+            <field name="assessment_content">言论</field>
+            <field name="assessment_standard">杜绝消极言论及负面情绪，对抗公司制度、诋毁公司处罚100元/次</field>
+            <field name="score">10</field>
+            <field name="calculation">未做到或失误一次扣1分</field>
+            <field name="sequence">10</field>
+            <field name="fsn_kpi_job">小烫</field>
+        </record>
+    </data>
+</odoo>

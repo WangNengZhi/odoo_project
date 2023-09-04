@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+
+		<record model="ir.ui.view" id="ec_video_data_tree">
+			<field name="name">视频数据</field>
+			<field name="model">ec_video_data</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+                    <header>
+                        <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+					<field name="date" string="日期"/>
+					<field name="platform_account_id" string="账号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="topic" string="题目"/>
+					<field name="author_id" string="作者" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="uploading_date" string="上传时间"/>
+					<field name="amount_play_24_hours" string="24小时播放量"/>
+					<field name="seeding_rate" string="完播率" widget="percentage"/>
+					<field name="broadcast_time" string="播放时长"/>
+					<field name="thumb_up_rate" string="点赞率" widget="percentage"/>
+					<field name="absorption_rate" string="吸粉率" widget="percentage"/>
+					<field name="thumb_up_quantity" string="点赞量"/>
+					<field name="amount_video_play" string="视频播放量"/>
+					<field name="work_interaction_rate" string="作品互动率" widget="percentage"/>
+					<field name="shake_add_cost" string="抖+费用"/>
+				</tree>
+			</field>
+		</record>
+        <!-- 动作 -->
+        <record id="ec_video_data_action" model="ir.actions.act_window">
+            <field name="name">视频数据</field>
+            <field name="res_model">ec_video_data</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

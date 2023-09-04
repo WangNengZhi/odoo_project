@@ -1,0 +1,85 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="outbound_price_tree">
+			<field name="name">外发价格</field>
+			<field name="model">outbound_price</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom">
+					<field name="date" string="申请日期"/>
+					<field name="order_id" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="process_name" string="工序名称"/>
+					<field name="ie_working_hours" string="IE工时（秒）"/>
+					<field name="ie_working_price" string="IE工价"/>
+					<field name="outbound_price" string="外发单价"/>
+					<field name="apply_price" string="申请价格"/>
+					<field name="actual_number" string="实做件数"/>
+					<field name="total_amount" string="总金额"/>
+					<field name="outsource_plant_id" string="外发加工厂" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="nuclear_price_people" string="核价人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="applicant_people" string="申请人" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '审批通过'" decoration-primary="state == '等待厂长审批'" decoration-warning="state == '等待总经理审批'" widget="badge"/>
+                    
+					<button name="confirmation_button" type="object" string="提交审批" class="btn-primary"
+                        attrs="{'invisible':[('state','!=', '草稿')]}"
+                        context="{'button_type': 'state_changes1'}"/>
+                    <button name="confirmation_button" type="object" string="厂长审批" class="btn-primary"
+                        attrs="{'invisible':[('state','!=', '等待厂长审批')]}"
+                        groups="fsn_base.fsn_insiders_group"
+                        context="{'button_type': 'state_changes2'}"/>
+                    <button name="confirmation_button" type="object" string="总经理审批" class="btn-primary"
+                        attrs="{'invisible':[('state','!=', '等待总经理审批')]}"
+                        groups="fsn_base.fsn_super_user_group"
+                        context="{'button_type': 'state_changes3'}"/>
+
+
+                    <button name="confirmation_button" type="object" string="回退" class="btn-danger"
+                        attrs="{'invisible':[('state','!=', '等待厂长审批')]}"
+                        context="{'button_type': 'state_back1'}"/>
+                    <button name="confirmation_button" type="object" string="回退" class="btn-danger"
+                        attrs="{'invisible':[('state','!=', '等待总经理审批')]}"
+                        groups="fsn_base.fsn_insiders_group"
+                        context="{'button_type': 'state_back2'}"/>
+                    <button name="confirmation_button" type="object" string="回退" class="btn-danger"
+                        attrs="{'invisible':[('state','!=', '审批通过')]}"
+                        groups="fsn_base.fsn_super_user_group"
+                        context="{'button_type': 'state_back3'}"/>
+
+				</tree>
+			</field>
+		</record>
+		<!-- form -->
+		<record id="outbound_price_form" model="ir.ui.view">
+			<field name="name">外发价格</field>
+			<field name="model">outbound_price</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+						<field name="state" string="状态" invisible="1"/>
+                        <div attrs="{'invisible':[('state','!=', '草稿')]}">确认提交审批吗</div>
+						<div invisible="context.get('button_type') not in ('state_changes2', 'state_changes3')">确认通过审批吗？</div>
+						<div invisible="context.get('button_type') not in ('state_back1', 'state_back2', 'state_back3')">确认回退吗</div>
+                    </sheet>
+                    <footer>
+                        <button name="state_changes" type="object" string="确认" class="oe_highlight"
+						invisible="context.get('button_type') not in ('state_changes1', 'state_changes2','state_changes3')"
+                        />
+                        <button name="state_back" type="object" string="确认" class="oe_highlight"
+						invisible="context.get('button_type') not in ('state_back1', 'state_back2','state_back3')"
+                        />
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="outbound_price_actions">
+            <field name="name">外发价格</field>
+            <field name="res_model">outbound_price</field>
+            <field name="view_mode">tree</field>
+		</record>
+
+    </data>
+</odoo>

@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+
+		<record id="client_ware_repair_statistics_tree" model="ir.ui.view">
+			<field name="name">尾查返修统计</field>
+			<field name="model">client_ware_repair_statistics</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0">
+                    <header>
+                        <!-- <button name="set_general_ids" type="object" string="刷新数据" class="btn-primary"/> -->
+                    </header>
+					<field name="date" string="日期"/>
+                    <field name="group" string="组别"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="quality_inspector" string="尾查"/>
+                    <field name="repair_quantity" string="返修数量"/>
+                    <field name="check_quantity" string="查货数量"/>
+                    <field name="repair_ratio" string="返修率" widget="progressbar"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="client_ware_repair_statistics_action" model="ir.actions.act_window">
+            <field name="name">尾查返修统计</field>
+            <field name="res_model">client_ware_repair_statistics</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+
+    </data>
+</odoo>

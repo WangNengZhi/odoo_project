@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="electronic_commerce.list">
+      <field name="name">electronic_commerce list</field>
+      <field name="model">electronic_commerce.electronic_commerce</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="electronic_commerce.action_window">
+      <field name="name">electronic_commerce window</field>
+      <field name="res_model">electronic_commerce.electronic_commerce</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="electronic_commerce.action_server">
+      <field name="name">electronic_commerce server</field>
+      <field name="model_id" ref="model_electronic_commerce_electronic_commerce"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="electronic_commerce" id="electronic_commerce.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="electronic_commerce.menu_1" parent="electronic_commerce.menu_root"/>
+    <menuitem name="Menu 2" id="electronic_commerce.menu_2" parent="electronic_commerce.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="electronic_commerce.menu_1_list" parent="electronic_commerce.menu_1"
+              action="electronic_commerce.action_window"/>
+    <menuitem name="Server to list" id="electronic_commerce" parent="electronic_commerce.menu_2"
+              action="electronic_commerce.action_server"/>
+-->
+  </data>
+</odoo>

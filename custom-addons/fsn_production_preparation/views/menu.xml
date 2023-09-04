@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+
+		<!-- 菜单按钮 -->
+		<menuitem name="产前准备"
+			id="production_preparation_menu_root"
+            web_icon="fsn_production_preparation,static/description/icon.png"
+			/>
+
+		    <menuitem name="3P流程"
+                id="3p_flow_menu"
+                parent="production_preparation_menu_root"
+                action="production_preparation_action"
+                sequence="10"/>
+
+		    <menuitem name="面辅料用量"
+                id="raw_materials_order_menu"
+                parent="production_preparation_menu_root"
+                sequence="20"/>
+                <menuitem name="自动核算"
+                    id="automatic_accounting_menu"
+                    parent="raw_materials_order_menu"
+                    action="raw_materials_order_home_action"
+                    sequence="10"/>
+                <menuitem name="人工核算"
+                    id="artificial_accounting_menu"
+                    parent="raw_materials_order_menu"
+                    action="production_drop_documents_action"
+                    sequence="20"/>
+
+
+
+            <menuitem name="补料申请"
+                id="menu_fill_materials_application_root"
+                parent="production_preparation_menu_root"
+                sequence="30"/>
+                <menuitem name="损失核算表"
+                    id="menu_loss_accounting_statement"
+                    parent="menu_fill_materials_application_root"
+                    action="loss_accounting_statement_action"
+                    sequence="10"/>
+                <menuitem name="半成品换片表"
+                    id="menu_exchange_cutting_piece"
+                    parent="menu_fill_materials_application_root"
+                    action="exchange_cutting_piece_action"
+                    sequence="20"/>
+                <menuitem name="补料申请表"
+                    id="menu_fill_materials_application"
+                    parent="menu_fill_materials_application_root"
+                    action="fill_materials_application_action"
+                    sequence="30"/>
+            <menuitem name="汇总"
+                id="fsn_production_preparation_summary_menu"
+                parent="production_preparation_menu_root"
+                sequence="90"/>
+                <menuitem name="产前准备进度"
+                    id="prenatal_preparation_progress_menu"
+                    parent="fsn_production_preparation_summary_menu"
+                    action="prenatal_preparation_progress_action"/>
+            <menuitem name="设置"
+                id="3p_setting_menu"
+                parent="production_preparation_menu_root"
+                sequence="100"/>
+
+                <menuitem name="3P流程明细样本"
+                    id="3p_flow_line_menu"
+                    parent="3p_setting_menu"
+                    action="production_preparation_line_sample_action"/>
+
+    </data>
+</odoo>

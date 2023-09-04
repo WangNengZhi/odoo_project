@@ -1,0 +1,92 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="development_tasks_tree">
+			<field name="name">开发任务tree</field>
+			<field name="model">development_tasks</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <field name="create_date" string="创建时间"/>
+                    <field name="task_title" string="任务标题"/>
+					<field name="start_time" string="开始时间"/>
+					<field name="end_time" string="结束时间"/>
+					<field name="task_type" string="任务类型"/>
+					<field name="developer_personnel" string="开发人员"/>
+					<field name="state" string="状态"/>
+					<field name="design" string="设计"/>
+					<field name="note" string="备注"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="development_tasks_form" model="ir.ui.view">
+			<field name="name">开发任务form</field>
+			<field name="model">development_tasks</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="未开始,进行中,已完成,已升级,已作废"/>
+						<button name="set_ongoing" string="开始" type="object"
+                            class="btn btn-primary"
+							attrs="{'invisible': ['|', ('state', '!=', '未开始'), ('id', '=', False)]}"
+							confirm='确认已经开始了吗？'
+							/>
+						<button name="set_complete" string="完成" type="object"
+                            class="btn btn-primary"
+							attrs="{'invisible': [('state', '!=', '进行中')]}"
+							confirm='确认已经完成了吗？'
+							/>
+						<button name="set_upgrade" string="升级" type="object"
+                            class="btn btn-primary"
+							attrs="{'invisible': [('state', '!=', '已完成')]}"
+							confirm='确认已经升级了吗？'
+							/>
+						<!-- <button name="affirm_enter" string="重置状态" type="object"
+							confirm='确认要重置状态吗？'
+							/> -->
+						<button name="set_invalid" string="作废" type="object"
+                            class="btn btn-danger"
+							attrs="{'invisible': ['|', ('state', '=', '已升级'), ('id', '=', False)]}"
+							confirm='确认要作废吗？'
+							/>
+                        <widget name="attach_document" string="上传附件"/>
+					</header>
+					<sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_get_attachment_view" class="oe_stat_button" icon="fa-file-text-o" type="object">
+                                <field name="attachment_number" widget="statinfo" string="附件" options="{'reload_on_button': true}"/>
+
+                            </button>
+                        </div>
+						<div style="text-align: center"><h1>开发任务</h1></div>
+
+						<group col="4">
+                            <field name="task_title" string="任务标题"/>
+                            <field name="task_type" string="任务类型"/>
+						</group>
+						<group>
+                            <field name="task_description" string="任务描述"/>
+
+						</group>
+
+						<group col="4">
+                            <!-- <field name="start_time" string="开始时间" readonly="1"/> -->
+                            <!-- <field name="end_time" string="结束时间" readonly="1"/> -->
+                            <field name="developer_personnel" string="开发人员" options="{'no_create': True, 'no_open': True}"/>
+							<field name="design" string="设计"/>
+                            <field name="note" string="备注"/>
+						</group>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- 动作 -->
+        <record id="development_tasks_actions" model="ir.actions.act_window">
+            <field name="name">开发任务</field>
+            <field name="res_model">development_tasks</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

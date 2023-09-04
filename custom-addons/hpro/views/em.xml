@@ -1,0 +1,269 @@
+<odoo>
+  	<data>
+    	<record id="hr_work_from_view" model="ir.ui.view">
+			<field name="name">自定义员工信息</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_form"/>
+			<field name="arch" type="xml">
+
+				<!-- 办公电话隐藏 -->
+				<xpath expr="//field[@name='work_phone']" position="replace">
+					<field name="work_phone" invisible="1"/>
+				</xpath>
+
+				<xpath expr="//field[@name='mobile_phone']" position="replace">
+					<field name="mobile_phone" widget="phone" string="电话"/>
+				</xpath>
+
+				<xpath expr="//field[@name='place_of_birth']" position="replace">
+					<field name="place_of_birth" groups="hr.group_hr_user" string="身份证地址"/>
+				</xpath>
+
+				<xpath expr="//field[@name='coach_id']" position="replace">
+					<field name="coach_id" invisible="1"/>
+				</xpath>
+				<xpath expr="//field[@name='department_id']" position="replace">
+					<field name="department_id" invisible="1"/>
+				</xpath>
+
+				<xpath expr="//field[@name='gender']" position="replace">
+					<field name="gender1" string="性别"/>
+				</xpath>
+
+				<xpath expr="//field[@name='work_email']" position="replace">
+					<field name="work_email" string="邮箱"/>
+				</xpath>
+
+				<xpath expr="//field[@name='marital']" position="replace">
+					<field name="marital" invisible="1"/>
+				</xpath>
+
+				<xpath expr="//field[@name='marital']" position="after">
+					<field name="marital11"/>
+				</xpath>
+
+				<xpath expr="//field[@name='emergency_contact']" position="replace">
+					<field name="emergency_contact" string="紧急联系人"/>
+				</xpath>
+				<xpath expr="//field[@name='emergency_phone']" position="replace">
+					<field name="emergency_phone" string="紧急联系电话"/>
+				</xpath>
+				<xpath expr="//field[@name='bank_account_id']" position="after">
+					<field name="bank_account_id1" string="银行卡号"/>
+				</xpath>
+
+
+
+				<xpath expr="//field[@name='study_school']" position="replace">
+					<field name="study_school" string="毕业院校"/>
+					<field name="education1"/>
+					<field name="major"/>
+					<field name="full_time"/>
+				</xpath>
+				<xpath expr="//field[@name='parent_id']" position="replace">
+					<field name="parent_id" string="经理"/>
+				</xpath>
+				<xpath expr="//field[@name='birthday']" position="replace">
+					<field name="birthday" invisible="1"/>
+				</xpath>
+				<xpath expr="//field[@name='birthday']" position="replace">
+					<field name="birthday1" string="年月日"/>
+					<field name="year" string="年"/>
+					<field name="month" string="月"/>
+					<field name="day" string="日"/>
+				</xpath>
+
+
+
+				<xpath expr="//field[@name='name']" position="attributes">
+					<attribute name="placeholder">姓名</attribute>
+				</xpath>
+				<xpath expr="//field[@name='job_title']" position="attributes">
+					<attribute name="placeholder">部门岗位</attribute>
+				</xpath>
+				<xpath expr="//field[@name='category_ids']" position="attributes">
+					<attribute name="placeholder">标签</attribute>
+				</xpath>
+				<xpath expr="//field[@name='country_of_birth']" position="after">
+					<field name="nationality"/>
+				</xpath>
+
+
+
+
+
+
+
+
+
+				<xpath expr="//field[@name='company_id']" position="after">
+					<field name="department_id"/>
+					<field name="second_dapartment"/>
+					<field name="rank"/>
+					<field name="entry_time"/>
+					<field name="turn_positive_time"/>
+					<field name="is_delete" string="是否已离职"/>
+					<field name="is_handover" string="是否已交接"/>
+					<field name="handover_id" string="交接人" attrs="{'required': [('is_handover', '=', True)]}" options="{'no_create': True, 'no_open': True}"/>
+					<field name="is_delete_date" string="离职时间"/>
+					<field name="status"/>
+				</xpath>
+				<xpath expr="//field[@name='coach_id']" position="after">
+					<field name="contract_signing_date"/>
+					<field name="contract_expiration_time"/>
+					<field name="contract_attributes"/>
+					<!-- <field name="stay1" readonly="1" force_save="1"/> -->
+					<field name="account_nature"/>
+					<field name="id_card"/>
+					<field name="age"/>
+					<field name="is_it_a_temporary_worker" string="工种"/>
+					<field name="outsourcing_type" string="外包性质" attrs="{'required': [('is_it_a_temporary_worker', '=', '外包(计件)')], 'invisible':[('is_it_a_temporary_worker','!=', '外包(计件)')]}"/>
+					<field name="pin2" invisible='1'/>
+					<field name="is_introducer" string="有无介绍人"/>
+					<field name="introducer" string="介绍人" attrs="{'required': [('is_introducer', '=', '有')]}" options="{'no_create': True, 'no_open': True}"/>
+				</xpath>
+				<xpath expr="//div[@name='div_km_home_work']" position="after">
+					<field name="account_bank1"/>
+					<field name="comment"/>
+					<field name="month_payment_social"/>
+					<field name="social_payment_base"/>
+					<field name="month_provident_fund_start"/>
+					<div/>
+					<field name="fixed_salary" string="薪资"/>
+					<!-- <field name="stay2" string="是否入住公司宿舍(旧)"/> -->
+					<field name="is_dormitory" string="是否入住公司宿舍"/>
+					<field name="stay2_money" string="宿舍押金"/>
+					<field name="dormitory_subsidy" string="是否有宿舍补贴"/>
+					<field name="rice_tonic" string="是否有饭补"/>
+					<!-- <field name="whether_to_pay_social_security" string="是否交社保(旧)"/> -->
+					<!-- <field name="is_social_security" string="是否交社保"/> -->
+					<field name="is_attendance_bonus" string="是否有全勤奖(旧)"/>
+					<div/>
+					<!-- <field name="rent_deduction"/> -->
+					<!-- <field name="meal_deduction"/> -->
+
+					<field name="social_provident_base"/>
+					<field name="provident_fund_customer_number"/>
+					<field name="whether_the_labor_contract"/>
+					<field name="entry_reg_form"/>
+					<field name="entry_notification_from"/>
+					<field name="labor_contract"/>
+					<field name="confidentiality_agreement"/>
+					<field name="integrity_agreement"/>
+					<field name="copy_of_id_card"/>
+					<field name="copy_of_academic_qualifications"/>
+					<field name="res_certificate"/>
+					<field name="introducer"/>
+					<field name="recent_work_unit"/>
+					<field name="current_home_address"/>
+				</xpath>
+
+				<xpath expr="//div/group[last()]" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//div/group[last()]" position="after">
+					<group>
+						<field name="time_plan"/>
+					</group>
+				</xpath>
+			</field>
+		</record>
+
+
+
+
+    <record id="hr_work_from_view1" model="ir.ui.view">
+      <field name="name">自定义员工信息1</field>
+      <field name="model">hr.employee</field>
+      <field name="inherit_id" ref="hr.view_employee_tree"/>
+      <field name="arch" type="xml">
+           <xpath expr="//field[@name='coach_id']" position="after">
+          <field name="status"/>
+          <!-- <field name="comp"/> -->
+          <field name="department_id"/>
+          <field name="second_dapartment"/>
+<!--          <field name="department_position"/>-->
+          <field name="job_id" string="岗位" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+          <field name="rank"/>
+          <field name="entry_time"/>
+          <field name="turn_positive_time"/>
+          <field name="is_delete"/>
+          <field name="is_delete_date"/>
+          <field name="contract_signing_date"/>
+          <field name="contract_expiration_time"/>
+          <field name="contract_attributes"/>
+          <!-- <field name="stay1" readonly="1" force_save="1"/> -->
+			<!-- <field name="stay2"/> -->
+			<field name="stay2_money"/>
+          <field name="account_nature"/>
+          <field name="mobile_phone"/>
+          <field name="id_card"/>
+          <field name="birthday1"/>
+          <field name="year"/>
+          <field name="month"/>
+          <field name="day"/>
+          <field name="age"/>
+               <field name="gender1"/>
+               <field name="place_of_birth"/>
+               <field name="nationality"/>
+               <field name="marital11"/>
+               <field name="education1"/>
+               <field name="full_time"/>
+               <field name="study_school"/>
+               <field name="major"/>
+               <field name="introducer"/>
+               <field name="recent_work_unit"/>
+               <field name="emergency_contact"/>
+               <field name="emergency_phone"/>
+               <field name="current_home_address"/>
+               <field name="bank_account_id1"/>
+          <field name="pin2"/>
+          <field name="account_bank1"/>
+          <field name="comment"/>
+          <field name="month_payment_social"/>
+          <field name="social_payment_base"/>
+          <field name="month_provident_fund_start"/>
+          <field name="social_provident_base"/>
+          <field name="provident_fund_customer_number"/>
+          <field name="whether_the_labor_contract"/>
+          <field name="entry_reg_form"/>
+          <field name="entry_notification_from"/>
+          <field name="labor_contract"/>
+          <field name="confidentiality_agreement"/>
+          <field name="integrity_agreement"/>
+          <field name="copy_of_id_card"/>
+          <field name="copy_of_academic_qualifications"/>
+          <field name="res_certificate"/>
+         </xpath>
+          <xpath expr="//field[@name='job_id']" position="replace">
+              <field name="job_id"/>
+          </xpath>
+          <xpath expr="//field[@name='parent_id']" position="attributes">
+            <attribute name="string">经理</attribute>
+          </xpath>
+
+
+      </field>
+    </record>
+
+
+
+
+
+      <record id="hr_work_from_view2" model="ir.ui.view">
+      <field name="name">自定义员工信息2</field>
+      <field name="model">hr.employee</field>
+      <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+      <field name="arch" type="xml">
+          <xpath expr="//field[@name='work_phone']" position="attributes">
+              <attribute name="invisible">1</attribute>
+          </xpath>
+          <xpath expr="//field[@name='work_phone']" position="after">
+              <field name="mobile_phone"/>
+          </xpath>
+      </field>
+      </record>
+
+
+  </data>
+</odoo>

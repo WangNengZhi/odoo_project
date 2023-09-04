@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+        <menuitem name="已发送消息的记录" id="sent_messages_menu_root"/>
+        <!-- 菜单按钮 -->
+        <menuitem id="sent_messages_menu"
+            name="已发送消息的记录"
+            parent="sent_messages_menu_root"
+            action="sent_messages_actions"
+            sequence="10"/>
+    </data>
+</odoo>

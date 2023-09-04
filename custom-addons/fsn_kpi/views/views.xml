@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="fsn_kpi.list">
+      <field name="name">fsn_kpi list</field>
+      <field name="model">fsn_kpi.fsn_kpi</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="fsn_kpi.action_window">
+      <field name="name">fsn_kpi window</field>
+      <field name="res_model">fsn_kpi.fsn_kpi</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="fsn_kpi.action_server">
+      <field name="name">fsn_kpi server</field>
+      <field name="model_id" ref="model_fsn_kpi_fsn_kpi"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="fsn_kpi" id="fsn_kpi.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="fsn_kpi.menu_1" parent="fsn_kpi.menu_root"/>
+    <menuitem name="Menu 2" id="fsn_kpi.menu_2" parent="fsn_kpi.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="fsn_kpi.menu_1_list" parent="fsn_kpi.menu_1"
+              action="fsn_kpi.action_window"/>
+    <menuitem name="Server to list" id="fsn_kpi" parent="fsn_kpi.menu_2"
+              action="fsn_kpi.action_server"/>
+-->
+  </data>
+</odoo>

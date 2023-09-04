@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+
+        <!-- tree -->
+		<record model="ir.ui.view" id="outsource_plant_process_type_tree">
+			<field name="name">外发工厂加工类型tree</field>
+			<field name="model">outsource_plant_process_type</field>
+			<field name="arch" type="xml">
+				<tree editable="bottom">
+                    <header>
+                    </header>
+					<field name="name" string="类型名称"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+		<record model="ir.actions.act_window" id="outsource_plant_process_type_actions">
+            <field name="name">外发工厂加工类型</field>
+            <field name="res_model">outsource_plant_process_type</field>
+            <field name="view_mode">tree</field>
+		</record>
+
+    </data>
+</odoo>

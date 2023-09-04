@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+
+        <record id="hpro_inherit_total_cost_tree_tree" model="ir.ui.view">
+            <field name="name">BOM总成本扩展</field>
+            <field name="model">total_cost</field>
+            <field name="inherit_id" ref="fsn_bom.total_cost_tree"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+                <!-- 增加员工等级字段 -->
+				<xpath expr="//field[@name='practical_material_cost']" position="after">
+                    <field name="man_hour_cost" string="工时成本"/>
+                </xpath>
+
+				<xpath expr="//field[@name='number']" position="after">
+                    <field name="unit_cost" string="单件成本"/>
+                    <field name="total_cost" string="总成本"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

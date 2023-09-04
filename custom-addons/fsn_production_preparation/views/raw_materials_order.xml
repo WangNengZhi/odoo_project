@@ -1,0 +1,191 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record id="raw_materials_order_home_tree" model="ir.ui.view">
+			<field name="name">面辅料订单</field>
+			<field name="model">raw_materials_order_home</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0" delete="1">
+					<field name="date" string="日期" readonly="1"/>
+					<field name="order_number_id" string="订单号" readonly="1" options="{'no_create': True, 'no_open': True}"/>
+					<field name="style_number_id" string="款号" readonly="1" options="{'no_create': True, 'no_open': True}"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="raw_materials_order_home_form" model="ir.ui.view">
+            <field name="name">面辅料订单</field>
+            <field name="model">raw_materials_order_home</field>
+            <field name="arch" type="xml">
+                <form create="0" edit="1" delete="1">
+					<header>
+					</header>
+                    <sheet>
+                        <group col="4">
+							<field name="date" string="日期" readonly="1"/>
+							<field name="order_number_id" string="订单号" readonly="1" options="{'no_create': True, 'no_open': True}"/>
+							<field name="style_number_id" string="款号" readonly="1" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <notebook>
+							<page string="面辅料订单明细">
+								<field name="raw_materials_order_ids" string="面辅料订单明细">
+									<tree editable="top" create="0" edit="1" delete="1">
+										<field name="date" string="日期" readonly="1"/>
+										<field name="order_number_id" string="订单号" readonly="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										<field name="style_number_id" string="款号" readonly="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										<field name="type" string="类型" readonly="1"/>
+										<field name="material_name" string="物料名称" readonly="1"/>
+										<field name="material_specifications" string="物料规格"/>
+										<field name="single_dosage" string="单件用量" readonly="1"/>
+										<field name="unit_id" string="单位" readonly="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										<field name="order_number" string="订单数量" readonly="1"/>
+										<field name="total_amount" string="总用量" readonly="1"/>
+										<field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '通过'" widget="badge"/>
+										<button name="confirmation_button"
+											context="{'type': 'through'}"
+											type="object"
+											string="通过"
+											class="btn-primary"
+											attrs="{'invisible':[('state','!=', '草稿')]}"
+											groups="fsn_base.fsn_insiders_group"
+											/>
+										<button name="confirmation_button"
+											context="{'type': 'refused'}"
+											type="object"
+											string="拒绝"
+											class="btn-danger"
+											attrs="{'invisible':[('state','!=', '草稿')]}"
+											groups="fsn_base.fsn_insiders_group"
+											/>
+										<button name="confirmation_button"
+											context="{'type': 'fallback'}"
+											type="object"
+											string="回退"
+											class="btn-danger"
+											attrs="{'invisible':[('state','not in', ['通过', '拒绝'])]}"
+											groups="fsn_base.fsn_insiders_group"
+											/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+		<!-- 动作 -->
+		<record id="raw_materials_order_home_action" model="ir.actions.act_window">
+			<field name="name">面辅料订单</field>
+			<field name="res_model">raw_materials_order_home</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+        <record id="raw_materials_order_sale_pro_form" model="ir.ui.view">
+            <field name="name">销售订单继承</field>
+            <field name="model">sale_pro.sale_pro</field>
+            <field name="inherit_id" ref="sale_pro.view_sale_pro_form2"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+                <xpath expr="//button[@name='action_chargeback']" position="after">
+                    <button name="generate_raw_materials_order" string="生成面辅料订单" type="object"
+                        class="btn btn-primary"
+                        confirm='确认要生成面辅料订单吗？'
+                        />
+                </xpath>
+            </field>
+        </record>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="raw_materials_order_tree">
+			<field name="name">面辅料订单</field>
+			<field name="model">raw_materials_order</field>
+			<field name="arch" type="xml">
+				<tree editable="top" create="0" edit="1" delete="1">
+					<header>
+						<button name="test" type="object" string="Text" class="btn-danger"/>
+					</header>
+					<field name="date" string="日期" readonly="1"/>
+					<field name="order_number_id" string="订单号" readonly="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="style_number_id" string="款号" readonly="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="type" string="类型" readonly="1"/>
+					<field name="material_name" string="物料名称" readonly="1"/>
+					<field name="material_specifications" string="物料规格"/>
+					<field name="single_dosage" string="单件用量" readonly="1"/>
+					<field name="unit_id" string="单位" readonly="1" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="order_number" string="订单数量" readonly="1"/>
+					<field name="total_amount" string="总用量" readonly="1"/>
+                    <field name="state" string="状态" decoration-info="state == '草稿'" decoration-success="state == '通过'" widget="badge"/>
+                    <button name="confirmation_button"
+						context="{'type': 'through'}"
+						type="object"
+						string="通过"
+						class="btn-primary"
+						attrs="{'invisible':[('state','!=', '草稿')]}"
+						groups="fsn_base.fsn_insiders_group"
+						/>
+                    <button name="confirmation_button"
+						context="{'type': 'refused'}"
+						type="object"
+						string="拒绝"
+						class="btn-danger"
+						attrs="{'invisible':[('state','!=', '草稿')]}"
+						groups="fsn_base.fsn_insiders_group"
+						/>
+					<button name="confirmation_button"
+						context="{'type': 'fallback'}"
+						type="object"
+						string="回退"
+						class="btn-danger"
+						attrs="{'invisible':[('state','not in', ['通过', '拒绝'])]}"
+						groups="fsn_base.fsn_insiders_group"
+						/>
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- form -->
+		<record id="raw_materials_order_form" model="ir.ui.view">
+			<field name="name">面辅料订单审批</field>
+			<field name="model">team_cost</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+                    <sheet>
+						<field name="state" string="状态" invisible="1"/>
+						<div invisible="context.get('type') != 'refused'">确认拒绝吗？</div>
+                        <div invisible="context.get('type') != 'through'">确认审批通过吗？</div>
+						<div attrs="{'invisible':[('state','not in', ['通过', '拒绝'])]}">确认状态回退吗？</div>
+                    </sheet>
+                    <footer>
+                        <button name="action_state_changes" invisible="context.get('type') != 'refused'" context="{'type': 'refused'}" type="object" string="拒绝" class="oe_highlight"/>
+						<button name="action_state_changes" invisible="context.get('type') != 'through'" context="{'type': 'through'}" type="object" string="通过" class="oe_highlight"/>
+						<button name="action_state_changes" attrs="{'invisible':[('state','not in', ['通过', '拒绝'])]}" context="{'type': 'fallback'}" type="object" string="回退" class="oe_highlight"/>
+                        <button string="取消" class="oe_link" special="cancel"/>
+                    </footer>
+				</form>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="raw_materials_order_action">
+			<field name="name">面辅料订单</field>
+			<field name="res_model">raw_materials_order</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+
+    </data>
+</odoo>

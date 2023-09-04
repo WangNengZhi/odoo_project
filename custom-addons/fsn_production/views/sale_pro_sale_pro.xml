@@ -1,0 +1,31 @@
+<odoo>
+	<data>
+        <record id="building_view_sale_pro_form2" model="ir.ui.view">
+            <field name="name">销售订单继承</field>
+            <field name="model">sale_pro.sale_pro</field>
+            <field name="inherit_id" ref="sale_pro.view_sale_pro_form2"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+                <xpath expr="//button[@name='action_chargeback']" position="after">
+                    <field name="manufacturing_order_id" invisible="1"/>
+                    <button name="create_manufacturing_order" string="生成生产订单" type="object"
+                        class="btn btn-primary"
+                        attrs="{'invisible': ['|', ('is_finish', '!=', '未上线'), ('manufacturing_order_id', '!=', False)]}"
+                        confirm='确认要生成生产订单吗？'
+                        />
+                    <!-- <button name="create_manufacturing_order1" string="生成生产订单(旧)" type="object"
+                        class="btn btn-primary"
+                        attrs="{'invisible': ['|', ('is_finish', '!=', '未上线'), ('manufacturing_order_id', '!=', False)]}"
+                        confirm='确认要生成生产订单吗？'
+                        /> -->
+                    <!-- <button name="create_manufacturing_order" string="生成生产订单" type="object"
+                        class="btn btn-primary"
+                        attrs="{'invisible': [('manufacturing_order_id', '!=', False)]}"
+                        confirm='确认要生成生产订单吗？'
+                        /> -->
+                </xpath>
+            </field>
+        </record>
+
+	</data>
+</odoo>

@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+		<record id="jdy_expenses_details_tree" model="ir.ui.view">
+			<field name="name">精斗云会计科目</field>
+			<field name="model">jdy_expenses_details</field>
+			<field name="arch" type="xml">
+                <tree editable="bottom" create='0' edit='0' delete='1'>
+					<field name="month" string="月份"/>
+					<field name="parent_jdy_subject_id" string="父级科目"/>
+					<field name="jdy_subject_id" string="所属科目"/>
+					<field name="expense" string="费用"/>
+
+				</tree>
+			</field>
+		</record>
+
+        <record id="jdy_expenses_details_action" model="ir.actions.act_window">
+            <field name="name">精斗云会计费用明细</field>
+            <field name="res_model">jdy_expenses_details</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,52 @@
+<odoo>
+  	<data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="data_export_setting_tree">
+			<field name="name">FSN数据导出权限设置</field>
+			<field name="model">data_export_setting</field>
+			<field name="arch" type="xml">
+				<!-- <tree editable="bottom" create="0" delete="0"> -->
+				<tree>
+					<field name="name" string="名称"/>
+					<field name="model_id" string="模型"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- form -->
+		<record id="data_export_setting_form" model="ir.ui.view">
+			<field name="name">FSN数据导出权限设置</field>
+			<field name="model">data_export_setting</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<!-- <div style="text-align: center"><h1>FSN数据导出权限设置</h1></div> -->
+
+						<group col="4">
+                            <field name="name" string="名称"/>
+                            <field name="model_id" string="模型" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+						</group>
+                        <notebook>
+                            <page string="用户">
+                                <field name="users" string="用户" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            </page>
+                        </notebook>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record model="ir.actions.act_window" id="data_export_setting_action">
+			<field name="name">FSN数据导出权限设置</field>
+			<field name="res_model">data_export_setting</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+  	</data>
+</odoo>

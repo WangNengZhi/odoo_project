@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <template id="assets_backend" name="custom page assets" inherit_id="web.assets_backend">
+            <xpath expr="//script[last()]" position="after">
+
+                <script type="text/javascript" src="/suspension_system/static/js/suspension_system_summary_button.js"></script>
+                <script type="text/javascript" src="/suspension_system/static/js/suspension_system_station_summary_button.js"></script>
+                <!-- <script type="text/javascript" src="/suspension_system/static/src/js/fp_position_setting.js"></script> -->
+                <!-- <link rel="stylesheet" href="/odoo_model/static/src/lib/layui/css/layui.css"></link> -->
+                <!-- <script type="text/javascript" src="/suspension_system/static/src/js/get_details_data.js"></script> -->
+
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="cutting_bed_connect_setting_tree">
+            <field name="name">自动裁床连接配置</field>
+            <field name="model">cutting_bed_connect_setting</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" create="false" delete="false">
+
+                    <field name="key" string="键" readonly="1"/>
+                    <field name="value" string="值"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+
+
+        <record model="ir.actions.act_window" id="cutting_bed_connect_setting_action">
+            <field name="name">自动裁床连接配置</field>
+            <field name="res_model">cutting_bed_connect_setting</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

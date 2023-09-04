@@ -1,0 +1,173 @@
+<odoo>
+    <data>
+
+        <menuitem id="menu_salary1"
+                name="薪酬管理"
+                web_icon="salary_management,static/description/icon.png"
+                sequence="2"/>
+            <menuitem id="menu_salary2"
+                    name="薪酬2021"
+                    parent="menu_salary1"
+                    groups="salary_management.fsn_salary_sheet_group"
+                    sequence="100"/>
+
+                <menuitem id="menu_salary"
+                        name="薪酬明细"
+                        action="action_salary"
+                        parent="menu_salary2"
+                        sequence="10"/>
+
+
+                <menuitem id="menu_fsn_salary_sheet"
+                        name="工资表"
+                        action="fsn_salary_sheet_action"
+                        parent="menu_salary2"
+                        sequence="40"/>
+                <menuitem id="menu_fsn_true_salary_sheet"
+                        name="工资条"
+                        action="fsn_true_salary_sheet_action"
+                        parent="menu_salary2"
+                        sequence="50"/>
+
+            <menuitem id="menu_payroll"
+                    name="薪酬"
+                    parent="menu_salary1"
+                    sequence="3"/>
+
+                <menuitem id="menu_payroll1"
+                        name="薪酬明细"
+                        action="payroll1_action"
+                        parent="menu_payroll"
+                        sequence="10"/>
+
+                <menuitem id="menu_payroll2"
+                        name="工资表"
+                        action="payroll2_action"
+                        parent="menu_payroll"
+                        sequence="20"/>
+                        
+                <menuitem id="menu_payroll3"
+                        name="工资条"
+                        action="payroll3_action"
+                        parent="menu_payroll"
+                        sequence="30"/>
+        <menuitem id="menu_outsourcing_wages"
+                name="外包工资"
+                parent="menu_salary1"
+                sequence="10"/>
+                <menuitem id="menu_outsourcing_wages_per_work_time"
+                        name="外包计时薪酬"
+                        action="action_outsourcing_wages_per_work_time"
+                        parent="menu_outsourcing_wages"
+                        sequence="10"/>
+                <menuitem id="menu_outsourcing_wages_for_work_done"
+                        name="外包计件薪酬"
+                        action="action_outsourcing_wages_for_work_done"
+                        parent="menu_outsourcing_wages"
+                        sequence="20"/>
+
+        <menuitem id="menu_set_up_days"
+                  name="设置"
+                  parent="menu_salary1"
+                  sequence="20"/>
+
+            <!-- <menuitem id="menu_set_up_days1"
+                    name="设置出勤天数"
+                    action="action_set_up_days"
+                    parent="menu_set_up_days"
+                    sequence="2"/> -->
+            <menuitem id="menu_set_up_base"
+                    name="补贴设置"
+                    action="action_set_up_base"
+                    parent="menu_set_up_days"
+                    sequence="10"/>
+            <menuitem id="menu_socail_base"
+                    name="社保设置"
+                    action="action_socail_base"
+                    parent="menu_set_up_days"
+                    sequence="20"/>
+            <menuitem id="menu_custom_calendar"
+                    name="自定义日历"
+                    action="action_custom_calendar"
+                    parent="menu_set_up_days"
+                    sequence="30"/>
+            <menuitem id="menu_deduct_money_setting"
+                    name="扣款设置"
+                    action="deduct_money_setting_action"
+                    parent="menu_set_up_days"
+                    sequence="40"/>
+            <menuitem id="menu_efficiency_wages_setting"
+                    name="产线效率薪资设置"
+                    action="efficiency_wages_setting_action"
+                    parent="menu_set_up_days"
+                    sequence="50"/>
+            <menuitem id="menu_efficiency_bonus_setting"
+                    name="效率奖金设置"
+                    action="efficiency_bonus_setting_action"
+                    parent="menu_set_up_days"
+                    sequence="50"/>
+            <menuitem id="menu_group_leader_wages_setting"
+                    name="组长效率薪资设置"
+                    action="group_leader_wages_setting_action"
+                    parent="menu_set_up_days"
+                    sequence="60"/>
+            <menuitem id="menu_post_performance_setting"
+                    name="岗位绩效设置"
+                    action="post_performance_setting_action"
+                    parent="menu_set_up_days"
+                    sequence="70"/>
+            <menuitem id="menu_post_commission_setting"
+                    name="岗位提成设置"
+                    action="post_commission_setting_action"
+                    parent="menu_set_up_days"
+                    sequence="70"/>
+            <menuitem id="menu_salary_lock_setting"
+                    name="薪酬可修改限制设置"
+                    action="salary_lock_setting_action"
+                    parent="menu_set_up_days"
+                    sequence="80"/>
+
+
+        <menuitem id="menu_statistics"
+                name="薪酬统计"
+                parent="menu_salary1"
+                sequence="30"/>
+                <menuitem id="menu_compensation_statistics"
+                        name="薪酬统计"
+                        parent="menu_statistics"
+                        action="compensation_statistics_action"
+                        sequence="10"/>
+                <menuitem id="menu_workshop_pie_chart01"
+                        name="车间饼图"
+                        parent="menu_statistics"
+                        action="workshop_pie_chart_client_action"
+                        sequence="20"/>
+                <menuitem id="menu_compensation_sublevel"
+                        name="薪酬分阶"
+                        parent="menu_statistics"
+                        action="compensation_sublevel_action"
+                        sequence="30"/>
+                <menuitem id="menu_amoeba_chart"
+                        name="阿米巴"
+                        parent="menu_statistics"
+                        action="amoeba_chart_client_action"
+                        sequence="40"/>
+
+        <menuitem id="menu_rests"
+                name="其他功能"
+                parent="menu_salary1"
+                sequence="40"/>
+
+            <menuitem id="menu_dormitory_property_fee"
+                    name="宿舍物业费"
+                    action="action_dormitory_property_fee"
+                    parent="menu_rests"
+                    sequence="10"/>
+            <menuitem id="refill_card_return_menu"
+                        name="饭卡归还记录"
+                        action="refill_card_return_action"
+                        parent="menu_rests"
+                        sequence="20"/>
+
+    </data>
+</odoo>

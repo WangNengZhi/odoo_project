@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+
+		<record model="ir.ui.view" id="platform_linkman_tree">
+			<field name="name">电商联系人</field>
+			<field name="model">platform_linkman</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <header>
+                        <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+                        <field name="name" string="账号名称"/>
+                        <field name="platform_type" string="平台类型"/>
+                        <field name="amount_fans" string="粉丝量"/>
+                        <field name="uuid" string="UID"/>
+                        <field name="wechat_id" string="微信号"/>
+                        <field name="phone" string="电话"/>
+                        <field name="appellation" string="姓名"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="platform_linkman_form" model="ir.ui.view">
+			<field name="name">电商联系人</field>
+			<field name="model">platform_linkman</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<div style="text-align: center"><h1>电商联系人</h1></div>
+
+						<group col="4">
+							<field name="name" string="账号名称"/>
+							<field name="platform_type" string="平台类型" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="amount_fans" string="粉丝量"/>
+							<field name="uuid" string="UID"/>
+							<field name="wechat_id" string="微信号"/>
+							<field name="phone" string="电话"/>
+							<field name="appellation" string="姓名"/>
+							<field name="mailing_info" string="邮寄信息"/>
+						</group>
+
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+        <!-- 动作 -->
+        <record id="platform_linkman_action" model="ir.actions.act_window">
+            <field name="name">电商联系人</field>
+            <field name="res_model">platform_linkman</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

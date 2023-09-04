@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+        <!-- 定义一个用于创建和编辑资产分类记录的表单视图 -->
+        <record model="ir.ui.view" id="view_asset_classification_form">
+            <field name="name">asset.classification.form</field>
+            <field name="model">asset_classification</field>
+            <field name="arch" type="xml">
+                <form string="固定资产分类登记表">
+                    <sheet>
+                        <group>
+                            <field name="date" string="日期"/>
+                            <field name="assert_code" string="资产编码" readonly="1"/>
+                            <field name="assert_name" string="资产名称"/>
+                            <field name="asset_type" string="资产类型"/>
+                            <field name="use_department" string="使用部门"/>
+                            <field name="recipients_people" string="使用人"/>
+                            <field name="specification_model" string="规格型号"/>
+                            <field name="acquisition_date" string="取得日期"/>
+                        </group>
+                        <footer>
+                            <button string="保存" type="object" class="btn-primary" name="create"/>
+                            <button string="取消" class="btn-secondary" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- 定义一个用于显示资产分类记录列表的树视图 -->
+        <record model="ir.ui.view" id="view_asset_classification_tree">
+            <field name="name">asset.classification.tree</field>
+            <field name="model">asset_classification</field>
+            <field name="arch" type="xml">
+                <tree string="固定资产分类登记表" editable="top">
+                    <field name="date" string="日期" />
+                    <field name="assert_code" string="资产编码" readonly="1"/>
+                    <field name="assert_name" string="资产名称"/>
+                    <field name="asset_type" string="资产类型"/>
+                    <field name="use_department" string="使用部门"/>
+                    <field name="recipients_people" string="使用人"/>
+                    <field name="specification_model" string="规格型号"/>
+                    <field name="acquisition_date" string="取得日期"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- 定义一个用于在菜单中显示的动作 -->
+        <record model="ir.actions.act_window" id="action_asset_classification">
+            <field name="name">固定资产分类登记表</field>
+            <field name="res_model">asset_classification</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_asset_classification_tree"/>
+        </record>
+
+        <!-- 定义一个菜单来访问资产分类 -->
+<!--        <menuitem id="menu_asset_classification" name="资产分类" action="action_asset_classification"/>-->
+
+    </data>
+</odoo>

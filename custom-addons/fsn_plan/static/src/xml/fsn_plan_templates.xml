@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="fsn_plan_templates" xml:space="preserve">
+
+        <t t-name="Fsn.GanttView.Row" t-extend="GanttView.Row">
+            <t t-jquery="*[t-esc='pill.display_name']" t-operation="replace">
+                <p class="text-truncate position-relative mb-0 o_gantt_pill_title" t-esc="pill.progress_bar"/>
+                <t t-if="pill.progress_bar">
+                    <span>%</span>
+                </t>
+            </t>
+        </t>
+
+    </template>
+
+</odoo>

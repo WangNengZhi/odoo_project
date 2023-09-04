@@ -1,0 +1,31 @@
+<odoo>
+  	<data>
+        <record id="personnel_manage_tree" model="ir.ui.view">
+            <field name="name">人事管理</field>
+            <field name="model">personnel_manage</field>
+            <field name="arch" type="xml">
+				<tree editable="top" create="0" edit="1" delete="1">
+                    <header>
+						<!-- <button name="set_fsn_month_plan_info" string="刷新大单小单中单" type="object" class="btn btn-danger"/> -->
+					</header>
+                    <field name="month" string="月份" readonly="1"/>
+                    <field name="name" string="姓名" readonly="1"/>
+                    <field name="joined_date" string="入职日期" readonly="1"/>
+                    <field name="termination_date" string="离职日期" readonly="1"/>
+                    <field name="emp" string="部门" readonly="1"/>
+                    <field name="planned_recruitment" string="计划招聘人数"/>
+                    <field name="full_moon" string="实际满月人数" readonly="1"/>
+                    <field name="number_of_interviewees" string="面试人数" readonly="1"/>
+                    <field name="number_of_employees" string="入职人数" readonly="1"/>
+                    <field name="on_boarding_rate" string="入职率" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+        <!-- 动作 -->
+        <record id="personnel_manage_actions" model="ir.actions.act_window">
+            <field name="name">人事管理</field>
+            <field name="res_model">personnel_manage</field>
+            <field name="view_mode">tree</field>
+        </record>
+  	</data>
+</odoo>

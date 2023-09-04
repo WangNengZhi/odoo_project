@@ -1,0 +1,177 @@
+<odoo>
+    <data>
+        <record id="client_ware_finished_product_ware_line_tree" model="ir.ui.view">
+            <field name="name">仓库明细继承</field>
+            <field name="model">finished_product_ware_line</field>
+            <field name="inherit_id" ref="warehouse_management.finished_product_ware_line_tree"/>
+            <field name="arch" type="xml">
+                <!-- 找到ids字段，在其后添加idea_id字段 -->
+                <xpath expr="//button[@name='state_back']" position="after">
+
+                    <!-- <button name="test" string="测试" type="object" class="btn-primary"/> -->
+                </xpath>
+            </field>
+        </record>
+
+		<record model="ir.ui.view" id="client_ware_tree">
+			<field name="name">客仓tree</field>
+			<field name="model">client_ware</field>
+			<field name="arch" type="xml">
+                <tree editable="top" edit="1">
+                    <header>
+                        <!-- <button name="set_punishment" type="object" string="Test" class="btn-primary"/> -->
+                    </header>
+					<field name="dDate" string="日期"/>
+					<field name="gGroup" string="组别"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="order_number" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="client_or_QC" string="客户/QC"/>
+                    <field name="check_type" string="检查类型"/>
+                    <field name="repair_number" string="返修数量"/>
+                    <field name="check_number" string="查货数量"/>
+                    <field name="general" string="总检" required="1"/>
+                    <field name="repair_ratio" string="返修率" widget="progressbar"/>
+                    <field name="remark" string="问题点"/>
+                    <field name="punishment" string="扣款"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="client_ware_actions" model="ir.actions.act_window">
+            <field name="name">客仓</field>
+            <field name="res_model">client_ware</field>
+            <field name="view_mode">tree,graph</field>
+        </record>
+        <!-- 指定tree -->
+        <record id="client_ware_actions_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="client_ware_tree"/>
+            <field name="act_window_id" ref="client_ware_actions"/>
+        </record>
+
+
+
+
+		<record id="weicha_fanxiu_tongji_tree" model="ir.ui.view">
+			<field name="name">尾查返修统计</field>
+			<field name="model">client_ware</field>
+			<field name="arch" type="xml">
+                <tree editable="top" edit="0">
+                    <header>
+                        <!-- <button name="set_punishment" type="object" string="Test" class="btn-primary"/> -->
+                    </header>
+					<field name="dDate" string="日期"/>
+					<field name="gGroup" string="组别"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="order_number" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="client_or_QC" string="尾查"/>
+                    <field name="repair_number" string="返修数量"/>
+                    <field name="check_number" string="查货数量"/>
+                    <field name="general" string="总检"/>
+                    <field name="repair_ratio" string="返修率" widget="progressbar"/>
+				</tree>
+			</field>
+		</record>
+        <record id="weicha_fanxiu_tongji_action" model="ir.actions.act_window">
+            <field name="name">尾查返修统计</field>
+            <field name="res_model">client_ware</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('check_type', '=', '尾查')]</field>
+            <field name="context">{'create': False, 'edit': False, 'delete': False}</field>
+        </record>
+        <!-- 指定tree -->
+        <record id="weicha_fanxiu_tongji_action_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="weicha_fanxiu_tongji_tree"/>
+            <field name="act_window_id" ref="weicha_fanxiu_tongji_action"/>
+        </record>
+
+
+
+
+		<record id="kehu_fanxiu_tongji_tree" model="ir.ui.view">
+			<field name="name">客户返修统计</field>
+			<field name="model">client_ware</field>
+			<field name="arch" type="xml">
+                <tree editable="top" edit="0">
+                    <header>
+
+                    </header>
+					<field name="dDate" string="日期"/>
+					<field name="gGroup" string="组别"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="order_number" string="订单号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="client_or_QC" string="客户"/>
+                    <field name="repair_number" string="返修数量"/>
+                    <field name="check_number" string="查货数量"/>
+                    <field name="general" string="尾查/总检"/>
+                    <field name="repair_ratio" string="返修率" widget="progressbar"/>
+				</tree>
+			</field>
+		</record>
+        <record id="kehu_fanxiu_tongji_action" model="ir.actions.act_window">
+            <field name="name">客户返修统计</field>
+            <field name="res_model">client_ware</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('check_type', '=', '客户'), ('dDate', '&gt;=', '2023-03-01')]</field>
+            <field name="context">{'create': False, 'edit': False, 'delete': False}</field>
+        </record>
+
+        <record id="kehu_fanxiu_tongji_action_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="kehu_fanxiu_tongji_tree"/>
+            <field name="act_window_id" ref="kehu_fanxiu_tongji_action"/>
+        </record>
+
+
+
+
+
+		<record id="tail_check_month_efficiency_tree" model="ir.ui.view">
+			<field name="name">尾查月效率表</field>
+			<field name="model">client_ware</field>
+			<field name="arch" type="xml">
+                <tree>
+                    <header>
+                    </header>
+					<field name="dDate" string="日期"/>
+					<field name="gGroup" string="组别"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+					<field name="order_number" string="订单号" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="client_or_QC" string="客户"/>
+                    <field name="repair_number" string="返修数量"/>
+                    <field name="check_number" string="查货数量"/>
+                    <field name="general" string="尾查/总检"/>
+                    <field name="repair_ratio" string="返修率" widget="progressbar"/>
+                    <field name="punishment" string="扣款"/>
+				</tree>
+			</field>
+		</record>
+
+
+        <!-- <record id="tail_check_month_efficiency_action" model="ir.actions.act_window">
+            <field name="name">尾查月效率表</field>
+            <field name="res_model">client_ware</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('check_type', '=', '客户'), ('dDate', '&gt;=', '2023-03-01')]</field>
+            <field name="context">{'create': False, 'edit': False, 'delete': False}</field>
+        </record>
+        <record id="tail_check_month_efficiency_action_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="tail_check_month_efficiency_tree"/>
+            <field name="act_window_id" ref="tail_check_month_efficiency_action"/>
+        </record> -->
+        <record model="ir.actions.act_window" id="tail_check_month_efficiency_action">
+			<field name="name">尾查月效率表</field>
+			<field name="res_model">client_ware</field>
+			<field name="view_mode">tree</field>
+            <field name="domain">[('dDate', '&gt;=', '2023-03-01')]</field>
+            <field name="view_id" ref="tail_check_month_efficiency_tree"/>
+		</record>
+
+    </data>
+</odoo>

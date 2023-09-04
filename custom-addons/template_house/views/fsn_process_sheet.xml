@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="fsn_process_sheet_tree">
+        <field name="name">工艺单记录</field>
+        <field name="model">fsn_process_sheet</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <header>
+                        <!-- <button name="set_repair_proportion" type="object" string="test" class="btn-primary"/> -->
+                    </header>
+                    <field name="date" string="日期"/>
+                    <field name="employee_id" string="员工"/>
+                    <field name="work_type" string="工种"/>
+                    <field name="job_id" string="岗位"/>
+                    <field name="order_number" string="订单号"/>
+                    <field name="style_number" string="款号"/>
+                    <field name="process_sheet_attachment_ids" string="工艺单附件"/>
+                    <field name="remark" string="备注"/>
+                </tree>
+            </field>
+        </record>
+
+		<!-- form -->
+		<record id="fsn_process_sheet_form" model="ir.ui.view">
+			<field name="name">工艺单记录</field>
+			<field name="model">fsn_process_sheet</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+					</header>
+					<sheet>
+						<group col="4">
+                            <field name="date" string="日期"/>
+                            <field name="employee_id" string="员工" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="work_type" string="工种"/>
+                            <field name="job_id" string="岗位" options="{'no_create': True, 'no_open': True}"/>
+						</group>
+						<group col="4">
+                            <field name="order_number" string="订单号" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+						</group>
+						<group col="4">
+                            <field name="process_sheet_attachment_ids" string="工艺单附件" widget="many2many_binary"/>
+                            <field name="remark" string="备注"/>
+						</group>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+        <record id="fsn_process_sheet_action" model="ir.actions.act_window">
+            <field name="name">工艺单记录</field>
+            <field name="res_model">fsn_process_sheet</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

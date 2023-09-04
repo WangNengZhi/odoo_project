@@ -1,0 +1,59 @@
+<odoo>
+	<data>
+        <record id="raw_materials_order_home_report" model="ir.actions.report">
+            <field name="name">面辅料用量打印</field>
+            <field name="model">raw_materials_order_home</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">fsn_production_preparation.raw_materials_order_home_print</field>
+            <field name="report_file">fsn_production_preparation.raw_materials_order_home_print</field>
+            <!-- <field name="paperformat_id" ref="fsn_kpi.paperformat_batch_deposit"/> -->
+            <field name="binding_model_id" ref="model_raw_materials_order_home"/>
+        </record>
+
+
+        <template id="raw_materials_order_home_print">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+
+                        <div t-foreach="docs" t-as="o">
+                            <h2 style="text-align:center">面辅料用量</h2>
+                            <div>订单号:<span t-field="o.order_number_id.order_number"/></div>
+                            <div>款号:<span t-field="o.style_number_id.style_number"/></div>
+                            <table class="table table-sm">
+
+                                <tr>
+                                    <td>类型</td>
+                                    <td>物料名称</td>
+                                    <td>规格</td>
+                                    <td>单件用量</td>
+                                    <td>单位</td>
+                                    <td>订单数量</td>
+                                    <td>总用量</td>
+                                </tr>
+                                <t t-foreach="o.raw_materials_order_ids" t-as="i">
+                                    <tr>
+                                        <td><span t-field="i.type"/></td>
+                                        <td><span t-field="i.material_name"/></td>
+                                        <td><span t-field="i.material_specifications"/></td>
+                                        <td><span t-field="i.single_dosage"/></td>
+                                        <td><span t-field="i.unit_id.name"/></td>
+                                        <td><span t-field="i.order_number"/></td>
+                                        <td><span t-field="i.total_amount"/></td>
+                                    </tr>
+                                </t>
+                            </table>
+
+                            <!-- <div style="text-align:right; padding-right:80px;">总分:<span t-field="o.total_score"/></div>
+                            <div style="text-align:right; padding-right:80px;">审核人:<span t-field="o.inspection_people.name"/></div> -->
+
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+
+    </data>
+</odoo>

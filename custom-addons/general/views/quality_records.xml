@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="quality_records_tree">
+			<field name="name">品质记录表</field>
+			<field name="model">quality_records</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+					<field name="date" string="日期"/>
+					<field name="employee_id" string="员工" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="inspection_item_ids" string="检验项目" widget="many2many_tags" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+					<field name="product_problem" string="产品问题"/>
+					<field name="handling_method" string="处理方法"/>
+					<field name="examinant_id" string="巡查员" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="remark" string="备注"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="quality_records_actions" model="ir.actions.act_window">
+            <field name="name">品质记录表</field>
+            <field name="res_model">quality_records</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

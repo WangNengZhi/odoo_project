@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <record id="procurement_group_category" model="ir.module.category">
+            <field name="name">采购</field>
+            <field name="sequence">5</field>
+        </record>
+            <record id="procurement_group_groups" model="res.groups">
+                <field name="name">采购通过专用</field>
+                <field name="category_id" ref="procurement_group_category"/>
+            </record>
+
+            <record id="procurement_bgs_group_groups" model="res.groups">
+                <field name="name">供应商_办公室</field>
+                <field name="category_id" ref="procurement_group_category"/>
+            </record>
+            <record id="procurement_jxsb_group_groups" model="res.groups">
+                <field name="name">供应商_机修设备</field>
+                <field name="category_id" ref="procurement_group_category"/>
+            </record>
+            <record id="procurement_mfl_group_groups" model="res.groups">
+                <field name="name">供应商_面辅料</field>
+                <field name="category_id" ref="procurement_group_category"/>
+            </record>
+
+    </data>
+</odoo>

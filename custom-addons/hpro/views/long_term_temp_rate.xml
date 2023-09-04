@@ -1,0 +1,26 @@
+<odoo>
+  	<data>
+
+        <!-- view -->
+        <record id="long_term_temp_rate_view_tree" model="ir.ui.view">
+            <field name="name">长期外包工价</field>
+            <field name="model">long_term_temp_rate</field>
+            <field name="arch" type="xml">
+				<tree editable="top">
+                    <field name="process_name" string="工序名称"/>
+                    <field name="standard_working_hours" string="标准工时"/>
+                    <field name="standard_wages" string="标准工价"/>
+                    <field name="processing_cost" string="价格"/>
+                </tree>
+            </field>
+        </record>
+
+		<!-- 动作 -->
+        <record id="long_term_temp_rate_actions" model="ir.actions.act_window">
+            <field name="name">长期外包工价</field>
+            <field name="res_model">long_term_temp_rate</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

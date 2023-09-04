@@ -1,0 +1,84 @@
+<odoo>
+    <data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="fsn_kpi_tree">
+			<field name="name">KPItree</field>
+			<field name="model">fsn_kpi</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="year_month" string="月份"/>
+                    <field name="employee_id" string="员工"/>
+                    <field name="department_id" string="部门"/>
+                    <field name="job_id" string="岗位"/>
+                    <field name="inspection_people" string="考核人"/>
+                    <field name="total_score" string="总计得分"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- form -->
+		<record id="fsn_kpi_form" model="ir.ui.view">
+			<field name="name">KPIform</field>
+			<field name="model">fsn_kpi</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+
+					</header>
+
+					<!-- <div style="text-align: center"><h1>KPI</h1></div> -->
+					<group col="4">
+                        <field name="year_month" string="月份" widget="fsn_month"/>
+                        <field name="employee_id" string="员工" options="{'no_create': True, 'no_open': True}"/>
+					</group>
+					<group col="4">
+						<field name="department_id" string="部门" options="{'no_create': True, 'no_open': True}" readonly="1" force_save="1"/>
+						<field name="job_id" string="岗位" options="{'no_create': True, 'no_open': True}"/>
+					</group>
+
+					<notebook>
+						<page string="KPI明细">
+							<field name="fsn_kpi_line_ids" string="KPI明细">
+								<tree editable="bottom" create="0" delete="0">
+									<field name="sequence" string="序号" width="50px" readonly="1" force_save="1"/>
+									<field name="assessment_project" string="考核项目" width="150px" readonly="1" force_save="1"/>
+									<field name="assess_project" string="自动考核" width="150px" readonly="1" force_save="1"/>
+									<field name="assessment_content" string="考核内容" width="150px" readonly="1" force_save="1"/>
+									<field name="assessment_standard" string="考核标准" width="600px" readonly="1" force_save="1"/>
+									<field name="score" string="分值" readonly="1" force_save="1"/>
+									<field name="calculation" string="计算方式" readonly="1" force_save="1"/>
+									<field name="evaluation_score" string="考核评分" attrs="{'readonly':[('assess_project', '!=', False)]}" force_save="1"/>
+									<button name="automatic_assessment" string="计算" type="object"
+										class="btn btn-primary"
+										attrs="{'invisible': ['|', ('assess_project', '=', False), ('id', '=', False)]}"
+									/>
+								</tree>
+								<form>
+								</form>
+							</field>
+						</page>
+					</notebook>
+					<group col="6" class="mt-2 mt-md-0">
+						<group colspan="4">
+							<div><h2>评分标准:A级（91分以上）、B级（71-90分）、C级（60-70分）、D级（60分以下）</h2></div>
+						</group>
+						<group colspan="2">
+							<field name="full_marks" string="满分"/>
+							<field name="total_score" string="总计得分"/>
+							<div class="oe_subtotal_footer_separator oe_inline o_td_label">
+								<label for="inspection_people"/>
+							</div>
+							<field name="inspection_people" nolabel="1" class="oe_subtotal_footer_separator" options="{'no_create': True, 'no_open': True}"/>
+						</group>
+						<div class="oe_clear"/>
+					</group>
+
+				</form>
+			</field>
+		</record>
+
+
+    </data>
+</odoo>

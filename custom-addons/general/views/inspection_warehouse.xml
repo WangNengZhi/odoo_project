@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+		<record model="ir.ui.view" id="inspection_warehouse_tree">
+			<field name="name">客仓tree</field>
+			<field name="model">inspection_warehouse</field>
+			<field name="arch" type="xml">
+                <tree editable="top">
+                    <header>
+
+                    </header>
+					<field name="date" string="日期"/>
+					<field name="order_number" string="订单号" options="{'no_create': True, 'no_open': True}"/>
+					<field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+   					<field name="project" string="项目"/>
+   					<field name="inspector" string="检验员" options="{'no_create': True, 'no_open': True}"/>
+   					<field name="amount" string="总数量"/>
+   					<field name="sampling_amount" string="抽样量"/>
+   					<field name="bad_amount" string="不良数"/>
+   					<field name="major_problem_areas" string="主要问题点"/>
+   					<field name="quality" string="合格是否"/>
+   					<field name="description" string="备注"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="inspection_warehouse_actions" model="ir.actions.act_window">
+            <field name="name">仓库检查</field>
+            <field name="res_model">inspection_warehouse</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

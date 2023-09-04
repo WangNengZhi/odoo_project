@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+        <!-- tree -->
+		<record model="ir.ui.view" id="wechat_process_confirm_tree">
+			<field name="name">工序确认记录</field>
+			<field name="model">wechat_process_confirm</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0">
+                    <header>
+                        <!-- <button name="set_assess_index" type="object" string="考核刷新" class="btn-primary"/> -->
+                    </header>
+					<field name="date" string="日期"/>
+					<field name="employee_id" string="员工"/>
+					<field name="work_number" string="工号"/>
+					<field name="group_id" string="组别"/>
+					<field name="position" string="站号"/>
+					<field name="style_number" string="款号"/>
+					<field name="process_number" string="工序号"/>
+					<field name="process_describe" string="工序描述"/>
+					<field name="number" string="件数"/>
+					<field name="station_summaryseqno_line_objs" string="吊挂记录" optional="hide"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="wechat_process_confirm_form" model="ir.ui.view">
+			<field name="name">工序确认记录form</field>
+			<field name="model">wechat_process_confirm</field>
+			<field name="arch" type="xml">
+				<form create="0" edit="0">
+					<sheet>
+						<!-- <div style="text-align: center"><h1>员工奖惩记录单</h1></div> -->
+						<group col="4">
+							<field name="date" string="日期"/>
+							<field name="employee_id" string="员工"/>
+							<field name="work_number" string="工号"/>
+							<field name="group_id" string="组别"/>
+							<field name="position" string="站号"/>
+							<field name="style_number" string="款号"/>
+							<field name="process_number" string="工序号"/>
+							<field name="process_describe" string="工序描述"/>
+							<field name="number" string="件数"/>
+						</group>
+						<notebook>
+							<page string="吊挂工序明细">
+								<field name="station_summaryseqno_line_objs" string="吊挂工序明细">
+									<tree editable="bottom" create="0" delete="0">
+										<field name="SeqNo" string="工序号"/>
+										<field name="number" string="件数"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <!-- action -->
+		<record model="ir.actions.act_window" id="wechat_process_confirm_actions">
+            <field name="name">工序确认记录</field>
+            <field name="res_model">wechat_process_confirm</field>
+            <field name="view_mode">tree</field>
+		</record>
+
+    </data>
+</odoo>

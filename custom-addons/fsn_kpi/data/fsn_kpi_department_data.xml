@@ -1,0 +1,87 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="fsn_kpi_department_01" model="fsn_kpi_department">
+            <field name="name">技术部</field>
+        </record>
+            <record id="fsn_kpi_department_01_01" model="fsn_kpi_job">
+                <field name="name">样衣员</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_01"/>
+            </record>
+            <record id="fsn_kpi_department_01_02" model="fsn_kpi_job">
+                <field name="name">技术主管</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_01"/>
+            </record>
+            <record id="fsn_kpi_department_01_03" model="fsn_kpi_job">
+                <field name="name">模板师</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_01"/>
+            </record>
+            <record id="fsn_kpi_department_01_04" model="fsn_kpi_job">
+                <field name="name">IE</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_01"/>
+            </record>
+            <record id="fsn_kpi_department_01_05" model="fsn_kpi_job">
+                <field name="name">机修</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_01"/>
+            </record>
+
+
+        <record id="fsn_kpi_department_02" model="fsn_kpi_department">
+            <field name="name">后整</field>
+        </record>
+            <record id="fsn_kpi_department_02_01" model="fsn_kpi_job">
+                <field name="name">专机</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_02"/>
+            </record>
+
+
+        <record id="fsn_kpi_department_03" model="fsn_kpi_department">
+            <field name="name">办公室</field>
+        </record>
+            <record id="fsn_kpi_department_03_01" model="fsn_kpi_job">
+                <field name="name">办公室主任</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_03"/>
+            </record>
+            <record id="fsn_kpi_department_03_02" model="fsn_kpi_job">
+                <field name="name">理单员</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_03"/>
+            </record>
+            <record id="fsn_kpi_department_03_03" model="fsn_kpi_job">
+                <field name="name">人事专员</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_03"/>
+            </record>
+            <record id="fsn_kpi_department_03_04" model="fsn_kpi_job">
+                <field name="name">人事主管</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_03"/>
+            </record>
+
+
+        <record id="fsn_kpi_department_04" model="fsn_kpi_department">
+            <field name="name">生产部</field>
+        </record>
+            <record id="fsn_kpi_department_04_01" model="fsn_kpi_job">
+                <field name="name">车间主任</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_04"/>
+            </record>
+            <record id="fsn_kpi_department_04_02" model="fsn_kpi_job">
+                <field name="name">包装</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_04"/>
+            </record>
+            <record id="fsn_kpi_department_04_03" model="fsn_kpi_job">
+                <field name="name">大烫</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_04"/>
+            </record>
+            <record id="fsn_kpi_department_04_04" model="fsn_kpi_job">
+                <field name="name">小烫</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_04"/>
+            </record>
+            <record id="fsn_kpi_department_04_05" model="fsn_kpi_job">
+                <field name="name">车工</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_04"/>
+            </record>
+            <record id="fsn_kpi_department_04_06" model="fsn_kpi_job">
+                <field name="name">组长</field>
+                <field name="fsn_kpi_department_id" ref="fsn_kpi_department_04"/>
+            </record>
+    </data>
+</odoo>

@@ -1,0 +1,25 @@
+<odoo>
+	<data>
+		<!-- tree视图 -->
+		<record id="cost_sales_tree" model="ir.ui.view">
+			<field name="name">销售成本</field>
+			<field name="model">cost_sales</field>
+			<field name="arch" type="xml">
+				<tree create="0" edit="0">
+					<field name="month" string="月份"/>
+					<field name="order_amount" string="已签订单金额"/>
+					<field name="completed_amount" string="已完成金额"/>
+					<field name="amount_paid" string="已付款金额"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- 动作 -->
+		<record id="cost_sales_action" model="ir.actions.act_window">
+			<field name="name">销售成本</field>
+			<field name="res_model">cost_sales</field>
+			<field name="view_mode">tree,graph</field>
+		</record>
+	</data>
+</odoo>

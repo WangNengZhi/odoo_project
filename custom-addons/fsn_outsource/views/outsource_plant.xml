@@ -1,0 +1,86 @@
+<odoo>
+    <data>
+
+
+        <record id="outsource_plant_search" model="ir.ui.view">
+            <field name="name">外发工厂search</field>
+            <field name="model">outsource_plant</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="name" string="工厂名称"/>
+                </search>
+            </field>
+        </record>
+
+
+        <!-- tree -->
+		<record model="ir.ui.view" id="outsource_plant_tree">
+			<field name="name">外发工厂tree</field>
+			<field name="model">outsource_plant</field>
+			<field name="arch" type="xml">
+				<tree>
+                    <header>
+                    </header>
+					<field name="name" string="工厂名称"/>
+					<field name="plant_type" string="加工厂类型"/>
+					<field name="plant_boss_name" string="工厂老板姓名"/>
+					<field name="plant_boss_phone" string="工厂老板电话"/>
+					<field name="plant_head_name" string="工厂主管姓名"/>
+					<field name="plant_head_phone" string="工厂主管电话"/>
+					<field name="plant_address" string="工厂地址"/>
+					<field name="plant_area" string="工厂占地面积(平方米)"/>
+                    <field name="open_account_bank" string="开户行"/>
+                    <field name="bank_card_number" string="银行卡号"/>
+                    <field name="rating" string="评级"/>
+				</tree>
+			</field>
+		</record>
+
+        <record id="outsource_plant_form" model="ir.ui.view">
+            <field name="name">外发订单form</field>
+            <field name="model">outsource_plant</field>
+            <field name="arch" type="xml">
+                <form>
+					<header>
+					</header>
+                    <sheet>
+						<div style="text-align: center"><h1>外发工厂</h1></div>
+						<group col="4">
+                            <field name="name" string="工厂名称"/>
+                            <field name="plant_type" string="加工厂类型" widget="many2many_tags" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="plant_boss_name" string="工厂老板姓名"/>
+                            <field name="plant_boss_phone" string="工厂老板电话"/>
+                            <field name="plant_head_name" string="工厂主管姓名"/>
+                            <field name="plant_head_phone" string="工厂主管电话"/>
+                            <field name="plant_address" string="工厂地址"/>
+                            <field name="plant_area" string="工厂占地面积(平方米)"/>
+						</group>
+						<group col="4" string="账户信息">
+                            <field name="open_account_bank" string="开户行"/>
+                            <field name="bank_card_number" string="银行卡号"/>
+						</group>
+						<notebook>
+							<page string="工厂资源明细">
+                                <field name="resources_line" string="工厂资源明细">
+                                    <tree editable="bottom">
+                                        <field name="resources" string="资源" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="number" string="数量"/>
+                                        <field name="unit" string="单位"/>
+                                    </tree>
+                                </field>
+							</page>
+						</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+		<record model="ir.actions.act_window" id="outsource_plant_actions">
+            <field name="name">外发工厂</field>
+            <field name="res_model">outsource_plant</field>
+            <field name="view_mode">tree,form</field>
+		</record>
+
+    </data>
+</odoo>

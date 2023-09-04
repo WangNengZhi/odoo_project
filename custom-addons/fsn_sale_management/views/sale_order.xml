@@ -1,0 +1,107 @@
+<odoo>
+    <data>
+
+        <record id="fsn_sale_management_view_order_tree" model="ir.ui.view">
+            <field name="name">销售订单继承</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="fsn_purchase_order_number" string="采购单号"/>
+                    <field name="fsn_customer_order_date" string="下单日期"/>
+                    <field name="fsn_delivery_date" string="合同日期"/>
+                    <field name="sale_pro_id" string="生产订单"/>
+                    <field name="fsn_order_category" string="订单类别" decoration-success="fsn_order_category == '成衣采购'" decoration-info="fsn_order_category == '承揽加工'"/>
+                </xpath>
+                
+                <xpath expr="//field[@name='invoice_status']" position="after">
+                    <field name="shipping_status" decoration-success="shipping_status == '发货完成'" decoration-info="shipping_status == '等待发货'" widget="badge"/>
+                    <field name="actual_collection" string="实际收款"/>
+                    <field name="fsn_payment_state" decoration-success="fsn_payment_state == '已付款'" decoration-info="fsn_payment_state == '未付款'" widget="badge"/>
+                    <field name="fsn_approval_status" decoration-success="fsn_approval_status == '已审批'" decoration-info="fsn_approval_status == '未审批'" widget="badge"/>
+                    <button name="set_fsn_approval_status" type="object" string="审批通过" class="btn-primary"
+                        context="{'fsn_approval_status': '已审批'}"
+                        groups="fsn_base.fsn_super_user_group"
+                        attrs="{'invisible':[('fsn_approval_status', '!=', '未审批')]}"
+                    />
+                    <button name="set_fsn_approval_status" type="object" string="审批回退" class="btn-danger"
+                        context="{'fsn_approval_status': '未审批'}"
+                        groups="fsn_base.fsn_super_user_group"
+                        attrs="{'invisible':[('fsn_approval_status', '!=', '已审批')]}"
+                    />
+                </xpath>
+
+            </field>
+        </record>
+
+
+
+
+
+    <record id="fsn_sale_management_sale_order_form_quote_form" model="ir.ui.view">
+        <field name="name">销售订单继承</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_management.sale_order_form_quote"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//button[@name='action_draft']" position="after">
+                <button name="set_fsn_payment_state"
+                    type="object"
+                    string="设为已付款"
+                    context="{'type': '已付款'}"
+                    attrs="{'invisible': ['|', ('fsn_payment_state', '=', '已付款'), ('state', '!=', 'sale')]}"/>
+                <button name="set_fsn_payment_state"
+                    type="object"
+                    string="设为未付款"
+                    context="{'type': '未付款'}"
+                    attrs="{'invisible': ['|', ('fsn_payment_state', '=', '未付款'), ('state', '!=', 'sale')]}"/>
+            </xpath>
+
+            <xpath expr="//field[@name='sale_order_template_id']" position="after">
+                <field name="fsn_payment_state" readonly="1" decoration-success="fsn_payment_state == '已付款'" decoration-info="fsn_payment_state == '未付款'" widget="badge"
+                    attrs="{'invisible': [('state', '!=', 'sale')]}"/>
+            </xpath>
+
+            <xpath expr="//field[@name='sale_order_template_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="fsn_sale_management_view_order_form" model="ir.ui.view">
+        <field name="name">销售订单继承</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//group[@name='sale_header']" position="before">
+                <group col="4">
+                    <field name="fsn_purchase_order_number" string="采购单号"/>
+                    <field name="fsn_customer_order_date" string="下单日期"/>
+                    <field name="fsn_delivery_date" string="合同日期"/>
+                    <field name="fsn_order_category" string="订单类别"/>
+                    <field name="sale_pro_id" string="生产订单"  options="{'no_create': True, 'no_open': True}"/>
+                    <field name="actual_collection" string="实际收款"/>
+                </group>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']//tree//field[@name='price_unit']" position="before">
+                <field name="returned_quantity" string="已退货"/>
+                <field name="quantity_delivered" string="已出库"/>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']//form//field[@name='price_unit']" position="before">
+                <field name="returned_quantity" string="已退货"/>
+                <field name="quantity_delivered" string="已出库"/>
+            </xpath>
+
+
+
+
+        </field>
+    </record>
+
+    </data>
+</odoo>

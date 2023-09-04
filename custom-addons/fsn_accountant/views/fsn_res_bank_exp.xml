@@ -1,0 +1,13 @@
+<odoo>
+	<data>
+
+
+
+        <menuitem id="menu_fsn_res_bank"
+                name="银行"
+                parent="menu_setting"
+                action="base.action_res_bank_form"
+                sequence="99"/>
+
+	</data>
+</odoo>

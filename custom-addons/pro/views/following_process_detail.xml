@@ -1,0 +1,130 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="following_process_detail_tree">
+			<field name="name">后道进出明细_tree</field>
+			<field name="model">following_process_detail</field>
+			<field name="arch" type="xml">
+				<tree create="1">
+                    <header>
+                        <!-- <button name="set_order_number_value" type="object" string="订单"/> -->
+                        <!-- <button name="set_workshop" type="object" string="车间"/> -->
+                        <!-- <button name="set_always_check_return" type="object" string="总检退修"/> -->
+                        <!-- <button name="set_warehouse_return" type="object" string="仓库退修"/> -->
+                        <!-- <button name="set_enter_warehouse" type="object" string="入库"/> -->
+                        <!-- <button name="set_out_of_warehouse" type="object" string="出库"/> -->
+                        <button name="all_in" type="object" string="ALL IN"/>
+                    </header>
+                    <field name="dDate" string="日期"/>
+					<field name="workshop_production" string="车间生产"/>
+                    <field name="middle_check_return" string="中查退修"/>
+                    <field name="always_check_return" string="总检退修"/>
+                    <field name="warehouse_return" string="仓库退修"/>
+                    <field name="following_process_enter" string="后道入库"/>
+                    <field name="retention_quantity" string="滞留"/>
+                    <field name="retention_total" string="滞留累计"/>
+				</tree>
+			</field>
+		</record>
+        <!-- form -->
+        <record id="following_process_detail_form" model="ir.ui.view">
+            <field name="name">后道进出明细_form</field>
+            <field name="model">following_process_detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="4">
+                            <field name="dDate" string="日期"/>
+                            <field name="workshop_production" string="车间生产"/>
+                            <field name="middle_check_return" string="中查退修"/>
+                            <field name="always_check_return" string="总检退修"/>
+                            <field name="warehouse_return" string="仓库退修"/>
+                            <field name="following_process_enter" string="后道入库"/>
+                            <field name="retention_quantity" string="滞留"/>
+                            <field name="retention_total" string="滞留累计"/>
+                        </group>
+						<notebook>
+							<page string="中查退修明细">
+								<field name="middle_check_return_ids" string="中查退修明细">
+									<tree editable="bottom">
+										<field name="dDate" string="日期"/>
+										<field name="gGroup" string="组别"/>
+										<field name="quantity" string="数量"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+							<page string="总检退修明细">
+								<field name="always_check_return_ids" string="总检退修明细">
+									<tree editable="bottom">
+										<field name="dDate" string="日期"/>
+										<field name="gGroup" string="组别"/>
+										<field name="quantity" string="数量"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+						</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+		<!-- 透视表视图 -->
+		<record id="following_process_detail_graph" model="ir.ui.view">
+			<field name="name">后道进出明细透视图</field>
+			<field name="model">following_process_detail</field>
+			<field name="arch" type="xml">
+				<graph>
+					<field name="dDate" string="日期" type="row"/>
+				</graph>
+			</field>
+		</record>
+        <!-- 动作 -->
+        <record id="following_process_detail_actions" model="ir.actions.act_window">
+            <field name="name">后道进出明细</field>
+            <field name="res_model">following_process_detail</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+        <!-- 菜单按钮 -->
+        <menuitem id="menu_following_process_detail"
+            name="后道进出明细"
+            parent="menu_summary_main"
+            action="following_process_detail_actions"
+            sequence="40"/>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="middle_check_return_line_tree">
+			<field name="name">后道进出中查退修明细_tree</field>
+			<field name="model">middle_check_return_line</field>
+			<field name="arch" type="xml">
+				<tree edit="0" create="0" delete="0">
+                    <header>
+                    </header>
+                    <field name="following_process_detail_id" string="后道明细"/>
+                    <field name="dDate" string="日期"/>
+                    <field name="gGroup" string="组别"/>
+                    <field name="quantity" string="数量"/>
+                    <!-- <button name="set_out_of_warehouse" type="object" string="出库"/> -->
+				</tree>
+			</field>
+		</record>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="always_check_return_line_tree">
+			<field name="name">后道进出总检退修明细_tree</field>
+			<field name="model">always_check_return_line</field>
+			<field name="arch" type="xml">
+				<tree edit="0" create="0" delete="0">
+                    <header>
+                    </header>
+                    <field name="following_process_detail_id" string="后道明细"/>
+                    <field name="dDate" string="日期"/>
+                    <field name="gGroup" string="组别"/>
+                    <field name="quantity" string="数量"/>
+				</tree>
+			</field>
+		</record>
+    </data>
+</odoo>

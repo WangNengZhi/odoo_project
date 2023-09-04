@@ -1,0 +1,103 @@
+<odoo>
+    <data>
+		<!-- tree -->
+		<record model="ir.ui.view" id="th_per_management_tree">
+			<field name="name">技术科研发业绩管理tree</field>
+			<field name="model">th_per_management</field>
+			<field name="arch" type="xml">
+				<tree>
+					<header>
+					</header>
+                    <field name="date" string="日期"/>
+                    <field name="employee_id" string="员工"/>
+                    <field name="work_type" string="工种"/>
+                    <field name="job_id" string="岗位"/>
+					<field name="product_design_id" string="设计编号"/>
+					<field name="fsn_platemaking_record_id" string="版号"/>
+                    <field name="style_number" string="款号"/>
+					<field name="IE_working_hours" string="IE工时(秒)"/>
+                    <field name="sample_image" string="图片" widget='image' width='120px'/>
+                    <field name="job_content" string="工作内容"/>
+                    <field name="plan_production" string="计划产量"/>
+                    <field name="actual_production" string="实际产量"/>
+                    <field name="state" string="状态" decoration-info="state == '待审批'" decoration-success="state == '客户已审批'" widget="badge"/>
+					<field name="is_supervisor_approval" string="主管审批"/>
+					<field name="is_quality_control_approval" string="品控审批"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- form -->
+		<record id="th_per_management_form" model="ir.ui.view">
+			<field name="name">技术科研发业绩管理form</field>
+			<field name="model">th_per_management</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+                        <button name="state_change" type="object" string="客户审批通过" class="btn-primary"
+							context="{'type': 'through'}"
+							attrs="{'invisible':[('state', '=', '客户已审批')]}"
+							confirm='确认要审批通过吗？'
+							groups="template_house.fsn_technical_department_supervisor_group"/>
+                        <button name="state_change" type="object" string="客户审批回退" class="btn-danger"
+							context="{'type': 'fallback'}"
+							attrs="{'invisible':[('state', '=', '待审批')]}"
+							confirm='确认要回退吗？'
+							groups="template_house.fsn_technical_department_supervisor_group"/>
+                        <button name="set_is_supervisor_approval" type="object" string="主管审批通过" class="btn-primary"
+							context="{'type': 'through'}"
+							attrs="{'invisible':[('is_supervisor_approval', '=', True)]}"
+							confirm='确认要审批通过吗？'
+							groups="template_house.fsn_technical_department_supervisor_group"/>
+                        <button name="set_is_supervisor_approval" type="object" string="主管审批回退" class="btn-danger"
+							context="{'type': 'fallback'}"
+							attrs="{'invisible':[('is_supervisor_approval', '=', False)]}"
+							confirm='确认要回退吗？'
+							groups="template_house.fsn_technical_department_supervisor_group"/>
+                        <button name="set_is_quality_control_approval" type="object" string="品控审批通过" class="btn-primary"
+							context="{'type': 'through'}"
+							attrs="{'invisible':[('is_quality_control_approval', '=', True)]}"
+							confirm='确认要审批通过吗？'
+							groups="template_house.fsn_technical_department_quality_control_group"/>
+                        <button name="set_is_quality_control_approval" type="object" string="品控审批回退" class="btn-danger"
+							context="{'type': 'fallback'}"
+							attrs="{'invisible':[('is_quality_control_approval', '=', False)]}"
+							confirm='确认要回退吗？'
+							groups="template_house.fsn_technical_department_quality_control_group"/>
+						<field name="state" widget="statusbar" statusbar_visible="待审批,客户已审批"/>
+					</header>
+					<sheet>
+						<group col="4">
+                            <field name="date" string="日期"/>
+                            <field name="employee_id" string="员工" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="work_type" string="工种"/>
+                            <field name="job_id" string="岗位" options="{'no_create': True, 'no_open': True}"/>
+						</group>
+						<group col="4">
+                            <field name="product_design_id" string="设计编号" options="{'no_create': True, 'no_open': True}"/>
+							<field name="fsn_platemaking_record_id" string="版号" options="{'no_create': True, 'no_open': True}"/>
+							<field name="style_number" string="款号" options="{'no_create': True, 'no_open': True}"/>
+							<field name="IE_working_hours" string="IE工时(秒)" readonly="1"/>
+							<field name="sample_image" string="图片" widget='image' width='120px'/>
+                            <field name="job_content" string="工作内容"/>
+						</group>
+						<group col="4">
+                            <field name="plan_production" string="计划产量"/>
+                            <field name="actual_production" string="实际产量"/>
+						</group>
+						<group col="4">
+							<field name="is_supervisor_approval" string="主管审批" readonly="1"/>
+							<field name="is_quality_control_approval" string="品控审批" readonly="1"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <record model="ir.actions.act_window" id="th_per_management_action">
+            <field name="name">样衣</field>
+            <field name="res_model">th_per_management</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

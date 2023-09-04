@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+
+
+        <record id="compensation_sublevel_tree" model="ir.ui.view">
+            <field name="name">薪酬分阶</field>
+            <field name="model">compensation_sublevel</field>
+            <field name="arch" type="xml">
+                <tree create="1" edit="1" delete="1">
+                    <header>
+                        <button name="set_month_workpiece_ratio" type="object" string="效率刷新" class="btn-info"/>
+                    </header>
+                    <field name="month" string="月份"/>
+                    <field name="hr_employee_id" string="员工"/>
+                    <field name="hr_department_id" string="部门"/>
+                    <field name="contract" string="工种"/>
+                    <field name="month_workpiece_ratio" string="月平均效率(%)"/>
+                    <field name="compensation" string="薪资"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="compensation_sublevel_action" model="ir.actions.act_window">
+            <field name="name">薪酬分阶</field>
+            <field name="res_model">compensation_sublevel</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_tree_custom_calendar" model="ir.ui.view">
+            <field name="name">自定义日历</field>
+            <field name="model">custom.calendar</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date" string="日期"/>
+                    <field name="week_char" string="周"/>
+                    <!-- <field name="is_statutory_holiday" string="是否法定节假日"/> -->
+                    <field name="extra_work_type" string="加班类型"/>
+                    <field name="reason" string="原因"/>
+
+                    <!-- <field name="status" decoration-info="status == '仅双休休息'" decoration-success="status == '休息'" decoration-warning="status == '大小休休息'" widget="badge"/> -->
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_form_custom_calendar" model="ir.ui.view">
+            <field name="name">自定义日历</field>
+            <field name="model">custom.calendar</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="date" string="日期"/>
+                            <field name="week_char" string="周"/>
+                            <!-- <field name="is_statutory_holiday" string="是否法定节假日"/> -->
+                            <field name="extra_work_type" string="加班类型"/>
+                            <field name="reason" string="原因"/>
+                        </group>
+						<notebook>
+							<page string="部门明细">
+								<field name="custom_calendar_line_ids" string="部门明细">
+									<tree editable="bottom" create="1" delete="1">
+										<field name="department" string="部门" readonly="0" force_save="0"/>
+										<field name="state" string="状态"/>
+										<field name="up_time" string="上班时间"/>
+										<field name="down_time" string="下班时间"/>
+									</tree>
+									<form>
+									</form>
+								</field>
+							</page>
+						</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <act_window id="action_custom_calendar"
+                    name="自定义日历"
+                    res_model="custom.calendar"
+                    view_mode="tree,form" />
+
+
+    </data>
+</odoo>

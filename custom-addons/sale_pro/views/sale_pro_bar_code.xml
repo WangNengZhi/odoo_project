@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+
+		<!-- tree -->
+		<record model="ir.ui.view" id="sale_pro_bar_code_tree">
+			<field name="name">销售条码</field>
+			<field name="model">sale_pro_bar_code</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+                    <field name="sale_pro_id" string="订单" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="style_number" string="款号" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="fsn_color" string="颜色" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="size" string="尺码" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="barcode_data" string="条码数据" readonly="1"/>
+                    <button name="set_barcode_data" string="刷新/生成条码" type="object" class="btn btn-primary"/>
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.actions.act_window" id="sale_pro_bar_code_action">
+            <field name="name">销售条码</field>
+            <field name="res_model">sale_pro_bar_code</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

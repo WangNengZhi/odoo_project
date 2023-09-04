@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+
+        <record id="post_commission_setting_tree" model="ir.ui.view">
+            <field name="name">FSN岗提成效设置</field>
+            <field name="model">post_commission_setting</field>
+            <field name="arch" type="xml">
+				<tree>
+                    <field name="job_id" string="岗位" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="frequency_distribution" string="发放频率（每几个月发放一次）"/>
+                    <field name="starting_month" string="启始月份" widget="fsn_month"/>
+                    <field name="commission_type" string="提成类型"/>
+                    <field name="commission_ratio" string="提成比例" digits="[10, 5]"/>
+                </tree>
+            </field>
+        </record>
+
+
+		<!-- form -->
+		<record id="post_commission_setting_form" model="ir.ui.view">
+			<field name="name">FSN岗提成设置</field>
+			<field name="model">post_commission_setting</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group col="4">
+                            <field name="job_id" string="岗位" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="frequency_distribution" string="发放频率（每几个月发放一次）"/>
+                            <field name="starting_month" string="启始月份" widget="fsn_month"/>
+                            <field name="commission_type" string="提成类型"/>
+                            <field name="commission_ratio" string="提成比例" digits="[10, 5]"/>
+						</group>
+						<notebook>
+							<page string="提成设置明细">
+                                <button name="add_post_commission_setting_line_ids" string="添加提成明细" type="object"
+                                    class="btn btn-primary"
+                                    confirm='确认要添加提成明细吗？'
+                                />
+								<field name="post_commission_setting_line_ids" string="提成设置明细">
+									<tree editable="bottom" create="0">
+                                        <field name="order_attribute_id" readonly="1" string="订单属性" options="{'no_create': True, 'no_open': True}"/>
+                                        <field name="commission_amount" string="提成金额"/>
+                                    </tree>
+                                </field>
+                            </page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+        <record id="post_commission_setting_action" model="ir.actions.act_window">
+            <field name="name">FSN岗位提成设置</field>
+            <field name="res_model">post_commission_setting</field>
+            <field name="view_mode">tree,form</field>
+        </record> 
+
+    </data>
+</odoo>

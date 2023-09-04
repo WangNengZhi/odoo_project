@@ -1,0 +1,81 @@
+<odoo>
+	<data>
+        <!-- 纸张 -->
+        <!-- <record id="fsn_kpi_paper" model="report.paperformat">
+            <field name="name">FSN_KPI</field>
+            <field name="default" eval="True"/>
+            <field name="format">Ledger</field>
+            <field name="page_height">210</field>
+            <field name="page_width">297</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">80</field>
+        </record> -->
+
+        <record id="action_report_kpi" model="ir.actions.report">
+            <field name="name">KPI报告打印</field>
+            <field name="model">fsn_kpi</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">fsn_kpi.fsn_kpi_print</field>
+            <field name="report_file">fsn_kpi.fsn_kpi_print</field>
+            <!-- <field name="paperformat_id" ref="fsn_kpi.paperformat_batch_deposit"/> -->
+            <field name="binding_model_id" ref="model_fsn_kpi"/>
+        </record>
+
+
+        <template id="fsn_kpi_print">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <!-- <h2>Accounting tests on <span t-esc="datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')"/></h2> -->
+                        <!-- <div t-foreach="docs" t-as="o">
+                            <p>
+                                <strong>Date:</strong> <span t-field="o.year_month"/><br/>
+                                <strong>Description:</strong> <span t-field="o.employee_id"/><br/>
+                                <t t-foreach="o.fsn_kpi_line_ids" t-as="i">
+                                    <span t-field="i.assessment_content"/><br/>
+                                </t>
+                            </p>
+                        </div> -->
+                        <div t-foreach="docs" t-as="o">
+                            <div style="text-align:center"><span t-field="o.department_id.name"/>_<span t-field="o.year_month"/>_绩效考核表</div>
+                            <div>姓名:<span t-field="o.employee_id.name"/>_岗位:<span t-field="o.job_id.name"/></div>
+                            <table class="table table-sm">
+
+                                <tr>
+                                    <td>序号</td>
+                                    <td>考核项目</td>
+                                    <td>考核内容</td>
+                                    <td>考核标准</td>
+                                    <td>分值</td>
+                                    <td>计算方式</td>
+                                    <td>考核评分</td>
+                                </tr>
+                                <t t-foreach="o.fsn_kpi_line_ids" t-as="i">
+                                    <tr>
+                                        <td><span t-field="i.sequence"/></td>
+                                        <td><span t-field="i.assessment_project"/></td>
+                                        <td><span t-field="i.assessment_content"/></td>
+                                        <td><span t-field="i.assessment_standard"/></td>
+                                        <td><span t-field="i.score"/></td>
+                                        <td><span t-field="i.calculation"/></td>
+                                        <td><span t-field="i.evaluation_score"/></td>
+                                    </tr>
+                                </t>
+                            </table>
+
+                            <div style="text-align:right; padding-right:80px;">总分:<span t-field="o.total_score"/></div>
+                            <div style="text-align:right; padding-right:80px;">审核人:<span t-field="o.inspection_people.name"/></div>
+
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
